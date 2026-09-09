@@ -36,6 +36,8 @@ concurrency:
 
 jobs:
   build:
+    # In the upstream repository the gallery workflow owns GitHub Pages; this one is for your copy.
+    if: github.repository != 'clarkchenkai/travel.skill'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
