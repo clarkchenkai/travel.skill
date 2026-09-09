@@ -8,7 +8,12 @@ The skill is plain Markdown. Any agent that can read `AGENTS.md` (or `CLAUDE.md`
 | `CLAUDE.md` (root, imports AGENTS.md) | Claude Code |
 | `.claude/skills/travel/SKILL.md` | Claude Code skill auto-discovery (`/travel`) |
 | `.agents/skills/travel/SKILL.md` | Codex CLI skill discovery |
-| `skill/SKILL.md` | The actual skill; the two paths above point here |
+| `.cursor/rules/travel-roadbook.mdc` | Cursor (always-applied project rule) |
+| `.windsurf/rules/travel-roadbook.md` | Windsurf (always-on rule) |
+| `.clinerules` | Cline |
+| `.github/copilot-instructions.md` | GitHub Copilot (VS Code, JetBrains, github.com) |
+| `GEMINI.md` (imports AGENTS.md) | Gemini CLI |
+| `skill/SKILL.md` | The actual skill; every path above points here |
 
 ## Verified runs
 
@@ -27,8 +32,9 @@ The last run used the already available native Codex agent because the task proh
 
 | Client | Status |
 | --- | --- |
-| Cursor, Windsurf, Cline, Continue | Untested. Should work via `AGENTS.md`; open a first-roadbook issue to report. |
-| Gemini CLI, opencode, aider | Untested. |
+| Cursor, Windsurf, Cline | Untested. Entry files are in place (see the table above) and `AGENTS.md` is read by all three; nobody has recorded a run. Open a first-roadbook issue to report. |
+| GitHub Copilot agent mode | Untested. `.github/copilot-instructions.md` is in place. |
+| Gemini CLI, opencode, aider, Continue | Untested. `GEMINI.md` and `AGENTS.md` are in place. |
 | Claude Desktop / Cowork, ChatGPT desktop | Untested; these need a working directory with Node available. |
 | Claude.ai web / ChatGPT web without a filesystem | Not applicable. The skill needs to write files and run scripts. |
 

@@ -1,0 +1,5 @@
+---
+description: Build, import, update, check or publish a travel roadbook from the traveler's materials using this repo's skill
+alwaysApply: true
+---
+This repository is a travel roadbook builder. When the user asks to build, import, update, check, or publish a travel roadbook / travel site / itinerary page, read and follow `skill/SKILL.md` step by step (its references are in `skill/references/`). Root `AGENTS.md` lists the commands and the rules that do not bend: never invent facts, never write booking references or passport numbers into data, never push/deploy/buy/message without explicit permission for that action.
