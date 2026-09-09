@@ -31,10 +31,10 @@ async function loadJSON(url) {
 
 // ---------- helpers ----------
 function chip(label, attrs = '', icon = '') { return `<button type="button" class="chip" ${attrs}>${icon}${E(label)}</button>`; }
-function responsiveImage(image, sizes) {
+function responsiveImage(image, sizes, minimumWidth = 0) {
   const variants = data.imageVariants?.[image];
   if (!Array.isArray(variants) || !variants.length) return '';
-  const set = variants.filter((v) => safeURL(v.src) && Number.isFinite(v.width) && v.width > 0)
+  const set = variants.filter((v) => safeURL(v.src) && Number.isFinite(v.width) && v.width > 0 && v.width >= minimumWidth)
     .map((v) => `${v.src} ${v.width}w`).join(', ');
   return set ? ` srcset="${E(set)}" sizes="${E(sizes)}"` : '';
 }
@@ -225,7 +225,7 @@ function renderHome() {
   $('#cover-action').textContent = t('cover.open');
   const media = $('#cover-media');
   if (trip.cover?.image) {
-    media.innerHTML = `<img src="${E(trip.cover.image)}"${responsiveImage(trip.cover.image, '(min-width: 900px) 1088px, (min-width: 720px) 688px, calc(100vw - 32px)')} alt="${E(trip.cover.alt || '')}" fetchpriority="high" style="object-position:${E(trip.cover.position || 'center')}">`;
+    media.innerHTML = `<img src="${E(trip.cover.image)}"${responsiveImage(trip.cover.image, '(min-width: 900px) 1088px, (min-width: 720px) 688px, calc(100vw - 32px)', 900)} alt="${E(trip.cover.alt || '')}" fetchpriority="high" style="object-position:${E(trip.cover.position || 'center')}">`;
     $('#cover').classList.add('has-image');
     $('#cover').dataset.copy = trip.cover.copy || 'top-left';
   } else { media.innerHTML = ''; $('#cover').classList.remove('has-image'); }

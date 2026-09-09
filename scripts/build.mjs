@@ -25,14 +25,19 @@ for (const [image, widths] of [[data.trip.cover?.image, [900, 1800]], ...(data.d
   const parsed = path.posix.parse(image);
   const variants = widths.map((width) => ({src: `${parsed.dir}/${parsed.name}-${width}w.webp`, width}))
     .filter(({src}) => fs.existsSync(path.join(trip, src)));
-  if (variants.length) imageVariants[image] = variants;
+  if (variants.length) imageVariants[image] = [...new Map([...(imageVariants[image] || []), ...variants].map((v) => [v.width, v])).values()].sort((a, b) => a.width - b.width);
 }
 // Derived build metadata, not another traveler-maintained data source.
 delete publicData.imageVariants;
 if (Object.keys(imageVariants).length) publicData.imageVariants = imageVariants;
 const coverSizes = '(min-width: 900px) 1088px, (min-width: 720px) 688px, calc(100vw - 32px)';
-const coverSet = (imageVariants[data.trip.cover?.image] || []).map(({src, width}) => `${src} ${width}w`).join(', ');
+const coverVariants = (imageVariants[data.trip.cover?.image] || []).filter((v) => v.width >= 900);
+const coverSet = coverVariants.map(({src, width}) => `${src} ${width}w`).join(', ');
 const printImages = Object.fromEntries(Object.entries(imageVariants).map(([image, variants]) => [image, variants[0].src]));
+if (data.trip.cover?.image) {
+  if (coverVariants.length) printImages[data.trip.cover.image] = coverVariants[0].src;
+  else delete printImages[data.trip.cover.image];
+}
 if (data.routeOverview?.image?.startsWith('assets/')) {
   const parsed = path.posix.parse(data.routeOverview.image);
   const printImage = `${parsed.dir}/${parsed.name}-print.webp`;

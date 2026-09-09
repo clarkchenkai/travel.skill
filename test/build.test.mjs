@@ -108,3 +108,16 @@ test('Chinese builds localize prerendered navigation, skip link and loading fall
   assert.match(b.html, /role="status">正在打开路书…<\/p>/);
   assert.match(b.html, /此路书需要启用 JavaScript 才能显示行程数据。/);
 });
+
+test('reusing a photo for a day does not replace its cover sources with tiny thumbnails', () => {
+  const dir = tripFrom('family-island', (d) => ({...d, days: d.days.map((day, i) => i ? day : {...day, cover: d.trip.cover.image})}));
+  for (const width of [88, 176]) fs.copyFileSync(path.join(dir, `assets/day-1-${width}w.webp`), path.join(dir, `assets/cover-${width}w.webp`));
+  const b = build(dir);
+  const preload = b.html.match(/<link rel="preload" as="image"[^>]+>/)[0];
+  assert.match(preload, /cover-900w.webp 900w/);
+  assert.doesNotMatch(preload, /cover-(88|176)w/);
+  const pub = JSON.parse(fs.readFileSync(path.join(b.out, 'travel-data.json'), 'utf8'));
+  assert.deepEqual(pub.imageVariants['assets/cover.webp'].map((v) => v.width), [88, 176, 900, 1800]);
+  const css = fs.readFileSync(path.join(b.out, 'styles.css'), 'utf8');
+  assert.match(css, /img\[src="assets\/cover.webp"\] \{ content: url\("assets\/cover-900w.webp"\)/);
+});
