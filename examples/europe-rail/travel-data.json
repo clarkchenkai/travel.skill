@@ -12,118 +12,913 @@
     "startDate": "2031-10-23",
     "endDate": "2031-10-30",
     "people": 2,
-    "countries": ["NL", "DE", "CZ", "AT"],
-    "map": {"provider": "osm", "embed": true},
+    "countries": [
+      "NL",
+      "DE",
+      "CZ",
+      "AT"
+    ],
+    "map": {
+      "provider": "osm",
+      "embed": true
+    },
     "demo": true,
     "updatedAt": "2031-01-01",
-    "sourceRefs": ["demo"]
+    "sourceRefs": [
+      "demo"
+    ],
+    "cover": {
+      "image": "assets/cover.webp",
+      "position": "center 60%",
+      "alt": "Poster-style illustration of a train on a viaduct (AI illustration, decorative)"
+    }
   },
   "flightJourneys": [
     {
-      "id": "outbound", "label": "Outbound · New York → Amsterdam", "airline": "Example Air (fictional)", "status": "demo",
-      "segments": [{"number": "DEMO 201", "origin": {"code": "JFK", "city": "New York", "terminal": "T4", "timeZone": "America/New_York", "timeZoneLabel": "New York time"}, "destination": {"code": "AMS", "city": "Amsterdam Schiphol", "terminal": "", "timeZone": "Europe/Amsterdam", "timeZoneLabel": "Amsterdam time"}, "departure": "2031-10-23T19:30:00-04:00", "arrival": "2031-10-24T08:45:00+02:00"}],
-      "notes": ["Overnight flight: lands the next calendar day in Amsterdam.", "Flight number and times are fictional."],
-      "sourceRefs": ["demo"]
+      "id": "outbound",
+      "label": "Outbound · New York → Amsterdam",
+      "airline": "Example Air (fictional)",
+      "status": "demo",
+      "segments": [
+        {
+          "number": "DEMO 201",
+          "origin": {
+            "code": "JFK",
+            "city": "New York",
+            "terminal": "T4",
+            "timeZone": "America/New_York",
+            "timeZoneLabel": "New York time"
+          },
+          "destination": {
+            "code": "AMS",
+            "city": "Amsterdam Schiphol",
+            "terminal": "",
+            "timeZone": "Europe/Amsterdam",
+            "timeZoneLabel": "Amsterdam time"
+          },
+          "departure": "2031-10-23T19:30:00-04:00",
+          "arrival": "2031-10-24T08:45:00+02:00"
+        }
+      ],
+      "notes": [
+        "Overnight flight: lands the next calendar day in Amsterdam.",
+        "Flight number and times are fictional."
+      ],
+      "sourceRefs": [
+        "demo"
+      ]
     },
     {
-      "id": "return", "label": "Return · Vienna → New York", "airline": "Example Air (fictional)", "status": "demo",
-      "segments": [{"number": "DEMO 202", "origin": {"code": "VIE", "city": "Vienna", "terminal": "T3", "timeZone": "Europe/Vienna", "timeZoneLabel": "Vienna time"}, "destination": {"code": "JFK", "city": "New York", "terminal": "T4", "timeZone": "America/New_York", "timeZoneLabel": "New York time"}, "departure": "2031-10-30T10:15:00+01:00", "arrival": "2031-10-30T13:50:00-04:00"}],
-      "notes": ["Europe leaves summer time on 26 October 2031; this departure is already in standard time (+01:00).", "Arrives at a clock time earlier than it departs. Duration is computed from absolute instants."],
-      "sourceRefs": ["demo"]
+      "id": "return",
+      "label": "Return · Vienna → New York",
+      "airline": "Example Air (fictional)",
+      "status": "demo",
+      "segments": [
+        {
+          "number": "DEMO 202",
+          "origin": {
+            "code": "VIE",
+            "city": "Vienna",
+            "terminal": "T3",
+            "timeZone": "Europe/Vienna",
+            "timeZoneLabel": "Vienna time"
+          },
+          "destination": {
+            "code": "JFK",
+            "city": "New York",
+            "terminal": "T4",
+            "timeZone": "America/New_York",
+            "timeZoneLabel": "New York time"
+          },
+          "departure": "2031-10-30T10:15:00+01:00",
+          "arrival": "2031-10-30T13:50:00-04:00"
+        }
+      ],
+      "notes": [
+        "Europe leaves summer time on 26 October 2031; this departure is already in standard time (+01:00).",
+        "Arrives at a clock time earlier than it departs. Duration is computed from absolute instants."
+      ],
+      "sourceRefs": [
+        "demo"
+      ]
     }
   ],
   "places": [
-    {"id": "ams", "name": "Amsterdam Schiphol Airport", "localName": "Luchthaven Schiphol", "kind": "airport", "lat": 52.3105, "lon": 4.7683, "address": "Evert van de Beekstraat 202, Schiphol", "note": "Trains to Amsterdam Centraal leave from under the terminal.", "sourceRefs": ["demo"]},
-    {"id": "ams-centraal", "name": "Amsterdam Centraal", "localName": "Station Amsterdam Centraal", "kind": "station", "lat": 52.3791, "lon": 4.9003, "address": "Stationsplein, Amsterdam", "note": "", "sourceRefs": ["demo"]},
-    {"id": "rijksmuseum", "name": "Rijksmuseum", "localName": "Rijksmuseum", "kind": "museum", "lat": 52.3600, "lon": 4.8852, "address": "Museumstraat 1, Amsterdam", "note": "Timed tickets; check opening hours on the official site.", "sourceRefs": ["demo"]},
-    {"id": "berlin-hbf", "name": "Berlin Hauptbahnhof", "localName": "Berlin Hbf", "kind": "station", "lat": 52.5251, "lon": 13.3694, "address": "Europaplatz 1, Berlin", "note": "Long-distance platforms are on the lowest level.", "sourceRefs": ["demo"]},
-    {"id": "museum-island", "name": "Museum Island", "localName": "Museumsinsel", "kind": "sight", "lat": 52.5169, "lon": 13.4019, "address": "Bodestraße, Berlin", "note": "", "sourceRefs": ["demo"]},
-    {"id": "praha-hln", "name": "Prague Main Station", "localName": "Praha hlavní nádraží", "kind": "station", "lat": 50.0830, "lon": 14.4353, "address": "Wilsonova 300/8, Praha", "note": "", "sourceRefs": ["demo"]},
-    {"id": "charles-bridge", "name": "Charles Bridge", "localName": "Karlův most", "kind": "sight", "lat": 50.0865, "lon": 14.4114, "address": "Karlův most, Praha 1", "note": "Quietest before 08:00.", "sourceRefs": ["demo"]},
-    {"id": "wien-hbf", "name": "Vienna Central Station", "localName": "Wien Hauptbahnhof", "kind": "station", "lat": 48.1850, "lon": 16.3760, "address": "Am Hauptbahnhof 1, Wien", "note": "", "sourceRefs": ["demo"]},
-    {"id": "schoenbrunn", "name": "Schönbrunn Palace", "localName": "Schloss Schönbrunn", "kind": "sight", "lat": 48.1845, "lon": 16.3122, "address": "Schönbrunner Schloßstraße 47, Wien", "note": "Timed entry for the state rooms.", "sourceRefs": ["demo"]},
-    {"id": "vie", "name": "Vienna International Airport", "localName": "Flughafen Wien-Schwechat", "kind": "airport", "lat": 48.1103, "lon": 16.5697, "address": "Wien-Flughafen, Schwechat", "note": "", "sourceRefs": ["demo"]},
-    {"id": "stay-ams-place", "name": "Example hotel (Amsterdam)", "kind": "stay", "mapQuery": "Amsterdam Centraal", "address": "Fictional address — replace", "note": "Fictional stay.", "sourceRefs": ["demo"]},
-    {"id": "stay-ber-place", "name": "Example hotel (Berlin)", "kind": "stay", "mapQuery": "Berlin Hauptbahnhof", "address": "Fictional address — replace", "note": "Fictional stay.", "sourceRefs": ["demo"]},
-    {"id": "stay-prg-place", "name": "Example apartment (Prague)", "kind": "stay", "mapQuery": "Praha hlavní nádraží", "address": "Fictional address — replace", "note": "Fictional stay.", "sourceRefs": ["demo"]},
-    {"id": "stay-vie-place", "name": "Example hotel (Vienna)", "kind": "stay", "mapQuery": "Wien Hauptbahnhof", "address": "Fictional address — replace", "note": "Fictional stay.", "sourceRefs": ["demo"]}
+    {
+      "id": "ams",
+      "name": "Amsterdam Schiphol Airport",
+      "localName": "Luchthaven Schiphol",
+      "kind": "airport",
+      "lat": 52.3105,
+      "lon": 4.7683,
+      "address": "Evert van de Beekstraat 202, Schiphol",
+      "note": "Trains to Amsterdam Centraal leave from under the terminal.",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "ams-centraal",
+      "name": "Amsterdam Centraal",
+      "localName": "Station Amsterdam Centraal",
+      "kind": "station",
+      "lat": 52.3791,
+      "lon": 4.9003,
+      "address": "Stationsplein, Amsterdam",
+      "note": "",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "rijksmuseum",
+      "name": "Rijksmuseum",
+      "localName": "Rijksmuseum",
+      "kind": "museum",
+      "lat": 52.36,
+      "lon": 4.8852,
+      "address": "Museumstraat 1, Amsterdam",
+      "note": "Timed tickets; check opening hours on the official site.",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "berlin-hbf",
+      "name": "Berlin Hauptbahnhof",
+      "localName": "Berlin Hbf",
+      "kind": "station",
+      "lat": 52.5251,
+      "lon": 13.3694,
+      "address": "Europaplatz 1, Berlin",
+      "note": "Long-distance platforms are on the lowest level.",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "museum-island",
+      "name": "Museum Island",
+      "localName": "Museumsinsel",
+      "kind": "sight",
+      "lat": 52.5169,
+      "lon": 13.4019,
+      "address": "Bodestraße, Berlin",
+      "note": "",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "praha-hln",
+      "name": "Prague Main Station",
+      "localName": "Praha hlavní nádraží",
+      "kind": "station",
+      "lat": 50.083,
+      "lon": 14.4353,
+      "address": "Wilsonova 300/8, Praha",
+      "note": "",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "charles-bridge",
+      "name": "Charles Bridge",
+      "localName": "Karlův most",
+      "kind": "sight",
+      "lat": 50.0865,
+      "lon": 14.4114,
+      "address": "Karlův most, Praha 1",
+      "note": "Quietest before 08:00.",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "wien-hbf",
+      "name": "Vienna Central Station",
+      "localName": "Wien Hauptbahnhof",
+      "kind": "station",
+      "lat": 48.185,
+      "lon": 16.376,
+      "address": "Am Hauptbahnhof 1, Wien",
+      "note": "",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "schoenbrunn",
+      "name": "Schönbrunn Palace",
+      "localName": "Schloss Schönbrunn",
+      "kind": "sight",
+      "lat": 48.1845,
+      "lon": 16.3122,
+      "address": "Schönbrunner Schloßstraße 47, Wien",
+      "note": "Timed entry for the state rooms.",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "vie",
+      "name": "Vienna International Airport",
+      "localName": "Flughafen Wien-Schwechat",
+      "kind": "airport",
+      "lat": 48.1103,
+      "lon": 16.5697,
+      "address": "Wien-Flughafen, Schwechat",
+      "note": "",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "stay-ams-place",
+      "name": "Example hotel (Amsterdam)",
+      "kind": "stay",
+      "mapQuery": "Amsterdam Centraal",
+      "address": "Fictional address — replace",
+      "note": "Fictional stay.",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "stay-ber-place",
+      "name": "Example hotel (Berlin)",
+      "kind": "stay",
+      "mapQuery": "Berlin Hauptbahnhof",
+      "address": "Fictional address — replace",
+      "note": "Fictional stay.",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "stay-prg-place",
+      "name": "Example apartment (Prague)",
+      "kind": "stay",
+      "mapQuery": "Praha hlavní nádraží",
+      "address": "Fictional address — replace",
+      "note": "Fictional stay.",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "stay-vie-place",
+      "name": "Example hotel (Vienna)",
+      "kind": "stay",
+      "mapQuery": "Wien Hauptbahnhof",
+      "address": "Fictional address — replace",
+      "note": "Fictional stay.",
+      "sourceRefs": [
+        "demo"
+      ]
+    }
   ],
   "accommodations": [
-    {"id": "stay-ams", "placeId": "stay-ams-place", "name": "Example hotel (Amsterdam)", "checkIn": "2031-10-24", "checkOut": "2031-10-26", "status": "demo", "statusLabel": "Example · not booked", "sourceRefs": ["demo"]},
-    {"id": "stay-ber", "placeId": "stay-ber-place", "name": "Example hotel (Berlin)", "checkIn": "2031-10-26", "checkOut": "2031-10-28", "status": "demo", "statusLabel": "Example · not booked", "sourceRefs": ["demo"]},
-    {"id": "stay-prg", "placeId": "stay-prg-place", "name": "Example apartment (Prague)", "checkIn": "2031-10-28", "checkOut": "2031-10-29", "status": "demo", "statusLabel": "Example · not booked", "sourceRefs": ["demo"]},
-    {"id": "stay-vie", "placeId": "stay-vie-place", "name": "Example hotel (Vienna)", "checkIn": "2031-10-29", "checkOut": "2031-10-30", "status": "demo", "statusLabel": "Example · not booked", "sourceRefs": ["demo"]}
+    {
+      "id": "stay-ams",
+      "placeId": "stay-ams-place",
+      "name": "Example hotel (Amsterdam)",
+      "checkIn": "2031-10-24",
+      "checkOut": "2031-10-26",
+      "status": "demo",
+      "statusLabel": "Example · not booked",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "stay-ber",
+      "placeId": "stay-ber-place",
+      "name": "Example hotel (Berlin)",
+      "checkIn": "2031-10-26",
+      "checkOut": "2031-10-28",
+      "status": "demo",
+      "statusLabel": "Example · not booked",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "stay-prg",
+      "placeId": "stay-prg-place",
+      "name": "Example apartment (Prague)",
+      "checkIn": "2031-10-28",
+      "checkOut": "2031-10-29",
+      "status": "demo",
+      "statusLabel": "Example · not booked",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "stay-vie",
+      "placeId": "stay-vie-place",
+      "name": "Example hotel (Vienna)",
+      "checkIn": "2031-10-29",
+      "checkOut": "2031-10-30",
+      "status": "demo",
+      "statusLabel": "Example · not booked",
+      "sourceRefs": [
+        "demo"
+      ]
+    }
   ],
   "days": [
-    {"id": "day-1", "date": "2031-10-23", "title": "Depart New York", "subtitle": "Overnight flight", "events": [
-      {"id": "d1-fly", "timeLabel": "19:30", "title": "Fly JFK → AMS", "kind": "flight", "placeIds": [], "notes": "Nothing else today. Sleep on the plane.", "sourceRefs": ["demo"]}
-    ]},
-    {"id": "day-2", "date": "2031-10-24", "title": "Amsterdam", "subtitle": "Arrive, canals, early night", "accommodationId": "stay-ams", "events": [
-      {"id": "d2-land", "timeLabel": "08:45", "title": "Land at Schiphol", "kind": "airport", "placeIds": ["ams"], "notes": "Train to Centraal every 10–15 min; buy a ticket at the yellow machines or tap a contactless card.", "sourceRefs": ["demo"]},
-      {"id": "d2-checkin", "timeLabel": "Late morning", "title": "Drop bags at the hotel", "kind": "stay", "placeIds": ["ams-centraal"], "notes": "", "sourceRefs": ["demo"]},
-      {"id": "d2-walk", "timeLabel": "Afternoon", "title": "Walk the canal ring, stay awake", "kind": "walk", "placeIds": ["ams-centraal"], "notes": "Jet lag rule: no nap before 20:00.", "sourceRefs": ["demo"]}
-    ]},
-    {"id": "day-3", "date": "2031-10-25", "title": "Amsterdam", "subtitle": "Rijksmuseum", "accommodationId": "stay-ams", "events": [
-      {"id": "d3-museum", "timeLabel": "09:00", "title": "Rijksmuseum (timed entry)", "kind": "sight", "placeIds": ["rijksmuseum"], "notes": "Book the first slot; the Gallery of Honour fills up by 10:30.", "ticketIds": ["ticket-rijks"], "sourceRefs": ["demo"]},
-      {"id": "d3-free", "timeLabel": "Afternoon", "title": "Free afternoon", "kind": "free", "placeIds": [], "notes": "Clocks go back one hour tonight (end of summer time).", "sourceRefs": ["demo"]}
-    ]},
-    {"id": "day-4", "date": "2031-10-26", "title": "Amsterdam → Berlin", "subtitle": "ICE, about 6 h", "accommodationId": "stay-ber", "events": [
-      {"id": "d4-train", "timeLabel": "09:00", "title": "ICE to Berlin Hbf", "kind": "train", "placeIds": ["ams-centraal", "berlin-hbf"], "notes": "Seat reservation recommended on this route. Example ticket in the ticket dialog.", "details": ["Departure boards show platform ~20 min ahead.", "Bring food; the dining car sells out."], "ticketIds": ["ticket-ice"], "sourceRefs": ["demo", "db"]},
-      {"id": "d4-arrive", "timeLabel": "Mid-afternoon", "title": "Arrive Berlin, check in", "kind": "stay", "placeIds": ["berlin-hbf"], "notes": "", "sourceRefs": ["demo"]}
-    ]},
-    {"id": "day-5", "date": "2031-10-27", "title": "Berlin", "subtitle": "Museum Island and a long walk", "accommodationId": "stay-ber", "events": [
-      {"id": "d5-museum", "timeLabel": "10:00", "title": "Museum Island", "kind": "sight", "placeIds": ["museum-island"], "notes": "Pick one museum; the combined ticket is only worth it for two or more.", "sourceRefs": ["demo"]},
-      {"id": "d5-walk", "timeLabel": "Afternoon", "title": "Walk Unter den Linden to the Brandenburg Gate", "kind": "walk", "placeIds": ["museum-island"], "notes": "", "sourceRefs": ["demo"]}
-    ]},
-    {"id": "day-6", "date": "2031-10-28", "title": "Berlin → Prague", "subtitle": "EC along the Elbe, about 4 h", "accommodationId": "stay-prg", "events": [
-      {"id": "d6-train", "timeLabel": "10:00", "title": "EC to Praha hl.n.", "kind": "train", "placeIds": ["berlin-hbf", "praha-hln"], "notes": "Sit on the right side after Dresden for the river.", "ticketIds": ["ticket-ec"], "sourceRefs": ["demo", "db"]},
-      {"id": "d6-transit", "timeLabel": "On arrival", "title": "Buy a Prague transit pass", "kind": "transit", "placeIds": ["praha-hln"], "notes": "Example: 72-hour pass covers metro and trams. Prices in CZK.", "ticketIds": ["ticket-prg-pass"], "sourceRefs": ["demo"]},
-      {"id": "d6-bridge", "timeLabel": "Evening", "title": "Charles Bridge after dark", "kind": "walk", "placeIds": ["charles-bridge"], "notes": "", "sourceRefs": ["demo"]}
-    ]},
-    {"id": "day-7", "date": "2031-10-29", "title": "Prague → Vienna", "subtitle": "Railjet, about 4 h", "accommodationId": "stay-vie", "events": [
-      {"id": "d7-bridge", "timeLabel": "07:30", "title": "Charles Bridge again, empty this time", "kind": "walk", "placeIds": ["charles-bridge"], "notes": "", "sourceRefs": ["demo"]},
-      {"id": "d7-train", "timeLabel": "11:00", "title": "Railjet to Wien Hbf", "kind": "train", "placeIds": ["praha-hln", "wien-hbf"], "notes": "", "ticketIds": ["ticket-rj"], "sourceRefs": ["demo"]},
-      {"id": "d7-schoenbrunn", "timeLabel": "16:00", "title": "Schönbrunn gardens before sunset", "kind": "sight", "placeIds": ["schoenbrunn"], "notes": "Gardens are free; the palace needs a timed ticket.", "ticketIds": ["ticket-schoenbrunn"], "sourceRefs": ["demo"]}
-    ]},
-    {"id": "day-8", "date": "2031-10-30", "title": "Fly home", "subtitle": "Vienna → New York", "events": [
-      {"id": "d8-airport", "timeLabel": "07:30", "title": "S-Bahn or CAT to the airport", "kind": "airport", "placeIds": ["wien-hbf", "vie"], "notes": "Allow 30 min on the S7; the CAT is faster but pricier.", "sourceRefs": ["demo"]},
-      {"id": "d8-fly", "timeLabel": "10:15", "title": "Fly VIE → JFK", "kind": "flight", "placeIds": ["vie"], "notes": "", "sourceRefs": ["demo"]}
-    ]}
+    {
+      "id": "day-1",
+      "date": "2031-10-23",
+      "title": "Depart New York",
+      "subtitle": "Overnight flight",
+      "events": [
+        {
+          "id": "d1-fly",
+          "timeLabel": "19:30",
+          "title": "Fly JFK → AMS",
+          "kind": "flight",
+          "placeIds": [],
+          "notes": "Nothing else today. Sleep on the plane.",
+          "sourceRefs": [
+            "demo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day-2",
+      "date": "2031-10-24",
+      "title": "Amsterdam",
+      "subtitle": "Arrive, canals, early night",
+      "accommodationId": "stay-ams",
+      "events": [
+        {
+          "id": "d2-land",
+          "timeLabel": "08:45",
+          "title": "Land at Schiphol",
+          "kind": "airport",
+          "placeIds": [
+            "ams"
+          ],
+          "notes": "Train to Centraal every 10–15 min; buy a ticket at the yellow machines or tap a contactless card.",
+          "sourceRefs": [
+            "demo"
+          ]
+        },
+        {
+          "id": "d2-checkin",
+          "timeLabel": "Late morning",
+          "title": "Drop bags at the hotel",
+          "kind": "stay",
+          "placeIds": [
+            "ams-centraal"
+          ],
+          "notes": "",
+          "sourceRefs": [
+            "demo"
+          ]
+        },
+        {
+          "id": "d2-walk",
+          "timeLabel": "Afternoon",
+          "title": "Walk the canal ring, stay awake",
+          "kind": "walk",
+          "placeIds": [
+            "ams-centraal"
+          ],
+          "notes": "Jet lag rule: no nap before 20:00.",
+          "sourceRefs": [
+            "demo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day-3",
+      "date": "2031-10-25",
+      "title": "Amsterdam",
+      "subtitle": "Rijksmuseum",
+      "accommodationId": "stay-ams",
+      "events": [
+        {
+          "id": "d3-museum",
+          "timeLabel": "09:00",
+          "title": "Rijksmuseum (timed entry)",
+          "kind": "sight",
+          "placeIds": [
+            "rijksmuseum"
+          ],
+          "notes": "Book the first slot; the Gallery of Honour fills up by 10:30.",
+          "ticketIds": [
+            "ticket-rijks"
+          ],
+          "sourceRefs": [
+            "demo"
+          ]
+        },
+        {
+          "id": "d3-free",
+          "timeLabel": "Afternoon",
+          "title": "Free afternoon",
+          "kind": "free",
+          "placeIds": [],
+          "notes": "Clocks go back one hour tonight (end of summer time).",
+          "sourceRefs": [
+            "demo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day-4",
+      "date": "2031-10-26",
+      "title": "Amsterdam → Berlin",
+      "subtitle": "ICE, about 6 h",
+      "accommodationId": "stay-ber",
+      "events": [
+        {
+          "id": "d4-train",
+          "timeLabel": "09:00",
+          "title": "ICE to Berlin Hbf",
+          "kind": "train",
+          "placeIds": [
+            "ams-centraal",
+            "berlin-hbf"
+          ],
+          "notes": "Seat reservation recommended on this route. Example ticket in the ticket dialog.",
+          "details": [
+            "Departure boards show platform ~20 min ahead.",
+            "Bring food; the dining car sells out."
+          ],
+          "ticketIds": [
+            "ticket-ice"
+          ],
+          "sourceRefs": [
+            "demo",
+            "db"
+          ]
+        },
+        {
+          "id": "d4-arrive",
+          "timeLabel": "Mid-afternoon",
+          "title": "Arrive Berlin, check in",
+          "kind": "stay",
+          "placeIds": [
+            "berlin-hbf"
+          ],
+          "notes": "",
+          "sourceRefs": [
+            "demo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day-5",
+      "date": "2031-10-27",
+      "title": "Berlin",
+      "subtitle": "Museum Island and a long walk",
+      "accommodationId": "stay-ber",
+      "events": [
+        {
+          "id": "d5-museum",
+          "timeLabel": "10:00",
+          "title": "Museum Island",
+          "kind": "sight",
+          "placeIds": [
+            "museum-island"
+          ],
+          "notes": "Pick one museum; the combined ticket is only worth it for two or more.",
+          "sourceRefs": [
+            "demo"
+          ]
+        },
+        {
+          "id": "d5-walk",
+          "timeLabel": "Afternoon",
+          "title": "Walk Unter den Linden to the Brandenburg Gate",
+          "kind": "walk",
+          "placeIds": [
+            "museum-island"
+          ],
+          "notes": "",
+          "sourceRefs": [
+            "demo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day-6",
+      "date": "2031-10-28",
+      "title": "Berlin → Prague",
+      "subtitle": "EC along the Elbe, about 4 h",
+      "accommodationId": "stay-prg",
+      "events": [
+        {
+          "id": "d6-train",
+          "timeLabel": "10:00",
+          "title": "EC to Praha hl.n.",
+          "kind": "train",
+          "placeIds": [
+            "berlin-hbf",
+            "praha-hln"
+          ],
+          "notes": "Sit on the right side after Dresden for the river.",
+          "ticketIds": [
+            "ticket-ec"
+          ],
+          "sourceRefs": [
+            "demo",
+            "db"
+          ]
+        },
+        {
+          "id": "d6-transit",
+          "timeLabel": "On arrival",
+          "title": "Buy a Prague transit pass",
+          "kind": "transit",
+          "placeIds": [
+            "praha-hln"
+          ],
+          "notes": "Example: 72-hour pass covers metro and trams. Prices in CZK.",
+          "ticketIds": [
+            "ticket-prg-pass"
+          ],
+          "sourceRefs": [
+            "demo"
+          ]
+        },
+        {
+          "id": "d6-bridge",
+          "timeLabel": "Evening",
+          "title": "Charles Bridge after dark",
+          "kind": "walk",
+          "placeIds": [
+            "charles-bridge"
+          ],
+          "notes": "",
+          "sourceRefs": [
+            "demo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day-7",
+      "date": "2031-10-29",
+      "title": "Prague → Vienna",
+      "subtitle": "Railjet, about 4 h",
+      "accommodationId": "stay-vie",
+      "events": [
+        {
+          "id": "d7-bridge",
+          "timeLabel": "07:30",
+          "title": "Charles Bridge again, empty this time",
+          "kind": "walk",
+          "placeIds": [
+            "charles-bridge"
+          ],
+          "notes": "",
+          "sourceRefs": [
+            "demo"
+          ]
+        },
+        {
+          "id": "d7-train",
+          "timeLabel": "11:00",
+          "title": "Railjet to Wien Hbf",
+          "kind": "train",
+          "placeIds": [
+            "praha-hln",
+            "wien-hbf"
+          ],
+          "notes": "",
+          "ticketIds": [
+            "ticket-rj"
+          ],
+          "sourceRefs": [
+            "demo"
+          ]
+        },
+        {
+          "id": "d7-schoenbrunn",
+          "timeLabel": "16:00",
+          "title": "Schönbrunn gardens before sunset",
+          "kind": "sight",
+          "placeIds": [
+            "schoenbrunn"
+          ],
+          "notes": "Gardens are free; the palace needs a timed ticket.",
+          "ticketIds": [
+            "ticket-schoenbrunn"
+          ],
+          "sourceRefs": [
+            "demo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day-8",
+      "date": "2031-10-30",
+      "title": "Fly home",
+      "subtitle": "Vienna → New York",
+      "events": [
+        {
+          "id": "d8-airport",
+          "timeLabel": "07:30",
+          "title": "S-Bahn or CAT to the airport",
+          "kind": "airport",
+          "placeIds": [
+            "wien-hbf",
+            "vie"
+          ],
+          "notes": "Allow 30 min on the S7; the CAT is faster but pricier.",
+          "sourceRefs": [
+            "demo"
+          ]
+        },
+        {
+          "id": "d8-fly",
+          "timeLabel": "10:15",
+          "title": "Fly VIE → JFK",
+          "kind": "flight",
+          "placeIds": [
+            "vie"
+          ],
+          "notes": "",
+          "sourceRefs": [
+            "demo"
+          ]
+        }
+      ]
+    }
   ],
   "tickets": [
-    {"id": "ticket-rijks", "title": "Rijksmuseum timed ticket (example)", "date": "2031-10-25", "where": "Official website, in advance", "guide": "Example only. Choose the earliest slot.", "price": {"amount": 22.5, "currency": "EUR"}, "status": "demo", "optional": false, "placeId": "rijksmuseum", "sourceRefs": ["demo"]},
-    {"id": "ticket-ice", "title": "ICE Amsterdam → Berlin (example)", "date": "2031-10-26", "where": "Operator app or website; cheaper when booked early", "guide": "Example fare. Seat reservation is separate on international ICE.", "price": {"amount": 59.9, "currency": "EUR"}, "status": "demo", "optional": false, "placeId": "ams-centraal", "sourceRefs": ["demo", "db"]},
-    {"id": "ticket-ec", "title": "EC Berlin → Prague (example)", "date": "2031-10-28", "where": "Operator app or website", "guide": "Example fare.", "price": {"amount": 39.9, "currency": "EUR"}, "status": "demo", "optional": false, "placeId": "berlin-hbf", "sourceRefs": ["demo", "db"]},
-    {"id": "ticket-prg-pass", "title": "Prague 72-hour transit pass (example)", "date": "2031-10-28", "where": "Ticket machines at the station or the official app", "guide": "Example price in Czech koruna. Validate once on first use.", "price": {"amount": 330, "currency": "CZK"}, "status": "demo", "optional": true, "placeId": "praha-hln", "localText": "Jízdenka 72 hodin, 2 osoby", "sourceRefs": ["demo"]},
-    {"id": "ticket-rj", "title": "Railjet Prague → Vienna (example)", "date": "2031-10-29", "where": "Operator website", "guide": "Example fare.", "price": {"amount": 29, "currency": "EUR"}, "status": "demo", "optional": false, "placeId": "praha-hln", "sourceRefs": ["demo"]},
-    {"id": "ticket-schoenbrunn", "title": "Schönbrunn state rooms (example)", "date": "2031-10-29", "where": "Official website, timed entry", "guide": "Example price. Gardens are free.", "price": {"amount": 26, "currency": "EUR"}, "status": "demo", "optional": true, "placeId": "schoenbrunn", "sourceRefs": ["demo"]}
+    {
+      "id": "ticket-rijks",
+      "title": "Rijksmuseum timed ticket (example)",
+      "date": "2031-10-25",
+      "where": "Official website, in advance",
+      "guide": "Example only. Choose the earliest slot.",
+      "price": {
+        "amount": 22.5,
+        "currency": "EUR"
+      },
+      "status": "demo",
+      "optional": false,
+      "placeId": "rijksmuseum",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "ticket-ice",
+      "title": "ICE Amsterdam → Berlin (example)",
+      "date": "2031-10-26",
+      "where": "Operator app or website; cheaper when booked early",
+      "guide": "Example fare. Seat reservation is separate on international ICE.",
+      "price": {
+        "amount": 59.9,
+        "currency": "EUR"
+      },
+      "status": "demo",
+      "optional": false,
+      "placeId": "ams-centraal",
+      "sourceRefs": [
+        "demo",
+        "db"
+      ]
+    },
+    {
+      "id": "ticket-ec",
+      "title": "EC Berlin → Prague (example)",
+      "date": "2031-10-28",
+      "where": "Operator app or website",
+      "guide": "Example fare.",
+      "price": {
+        "amount": 39.9,
+        "currency": "EUR"
+      },
+      "status": "demo",
+      "optional": false,
+      "placeId": "berlin-hbf",
+      "sourceRefs": [
+        "demo",
+        "db"
+      ]
+    },
+    {
+      "id": "ticket-prg-pass",
+      "title": "Prague 72-hour transit pass (example)",
+      "date": "2031-10-28",
+      "where": "Ticket machines at the station or the official app",
+      "guide": "Example price in Czech koruna. Validate once on first use.",
+      "price": {
+        "amount": 330,
+        "currency": "CZK"
+      },
+      "status": "demo",
+      "optional": true,
+      "placeId": "praha-hln",
+      "localText": "Jízdenka 72 hodin, 2 osoby",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "ticket-rj",
+      "title": "Railjet Prague → Vienna (example)",
+      "date": "2031-10-29",
+      "where": "Operator website",
+      "guide": "Example fare.",
+      "price": {
+        "amount": 29,
+        "currency": "EUR"
+      },
+      "status": "demo",
+      "optional": false,
+      "placeId": "praha-hln",
+      "sourceRefs": [
+        "demo"
+      ]
+    },
+    {
+      "id": "ticket-schoenbrunn",
+      "title": "Schönbrunn state rooms (example)",
+      "date": "2031-10-29",
+      "where": "Official website, timed entry",
+      "guide": "Example price. Gardens are free.",
+      "price": {
+        "amount": 26,
+        "currency": "EUR"
+      },
+      "status": "demo",
+      "optional": true,
+      "placeId": "schoenbrunn",
+      "sourceRefs": [
+        "demo"
+      ]
+    }
   ],
-  "groundTransport": {"tabs": [
-    {"id": "rail", "title": "Rail", "items": [
-      {"title": "Amsterdam → Berlin (ICE)", "text": "Direct, ~6 h. Reservation recommended.", "placeIds": ["ams-centraal", "berlin-hbf"], "sourceRefs": ["db"]},
-      {"title": "Berlin → Prague (EC)", "text": "Direct, ~4 h along the Elbe.", "placeIds": ["berlin-hbf", "praha-hln"], "sourceRefs": ["db"]},
-      {"title": "Prague → Vienna (Railjet)", "text": "Direct, ~4 h.", "placeIds": ["praha-hln", "wien-hbf"], "sourceRefs": ["demo"]}
-    ]},
-    {"id": "city", "title": "City transit", "items": [
-      {"title": "Amsterdam", "text": "Tap in and out with a contactless bank card on trams and metro.", "placeIds": ["ams-centraal"], "sourceRefs": ["demo"]},
-      {"title": "Berlin", "text": "AB zone tickets cover the centre; validate paper tickets before boarding.", "placeIds": ["berlin-hbf"], "sourceRefs": ["demo"]},
-      {"title": "Prague", "text": "Time-based tickets; validate once. Example pass in the ticket dialog.", "placeIds": ["praha-hln"], "sourceRefs": ["demo"]},
-      {"title": "Vienna", "text": "24/48/72-hour passes; the airport is outside the core zone.", "placeIds": ["wien-hbf", "vie"], "sourceRefs": ["demo"]}
-    ]},
-    {"id": "walk", "title": "Walking", "items": [
-      {"title": "Everything in the old centres is walkable", "text": "Cobbles everywhere: comfortable shoes, not new ones.", "placeIds": [], "sourceRefs": ["demo"]}
-    ]}
-  ]},
+  "groundTransport": {
+    "tabs": [
+      {
+        "id": "rail",
+        "title": "Rail",
+        "items": [
+          {
+            "title": "Amsterdam → Berlin (ICE)",
+            "text": "Direct, ~6 h. Reservation recommended.",
+            "placeIds": [
+              "ams-centraal",
+              "berlin-hbf"
+            ],
+            "sourceRefs": [
+              "db"
+            ]
+          },
+          {
+            "title": "Berlin → Prague (EC)",
+            "text": "Direct, ~4 h along the Elbe.",
+            "placeIds": [
+              "berlin-hbf",
+              "praha-hln"
+            ],
+            "sourceRefs": [
+              "db"
+            ]
+          },
+          {
+            "title": "Prague → Vienna (Railjet)",
+            "text": "Direct, ~4 h.",
+            "placeIds": [
+              "praha-hln",
+              "wien-hbf"
+            ],
+            "sourceRefs": [
+              "demo"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "city",
+        "title": "City transit",
+        "items": [
+          {
+            "title": "Amsterdam",
+            "text": "Tap in and out with a contactless bank card on trams and metro.",
+            "placeIds": [
+              "ams-centraal"
+            ],
+            "sourceRefs": [
+              "demo"
+            ]
+          },
+          {
+            "title": "Berlin",
+            "text": "AB zone tickets cover the centre; validate paper tickets before boarding.",
+            "placeIds": [
+              "berlin-hbf"
+            ],
+            "sourceRefs": [
+              "demo"
+            ]
+          },
+          {
+            "title": "Prague",
+            "text": "Time-based tickets; validate once. Example pass in the ticket dialog.",
+            "placeIds": [
+              "praha-hln"
+            ],
+            "sourceRefs": [
+              "demo"
+            ]
+          },
+          {
+            "title": "Vienna",
+            "text": "24/48/72-hour passes; the airport is outside the core zone.",
+            "placeIds": [
+              "wien-hbf",
+              "vie"
+            ],
+            "sourceRefs": [
+              "demo"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "walk",
+        "title": "Walking",
+        "items": [
+          {
+            "title": "Everything in the old centres is walkable",
+            "text": "Cobbles everywhere: comfortable shoes, not new ones.",
+            "placeIds": [],
+            "sourceRefs": [
+              "demo"
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "checklist": [
-    {"id": "todo-passport", "text": "Passport valid 6+ months", "group": "todo", "detail": "Check the expiry date now, not at the airport."},
-    {"id": "todo-rail", "text": "Book the three long-distance trains", "group": "todo", "detail": "Prices rise close to the date."},
-    {"id": "todo-rijks", "text": "Reserve Rijksmuseum slot", "group": "todo", "detail": ""},
-    {"id": "pack-adapter", "text": "Type C/F plug adapter", "group": "packing", "detail": ""},
-    {"id": "pack-shoes", "text": "Walking shoes", "group": "packing", "detail": "Cobblestones."},
-    {"id": "pack-layers", "text": "Layers and a rain shell", "group": "packing", "detail": "Late October: 5–12 °C."}
+    {
+      "id": "todo-passport",
+      "text": "Passport valid 6+ months",
+      "group": "todo",
+      "detail": "Check the expiry date now, not at the airport."
+    },
+    {
+      "id": "todo-rail",
+      "text": "Book the three long-distance trains",
+      "group": "todo",
+      "detail": "Prices rise close to the date."
+    },
+    {
+      "id": "todo-rijks",
+      "text": "Reserve Rijksmuseum slot",
+      "group": "todo",
+      "detail": ""
+    },
+    {
+      "id": "pack-adapter",
+      "text": "Type C/F plug adapter",
+      "group": "packing",
+      "detail": ""
+    },
+    {
+      "id": "pack-shoes",
+      "text": "Walking shoes",
+      "group": "packing",
+      "detail": "Cobblestones."
+    },
+    {
+      "id": "pack-layers",
+      "text": "Layers and a rain shell",
+      "group": "packing",
+      "detail": "Late October: 5–12 °C."
+    }
   ],
   "sources": [
-    {"id": "demo", "title": "Fictional example data", "note": "Written to demonstrate the template. Nothing is booked and no timetable is guaranteed."},
-    {"id": "db", "title": "Deutsche Bahn", "url": "https://www.bahn.com/", "note": "Public link; check current timetables and fares yourself."}
+    {
+      "id": "demo",
+      "title": "Fictional example data",
+      "note": "Written to demonstrate the template. Nothing is booked and no timetable is guaranteed."
+    },
+    {
+      "id": "db",
+      "title": "Deutsche Bahn",
+      "url": "https://www.bahn.com/",
+      "note": "Public link; check current timetables and fares yourself."
+    }
   ]
 }

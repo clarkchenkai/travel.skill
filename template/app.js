@@ -206,8 +206,12 @@ function renderHome() {
   $('#cover-meta').textContent = [range, plural('cover.days', nights), trip.people ? plural('cover.people', trip.people) : ''].filter(Boolean).join(' · ');
   $('#cover-action').textContent = t('cover.open');
   const media = $('#cover-media');
-  if (trip.cover?.image) media.innerHTML = `<img src="${E(trip.cover.image)}" alt="${E(trip.cover.alt || '')}" fetchpriority="high">`;
-  else media.innerHTML = '';
+  if (trip.cover?.image) {
+    media.innerHTML = `<img src="${E(trip.cover.image)}" alt="${E(trip.cover.alt || '')}" fetchpriority="high" style="object-position:${E(trip.cover.position || 'center')}">`;
+    $('#cover').classList.add('has-image');
+    $('#cover').dataset.copy = trip.cover.copy || 'top-left';
+  } else { media.innerHTML = ''; $('#cover').classList.remove('has-image'); }
+  if (trip.textures?.paper) document.documentElement.style.setProperty('--paper-texture', `url("${trip.textures.paper}")`);
   const stage = tripStage(trip);
   $('#trip-stage').textContent = stage.kind === 'before' ? plural('stage.before', stage.daysUntil) : stage.kind === 'after' ? t('stage.after') : t('stage.during', {n: stage.dayIndex, total: stage.total});
   $('#home-grid').innerHTML = [
@@ -253,7 +257,8 @@ function renderDays() {
     const monthWeek = new Intl.DateTimeFormat(locale, {timeZone: 'UTC', month: 'short', weekday: 'short'}).format(d);
     const events = day.events.length ? day.events.map(eventHTML).join('') : `<p class="muted small" style="padding:12px 0">${E(t('days.noEvents'))}</p>`;
     const stayHTML = stay ? `<div class="stay"><div><small>${E(t('days.stay'))}</small><b>${E(stay.name)}</b>${stay.localName && stay.localName !== stay.name ? `<small>${E(stay.localName)}</small>` : ''} ${statusLabel(stay)}</div>${stay.placeId && places[stay.placeId] ? `<button type="button" class="pill pill-small" data-map="${E(stay.placeId)}">${E(t('days.map'))}</button>` : ''}</div>` : '';
-    return `<details class="day" id="${E(day.id)}" ${i === 0 ? 'open' : ''}><summary class="day-summary"><span class="day-date">${E(monthWeek)}<b>${E(dayNum)}</b></span><span><span class="day-title">${E(day.title)}</span>${day.subtitle ? `<div class="day-sub">${E(day.subtitle)}</div>` : ''}<div class="day-sub" data-day-tickets="${E(day.id)}" ${day.events.some((e) => e.ticketIds?.length) ? '' : 'hidden'}></div></span><span class="day-toggle" aria-hidden="true">${ICONS.chevron}</span></summary><div class="day-body">${events}${stayHTML}</div></details>`;
+    const thumb = day.cover ? `<img class="day-thumb" src="${E(day.cover)}" alt="${E(day.coverAlt || '')}" loading="lazy" decoding="async">` : '';
+    return `<details class="day ${day.cover ? 'has-cover' : ''}" id="${E(day.id)}" ${i === 0 ? 'open' : ''}><summary class="day-summary">${thumb}<span class="day-date">${E(monthWeek)}<b>${E(dayNum)}</b></span><span><span class="day-title">${E(day.title)}</span>${day.subtitle ? `<div class="day-sub">${E(day.subtitle)}</div>` : ''}<div class="day-sub" data-day-tickets="${E(day.id)}" ${day.events.some((e) => e.ticketIds?.length) ? '' : 'hidden'}></div></span><span class="day-toggle" aria-hidden="true">${ICONS.chevron}</span></summary><div class="day-body">${events}${stayHTML}</div></details>`;
   }).join('');
   $('#days').innerHTML = `<div class="section-head"><h2>${E(t('days.title'))}</h2><small>${data.days.length}</small></div><div class="days-grid">${html}</div>`;
   updateTicketViews();
@@ -396,6 +401,14 @@ function renderNav() {
   $('#footer-top').textContent = t('footer.top');
 }
 
+function initParallax() {
+  const img = $('#cover-media img');
+  if (!img || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let ticking = false;
+  const update = () => { ticking = false; if (document.body.dataset.page !== 'home') return; img.style.transform = `translateY(${Math.min(window.scrollY, 600) * 0.18}px) scale(1.06)`; };
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, {passive: true});
+  update();
+}
 function initEvents() {
   document.addEventListener('click', (e) => {
     const map = e.target.closest('[data-map]'); if (map) { openMap(map.dataset.map); return; }
@@ -462,6 +475,7 @@ async function init() {
   renderNav(); renderHome(); renderMap(); renderDays(); renderTransport(); renderChecklist();
   $('#sources').innerHTML = `<b>${E(t('sources.title'))}</b> ` + data.sources.map((s) => s.url ? `<a href="${E(safeURL(s.url))}" target="_blank" rel="noopener noreferrer">${E(s.title)}</a>` : E(s.title)).join(' · ');
   initEvents();
+  initParallax();
   route();
   clearInterval(clockTimer);
   clockTimer = setInterval(updateClocks, 1000);

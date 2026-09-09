@@ -17,7 +17,8 @@ Conventions: dates are `YYYY-MM-DD`; instants are ISO 8601 **with offset** (`203
 | `people` | no | Number of travelers. |
 | `countries` | no | ISO 3166 codes, shown in the header if no `eyebrow`. |
 | `map` | no | `{ "provider": "google" \| "osm" \| "none", "embed": true }`. `none` keeps addresses and copy buttons but no map links. |
-| `cover` | no | `{ "image": "assets/cover.jpg", "alt": "..." }`. Files live in `trip/assets/`. |
+| `cover` | no | `{ "image": "assets/cover.webp", "alt": "...", "position": "center 60%", "copy": "top-left" }`. Files live in `trip/assets/`. `position` is the CSS object-position for cropping; `copy` places the title on desktop (`top-left`, `top-right`, `bottom-left`). On phones the image sits above the text. |
+| `textures` | no | `{ "paper": "assets/paper.webp" }` — a tile blended behind day cards, flight cards and the ticket dialog. |
 | `demo`, `demoNotice` | no | `true` shows the "fictional example" banner. Set `false` for a real trip. |
 | `updatedAt` | no | Date string for your own tracking. |
 
@@ -50,13 +51,17 @@ Anything a reader may want to find. `name` is required. Give `lat`/`lon` (both o
 
 ## days[]
 
-One per calendar day. `id`, `date`, `title` required; `subtitle`, `accommodationId`, `events[]`.
+One per calendar day. `id`, `date`, `title` required; `subtitle`, `accommodationId`, `events[]`; optional `cover` (square image shown as a thumbnail in the day header, e.g. `assets/day-3.webp`) and `coverAlt`.
 
 Event: `id`, `title` required; `timeLabel` (free text: `"09:00"`, `"Morning"`, `"On arrival"`); `kind` (free text, used by the gap report: `flight`, `free`, `rest`, `note` are not asked for a place); `placeIds[]`; `ticketIds[]`; `notes` (one paragraph); `details[]` (bullet list behind "Details"); `sourceRefs[]`.
 
 ## tickets[]
 
 `id`, `title` required. `date`, `where` (where to buy), `guide` (text), `price` as `{"amount": 22.5, "currency": "EUR"}` or `null` when unknown (never `0`), `status`, `optional` (boolean), `placeId`, `localText` (what to show at the counter; has a copy button), `sourceRefs[]`. Readers can mark a ticket as "I have this"; that is a personal note, not a purchase.
+
+## routeOverview (optional)
+
+`{ "image": "assets/route.webp", "alt": "...", "caption": "..." }` shown at the top of the Map page. A sketch, not a navigation map; the place directory carries the real coordinates.
 
 ## groundTransport.tabs[]
 
