@@ -1,54 +1,73 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>travel.skill — roadbook examples</title>
-<meta name="description" content="Turn your travel materials into a personal, shareable travel website. Live examples built with travel.skill.">
-<meta property="og:title" content="travel.skill — roadbook examples">
-<meta property="og:description" content="Turn your travel materials into a personal, shareable travel website.">
-<style>
-:root { --bg:#f6f4ee; --ink:#22211d; --muted:#6b6a62; --line:#dcd8cc; --accent:#3f6b5a; }
-* { box-sizing:border-box } body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Noto Sans CJK SC",sans-serif }
-main { max-width:1120px; margin:0 auto; padding:48px 20px 64px }
-h1 { font-size:clamp(28px,5vw,40px); line-height:1.15; margin:0 0 8px; letter-spacing:-.01em }
-.lede { color:var(--muted); max-width:60ch; margin:0 0 28px; font-size:18px }
-.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:18px }
-.card { display:block; text-decoration:none; color:inherit; background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; transition:transform .15s }
-.card:hover { transform:translateY(-2px) }
-.media { aspect-ratio:16/9; background:#e9e5da } .media img { width:100%; height:100%; object-fit:cover; display:block }
-.body { padding:14px 16px 16px } .body b { font-size:17px; display:block } .body p { margin:6px 0 8px; color:var(--muted); font-size:14px } .body small { color:var(--muted); font-size:12px; letter-spacing:.04em; text-transform:uppercase }
-.how { margin-top:40px; padding:22px; border:1px solid var(--line); border-radius:14px; background:#fff }
-.how h2 { margin:0 0 10px; font-size:20px } pre { background:#f1efe8; padding:12px 14px; border-radius:10px; overflow:auto; font-size:14px }
-a.btn { display:inline-block; margin-top:8px; padding:10px 16px; border-radius:999px; background:var(--accent); color:#fff; text-decoration:none; font-weight:600 }
-.walkthrough { margin:36px 0; } .walkthrough h2 { margin:0 0 8px; font-size:24px; } .walkthrough p { color:var(--muted); margin:8px 0 16px; } .walkthrough video { display:block; width:100%; height:auto; aspect-ratio:1920/1074; background:#172c25; } .walkthrough a { color:var(--accent); }
-footer { margin-top:40px; color:var(--muted); font-size:13px }
-</style>
+<title>travel.skill — 把旅程做成随身路书</title>
+<meta name="description" content="把机票、住宿与旅行笔记，做成一个可分享的旅行网站。翻开熊野古道真实作品，或从三个虚构示例开始。">
+<meta property="og:title" content="travel.skill — 把旅程做成随身路书">
+<meta property="og:description" content="行前的零散资料，沿途的一份路书。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="__OG_IMAGE__">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip" href="#work">跳到作品与功能</a>
+<header class="masthead">
+<a class="wordmark" href="#top" aria-label="travel.skill 首页">travel.skill</a>
+<nav aria-label="主要导航"><a href="#work">作品</a><a href="#examples">示例</a><a href="#start">开始制作</a><a href="https://github.com/clarkchenkai/travel.skill">GitHub ↗</a></nav>
+</header>
 <main>
-<h1>Turn your travel materials into a personal, shareable travel website.</h1>
-<p class="lede">These are live roadbooks built with <strong>travel.skill</strong>: three fictional trips made from the dependency-free template, and the real trip the project grew out of. Open one on your phone.</p>
-<section class="walkthrough" aria-labelledby="walkthrough-title">
-<h2 id="walkthrough-title">熊野古道 · 从出发到沿途</h2>
-<p>45 秒真实操作：开场、路线地图、每日行程与交通换乘。</p>
+<section class="cover" id="top" aria-label="旅行路书封面">
+<div class="cover-sheet">
+<img class="cover-art" src="assets/zine-trail-cover.webp" alt="纸面上的一小块苔绿油墨，中间是一条蜿蜒的小路" width="971" height="1620" fetchpriority="high">
+<span aria-hidden="true" class="annotation notes">notes</span><span aria-hidden="true" class="annotation roadbook">roadbook</span><span aria-hidden="true" class="annotation journey">journey</span>
+<h1>把旅程，做成随身路书。</h1>
+<p class="cover-note">行前的零散资料 / 沿途的一份路书</p>
+<a class="cover-open" href="__SHOWCASE__">翻开熊野古道 ↗</a>
+<a class="cover-more" href="#work">或，先看一段真实旅程 ↓</a>
+</div>
+<p class="margin-note" aria-hidden="true">a place for your plans<br>a little room to wander</p>
+<span class="issue" aria-hidden="true">TRAVEL NOTES / 001</span>
+</section>
+<section class="work section" id="work" aria-labelledby="work-title">
+<div class="section-label"><span>01 / 一份真实作品</span><span>KUMANO · TOKYO</span></div>
+<div class="section-heading"><h2 id="work-title">熊野古道，<br>和沿途的每一件小事。</h2><p>四个人，六天。<br>从杉林、石阶走向东京；<br>也把航班、换乘和每天的安排放在手边。</p></div>
+<figure class="film">
 <video controls playsinline preload="none" poster="assets/kumano-walkthrough-poster.jpg" width="1920" height="1074" aria-label="熊野古道网站真实操作演示，无声视频">
 <source src="assets/kumano-walkthrough.mp4" type="video/mp4">
-<a href="assets/kumano-walkthrough.mp4">下载演示视频</a>
+<a href="assets/kumano-walkthrough.mp4">下载真实操作视频</a>
 </video>
-<p><a href="https://kumano-roadbook.pages.dev/?v=hd35">打开完整路书 ↗</a></p>
+<figcaption><span>45 秒 / 真实页面录制 / 无声</span><a href="__SHOWCASE__">进入完整路书 ↗</a></figcaption>
+</figure>
+<div class="features"><p><b>路线</b>从全程总览，找到具体地点。</p><p><b>日程</b>按天展开，查看安排与住宿。</p><p><b>交通</b>航班、时区与沿途换乘。</p><p><b>清单</b>逐项勾选，记录留在当前浏览器。</p></div>
+<p class="footnote">短片展示开场、路线、日程与交通；清单可在完整路书中使用。</p>
 </section>
-<div class="grid">
-<!--CARDS-->
-</div>
-<section class="how">
-<h2>Make yours</h2>
-<pre>git clone https://github.com/clarkchenkai/travel.skill && cd travel.skill
-npm run new -- europe-rail && npm run dev     # then edit trip/travel-data.json</pre>
-<p>Or open the repo in Claude Code / Codex, drop your bookings and notes into <code>input/</code>, and say: <em>"Build my travel roadbook with the travel skill."</em> Nothing to install beyond Node 20, no account, no database.</p>
-<a class="btn" href="https://github.com/clarkchenkai/travel.skill">Source on GitHub</a>
+<section class="process section" id="process" aria-labelledby="process-title">
+<div class="section-label"><span>02 / 从你的资料开始</span><span>MATERIALS → ROADBOOK</span></div>
+<h2 id="process-title">不必先整理得井井有条。</h2>
+<div class="steps"><article><span>i.</span><h3>带来资料</h3><p>订单、链接、零散笔记，<br>还有已经决定的事。</p></article><article><span>ii.</span><h3>补齐关键缺口</h3><p>日期、地点、换乘与待办，<br>不确定的地方先标清。</p></article><article><span>iii.</span><h3>生成自己的路书</h3><p>在手机上查看与修改，<br>确认公开内容后再分享。</p></article></div>
+<p class="footnote">通过仓库里的 Agent Skill 与本地命令完成；此页不接收订单或私人资料。</p>
 </section>
-<footer>All example trips are fictional; nothing is booked. Photos are AI-generated. MIT.</footer>
+<section class="examples section" id="examples" aria-labelledby="examples-title">
+<div class="section-label"><span>03 / 另外三种出发方式</span><span>FICTIONAL ITINERARIES</span></div>
+<h2 id="examples-title">从一个接近你的旅程开始。</h2>
+<p class="intro">以下均为虚构示例，展示轻量模板的不同起点；熊野古道是单独定制的作品。</p>
+<div class="examples-grid"><!--CARDS--></div>
+</section>
+<section class="start section" id="start" aria-labelledby="start-title">
+<div class="section-label"><span>04 / 轮到你的旅程</span><span>YOUR NEXT JOURNEY</span></div>
+<h2 id="start-title">把下一站，交给一张空白页。</h2>
+<p>用 Claude Code 或 Codex 打开仓库，把资料放进 <code>input/</code>，然后说：</p>
+<blockquote>用 travel skill，把这些资料做成我的旅行路书。<br>先标出缺失信息，再生成可以预览的网站。</blockquote>
+<details><summary>本地启动命令</summary><pre><code>git clone https://github.com/clarkchenkai/travel.skill
+cd travel.skill
+npm run new -- europe-rail
+npm run dev</code></pre><p class="footnote">轻量模板需要 Node.js 20+。公开发布前检查内容与访问范围。</p></details>
+<div class="start-links"><a href="https://github.com/clarkchenkai/travel.skill">打开仓库 ↗</a><a href="https://github.com/clarkchenkai/travel.skill/blob/main/docs/QUICKSTART.md">阅读开始指南 ↗</a></div>
+</section>
 </main>
+<footer class="colophon"><span>travel.skill<br>给计划一个位置，给旅程一点留白。</span><span>熊野古道为真实作品；其余行程为虚构示例。<br>插画与纸面视觉含 AI 生成素材。<br>Code · MIT / <a href="https://github.com/LiamGvchi/gc-minimal-zine-poster">视觉参考：GC Minimal Zine Poster ↗</a></span></footer>
+<script>document.addEventListener('visibilitychange',()=>{if(document.hidden)document.querySelectorAll('video').forEach(v=>v.pause());});</script>
 </body>
 </html>

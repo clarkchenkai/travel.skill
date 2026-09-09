@@ -13,6 +13,13 @@ No account, no database, no paid service. Node.js 20+ is the only requirement, a
 
 [中文说明 →](README.zh-CN.md)
 
+
+## The real Kumano roadbook
+
+[Watch the 45-second walkthrough](https://clarkchenkai.github.io/travel.skill/#work) · [Open the full roadbook](https://kumano-roadbook.pages.dev/?v=hd35)
+
+The paper-inspired gallery puts the author’s custom trip first, with a real screen recording of the opening scene, map, daily plan and transport. The three fictional trips below demonstrate the lighter starter template.
+
 ## Three ways to start
 
 **1. Use this template on GitHub (nothing to install).** Click *Use this template* → create your repository → Settings → Pages → Source: *GitHub Actions*. The included workflow publishes a starter roadbook at `https://<you>.github.io/<repo>/` within a minute. Then edit `trip/travel-data.json` in the browser or locally; every push redeploys.

@@ -13,6 +13,13 @@
 
 [English →](README.md)
 
+## 熊野古道 · 真实作品
+
+[观看 45 秒真实操作短片](https://clarkchenkai.github.io/travel.skill/#work) · [打开完整路书](https://kumano-roadbook.pages.dev/?v=hd35)
+
+纸面展示页采用细字、细线、苔绿色油墨与大面积留白；短片来自作者实际操作，展示开场、地图、日程与交通。熊野为定制作品，下方三个虚构示例展示轻量模板。
+
+
 ## 三种开始方式
 
 **1. 在 GitHub 上用模板（什么都不用装）。** 点 *Use this template* → 建自己的仓库 → Settings → Pages → Source 选 *GitHub Actions*。自带的工作流一分钟内把一份起步路书发布到 `https://<你>.github.io/<仓库>/`。之后在网页里或本地改 `trip/travel-data.json`，每次推送自动重新部署。

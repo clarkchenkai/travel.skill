@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["examples/**", "template/**", "site/**", "scripts/**"]
+    paths: ["examples/**", "template/**", "site/**", "scripts/**", "showcase/**", ".github/workflows/pages-demo.yml"]
 
 permissions:
   contents: read
@@ -30,16 +30,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Build the Kumano showcase (optional; skipped on failure)
+      - name: Build the Kumano showcase
         working-directory: showcase/kumano-kodo
-        continue-on-error: true
         run: |
           python3 -m pip install -r requirements.txt
           npm ci
           npm run build:visuals
           python3 build.py --public-only --package
       - name: Build gallery
-        run: node scripts/build-site.mjs --out site-dist --base "/${{ github.event.repository.name }}/" --site "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+        run: node scripts/build-site.mjs --require-showcase --out site-dist --base "/${{ github.event.repository.name }}/" --site "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site-dist
