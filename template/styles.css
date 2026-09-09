@@ -224,7 +224,7 @@ img { max-width: 100%; display: block; }
 .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 0.705882rem; color: var(--muted); display: flex; flex-direction: column; gap: 8px; }
 
 /* Reflow dense itinerary/flight content when enlarged text leaves too little room. */
-@container (max-width: 20em) {
+@container (max-width: 16.5em) {
   .day-summary, .day.has-cover .day-summary { grid-template-columns: auto minmax(0, 1fr) auto; }
   .day-summary > span:not(.day-date):not(.day-toggle) { grid-column: 1 / -1; }
   .day-toggle { grid-column: 3; grid-row: 1; }
