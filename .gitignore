@@ -1,0 +1,10 @@
+node_modules/
+dist/
+artifacts/
+.venv/
+.env
+.env.*
+.DS_Store
+__pycache__/
+# Your private trip materials never belong in git. Keep them here and only publish generated dist/.
+input/

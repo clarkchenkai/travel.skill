@@ -1,0 +1,17 @@
+{
+  "nav": {"home": "首页", "map": "地图", "days": "日程", "transport": "交通", "checklist": "清单"},
+  "cover": {"open": "打开路书", "people": "{n} 人", "people_one": "1 人", "days": "{n} 天"},
+  "stage": {"before": "距出发 {n} 天", "before_one": "距出发 1 天", "during": "第 {n} 天 / 共 {total} 天", "after": "旅程日期已结束"},
+  "loading": "正在打开路书…",
+  "loadError": "无法读取 travel-data.json。请通过本地服务打开（npm run dev），不要直接双击文件。",
+  "map": {"title": "地图", "directory": "地点", "open": "打开地图", "copy": "复制地址", "copied": "已复制", "copyFailed": "复制失败，请手动选择上方文字", "openExternal": "用地图应用打开 ↗", "loading": "正在加载地图…", "slow": "地图加载较慢，可用下方链接在地图应用中打开。", "loaded": "若地图空白，请用下方链接打开。", "failed": "地图未能加载，地址和链接仍可使用。", "noEmbed": "该地点没有内嵌地图，请使用下方链接。", "networkNote": "内嵌地图需要能访问地图服务商的网络。无法访问时可复制地址或打开链接。", "close": "关闭", "firstVisit": "首次到访"},
+  "days": {"title": "每日行程", "expand": "详情", "collapse": "收起", "stay": "住宿", "tickets": "票务", "pending": "待购 {n}", "pending_one": "待购 1", "allBought": "票务已标记", "map": "地图", "noEvents": "暂无活动安排。"},
+  "transport": {"title": "交通", "flights": "航班", "flight": "航班", "departs": "出发", "arrives": "抵达", "duration": "{h} 小时 {m} 分", "countdown": "距起飞", "departed": "已起飞", "notes": "备注", "prev": "上一趟", "next": "下一趟", "nextDay": "+{n} 天", "prevDay": "−{n} 天", "localTime": "当地时间", "status": {"unknown": "状态未知", "needs-confirmation": "待确认", "booked": "已预订", "demo": "示例 · 未预订"}, "rental": "租车", "pickUp": "取车", "dropOff": "还车", "returnBy": "最晚归还", "deposit": "押金", "coverage": "保障", "fuel": "燃油 / 充电政策", "noFlights": "本次旅行没有航班。"},
+  "tickets": {"title": "票务", "where": "购票地点", "price": "参考价格", "bought": "已购买", "notBought": "标记已购", "copyLocal": "复制当地文字", "disclaimer": "仅为购票指引。在此标记不代表已购买或经运营方核验。", "optional": "可选", "map": "地图"},
+  "checklist": {"title": "清单", "all": "全部", "todo": "待办", "packing": "物品", "add": "添加", "placeholder": "添加一项…", "empty": "还没有内容。", "duplicate": "已有相同的一项。", "delete": "删除", "undo": "撤销", "deleted": "已删除", "progress": "已完成 {done}/{total}", "storageWarning": "当前浏览器无法保存清单，刷新后改动会丢失。", "privacy": "勾选只保存在当前浏览器，不会同步给同行人。"},
+  "sources": {"title": "来源", "demo": "示例数据"},
+  "share": {"button": "分享", "copied": "链接已复制"},
+  "footer": {"top": "回到顶部"},
+  "demoNotice": "示例路书 · 虚构行程，未预订任何项目",
+  "back": "返回"
+}

@@ -1,0 +1,113 @@
+{
+  "version": "1",
+  "trip": {
+    "id": "example-japan-hiking",
+    "title": "木曾谷山径 · 五日",
+    "shortTitle": "木曾谷山径",
+    "eyebrow": "KISO VALLEY · EXAMPLE",
+    "subtitle": "沿中山道旧宿场徒步两天，再去松本看城。虚构行程，用于演示。",
+    "locale": "zh-CN",
+    "theme": "field-notes",
+    "timeZone": "Asia/Tokyo",
+    "startDate": "2031-05-12",
+    "endDate": "2031-05-16",
+    "people": 2,
+    "countries": ["JP"],
+    "map": {"provider": "google", "embed": true},
+    "demo": true,
+    "demoNotice": "示例路书 · 虚构行程，未预订任何项目",
+    "updatedAt": "2031-01-01",
+    "sourceRefs": ["demo"]
+  },
+  "flightJourneys": [
+    {
+      "id": "outbound", "label": "去程 · 新加坡 → 名古屋", "airline": "示例航空（虚构）", "status": "demo",
+      "segments": [{"number": "DEMO 101", "origin": {"code": "SIN", "city": "新加坡樟宜", "terminal": "T1", "timeZone": "Asia/Singapore", "timeZoneLabel": "新加坡时间"}, "destination": {"code": "NGO", "city": "名古屋中部", "terminal": "T1", "timeZone": "Asia/Tokyo", "timeZoneLabel": "日本时间"}, "departure": "2031-05-12T01:20:00+08:00", "arrival": "2031-05-12T08:40:00+09:00"}],
+      "notes": ["航班号与时刻为虚构示例。", "落地后在到达层找 名鉄 μSKY 指示牌去名古屋站。"],
+      "sourceRefs": ["demo"]
+    },
+    {
+      "id": "return", "label": "返程 · 名古屋 → 新加坡", "airline": "示例航空（虚构）", "status": "demo",
+      "segments": [{"number": "DEMO 102", "origin": {"code": "NGO", "city": "名古屋中部", "terminal": "T1", "timeZone": "Asia/Tokyo", "timeZoneLabel": "日本时间"}, "destination": {"code": "SIN", "city": "新加坡樟宜", "terminal": "T1", "timeZone": "Asia/Singapore", "timeZoneLabel": "新加坡时间"}, "departure": "2031-05-16T10:30:00+09:00", "arrival": "2031-05-16T16:45:00+08:00"}],
+      "notes": ["航班号与时刻为虚构示例。"],
+      "sourceRefs": ["demo"]
+    }
+  ],
+  "places": [
+    {"id": "ngo", "name": "中部国际机场", "localName": "中部国際空港 セントレア", "kind": "机场", "lat": 34.8584, "lon": 136.8054, "address": "愛知県常滑市セントレア1-1", "note": "公开地点。航站楼与交通请以现场为准。", "sourceRefs": ["demo"]},
+    {"id": "nagoya-station", "name": "名古屋站", "localName": "名古屋駅", "kind": "车站", "lat": 35.1709, "lon": 136.8815, "address": "愛知県名古屋市中村区名駅1丁目", "note": "中央本线在 JR 检票口内换乘。", "sourceRefs": ["demo"]},
+    {"id": "nakatsugawa", "name": "中津川站", "localName": "中津川駅", "kind": "车站", "lat": 35.4870, "lon": 137.5002, "address": "岐阜県中津川市太田町2丁目", "note": "站前有开往马笼的巴士站。", "sourceRefs": ["demo"]},
+    {"id": "magome", "name": "马笼宿", "localName": "馬籠宿", "kind": "宿场", "lat": 35.5278, "lon": 137.5658, "address": "岐阜県中津川市馬籠", "note": "石板坡道，行李可寄存后徒步。", "sourceRefs": ["demo"]},
+    {"id": "magome-pass", "name": "马笼峠", "localName": "馬籠峠", "kind": "山口", "lat": 35.5456, "lon": 137.5817, "address": "", "note": "徒步最高点，约海拔 800 米，有茶屋（营业时间需现场确认）。", "sourceRefs": ["demo"]},
+    {"id": "tsumago", "name": "妻笼宿", "localName": "妻籠宿", "kind": "宿场", "lat": 35.5775, "lon": 137.5947, "address": "長野県木曽郡南木曽町吾妻", "note": "宿场内没有路灯，天黑前抵达。", "sourceRefs": ["demo"]},
+    {"id": "nagiso", "name": "南木曾站", "localName": "南木曽駅", "kind": "车站", "lat": 35.6058, "lon": 137.6096, "address": "長野県木曽郡南木曽町読書", "note": "", "sourceRefs": ["demo"]},
+    {"id": "narai", "name": "奈良井宿", "localName": "奈良井宿", "kind": "宿场", "lat": 35.9665, "lon": 137.8155, "address": "長野県塩尻市奈良井", "note": "车站出来即是老街入口。", "sourceRefs": ["demo"]},
+    {"id": "matsumoto-station", "name": "松本站", "localName": "松本駅", "kind": "车站", "lat": 36.2306, "lon": 137.9647, "address": "長野県松本市深志1丁目", "note": "", "sourceRefs": ["demo"]},
+    {"id": "matsumoto-castle", "name": "松本城", "localName": "松本城", "kind": "景点", "lat": 36.2386, "lon": 137.9689, "address": "長野県松本市丸の内4-1", "note": "天守需脱鞋登楼，楼梯陡。开放时间以官网为准。", "sourceRefs": ["demo"]},
+    {"id": "stay-magome-place", "name": "示例民宿（马笼）", "localName": "", "kind": "住宿", "mapQuery": "馬籠宿", "address": "虚构地址，请替换", "note": "虚构住宿示例。", "sourceRefs": ["demo"]},
+    {"id": "stay-tsumago-place", "name": "示例旅馆（妻笼）", "localName": "", "kind": "住宿", "mapQuery": "妻籠宿", "address": "虚构地址，请替换", "note": "虚构住宿示例。", "sourceRefs": ["demo"]},
+    {"id": "stay-matsumoto-place", "name": "示例酒店（松本）", "localName": "", "kind": "住宿", "mapQuery": "松本駅", "address": "虚构地址，请替换", "note": "虚构住宿示例。", "sourceRefs": ["demo"]}
+  ],
+  "accommodations": [
+    {"id": "stay-nagoya", "placeId": "nagoya-station", "name": "示例商务酒店（名古屋站前）", "checkIn": "2031-05-12", "checkOut": "2031-05-13", "status": "demo", "statusLabel": "示例 · 未预订", "sourceRefs": ["demo"]},
+    {"id": "stay-magome", "placeId": "stay-magome-place", "name": "示例民宿（马笼）", "checkIn": "2031-05-13", "checkOut": "2031-05-14", "status": "demo", "statusLabel": "示例 · 未预订", "sourceRefs": ["demo"]},
+    {"id": "stay-tsumago", "placeId": "stay-tsumago-place", "name": "示例旅馆（妻笼）", "checkIn": "2031-05-14", "checkOut": "2031-05-15", "status": "demo", "statusLabel": "示例 · 未预订", "sourceRefs": ["demo"]},
+    {"id": "stay-matsumoto", "placeId": "stay-matsumoto-place", "name": "示例酒店（松本）", "checkIn": "2031-05-15", "checkOut": "2031-05-16", "status": "demo", "statusLabel": "示例 · 未预订", "sourceRefs": ["demo"]}
+  ],
+  "days": [
+    {"id": "day-1", "date": "2031-05-12", "title": "抵达名古屋", "subtitle": "机场 → 名古屋站，休整", "accommodationId": "stay-nagoya", "events": [
+      {"id": "d1-arrive", "timeLabel": "08:40", "title": "抵达中部国际机场", "kind": "airport", "placeIds": ["ngo"], "notes": "入境后到名铁乘车处，买去名古屋的车票。", "details": ["名铁 μSKY 约 28 分钟直达名古屋站；普通快车更便宜但更久。", "现金与 IC 卡在机场站均可购票。"], "sourceRefs": ["demo"]},
+      {"id": "d1-checkin", "timeLabel": "下午", "title": "名古屋站前入住、寄存大件行李", "kind": "stay", "placeIds": ["nagoya-station"], "notes": "把徒步两天用不到的行李留在酒店，后天回名古屋取。", "sourceRefs": ["demo"]},
+      {"id": "d1-free", "timeLabel": "傍晚", "title": "站周边晚餐，早睡", "kind": "free", "placeIds": ["nagoya-station"], "notes": "", "sourceRefs": ["demo"]}
+    ]},
+    {"id": "day-2", "date": "2031-05-13", "title": "名古屋 → 中津川 → 马笼", "subtitle": "中央本线 + 巴士", "accommodationId": "stay-magome", "events": [
+      {"id": "d2-train", "timeLabel": "09:00 前后", "title": "中央本线特急去中津川", "kind": "train", "placeIds": ["nagoya-station", "nakatsugawa"], "notes": "约 50 分钟。示例票种见票务弹层。", "ticketIds": ["ticket-chuo"], "sourceRefs": ["demo", "jr-central"]},
+      {"id": "d2-bus", "timeLabel": "10:30 前后", "title": "站前巴士去马笼", "kind": "bus", "placeIds": ["nakatsugawa", "magome"], "notes": "约 25 分钟，班次少，先看时刻表再吃饭。", "details": ["上车投币或用 IC 卡，以现场标识为准。"], "sourceRefs": ["demo"]},
+      {"id": "d2-walk", "timeLabel": "下午", "title": "马笼宿老街，慢慢走", "kind": "walk", "placeIds": ["magome"], "notes": "坡道石板湿滑，穿徒步鞋。", "sourceRefs": ["demo"]}
+    ]},
+    {"id": "day-3", "date": "2031-05-14", "title": "马笼 → 妻笼 徒步", "subtitle": "约 8 公里 · 3 小时", "accommodationId": "stay-tsumago", "events": [
+      {"id": "d3-start", "timeLabel": "08:30", "title": "从马笼宿出发", "kind": "hike", "placeIds": ["magome"], "notes": "先把行李交给宿场之间的行李转运（示例，需现场确认服务是否开放）。", "sourceRefs": ["demo"]},
+      {"id": "d3-pass", "timeLabel": "10:00 前后", "title": "翻过马笼峠", "kind": "hike", "placeIds": ["magome-pass"], "notes": "峠上茶屋可歇脚。之后一路下坡。", "details": ["沿途有熊铃，经过时敲一下。", "雨天林间木栈道滑，放慢。"], "sourceRefs": ["demo"]},
+      {"id": "d3-arrive", "timeLabel": "12:00 前后", "title": "抵达妻笼宿，午餐", "kind": "walk", "placeIds": ["tsumago"], "notes": "", "sourceRefs": ["demo"]},
+      {"id": "d3-rest", "timeLabel": "下午", "title": "妻笼宿散步，早入住", "kind": "free", "placeIds": ["tsumago"], "notes": "宿场傍晚人少，很安静。", "sourceRefs": ["demo"]}
+    ]},
+    {"id": "day-4", "date": "2031-05-15", "title": "妻笼 → 奈良井 → 松本", "subtitle": "一路向北", "accommodationId": "stay-matsumoto", "events": [
+      {"id": "d4-bus", "timeLabel": "上午", "title": "巴士去南木曾站", "kind": "bus", "placeIds": ["tsumago", "nagiso"], "notes": "约 10 分钟。", "sourceRefs": ["demo"]},
+      {"id": "d4-narai", "timeLabel": "中午", "title": "中央本线北上，奈良井宿停留两小时", "kind": "train", "placeIds": ["nagiso", "narai"], "notes": "把行李放车站置物柜（数量有限）。", "ticketIds": ["ticket-chuo"], "sourceRefs": ["demo", "jr-central"]},
+      {"id": "d4-matsumoto", "timeLabel": "傍晚", "title": "抵达松本，入住", "kind": "train", "placeIds": ["matsumoto-station"], "notes": "", "sourceRefs": ["demo"]}
+    ]},
+    {"id": "day-5", "date": "2031-05-16", "title": "松本城 → 名古屋 → 机场", "subtitle": "返程日", "events": [
+      {"id": "d5-castle", "timeLabel": "08:30", "title": "松本城开门即入", "kind": "sight", "placeIds": ["matsumoto-castle"], "notes": "天守内排队时间随人流变化，早去。", "ticketIds": ["ticket-castle"], "sourceRefs": ["demo"]},
+      {"id": "d5-train", "timeLabel": "上午", "title": "特急回名古屋，取行李", "kind": "train", "placeIds": ["matsumoto-station", "nagoya-station"], "notes": "约 2 小时。示例：返程航班 10:30 起飞与本行程冲突，真实行程需改早班或改日；这里保留冲突用于演示缺口报告。", "sourceRefs": ["demo"]},
+      {"id": "d5-airport", "timeLabel": "下午", "title": "名铁去机场", "kind": "airport", "placeIds": ["nagoya-station", "ngo"], "notes": "", "sourceRefs": ["demo"]}
+    ]}
+  ],
+  "tickets": [
+    {"id": "ticket-chuo", "title": "中央本线 特急指定席（示例）", "date": "2031-05-13", "where": "名古屋站 JR 售票处或自动售票机", "guide": "示例票种说明。真实行程请核对车次、指定席与自由席差别。", "price": {"amount": 5000, "currency": "JPY"}, "status": "demo", "optional": false, "placeId": "nagoya-station", "localText": "名古屋 → 中津川\n特急 指定席 2名\n（これはデモ用の例です）", "sourceRefs": ["demo", "jr-central"]},
+    {"id": "ticket-castle", "title": "松本城 天守门票（示例）", "date": "2031-05-16", "where": "城门口售票处", "guide": "现场购票。示例价格，请以官网为准。", "price": {"amount": 700, "currency": "JPY"}, "status": "demo", "optional": false, "placeId": "matsumoto-castle", "localText": "松本城 天守 入場券 大人 2名", "sourceRefs": ["demo"]}
+  ],
+  "groundTransport": {"tabs": [
+    {"id": "rail", "title": "铁路", "items": [
+      {"title": "中央本线（名古屋 ↔ 木曾谷 ↔ 松本）", "text": "特急约 1 小时一班；普通车换乘多。示例内容，班次以官网为准。", "placeIds": ["nagoya-station", "nakatsugawa", "nagiso", "matsumoto-station"], "sourceRefs": ["jr-central"]},
+      {"title": "名铁机场线", "text": "中部国际机场 ↔ 名古屋站，约 30–40 分钟。", "placeIds": ["ngo", "nagoya-station"], "sourceRefs": ["demo"]}
+    ]},
+    {"id": "bus", "title": "巴士", "items": [
+      {"title": "中津川站 ↔ 马笼", "text": "班次少，务必先看当天时刻表。", "placeIds": ["nakatsugawa", "magome"], "sourceRefs": ["demo"]},
+      {"title": "妻笼 ↔ 南木曾站", "text": "约 10 分钟。", "placeIds": ["tsumago", "nagiso"], "sourceRefs": ["demo"]}
+    ]},
+    {"id": "hike", "title": "徒步", "items": [
+      {"title": "马笼 → 妻笼", "text": "约 8 公里，爬升约 200 米，多数人 3 小时左右。路标清楚，雨后木栈道滑。", "placeIds": ["magome", "magome-pass", "tsumago"], "sourceRefs": ["demo"]}
+    ]}
+  ]},
+  "checklist": [
+    {"id": "todo-shoes", "text": "徒步鞋试穿磨合", "group": "packing", "detail": "石板坡道与木栈道，不要穿新鞋。"},
+    {"id": "todo-rain", "text": "雨具", "group": "packing", "detail": "五月山区多雨。"},
+    {"id": "todo-cash", "text": "准备日元现金", "group": "todo", "detail": "宿场与巴士常只收现金。"},
+    {"id": "todo-luggage", "text": "确认行李转运服务当天是否开放", "group": "todo", "detail": "示例：需现场或官网核实。"},
+    {"id": "todo-flight", "text": "核对返程航班与松本出发时间是否冲突", "group": "todo", "detail": "示例行程刻意保留了这个冲突。"}
+  ],
+  "sources": [
+    {"id": "demo", "title": "虚构示例数据", "note": "为演示界面编写；没有任何实际预订或时刻表保证。"},
+    {"id": "jr-central", "title": "JR 东海官网", "url": "https://jr-central.co.jp/", "note": "公开链接；班次与票价请自行核对。"}
+  ]
+}

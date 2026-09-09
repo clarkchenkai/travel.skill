@@ -1,0 +1,130 @@
+{
+  "version": "1",
+  "trip": {
+    "id": "example-family-island",
+    "title": "Mallorca with the Kids",
+    "shortTitle": "Mallorca",
+    "eyebrow": "FAMILY · ONE WEEK · EXAMPLE",
+    "subtitle": "Two adults, two children, one small rental car, seven slow days. A fictional itinerary used to demonstrate the template.",
+    "locale": "en",
+    "theme": "tide",
+    "timeZone": "Europe/Madrid",
+    "startDate": "2031-07-05",
+    "endDate": "2031-07-11",
+    "people": 4,
+    "countries": ["ES"],
+    "map": {"provider": "google", "embed": true},
+    "demo": true,
+    "updatedAt": "2031-01-01",
+    "sourceRefs": ["demo"]
+  },
+  "flightJourneys": [
+    {
+      "id": "outbound", "label": "Outbound · London → Palma", "airline": "Example Air (fictional)", "status": "demo",
+      "segments": [{"number": "DEMO 301", "origin": {"code": "LHR", "city": "London Heathrow", "terminal": "T2", "timeZone": "Europe/London", "timeZoneLabel": "London time"}, "destination": {"code": "PMI", "city": "Palma de Mallorca", "terminal": "", "timeZone": "Europe/Madrid", "timeZoneLabel": "Spain time"}, "departure": "2031-07-05T07:10:00+01:00", "arrival": "2031-07-05T10:50:00+02:00"}],
+      "notes": ["Flight number and times are fictional.", "Family boarding usually goes first — ask at the gate."],
+      "sourceRefs": ["demo"]
+    },
+    {
+      "id": "return", "label": "Return · Palma → London", "airline": "Example Air (fictional)", "status": "demo",
+      "segments": [{"number": "DEMO 302", "origin": {"code": "PMI", "city": "Palma de Mallorca", "terminal": "", "timeZone": "Europe/Madrid", "timeZoneLabel": "Spain time"}, "destination": {"code": "LHR", "city": "London Heathrow", "terminal": "T2", "timeZone": "Europe/London", "timeZoneLabel": "London time"}, "departure": "2031-07-11T18:20:00+02:00", "arrival": "2031-07-11T19:55:00+01:00"}],
+      "notes": ["Return the car by 15:30 (see Rental) — the drop-off queue can take 30 minutes."],
+      "sourceRefs": ["demo"]
+    }
+  ],
+  "rental": {
+    "vendor": "Example Rentals (fictional)", "vehicle": "Compact SUV or similar · 2 child seats requested", "status": "demo",
+    "pickUp": {"date": "2031-07-05", "time": "11:30", "placeId": "pmi"},
+    "dropOff": {"date": "2031-07-11", "time": "15:30", "placeId": "pmi"},
+    "deposit": {"amount": 600, "currency": "EUR"},
+    "coverage": "Collision damage waiver with excess — read the voucher for the exact wording; do not assume \"full cover\".",
+    "fuelPolicy": "Full to full. Nearest fuel station to the airport is on the return road.",
+    "notes": ["Photograph every panel at pick-up and drop-off.", "Child seats: check they are fitted and the right size before leaving the lot."],
+    "sourceRefs": ["demo"]
+  },
+  "places": [
+    {"id": "pmi", "name": "Palma de Mallorca Airport", "localName": "Aeroport de Palma", "kind": "airport", "lat": 39.5517, "lon": 2.7388, "address": "07611 Palma, Illes Balears", "note": "Rental desks are in the arrivals hall; cars are in the multi-storey next door.", "sourceRefs": ["demo"]},
+    {"id": "cathedral", "name": "Palma Cathedral", "localName": "La Seu", "kind": "sight", "lat": 39.5674, "lon": 2.6481, "address": "Plaça de la Seu, Palma", "note": "Cool inside on a hot afternoon.", "sourceRefs": ["demo"]},
+    {"id": "aquarium", "name": "Palma Aquarium", "localName": "Palma Aquarium", "kind": "family", "lat": 39.5344, "lon": 2.7080, "address": "Carrer de Manuela de los Herreros i Sorà 21, Palma", "note": "Half a day; the shark tunnel is the highlight for kids.", "sourceRefs": ["demo"]},
+    {"id": "soller-station", "name": "Sóller Station", "localName": "Estació de Sóller", "kind": "station", "lat": 39.7662, "lon": 2.7152, "address": "Plaça d'Espanya 6, Sóller", "note": "The vintage wooden train from Palma ends here.", "sourceRefs": ["demo"]},
+    {"id": "port-soller", "name": "Port de Sóller", "localName": "Port de Sóller", "kind": "beach", "lat": 39.7970, "lon": 2.6900, "address": "Port de Sóller", "note": "Sheltered bay, calm water, tram from the town.", "sourceRefs": ["demo"]},
+    {"id": "mondrago", "name": "Cala Mondragó", "localName": "Cala Mondragó", "kind": "beach", "lat": 39.3480, "lon": 3.1900, "address": "Parc Natural de Mondragó", "note": "Car park fills by 10:00 in July; arrive early.", "sourceRefs": ["demo"]},
+    {"id": "playa-muro", "name": "Playa de Muro", "localName": "Platja de Muro", "kind": "beach", "lat": 39.7970, "lon": 3.1180, "address": "Platja de Muro", "note": "Long, shallow, sandy — best beach for small children.", "sourceRefs": ["demo"]},
+    {"id": "alcudia", "name": "Alcúdia old town", "localName": "Alcúdia", "kind": "sight", "lat": 39.8530, "lon": 3.1210, "address": "Alcúdia", "note": "Evening market on Tuesdays and Sundays (check dates).", "sourceRefs": ["demo"]},
+    {"id": "stay-soller-place", "name": "Example family apartment (Port de Sóller)", "kind": "stay", "mapQuery": "Port de Sóller", "address": "Fictional address — replace", "note": "Fictional stay.", "sourceRefs": ["demo"]},
+    {"id": "stay-muro-place", "name": "Example beach hotel (Playa de Muro)", "kind": "stay", "mapQuery": "Platja de Muro", "address": "Fictional address — replace", "note": "Fictional stay.", "sourceRefs": ["demo"]}
+  ],
+  "accommodations": [
+    {"id": "stay-soller", "placeId": "stay-soller-place", "name": "Example family apartment (Port de Sóller)", "checkIn": "2031-07-05", "checkOut": "2031-07-08", "status": "demo", "statusLabel": "Example · not booked", "note": "Two bedrooms, kitchen, a short walk to the beach.", "sourceRefs": ["demo"]},
+    {"id": "stay-muro", "placeId": "stay-muro-place", "name": "Example beach hotel (Playa de Muro)", "checkIn": "2031-07-08", "checkOut": "2031-07-11", "status": "demo", "statusLabel": "Example · not booked", "note": "Pool, kids' club, on the beach.", "sourceRefs": ["demo"]}
+  ],
+  "days": [
+    {"id": "day-1", "date": "2031-07-05", "title": "Arrive and drive to Sóller", "subtitle": "Airport → mountains", "accommodationId": "stay-soller", "events": [
+      {"id": "d1-land", "timeLabel": "10:50", "title": "Land at Palma", "kind": "airport", "placeIds": ["pmi"], "notes": "Bags, then the rental desk. Budget an hour.", "sourceRefs": ["demo"]},
+      {"id": "d1-car", "timeLabel": "11:30", "title": "Pick up the car, fit the child seats", "kind": "rental", "placeIds": ["pmi"], "notes": "See Rental under Transport.", "sourceRefs": ["demo"]},
+      {"id": "d1-drive", "timeLabel": "Early afternoon", "title": "Drive to Port de Sóller (tunnel road, ~45 min)", "kind": "drive", "placeIds": ["port-soller"], "notes": "Supermarket stop before the tunnel for breakfast things.", "sourceRefs": ["demo"]},
+      {"id": "d1-beach", "timeLabel": "Late afternoon", "title": "First swim in the bay", "kind": "beach", "placeIds": ["port-soller"], "notes": "", "sourceRefs": ["demo"]}
+    ]},
+    {"id": "day-2", "date": "2031-07-06", "title": "Sóller", "subtitle": "Tram, town, ice cream", "accommodationId": "stay-soller", "events": [
+      {"id": "d2-tram", "timeLabel": "Morning", "title": "Tram from the port to Sóller town", "kind": "transit", "placeIds": ["port-soller", "soller-station"], "notes": "Open-sided wooden tram; kids love it. Cash or card at the stop.", "ticketIds": ["ticket-tram"], "sourceRefs": ["demo"]},
+      {"id": "d2-town", "timeLabel": "Late morning", "title": "Sóller square and the Saturday market", "kind": "walk", "placeIds": ["soller-station"], "notes": "Orange juice everywhere.", "sourceRefs": ["demo"]},
+      {"id": "d2-rest", "timeLabel": "Afternoon", "title": "Siesta, then the beach", "kind": "rest", "placeIds": [], "notes": "Nothing planned after 14:00 on purpose.", "sourceRefs": ["demo"]}
+    ]},
+    {"id": "day-3", "date": "2031-07-07", "title": "Boat day", "subtitle": "Port de Sóller", "accommodationId": "stay-soller", "events": [
+      {"id": "d3-boat", "timeLabel": "10:00", "title": "Boat trip along the coast (example)", "kind": "boat", "placeIds": ["port-soller"], "notes": "Bring hats and life vests for the kids if the operator does not provide them. Cancelled in rough sea.", "ticketIds": ["ticket-boat"], "sourceRefs": ["demo"]},
+      {"id": "d3-beach", "timeLabel": "Afternoon", "title": "Beach and early dinner", "kind": "beach", "placeIds": ["port-soller"], "notes": "", "sourceRefs": ["demo"]}
+    ]},
+    {"id": "day-4", "date": "2031-07-08", "title": "Palma → Playa de Muro", "subtitle": "Cathedral, aquarium, then north", "accommodationId": "stay-muro", "events": [
+      {"id": "d4-cathedral", "timeLabel": "09:30", "title": "Palma Cathedral", "kind": "sight", "placeIds": ["cathedral"], "notes": "Half an hour is enough with kids.", "sourceRefs": ["demo"]},
+      {"id": "d4-aquarium", "timeLabel": "11:30", "title": "Palma Aquarium", "kind": "family", "placeIds": ["aquarium"], "notes": "Lunch inside; the outdoor area is hot at midday.", "ticketIds": ["ticket-aquarium"], "sourceRefs": ["demo"]},
+      {"id": "d4-drive", "timeLabel": "Late afternoon", "title": "Drive to Playa de Muro (~1 h)", "kind": "drive", "placeIds": ["playa-muro"], "notes": "", "sourceRefs": ["demo"]}
+    ]},
+    {"id": "day-5", "date": "2031-07-09", "title": "Beach day", "subtitle": "Playa de Muro", "accommodationId": "stay-muro", "events": [
+      {"id": "d5-beach", "timeLabel": "All day", "title": "Shallow water, sandcastles, nothing else", "kind": "beach", "placeIds": ["playa-muro"], "notes": "Shade after 11:00; reapply sunscreen every two hours.", "sourceRefs": ["demo"]},
+      {"id": "d5-market", "timeLabel": "Evening", "title": "Alcúdia old town walk", "kind": "walk", "placeIds": ["alcudia"], "notes": "", "sourceRefs": ["demo"]}
+    ]},
+    {"id": "day-6", "date": "2031-07-10", "title": "Cala Mondragó", "subtitle": "Natural park beach", "accommodationId": "stay-muro", "events": [
+      {"id": "d6-drive", "timeLabel": "08:30", "title": "Leave early for Mondragó (~1 h)", "kind": "drive", "placeIds": ["mondrago"], "notes": "Car park closes when full.", "sourceRefs": ["demo"]},
+      {"id": "d6-beach", "timeLabel": "Morning", "title": "Two coves, a short shaded path between them", "kind": "beach", "placeIds": ["mondrago"], "notes": "", "sourceRefs": ["demo"]},
+      {"id": "d6-back", "timeLabel": "Afternoon", "title": "Back to the hotel pool", "kind": "rest", "placeIds": ["playa-muro"], "notes": "", "sourceRefs": ["demo"]}
+    ]},
+    {"id": "day-7", "date": "2031-07-11", "title": "Return the car, fly home", "subtitle": "Playa de Muro → airport", "events": [
+      {"id": "d7-drive", "timeLabel": "13:30", "title": "Drive to the airport, refuel on the way", "kind": "drive", "placeIds": ["pmi"], "notes": "Full to full: the station on the airport road is the last one.", "sourceRefs": ["demo"]},
+      {"id": "d7-return", "timeLabel": "15:30", "title": "Return the car", "kind": "rental", "placeIds": ["pmi"], "notes": "Photos of every panel and the fuel gauge.", "sourceRefs": ["demo"]},
+      {"id": "d7-fly", "timeLabel": "18:20", "title": "Fly PMI → LHR", "kind": "flight", "placeIds": ["pmi"], "notes": "", "sourceRefs": ["demo"]}
+    ]}
+  ],
+  "tickets": [
+    {"id": "ticket-tram", "title": "Sóller tram (example)", "date": "2031-07-06", "where": "At the tram stop, cash or card", "guide": "Example price per adult; children under a certain age may be free — check the board.", "price": {"amount": 9, "currency": "EUR"}, "status": "demo", "optional": false, "placeId": "port-soller", "sourceRefs": ["demo"]},
+    {"id": "ticket-boat", "title": "Coastal boat trip (example)", "date": "2031-07-07", "where": "Kiosks on the port promenade the day before", "guide": "Example price per person. Weather-dependent; ask about refunds.", "price": {"amount": 25, "currency": "EUR"}, "status": "demo", "optional": true, "placeId": "port-soller", "sourceRefs": ["demo"]},
+    {"id": "ticket-aquarium", "title": "Palma Aquarium family ticket (example)", "date": "2031-07-08", "where": "Official website (cheaper) or at the door", "guide": "Example price for 2 adults + 2 children.", "price": {"amount": 96, "currency": "EUR"}, "status": "demo", "optional": false, "placeId": "aquarium", "localText": "Entrada familiar · 2 adultos + 2 niños", "sourceRefs": ["demo"]}
+  ],
+  "groundTransport": {"tabs": [
+    {"id": "drive", "title": "Driving", "items": [
+      {"title": "Drive on the right", "text": "Roundabouts everywhere; the inside lane exits are marked late. Speed cameras on the Ma-13.", "placeIds": [], "sourceRefs": ["demo"]},
+      {"title": "Parking", "text": "Blue zones are paid; white is free; yellow is no parking. Beach car parks fill early in July.", "placeIds": ["mondrago", "playa-muro"], "sourceRefs": ["demo"]},
+      {"title": "Child seats", "text": "Required under 135 cm. Check the fit before you leave the rental lot.", "placeIds": ["pmi"], "sourceRefs": ["demo"]}
+    ]},
+    {"id": "beaches", "title": "Beaches", "items": [
+      {"title": "Port de Sóller", "text": "Calm, sheltered, shallow entry. Tram to town.", "placeIds": ["port-soller"], "sourceRefs": ["demo"]},
+      {"title": "Playa de Muro", "text": "Long shallow sand. Best for toddlers.", "placeIds": ["playa-muro"], "sourceRefs": ["demo"]},
+      {"title": "Cala Mondragó", "text": "Two coves in a natural park. Arrive before 10:00.", "placeIds": ["mondrago"], "sourceRefs": ["demo"]}
+    ]},
+    {"id": "bus", "title": "Buses", "items": [
+      {"title": "Island buses", "text": "Cover most towns but not the coves; the car is for the beaches, the bus is a backup.", "placeIds": [], "sourceRefs": ["demo"]}
+    ]}
+  ]},
+  "checklist": [
+    {"id": "todo-seats", "text": "Confirm two child seats on the rental", "group": "todo", "detail": "Example: confirm with the vendor before departure."},
+    {"id": "todo-licence", "text": "Driving licence + passport for the rental desk", "group": "todo", "detail": ""},
+    {"id": "todo-aquarium", "text": "Buy aquarium tickets online", "group": "todo", "detail": "Cheaper than at the door."},
+    {"id": "pack-sun", "text": "Sunscreen SPF 50, kids' version", "group": "packing", "detail": ""},
+    {"id": "pack-vests", "text": "Swim vests / arm bands", "group": "packing", "detail": ""},
+    {"id": "pack-hats", "text": "Hats for everyone", "group": "packing", "detail": ""},
+    {"id": "pack-shade", "text": "Beach tent or umbrella", "group": "packing", "detail": "Or rent a sunbed on the day."},
+    {"id": "pack-snacks", "text": "Car snacks and water bottles", "group": "packing", "detail": ""}
+  ],
+  "sources": [
+    {"id": "demo", "title": "Fictional example data", "note": "Written to demonstrate the template. Nothing is booked; prices are placeholders."}
+  ]
+}

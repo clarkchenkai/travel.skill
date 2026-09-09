@@ -1,0 +1,36 @@
+name: "Country/region adaptation"
+description: "Local knowledge for a country or region that the skill or examples should account for."
+title: "[country] "
+labels: ["country-adaptation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        See CONTRIBUTING.md, Track 2, and skill/references/data-and-countries.md. Every factual claim needs a public source URL — no invented timetable minutes or prices.
+
+  - type: input
+    id: country
+    attributes:
+      label: Country / region
+      placeholder: "Japan, Southeast Asia, Schengen area, ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: differs
+    attributes:
+      label: What differs here?
+      description: Pick what's relevant — transit conventions, currency and payment norms, map provider reachability, language/script handling, anything else a generic template would get wrong.
+    validations:
+      required: true
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Public source links
+      description: One URL per claim above. If you can't source something, say so instead of guessing.
+      placeholder: |
+        - transit IC card coverage: https://...
+        - map provider reachability: https://...
+    validations:
+      required: true

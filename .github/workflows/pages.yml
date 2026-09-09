@@ -1,0 +1,66 @@
+# Optional GitHub Pages deploy. Nothing publishes until you turn this on.
+#
+# To enable:
+#   1. In this repo's Settings -> Pages, set Source to "GitHub Actions".
+#   2. Push a change under trip/** or template/** to main, or run this workflow manually
+#      (Actions -> Deploy to GitHub Pages -> Run workflow).
+#
+# What this does: builds trip/ with scripts/build.mjs, runs the static release audit against
+# the build output, then publishes dist/ to GitHub Pages. Once Pages is enabled, dist/ is public
+# on the internet at your repo's Pages URL.
+#
+# Before you enable this:
+#   - run `npm run check` locally and fix anything it flags
+#   - read your own trip/travel-data.json yourself — names, addresses, notes you don't want public
+#   - the release audit is a static check only; it does not verify the live site or your readers'
+#     network access (see docs/PUBLISHING.md)
+
+name: Deploy to GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "trip/**"
+      - "template/**"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: ""
+
+      - name: Build trip/
+        run: node scripts/build.mjs --trip trip --out dist --manifest artifacts/manifest.json
+
+      - name: Release audit
+        run: node scripts/check-release.mjs dist --manifest artifacts/manifest.json
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

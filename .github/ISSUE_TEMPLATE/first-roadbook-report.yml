@@ -1,0 +1,82 @@
+name: "First roadbook report"
+description: "I tried to build my first roadbook with this skill and coding agent."
+title: "[first roadbook] "
+labels: ["first-roadbook"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is the main feedback loop for this project: can a stranger, with no help from the author, go from raw travel materials to a published roadbook? Tell us where it broke down, even (especially) if you didn't finish.
+
+  - type: input
+    id: agent
+    attributes:
+      label: Coding agent / client
+      description: e.g. Claude Code, Cursor, another CLI or IDE agent, name and version if you know it
+      placeholder: "Claude Code 1.x"
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "macOS 15, Windows 11, Ubuntu 24.04, ..."
+    validations:
+      required: true
+
+  - type: input
+    id: node
+    attributes:
+      label: Node version
+      description: output of `node -v`
+      placeholder: "v20.11.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: progress
+    attributes:
+      label: How far did you get?
+      options:
+        - installed (repo cloned / skill loaded, nothing run yet)
+        - imported materials (travel-data.json created from your own trip)
+        - gap report (ran `npm run gaps` or equivalent, saw what was missing)
+        - preview (ran `npm run dev`, saw the site locally)
+        - built (ran `npm run build`, produced dist/)
+        - published (site is live somewhere readers can open it)
+    validations:
+      required: true
+
+  - type: textarea
+    id: stuck
+    attributes:
+      label: Where did you get stuck?
+      description: The exact step, command, or screen. Paste the error if there was one.
+    validations:
+      required: false
+
+  - type: textarea
+    id: confusing
+    attributes:
+      label: What was confusing, even if you eventually got past it?
+      description: Instructions that were unclear, a decision you didn't know you had to make, a term you didn't recognize.
+    validations:
+      required: false
+
+  - type: input
+    id: time
+    attributes:
+      label: Time spent
+      description: Rough total, from start to where you stopped (or finished).
+      placeholder: "45 minutes"
+    validations:
+      required: false
+
+  - type: input
+    id: share_url
+    attributes:
+      label: Would you share the result URL? (optional)
+      description: Only if it's a demo/fictional trip or you're fine with it being public. Do not paste a private link with real booking details.
+    validations:
+      required: false

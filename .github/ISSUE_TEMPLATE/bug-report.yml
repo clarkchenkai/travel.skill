@@ -1,0 +1,60 @@
+name: "Bug report"
+description: "Something in the template or scripts doesn't work as expected."
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing: strip any private data from what you paste here (real names, addresses, PNRs, booking numbers). Use one of the `examples/` trips to reproduce if you can — it's faster for maintainers to act on.
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Exact commands run, in order. Which example or trip data, if relevant.
+      placeholder: |
+        1. npm run new -- japan-hiking
+        2. npm run dev
+        3. open the map dialog for "station-a"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual
+    validations:
+      required: true
+
+  - type: textarea
+    id: data
+    attributes:
+      label: Example or your own data
+      description: "If using your own travel-data.json, strip private data first: no real names, addresses, PNRs, or booking numbers. Paste only the relevant fragment, not the whole file."
+    validations:
+      required: false
+
+  - type: input
+    id: env
+    attributes:
+      label: Browser / device
+      placeholder: "Safari 18 on iPhone 15, Chrome 128 on macOS, ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Console output
+      description: Browser devtools console, or terminal output from the failing script.
+      render: shell
+    validations:
+      required: false

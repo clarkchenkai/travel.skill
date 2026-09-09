@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="description" content="A personal travel roadbook.">
+<title>Roadbook</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+<script type="module" src="app.js"></script>
+</head>
+<body data-page="home">
+<aside class="demo-notice" id="demo-notice" hidden></aside>
+<a class="skip-link" href="#days">Skip to daily plan</a>
+<header class="topbar">
+  <a href="#home" class="identity" id="identity" aria-label="Home"><span class="identity-mark" aria-hidden="true"></span><span><b id="identity-title">Roadbook</b><small id="identity-meta"></small></span></a>
+  <button type="button" class="icon-button" id="share-button" aria-label="Share"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m-4 4 4-4 4 4M5 12v8h14v-8"/></svg></button>
+</header>
+<main class="shell" id="main">
+  <p class="page-status" id="page-status" role="status">Loading…</p>
+  <section class="page page-home" id="home" aria-label="Home">
+    <div class="cover" id="cover">
+      <div class="cover-media" id="cover-media" aria-hidden="true"></div>
+      <div class="cover-copy">
+        <p class="cover-eyebrow" id="cover-eyebrow"></p>
+        <h1 id="cover-title"></h1>
+        <p class="cover-subtitle" id="cover-subtitle"></p>
+        <p class="cover-meta" id="cover-meta"></p>
+        <p class="trip-stage" id="trip-stage"></p>
+        <a class="cover-action" id="cover-action" href="#days"></a>
+      </div>
+    </div>
+    <div class="home-grid" id="home-grid"></div>
+  </section>
+  <section class="page" id="map" aria-label="Map" hidden></section>
+  <section class="page" id="days" aria-label="Daily plan" hidden></section>
+  <section class="page" id="transport" aria-label="Transport" hidden></section>
+  <section class="page" id="checklist" aria-label="Checklist" hidden></section>
+  <footer class="footer"><div id="sources"></div><button type="button" class="text-button" data-top id="footer-top"></button></footer>
+</main>
+<nav class="bottom-nav" aria-label="Sections" id="bottom-nav"></nav>
+<dialog class="dialog" id="map-dialog" aria-labelledby="map-title">
+  <div class="dialog-content">
+    <div class="dialog-header"><h2 id="map-title"></h2><button type="button" class="close-dialog" data-close-dialog id="map-close"></button></div>
+    <div class="dialog-body">
+      <p class="map-local" id="map-local"></p>
+      <p class="map-address" id="map-address"></p>
+      <p class="map-note" id="map-note"></p>
+      <div class="button-row"><button type="button" class="pill" id="map-copy" data-copy></button><a class="pill" id="map-external" target="_blank" rel="noopener noreferrer"></a></div>
+      <p class="map-status" id="map-status" role="status"></p>
+      <div class="map-frame-wrap" id="map-frame-wrap"><iframe id="map-frame" title="Map" referrerpolicy="no-referrer-when-downgrade" loading="lazy"></iframe></div>
+      <p class="map-network" id="map-network"></p>
+      <div class="source-links" id="map-sources"></div>
+    </div>
+  </div>
+</dialog>
+<dialog class="dialog" id="ticket-dialog" aria-labelledby="ticket-title">
+  <div class="dialog-content">
+    <div class="dialog-header"><h2 id="ticket-title"></h2><button type="button" class="close-dialog" data-close-dialog id="ticket-close"></button></div>
+    <div class="dialog-body">
+      <p class="ticket-status" id="ticket-status"></p>
+      <dl class="ticket-facts"><dt id="ticket-where-label"></dt><dd id="ticket-where"></dd><dt id="ticket-price-label"></dt><dd id="ticket-price"></dd></dl>
+      <p class="ticket-guide" id="ticket-guide"></p>
+      <pre class="ticket-local" id="ticket-local" hidden></pre>
+      <div class="button-row"><button type="button" class="pill pill-solid" id="ticket-toggle"></button><button type="button" class="pill" id="ticket-copy" data-copy hidden></button><a class="pill" id="ticket-map" hidden></a></div>
+      <div class="source-links" id="ticket-sources"></div>
+      <p class="ticket-disclaimer" id="ticket-disclaimer"></p>
+    </div>
+  </div>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="shell">This roadbook needs JavaScript to render its data.</p></noscript>
+</body>
+</html>

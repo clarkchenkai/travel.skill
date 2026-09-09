@@ -1,0 +1,54 @@
+name: "Theme proposal"
+description: "Propose a new [data-theme] block for template/themes.css."
+title: "[theme] "
+labels: ["theme"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        See CONTRIBUTING.md, Track 1: Themes, for the rules (light background, tokens + small surface tweaks only, no country symbols baked in as defaults).
+
+  - type: input
+    id: name
+    attributes:
+      label: Theme name
+      description: The value that would go in trip.theme and the [data-theme="..."] selector.
+      placeholder: "harbor-light"
+    validations:
+      required: true
+
+  - type: textarea
+    id: mood
+    attributes:
+      label: Mood
+      description: What feeling or reference this theme is going for, in a sentence or two.
+    validations:
+      required: true
+
+  - type: textarea
+    id: palette
+    attributes:
+      label: Palette
+      description: Key token values (--bg, --surface, --ink, --accent, ...) or a link to a palette.
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+      description: Drag and drop an image, or link one. Show it applied to a real example, not a blank swatch.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: example
+    attributes:
+      label: Which example was it tried with?
+      options:
+        - europe-rail
+        - family-island
+        - japan-hiking
+        - a new example not yet in the repo
+    validations:
+      required: true

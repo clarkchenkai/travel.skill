@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          # No lockfile, no dependencies: nothing for npm's cache to key on.
+          cache: ""
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Build every example and run the release audit
+        run: |
+          set -euo pipefail
+          for e in examples/*/; do
+            name=$(basename "$e")
+            out="/tmp/out-$name"
+            manifest="/tmp/manifest-$name.json"
+            node scripts/build.mjs --trip "$e" --out "$out" --manifest "$manifest"
+            node scripts/check-release.mjs "$out" --manifest "$manifest"
+          done
