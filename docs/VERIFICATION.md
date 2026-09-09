@@ -140,7 +140,7 @@ No local Windows execution environment was found: `prlctl`, `VBoxManage`, `vmrun
 | Examples gallery deployed by `pages-demo.yml` to https://clarkchenkai.github.io/travel.skill/ ; `/`, the three examples and `kumano-kodo/` (including the 8 MB font and `story.js`) return 200 | production | Pass; Kumano showcase built on the runner with Pillow |
 | `og:image` on the live site is absolute (`--site` passed by the workflow) | production | Pass |
 | Offline check against the live family-island URL: service worker active, 38 entries precached, offline reload renders | production (headless Chrome) | Pass |
-| "Use this template" → Pages (Actions) → `pages.yml`: starter roadbook served at the copy's Pages URL within a minute | production | Pass; test repository deleted afterwards |
+| "Use this template" → Pages (Actions) → `pages.yml`: starter roadbook served at the copy's Pages URL within a minute | production | Pass; the temporary test repository still exists until the maintainer deletes it |
 | Real readers on real devices/networks | adoption | None yet |
 
 ## Remaining evidence gaps

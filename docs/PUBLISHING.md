@@ -24,7 +24,7 @@ Only `dist/` — the output of `node scripts/build.mjs`. It contains the templat
 
 If `trip/travel-data.json` does not exist yet, the workflow starts from the `europe-rail` example so you get a working site immediately. Replace it with your own trip and push; each push redeploys. The site address is `https://<user>.github.io/<repo>/`.
 
-Verified 2026-09-09: a repository was created from the template with `gh repo create --template`, Pages set to GitHub Actions through the API, the workflow run manually; it completed in 40 s and the site served the starter roadbook (`<title>Four Cities by Rail</title>`). The test repository was deleted afterwards.
+Verified 2026-09-09: a repository was created from the template with `gh repo create --template`, Pages set to GitHub Actions through the API, the workflow run manually; it completed in 40 s and the site served the starter roadbook (`<title>Four Cities by Rail</title>`). The test repository (`travel-skill-template-test`) is to be deleted by the maintainer; the CLI token lacked the delete scope.
 
 ## Route A: any static host
 
