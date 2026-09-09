@@ -36,6 +36,7 @@ Performed in the in-app Chromium at 375 × 812 (mobile) and the pane's desktop w
 | Share tags: `og:title/description/image`, twitter card injected at build; `og:image` absolute only when `trip.siteUrl` is set | structure | Pass |
 | Gallery (`npm run site`): four roadbooks (three examples + Kumano showcase) built into one folder with a chooser page | runtime (screenshot) | Pass |
 | Demo recording (`scripts/record-demo.mjs`): real headless walkthrough → `docs/demo/demo.gif` and `.mp4` | runtime | Recorded 87 frames on the family-island build |
+| iOS Safari, iPhone 17 Pro simulator (iOS 27.0 beta, Xcode 27 beta 4), built family-island site over localhost: Home, Days, Transport, Checklist, Map all render; bottom nav clears Safari's toolbar via the safe-area inset; `theme-color` tints the status bar; photos and fonts load. Screenshots only, no touch input (the simulator was driven by `simctl`, which cannot tap). | runtime (real WebKit, emulated device) | Pass |
 | Lighthouse 13.4 on the built family-island site (`npm run preview`, headless Chrome): mobile 98 / 100 / 100 / 100 (performance / accessibility / best practices / SEO), FCP 1.4 s, LCP 2.3 s, CLS 0.03, TBT 0 ms; desktop 100 / 100 / 100 / 100 after contrast fixes. The only remaining flags are back/forward cache (the local preview sends `no-store`; hosts do not) and the network dependency tree. | measured | Pass; numbers are from a local server, not a CDN |
 | Motion layer (`motion.mjs`): day fold animates then lands on the correct native `open` state; dialog entrance does not interfere with close; press feedback | scripted | Pass (japan-hiking, after porting from the Kumano site) |
 | Showcase `showcase/kumano-kodo`: `npm ci`, 8 core tests, `build:visuals`, `build.py --public-only --package` from its new location; 38 files, release audit passed | logic + structure | Pass |
@@ -51,7 +52,7 @@ See [AGENTS.md](AGENTS.md) for the recorded runs (Claude Code passed; Codex CLI:
 
 - No deployment to a live host from this repository. `docs/PUBLISHING.md` routes are described, not walked.
 - No real traveler has built a roadbook with it yet. The stage-one goal (ten strangers) has zero data points.
-- No real-device test on iOS Safari or Android Chrome; the mobile checks above are emulated viewports.
+- No physical device yet. iOS Safari was checked in the simulator (real WebKit, no touch); Android Chrome not at all.
 - No screen-reader pass beyond `aria-label`/`aria-current` attributes being present.
 - No test of a self-hosted font. Images are exercised by the three examples (cover, day thumbnails, route photo, paper tile); each example builds under 1.5 MB and the audit passes.
 
