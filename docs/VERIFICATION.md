@@ -68,6 +68,25 @@ The pass stops here as requested when an ordered step cannot be completed. The r
 
 ## Not done
 
+### Continuation of the local pass (2026-09-09)
+
+The user subsequently authorized continuing past environment blockers without repeated confirmation. All following checks used local previews with external page resources blocked. `npm test` still passes all 43 tests after the accessibility fixes.
+
+| Check | Level | Observed result |
+| --- | --- | --- |
+| iOS bottom navigation | interaction (simulator touch) | Home, Map and Checklist also tapped successfully, completing all five destinations. |
+| iOS checklist | interaction (simulator touch) | Added `test`, checked it, deleted it, tapped Undo, then tapped Safari Reload. The item and its checked state survived the reload. |
+| iOS landscape | runtime + interaction (simulator) | Rotated with Device Hub; Map rendered in landscape and the Days navigation tap worked. This was before the typography fix; not a complete landscape regression pass. |
+| iOS largest Dynamic Type | runtime (simulator) | Set `accessibility-extra-extra-extra-large` using `simctl ui`. Original page text stayed small while Safari controls grew. After changing fixed pixel fonts to `rem` and using `-apple-system-body`, page text enlarged. Initial enlarged layout exposed a blocking sticky header; headers now scroll with content. Full enlarged-text touch navigation is still unverified. Restored the simulator's original `large` setting. |
+| Enlarged-text layout | runtime (headless Chrome, local dev) | At 390 px with a 17 px root (16 px body) and a 53 px root (49.88 px body), all five pages had `scrollWidth === 390` after fixing home cards, rental details and the checklist heading. Navigation and transport tabs intentionally scroll horizontally at the enlarged size. This is browser font-size emulation, not iOS interaction evidence. |
+| Add to Home Screen | interaction + structure (simulator) | Used Safari Share → More → Add to Home Screen → Add, with “Open as Web App” enabled. A local WebClip was created for `localhost:4195/#days` with `FullScreen=true`. Its icon was not located/launched through the available simulator controls, so standalone runtime is **not verified**. |
+| Android availability | environment inventory | No `adb`/`emulator` on PATH, Android application in system/user Applications, `~/Library/Android`, or `~/.android` found. Android check skipped; no device run claimed. |
+| Real CJK composition | attempted, unresolved | Enabled and selected Apple's built-in Pinyin via Carbon input-source APIs (selection returned 0), then sent individual `n i h a o` keys into Safari. Only plain letters appeared, with no observable candidate window. Cannot claim composition Enter behavior. Restored ABC and disabled the temporarily enabled Apple Pinyin sources. |
+| Keyboard: Home, Map, Days, Transport, Checklist | interaction (native macOS Safari keyboard) | Used Option-Tab, Safari's all-controls keyboard traversal. Reached Home links; all 10 map places; all seven day summaries and the controls revealed by opening them; transport notes, rental map and category controls; checklist filters/input/add and all eight checkbox/delete pairs; bottom navigation. Activated day summaries and the Buses category with Enter. |
+| Dialog focus after close | interaction (native Safari keyboard) | Before: opened the final map place with Enter, closed with Enter, then Option-Tab restarted at the first place. Fixed by releasing the dialog on history traversal and restoring opener focus after Safari's history work. Same path now returns focus to the final place, then Option-Tab reaches Back to top. |
+| Contextual map button labels | runtime (Safari accessibility tree) | Stay buttons previously announced only “Map”. Added the stay name to their accessible labels; read back “Map: Example family apartment (Port de Sóller)” and “Map: Example beach hotel (Playa de Muro)” while traversing Days. The rental map button now also includes the place name; its new label has not yet been read back in Safari. |
+| VoiceOver | attempted, unresolved | Started VoiceOver and its first-use tutorial; the VoiceOver process ran. The available app-targeted keyboard commands did not yield observable VoiceOver navigation or speech output. Safari's accessibility tree is recorded above, but this is **not** a completed screen-reader pass. Stopped the VoiceOver processes started for this check. |
+
 - No deployment to a live host from this repository. `docs/PUBLISHING.md` routes are described, not walked.
 - No real traveler has built a roadbook with it yet. The stage-one goal (ten strangers) has zero data points.
 - No physical device yet. iOS Safari has runtime and partial simulator-touch evidence (see the dated pass above); the complete touch checklist is unfinished. Android Chrome has not been checked.

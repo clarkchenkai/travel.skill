@@ -85,15 +85,19 @@ function releaseDialog() {
   blank.removeAttribute('src');
   frame.replaceWith(blank);
   document.body.classList.remove('dialog-open');
-  window.scrollTo({top: savedScroll, behavior: 'instant'});
-  dialogOpener?.focus?.({preventScroll: true});
+  const opener = dialogOpener, scroll = savedScroll;
   dialogOpener = null;
+  // Safari restores history focus/scroll after popstate. Restore our opener after that work.
+  requestAnimationFrame(() => {
+    if (activeDialog) return;
+    window.scrollTo({top: scroll, behavior: 'instant'});
+    if (opener?.isConnected) opener.focus({preventScroll: true});
+  });
 }
 function closeDialog() {
   if (!activeDialog) return;
-  const pushed = Boolean(history.state?.roadbookModal);
-  releaseDialog();
-  if (pushed) history.back();
+  if (history.state?.roadbookModal) history.back();
+  else releaseDialog();
 }
 
 function openMap(id) {
@@ -247,7 +251,7 @@ function renderDays() {
     const dayNum = new Intl.DateTimeFormat(locale, {timeZone: 'UTC', day: 'numeric'}).format(d);
     const monthWeek = new Intl.DateTimeFormat(locale, {timeZone: 'UTC', month: 'short', weekday: 'short'}).format(d);
     const events = day.events.length ? day.events.map(eventHTML).join('') : `<p class="muted small" style="padding:12px 0">${E(t('days.noEvents'))}</p>`;
-    const stayHTML = stay ? `<div class="stay"><div><small>${E(t('days.stay'))}</small><b>${E(stay.name)}</b>${stay.localName && stay.localName !== stay.name ? `<small>${E(stay.localName)}</small>` : ''} ${statusLabel(stay)}</div>${stay.placeId && places[stay.placeId] ? `<button type="button" class="pill pill-small" data-map="${E(stay.placeId)}">${E(t('days.map'))}</button>` : ''}</div>` : '';
+    const stayHTML = stay ? `<div class="stay"><div><small>${E(t('days.stay'))}</small><b>${E(stay.name)}</b>${stay.localName && stay.localName !== stay.name ? `<small>${E(stay.localName)}</small>` : ''} ${statusLabel(stay)}</div>${stay.placeId && places[stay.placeId] ? `<button type="button" class="pill pill-small" data-map="${E(stay.placeId)}" aria-label="${E(t('days.map'))}: ${E(stay.name)}">${E(t('days.map'))}</button>` : ''}</div>` : '';
     const thumb = day.cover ? `<img class="day-thumb" src="${E(day.cover)}" alt="${E(day.coverAlt || '')}" loading="lazy" decoding="async">` : '';
     return `<details class="day ${day.cover ? 'has-cover' : ''}" id="${E(day.id)}" ${i === 0 ? 'open' : ''}><summary class="day-summary">${thumb}<span class="day-date">${E(monthWeek)}<b>${E(dayNum)}</b></span><span><span class="day-title">${E(day.title)}</span>${day.subtitle ? `<div class="day-sub">${E(day.subtitle)}</div>` : ''}<div class="day-sub" data-day-tickets="${E(day.id)}" ${day.events.some((e) => e.ticketIds?.length) ? '' : 'hidden'}></div></span><span class="day-toggle" aria-hidden="true">${ICONS.chevron}</span></summary><div class="day-body">${events}${stayHTML}</div></details>`;
   }).join('');
@@ -281,7 +285,7 @@ function rentalHTML(r) {
     ${row(t('transport.deposit'), formatMoney(r.deposit, locale))}
     ${row(t('transport.coverage'), r.coverage)}
     ${row(t('transport.fuel'), r.fuelPolicy)}
-  </dl>${(r.notes || []).map((n) => `<p class="muted small" style="margin-top:8px">${E(n)}</p>`).join('')}${r.dropOff?.placeId && places[r.dropOff.placeId] ? `<div class="button-row"><button type="button" class="pill pill-small" data-map="${E(r.dropOff.placeId)}">${E(t('days.map'))}</button></div>` : ''}${sourceLinks(r.sourceRefs)}</div>`;
+  </dl>${(r.notes || []).map((n) => `<p class="muted small" style="margin-top:8px">${E(n)}</p>`).join('')}${r.dropOff?.placeId && places[r.dropOff.placeId] ? `<div class="button-row"><button type="button" class="pill pill-small" data-map="${E(r.dropOff.placeId)}" aria-label="${E(t('days.map'))}: ${E(places[r.dropOff.placeId].name)}">${E(t('days.map'))}</button></div>` : ''}${sourceLinks(r.sourceRefs)}</div>`;
 }
 function renderTransport() {
   const journeys = data.flightJourneys;
