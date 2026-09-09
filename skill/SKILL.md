@@ -60,7 +60,16 @@ Next: <one concrete action for the user>
 - `days[]` — one entry per calendar day of the trip, `events[]` in order, `timeLabel` free text (`"09:00"` or `"Morning"`).
 - `tickets[]`, `groundTransport.tabs[]`, `rental` (only when there is one), `checklist[]`, `sources[]`.
 
-Optional images: put files under `trip/assets/` and reference them as `assets/...` (`trip.cover.image`, `routeOverview.image`). Only referenced files are published. Keep them small: the template itself is under 100 KB, a cover photo adds about 100 KB, day thumbnails 15–60 KB each; the shipped examples stay under 1.5 MB in total and only the cover loads before first paint.
+## Images (optional, do them last)
+
+The roadbook works with no images. Add them only after the facts are right, in this order: cover (`trip.cover.image`, wide), one square thumbnail per day (`days[].cover`), a map-page photo (`routeOverview.image`), a paper tile (`trip.textures.paper`). Files live in `trip/assets/` and are referenced as `assets/...`; only referenced files are published.
+
+- **The traveler's own photos first.** Ask for them. Resize before committing (cover ≤ 200 KB, thumbnails ≤ 60 KB; `scripts/optimize-images.py` if Pillow is available, otherwise any tool). Do not publish photos of other people without asking.
+- **No photos?** If an image-generation tool is available in your environment, offer it and follow [docs/VISUALS.md](../docs/VISUALS.md): realistic photograph of one subject per day, no text, no faces, no logos; record the prompt and model in `trip/ASSETS.md`. If no tool is available, say so and ship without images; do not download stock photos of unknown license.
+- Never let an image carry a fact. Times, prices, statuses stay in the data.
+- For a share card, set `trip.siteUrl` to the final address so `og:image` is absolute.
+
+Budget: the template itself is under 100 KB; a cover adds about 100 KB before first paint; everything else loads lazily.
 
 ## When to read the references
 

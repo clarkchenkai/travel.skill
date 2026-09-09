@@ -5,6 +5,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {ROOT, TEMPLATE, tripDir, readJSON, arg} from './lib/paths.mjs';
 import {validateTravelData} from './lib/validate.mjs';
+import {ICONS} from '../template/icons.mjs';
 
 const trip = tripDir();
 const out = path.resolve(ROOT, arg('--out') || 'dist');
@@ -17,7 +18,7 @@ if (errors.length) { console.error(`Refusing to build: ${errors.length} validati
 if (path.resolve(manifestPath).startsWith(out + path.sep)) { console.error('The manifest must live outside the output directory.'); process.exit(1); }
 
 const buildStamp = crypto.createHash('sha256').update(JSON.stringify(data) + Date.now()).digest('hex').slice(0, 12);
-const TEMPLATE_FILES = ['index.html', 'styles.css', 'themes.css', 'app.js', 'core.mjs', 'motion.mjs', 'sw.js', 'i18n/en.json', 'i18n/zh-CN.json'];
+const TEMPLATE_FILES = ['index.html', 'styles.css', 'themes.css', 'app.js', 'core.mjs', 'motion.mjs', 'icons.mjs', 'sw.js', 'i18n/en.json', 'i18n/zh-CN.json'];
 fs.rmSync(out, {recursive: true, force: true});
 fs.mkdirSync(out, {recursive: true});
 const written = [];
@@ -44,6 +45,20 @@ const og = [
   `<meta name="roadbook-build" content="${buildStamp}">`,
 ].filter(Boolean).join('\n');
 html = html.replace('<link rel="stylesheet" href="styles.css">', og + '\n<link rel="stylesheet" href="styles.css">');
+// Pre-render text that app.js will render identically, so the first paint has the final layout (no shift).
+const pack = JSON.parse(fs.readFileSync(path.join(TEMPLATE, 'i18n', (data.trip.locale || 'en').startsWith('zh') ? 'zh-CN.json' : 'en.json'), 'utf8'));
+if (data.trip.demo) html = html.replace('<aside class="demo-notice" id="demo-notice" hidden></aside>', `<aside class="demo-notice" id="demo-notice">${esc(data.trip.demoNotice || pack.demoNotice)}</aside>`);
+html = html.replace('<b id="identity-title">Roadbook</b><small id="identity-meta"></small>', `<b id="identity-title">${esc(data.trip.shortTitle || data.trip.title)}</b><small id="identity-meta">${esc(data.trip.eyebrow || (data.trip.countries || []).join(' · '))}</small>`)
+  .replace('<p class="cover-eyebrow" id="cover-eyebrow"></p>', `<p class="cover-eyebrow" id="cover-eyebrow">${esc(data.trip.eyebrow || '')}</p>`)
+  .replace('<h1 id="cover-title"></h1>', `<h1 id="cover-title">${esc(data.trip.title)}</h1>`)
+  .replace('<p class="cover-subtitle" id="cover-subtitle"></p>', `<p class="cover-subtitle" id="cover-subtitle">${esc(data.trip.subtitle || '')}</p>`)
+  .replace('<a class="cover-action" id="cover-action" href="#days"></a>', `<a class="cover-action" id="cover-action" href="#days">${esc(pack.cover.open)}</a>`);
+html = html.replace('<nav class="bottom-nav" aria-label="Sections" id="bottom-nav"></nav>', `<nav class="bottom-nav" aria-label="Sections" id="bottom-nav">${['home', 'map', 'days', 'transport', 'checklist'].map((id) => `<a href="#${id}"${id === 'home' ? ' aria-current="page"' : ''}>${ICONS[id]}<span>${esc(pack.nav[id])}</span></a>`).join('')}</nav>`);
+// Pre-render the cover shell so the first paint already reserves the image box (avoids layout shift).
+if (data.trip.cover?.image) {
+  html = html.replace('<div class="cover" id="cover">', `<div class="cover has-image" id="cover" data-copy="${esc(data.trip.cover.copy || 'top-left')}">`)
+    .replace('<div class="cover-media" id="cover-media" aria-hidden="true"></div>', `<div class="cover-media" id="cover-media" aria-hidden="true"><img src="${esc(data.trip.cover.image)}" alt="" fetchpriority="high" style="object-position:${esc(data.trip.cover.position || 'center')}"></div>`);
+}
 fs.writeFileSync(path.join(out, 'index.html'), html);
 
 // Public data: strip private records and anything under privateData, then re-serialize.

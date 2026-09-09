@@ -3,6 +3,8 @@
 //   node scripts/screenshot.mjs <url> <out.png> [--mobile | --width 1280 --height 860] [--chrome <path>]
 import {spawn} from 'node:child_process';
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import {arg, flag} from './lib/paths.mjs';
 
 const [url, out] = process.argv.slice(2).filter((a, i, arr) => !a.startsWith('--') && !(arr[i - 1] || '').startsWith('--'));
@@ -14,7 +16,7 @@ const chrome = candidates.find((p) => fs.existsSync(p));
 if (!chrome) { console.error('Chrome/Chromium not found. Pass --chrome <path> or set CHROME.'); process.exit(2); }
 
 const port = 9222 + Math.floor(Math.random() * 1000);
-const proc = spawn(chrome, ['--headless=new', '--disable-gpu', '--no-first-run', `--remote-debugging-port=${port}`, '--user-data-dir=' + fs.mkdtempSync(process.env.TMPDIR ? process.env.TMPDIR + '/shot-' : '/tmp/shot-'), 'about:blank'], {stdio: 'ignore'});
+const proc = spawn(chrome, ['--headless=new', '--disable-gpu', '--no-first-run', `--remote-debugging-port=${port}`, '--user-data-dir=' + fs.mkdtempSync(path.join(os.tmpdir(), 'shot-')), 'about:blank'], {stdio: 'ignore'});
 try {
   const target = await waitFor(async () => {
     const list = await fetch(`http://127.0.0.1:${port}/json/list`).then((r) => r.json());

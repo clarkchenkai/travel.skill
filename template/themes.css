@@ -7,7 +7,7 @@
   --surface: #fbf8f1;
   --surface-2: #e9e2d2;
   --ink: #2a2620;
-  --muted: #6f675a;
+  --muted: #64604f;
   --line: #d6cdb9;
   --accent: #4f6b4a;
   --accent-ink: #f8f5ec;
@@ -51,11 +51,11 @@
   --surface: #ffffff;
   --surface-2: #f1e8da;
   --ink: #16414f;
-  --muted: #5f7a84;
+  --muted: #4f6b76;
   --line: #e2d8c8;
-  --accent: #f2745f;
+  --accent: #c94a33;
   --accent-ink: #ffffff;
-  --accent-soft: #fde4de;
+  --accent-soft: #fbe1da;
   --font-display: "Avenir Next Rounded", "Nunito", "Varela Round", "Hiragino Maru Gothic ProN", "Yuanti SC", system-ui, sans-serif;
   --radius: 18px;
   --shadow: 0 2px 6px rgba(22, 65, 79, .06), 0 10px 30px rgba(22, 65, 79, .08);

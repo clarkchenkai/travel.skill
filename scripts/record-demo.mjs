@@ -3,6 +3,7 @@
 //   node scripts/record-demo.mjs http://localhost:4173/ docs/demo [--chrome <path>]
 import {spawn, execFileSync} from 'node:child_process';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import {arg} from './lib/paths.mjs';
 
@@ -13,7 +14,7 @@ if (!chrome) { console.error('Chrome not found'); process.exit(2); }
 fs.rmSync(outDir, {recursive: true, force: true}); fs.mkdirSync(outDir, {recursive: true});
 const W = 390, H = 780;
 const port = 9600 + Math.floor(Math.random() * 300);
-const proc = spawn(chrome, ['--headless=new', '--disable-gpu', '--no-first-run', `--remote-debugging-port=${port}`, '--user-data-dir=' + fs.mkdtempSync((process.env.TMPDIR || '/tmp') + '/rec-'), 'about:blank'], {stdio: 'ignore'});
+const proc = spawn(chrome, ['--headless=new', '--disable-gpu', '--no-first-run', `--remote-debugging-port=${port}`, '--user-data-dir=' + fs.mkdtempSync(path.join(os.tmpdir(), 'rec-')), 'about:blank'], {stdio: 'ignore'});
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 let frame = 0;
 try {

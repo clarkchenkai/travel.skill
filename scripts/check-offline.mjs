@@ -3,6 +3,8 @@
 //   node scripts/check-offline.mjs http://localhost:4190/ [--chrome <path>]
 import {spawn} from 'node:child_process';
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import {arg} from './lib/paths.mjs';
 
 const url = process.argv.slice(2).find((a) => !a.startsWith('--'));
@@ -10,7 +12,7 @@ if (!url) { console.error('Usage: node scripts/check-offline.mjs <url>'); proces
 const chrome = [arg('--chrome'), process.env.CHROME, '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '/usr/bin/google-chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser'].filter(Boolean).find((p) => fs.existsSync(p));
 if (!chrome) { console.error('Chrome not found; pass --chrome'); process.exit(2); }
 const port = 9300 + Math.floor(Math.random() * 500);
-const proc = spawn(chrome, ['--headless=new', '--disable-gpu', '--no-first-run', `--remote-debugging-port=${port}`, '--user-data-dir=' + fs.mkdtempSync((process.env.TMPDIR || '/tmp') + '/offline-'), 'about:blank'], {stdio: 'ignore'});
+const proc = spawn(chrome, ['--headless=new', '--disable-gpu', '--no-first-run', `--remote-debugging-port=${port}`, '--user-data-dir=' + fs.mkdtempSync(path.join(os.tmpdir(), 'offline-')), 'about:blank'], {stdio: 'ignore'});
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 let exit = 1;
 try {
