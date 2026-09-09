@@ -1,0 +1,2704 @@
+{
+  "version": "2026-09-08-r2",
+  "trip": {
+    "id": "kumano-2026-09",
+    "title": "熊野古道 · 2026",
+    "englishTitle": "KUMANO KODO — TOKYO",
+    "countryLabel": "JP / 2026",
+    "startDate": "2026-09-10",
+    "endDate": "2026-09-15",
+    "timeZone": "Asia/Tokyo",
+    "people": 4,
+    "routeSummary": "深圳 → 和歌浦 → 川汤 → 那智胜浦 → 东京 → 深圳",
+    "subtitle": "三晚熊野温泉，两段古道，一次东京停留。",
+    "updatedAt": "2026-09-08",
+    "sourceRefs": [
+      "user-confirmed"
+    ],
+    "privacy": "public"
+  },
+  "travelers": {
+    "count": 4,
+    "roles": "无固定分工",
+    "privacy": "public"
+  },
+  "flightJourneys": [
+    {
+      "id": "outbound",
+      "airline": "深圳航空",
+      "status": "confirmed",
+      "label": "出境 · 深圳至关西",
+      "segments": [
+        {
+          "number": "ZH661",
+          "origin": {
+            "code": "SZX",
+            "city": "深圳",
+            "terminal": "宝安 T3",
+            "timeZone": "Asia/Shanghai",
+            "timeZoneLabel": "北京时间"
+          },
+          "destination": {
+            "code": "KIX",
+            "city": "大阪关西",
+            "terminal": "T1",
+            "timeZone": "Asia/Tokyo",
+            "timeZoneLabel": "日本时间"
+          },
+          "departure": "2026-09-10T09:20:00+08:00",
+          "arrival": "2026-09-10T14:15:00+09:00"
+        }
+      ],
+      "notes": [
+        "机票已由用户确认出票。",
+        "入境与取行李后按实际接机安排前往MANPA。"
+      ],
+      "privacy": "public",
+      "sourceRefs": [
+        "user-confirmed"
+      ]
+    },
+    {
+      "id": "return",
+      "airline": "深圳航空",
+      "status": "confirmed",
+      "label": "返程 · 成田至深圳",
+      "segments": [
+        {
+          "number": "ZH652",
+          "origin": {
+            "code": "NRT",
+            "city": "东京成田",
+            "terminal": "T1 南翼 4F",
+            "timeZone": "Asia/Tokyo",
+            "timeZoneLabel": "日本时间"
+          },
+          "destination": {
+            "code": "SZX",
+            "city": "深圳",
+            "terminal": "宝安 T3",
+            "timeZone": "Asia/Shanghai",
+            "timeZoneLabel": "北京时间"
+          },
+          "departure": "2026-09-15T19:00:00+09:00",
+          "arrival": "2026-09-15T23:05:00+08:00"
+        }
+      ],
+      "notes": [
+        "机票已由用户确认出票。",
+        "铁路去T1应在“成田空港”站下车，不是空港第2ビル。"
+      ],
+      "privacy": "public",
+      "sourceRefs": [
+        "user-confirmed",
+        "narita"
+      ]
+    }
+  ],
+  "flights": [
+    {
+      "number": "ZH661",
+      "origin": {
+        "code": "SZX",
+        "city": "深圳",
+        "terminal": "宝安 T3",
+        "timeZone": "Asia/Shanghai",
+        "timeZoneLabel": "北京时间"
+      },
+      "destination": {
+        "code": "KIX",
+        "city": "大阪关西",
+        "terminal": "T1",
+        "timeZone": "Asia/Tokyo",
+        "timeZoneLabel": "日本时间"
+      },
+      "departure": "2026-09-10T09:20:00+08:00",
+      "arrival": "2026-09-10T14:15:00+09:00"
+    },
+    {
+      "number": "ZH652",
+      "origin": {
+        "code": "NRT",
+        "city": "东京成田",
+        "terminal": "T1 南翼 4F",
+        "timeZone": "Asia/Tokyo",
+        "timeZoneLabel": "日本时间"
+      },
+      "destination": {
+        "code": "SZX",
+        "city": "深圳",
+        "terminal": "宝安 T3",
+        "timeZone": "Asia/Shanghai",
+        "timeZoneLabel": "北京时间"
+      },
+      "departure": "2026-09-15T19:00:00+09:00",
+      "arrival": "2026-09-15T23:05:00+08:00"
+    }
+  ],
+  "accommodations": [
+    {
+      "id": "manpa",
+      "placeId": "manpa",
+      "name": "MANPA RESORT",
+      "localName": "和歌浦温泉 萬波 MANPA RESORT",
+      "date": "2026-09-10",
+      "status": "confirmed",
+      "statusLabel": "已订",
+      "privacy": "public",
+      "sourceRefs": [
+        "user-confirmed",
+        "manpa"
+      ],
+      "note": "9/11早间去JR和歌山站另作安排。"
+    },
+    {
+      "id": "fujiya",
+      "placeId": "fujiya",
+      "name": "川汤温泉 冨士屋",
+      "localName": "川湯温泉 冨士屋",
+      "date": "2026-09-11",
+      "status": "confirmed",
+      "statusLabel": "已订",
+      "privacy": "public",
+      "sourceRefs": [
+        "user-confirmed",
+        "fujiya"
+      ],
+      "note": "电话 0735-42-0007；到店确认餐食与翌日站牌。"
+    },
+    {
+      "id": "taoya",
+      "placeId": "taoya",
+      "name": "TAOYA 那智胜浦",
+      "localName": "TAOYA那智勝浦",
+      "date": "2026-09-12",
+      "status": "confirmed",
+      "statusLabel": "已订",
+      "privacy": "public",
+      "sourceRefs": [
+        "user-confirmed",
+        "taoya"
+      ],
+      "note": "电话 050-3615-3456；本次自行安排站到酒店交通。"
+    },
+    {
+      "id": "imperial",
+      "placeId": "imperial",
+      "name": "东京帝国饭店",
+      "localName": "帝国ホテル 東京",
+      "date": "2026-09-13",
+      "status": "confirmed",
+      "statusLabel": "已订",
+      "privacy": "public",
+      "sourceRefs": [
+        "user-confirmed",
+        "imperial"
+      ],
+      "note": "日比谷站A13出口步行约3分钟；电话 +81-3-3504-1111。"
+    },
+    {
+      "id": "okura",
+      "placeId": "okura",
+      "name": "东京大仓",
+      "localName": "The Okura Tokyo",
+      "date": "2026-09-14",
+      "status": "confirmed",
+      "statusLabel": "已订",
+      "privacy": "public",
+      "sourceRefs": [
+        "user-confirmed",
+        "okura"
+      ],
+      "note": "住宿使用5层正面入口；别把1层宴会入口当住宿入口。电话 +81-3-3582-0111。"
+    }
+  ],
+  "days": [
+    {
+      "id": "day-1",
+      "date": "2026-09-10",
+      "title": "深圳至和歌浦",
+      "routeSummary": "深圳 → 大阪关西 → 和歌浦",
+      "accommodationId": "manpa",
+      "subtitle": "航班已出票 · 当晚住宿已订",
+      "status": "planned",
+      "privacy": "public",
+      "sourceRefs": [
+        "user-plan"
+      ],
+      "events": [
+        {
+          "id": "day-1-e01",
+          "timeLabel": "起飞前",
+          "title": "宝安T3办理国际出发",
+          "kind": "airport",
+          "placeIds": [
+            "szx"
+          ],
+          "notes": "按航空公司值机与行李要求准备，护照和必要材料随身；以票面和机场通知为准。",
+          "details": [
+            "四人核对航班、日期、航站楼和随身物品，不需要固定分工。",
+            "日本比北京时间快1小时；手机抵达后会换时区，航班卡各端均标当地时间。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "user-plan"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "宝安T3办理国际出发，护照和必要材料随身。"
+        },
+        {
+          "id": "day-1-e02",
+          "timeLabel": "09:20",
+          "title": "ZH661 深圳 → 大阪关西",
+          "kind": "flight",
+          "placeIds": [
+            "szx",
+            "kix"
+          ],
+          "notes": "北京时间09:20起飞，日本时间14:15抵达；直飞约3小时55分。",
+          "details": [],
+          "ticketIds": [],
+          "departure": "2026-09-10T09:20:00+08:00",
+          "arrival": "2026-09-10T14:15:00+09:00",
+          "sourceRefs": [
+            "user-confirmed"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "ZH661：09:20深圳起飞，14:15抵关西。"
+        },
+        {
+          "id": "day-1-e03",
+          "timeLabel": "抵达后",
+          "title": "入境、取行李，前往和歌浦",
+          "kind": "transfer",
+          "placeIds": [
+            "kix",
+            "manpa"
+          ],
+          "notes": "机场接机是原手册留有的已订线索，按实际安排会合。入境与取行李时间不做硬承诺。",
+          "details": [
+            "MANPA位于和歌山市和歌浦，不是白滨；给司机看日文酒店名和地址。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "user-plan"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "入境取行李后，按实际安排前往和歌浦。"
+        },
+        {
+          "id": "day-1-e04",
+          "timeLabel": "入住时",
+          "title": "MANPA：先休息，再安排明早",
+          "kind": "hotel",
+          "placeIds": [
+            "manpa"
+          ],
+          "notes": "住宿已订；核对晚餐、明早早餐和大箱处理。",
+          "details": [
+            "次日计划约07:40乘出租车去JR和歌山站中央口，先和前台确认车辆及4人行李容量。",
+            "官网送站车10:15才离店，无法赶本计划08:48黑潮；本次不用它。",
+            "如寄大箱到东京，先让收件酒店与承运人确认接收日期和姓名，不保证当天到。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "manpa",
+            "luggage"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "入住MANPA，确认早餐、大箱和明早交通。"
+        }
+      ],
+      "chapterTheme": "ocean",
+      "displayTitle": "深圳至和歌浦"
+    },
+    {
+      "id": "day-2",
+      "date": "2026-09-11",
+      "title": "发心门至本宫",
+      "routeSummary": "和歌浦 → 纪伊田边 → 发心门 → 本宫 → 川汤",
+      "accommodationId": "fujiya",
+      "subtitle": "上午公共交通 · 午后杉林徒步",
+      "status": "planned",
+      "privacy": "public",
+      "sourceRefs": [
+        "user-plan"
+      ],
+      "events": [
+        {
+          "id": "day-2-e01",
+          "timeLabel": "07:00",
+          "title": "早餐、退房，轻装出发",
+          "kind": "prep",
+          "placeIds": [
+            "manpa"
+          ],
+          "notes": "带好午餐、饮水与雨具，大箱去向须在进山前安排好。",
+          "details": [
+            "不能按时早开餐则提前准备可携带早餐。",
+            "只带徒步所需物品；大箱存放点要考虑后续取件路线。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "user-plan"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "退房轻装进山；午餐、饮水、雨具随身。"
+        },
+        {
+          "id": "day-2-e02",
+          "timeLabel": "约07:40",
+          "title": "出租车 → JR和歌山站中央口",
+          "kind": "taxi",
+          "placeIds": [
+            "manpa",
+            "wakayama"
+          ],
+          "notes": "目标08:15左右到站，给现场购票、找月台和如厕留余量。",
+          "details": [
+            "中央口有绿色窗口和售票机；不要让司机送到“和歌山市駅”。",
+            "车辆尚按现场安排处理，不显示为已预约。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "wakayama"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "出租车到JR和歌山站中央口，约08:15到站。"
+        },
+        {
+          "id": "day-2-e03",
+          "timeLabel": "08:15前后",
+          "title": "在中央口买黑潮车票",
+          "kind": "ticket",
+          "placeIds": [
+            "wakayama"
+          ],
+          "notes": "需要乘车券＋指定席特急券，不是只刷IC卡就能坐黑潮。",
+          "details": [],
+          "ticketIds": [
+            "kuroshio"
+          ],
+          "sourceRefs": [
+            "jr-buy",
+            "wakayama"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "中央口购买黑潮乘车券和指定席特急券。"
+        },
+        {
+          "id": "day-2-e04",
+          "timeLabel": "08:48",
+          "title": "黑潮1号 → 纪伊田边",
+          "kind": "train",
+          "placeIds": [
+            "wakayama",
+            "tanabe"
+          ],
+          "notes": "官方计划：和歌山4号月台，09:58到纪伊田边。班次/站台以当日显示为准。",
+          "details": [
+            "黑潮为全车指定席；现场无合适座位时先请站员确认方案，不擅自套用自由席。"
+          ],
+          "ticketIds": [],
+          "departure": "2026-09-11T08:48:00+09:00",
+          "arrival": "2026-09-11T09:58:00+09:00",
+          "sourceRefs": [
+            "kuroshio"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "黑潮1号：和歌山4号月台，09:58到纪伊田边。"
+        },
+        {
+          "id": "day-2-e05",
+          "timeLabel": "09:58–10:20",
+          "title": "出站补给 → 本宫方向2号巴士站",
+          "kind": "transfer",
+          "placeIds": [
+            "tanabe",
+            "tanabe-info"
+          ],
+          "notes": "田边观光中心售票机可以买当日巴士票；买票不保座。先吃少量食物、上厕所，再提前排队。",
+          "details": [
+            "10:30明光93系統，目的地“本宮大社前”。",
+            "现金成人单程2,100日元；车上付款时按司机指示。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "bus-tanabe",
+            "bus-pay"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "到2号巴士站；10:30乘明光93往本宫。"
+        },
+        {
+          "id": "day-2-e06",
+          "timeLabel": "10:30",
+          "title": "明光93系統 → 本宫大社前",
+          "kind": "bus",
+          "placeIds": [
+            "tanabe",
+            "hongu-stop"
+          ],
+          "notes": "12:05到达。上车先告诉司机在本宮大社前下车，别坐过站。",
+          "details": [],
+          "ticketIds": [],
+          "departure": "2026-09-11T10:30:00+09:00",
+          "arrival": "2026-09-11T12:05:00+09:00",
+          "sourceRefs": [
+            "bus-tanabe"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "明光93系統，12:05到本宮大社前。"
+        },
+        {
+          "id": "day-2-e07",
+          "timeLabel": "12:05–12:15",
+          "title": "本宫换龙神巴士：只有10分钟",
+          "kind": "transfer",
+          "placeIds": [
+            "hongu-stop"
+          ],
+          "notes": "下车立即找“発心門王子”方向，不购物、不先参拜、不临时寄箱。",
+          "details": [
+            "若错过或满员，去世界遗产熊野本宫馆内观光协会询问去发心门的出租车。",
+            "若13:00前仍不能及时起步，改本宫与大斋原，早回酒店，不靠少休息补时间。",
+            "2026秋季增发车9/19才开始，本次9/11不可套用。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "bus-tanabe",
+            "autumn-bus"
+          ],
+          "warning": "10分钟换乘，不保证接续",
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "本宫仅10分钟换乘，立即找发心门方向。"
+        },
+        {
+          "id": "day-2-e08",
+          "timeLabel": "12:15",
+          "title": "龙神81系統 → 发心门王子",
+          "kind": "bus",
+          "placeIds": [
+            "hongu-stop",
+            "hosshin"
+          ],
+          "notes": "12:30到达，约12:40开始走。票价470日元仅为原指南参考，以车内显示为准。",
+          "details": [],
+          "ticketIds": [],
+          "departure": "2026-09-11T12:15:00+09:00",
+          "arrival": "2026-09-11T12:30:00+09:00",
+          "sourceRefs": [
+            "bus-tanabe"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "龙神81系統，12:30到发心门王子。"
+        },
+        {
+          "id": "day-2-e09",
+          "timeLabel": "12:40–13:25",
+          "title": "发心门 → 水呑王子",
+          "kind": "walk",
+          "placeIds": [
+            "hosshin",
+            "mizunomi"
+          ],
+          "notes": "先有村落铺装路，再进入林间。到水呑附近休息、如厕和补水。",
+          "details": [
+            "沿“熊野本宮大社”与水呑方向走，山路按现场路标。",
+            "步行时间为含停留的规划，不要求赶表。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "hosshin"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "发心门步行至水呑王子，补水和如厕。"
+        },
+        {
+          "id": "day-2-e10",
+          "timeLabel": "13:25–14:35",
+          "title": "茶田与伏拝，吃午餐休息",
+          "kind": "walk",
+          "placeIds": [
+            "fushiogami"
+          ],
+          "notes": "约14:10到伏拝休息处，坐下吃自带食物。沿途店铺和饮用水不保证可用。",
+          "details": [
+            "不要从早餐一直饿到这里，上午转车时先吃一部分。",
+            "若14:50仍未离开，省略额外展望台和大斋原。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "hosshin"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "伏拝休息处吃自带午餐，沿途补给不保证。"
+        },
+        {
+          "id": "day-2-e11",
+          "timeLabel": "14:35–16:00",
+          "title": "三轩茶屋 → 熊野本宫大社",
+          "kind": "walk",
+          "placeIds": [
+            "sangen",
+            "hongu"
+          ],
+          "notes": "继续沿本宫方向，不转入小边路/十津川。古道约7–7.5公里，加参拜与站点往返全日约8–9公里。",
+          "details": [],
+          "ticketIds": [],
+          "sourceRefs": [
+            "hosshin"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "沿本宫方向走，不转入小边路或十津川。"
+        },
+        {
+          "id": "day-2-e12",
+          "timeLabel": "16:00前后",
+          "title": "参拜本宫，按体力去大斋原",
+          "kind": "shrine",
+          "placeIds": [
+            "hongu",
+            "oyunohara"
+          ],
+          "notes": "普通参拜免费。御朱印、祈祷、宝物殿等不包括在普通参拜里，不作为本次必做。",
+          "details": [
+            "时间或体力不足就省略大斋原，考虑16:40班车早回川汤。",
+            "本宫到大斋原及返回站点要留实际步行时间，别以关门时间倒推最后一刻。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "hongu"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "本宫普通参拜免费；按体力决定是否去大斋原。"
+        },
+        {
+          "id": "day-2-e13",
+          "timeLabel": "16:58",
+          "title": "本宫大社前 → 川汤温泉",
+          "kind": "bus",
+          "placeIds": [
+            "hongu-stop",
+            "fujiya"
+          ],
+          "notes": "周五计划16:58→17:19，成人310日元。目标16:50前到站；到川汤后按前台确认的最近下车点去冨士屋。",
+          "details": [
+            "较累可省略大斋原，提前用16:40龙神班次。",
+            "误车后联系冨士屋，确认后续交通。"
+          ],
+          "ticketIds": [],
+          "departure": "2026-09-11T16:58:00+09:00",
+          "arrival": "2026-09-11T17:19:00+09:00",
+          "sourceRefs": [
+            "bus-kawayu"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "16:58本宫大社前乘车，17:19到川汤。"
+        },
+        {
+          "id": "day-2-e14",
+          "timeLabel": "傍晚",
+          "title": "冨士屋入住、晚餐与温泉",
+          "kind": "hotel",
+          "placeIds": [
+            "fujiya"
+          ],
+          "notes": "住宿已订，晚餐时刻以酒店实际安排为准。确认明早早餐与08:40新宫方向站牌。",
+          "details": [
+            "河边温泉受水位、天气影响，不列为硬行程。",
+            "主行李与翌日随身包分开整理，保持轻装。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "fujiya"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "入住冨士屋，确认早餐和08:40新宫方向站牌。"
+        }
+      ],
+      "chapterTheme": "forest",
+      "imageAsset": "assets/forest-cover.webp",
+      "displayTitle": "发心门至本宫"
+    },
+    {
+      "id": "day-3",
+      "date": "2026-09-12",
+      "title": "大门坂与那智",
+      "routeSummary": "川汤 → 新宫 → 胜浦 → 大门坂 → 那智山 → 胜浦",
+      "accommodationId": "taoya",
+      "subtitle": "台阶多，距离短也要留足休息",
+      "status": "planned",
+      "privacy": "public",
+      "sourceRefs": [
+        "user-plan"
+      ],
+      "events": [
+        {
+          "id": "day-3-e01",
+          "timeLabel": "07:15–08:25",
+          "title": "早餐退房，去ふじや前站牌",
+          "kind": "prep",
+          "placeIds": [
+            "fujiya",
+            "fujiya-stop"
+          ],
+          "notes": "前一晚请前台带认新宫方向。准备备用饭团/面包，08:25前到站。",
+          "details": [
+            "不要把“川湯温泉08:39”与“ふじや前08:40”当同一个站。",
+            "本次没有固定酒店接站，不在行程中增加接站预约任务。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "fujiya",
+            "bus-operator"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "08:25前到ふじや前，勿与川湯温泉站混淆。"
+        },
+        {
+          "id": "day-3-e02",
+          "timeLabel": "08:40",
+          "title": "54系統 → 新宫站",
+          "kind": "bus",
+          "placeIds": [
+            "fujiya-stop",
+            "shingu"
+          ],
+          "notes": "原9/8指南列09:37到达。出发前再查运营商与现场站牌，4人提前排队。",
+          "details": [],
+          "ticketIds": [],
+          "departure": "2026-09-12T08:40:00+09:00",
+          "arrival": "2026-09-12T09:37:00+09:00",
+          "sourceRefs": [
+            "bus-operator"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "08:40乘54系統，出发前核对站牌和运行。"
+        },
+        {
+          "id": "day-3-e03",
+          "timeLabel": "09:37–10:00",
+          "title": "新宫站换胜浦方向巴士",
+          "kind": "transfer",
+          "placeIds": [
+            "shingu"
+          ],
+          "notes": "约23分钟换乘；如厕后先找17系統、紀伊勝浦方面站牌。9/12用周六时刻表。",
+          "details": [
+            "错过10:00，参考10:30→胜浦11:25，再转11:50上山；按延迟压缩可选活动，不靠快走。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "bus-shingu"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "新宫换17系統往纪伊胜浦，约23分钟换乘。"
+        },
+        {
+          "id": "day-3-e04",
+          "timeLabel": "10:00",
+          "title": "17系統 → 纪伊胜浦站",
+          "kind": "bus",
+          "placeIds": [
+            "shingu",
+            "katsuura"
+          ],
+          "notes": "10:39抵达，成人630日元。经过那智站先不下，避免10:30→10:32仅2分钟的上山换乘。",
+          "details": [],
+          "ticketIds": [],
+          "departure": "2026-09-12T10:00:00+09:00",
+          "arrival": "2026-09-12T10:39:00+09:00",
+          "sourceRefs": [
+            "bus-shingu"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "17系統10:39到胜浦；不要在那智站下车。"
+        },
+        {
+          "id": "day-3-e05",
+          "timeLabel": "10:39–11:05",
+          "title": "寄存软包、补水，转31系統",
+          "kind": "transfer",
+          "placeIds": [
+            "katsuura"
+          ],
+          "notes": "先找上山乘车处，再处理必要寄存。11:05从胜浦始发去大门坂。",
+          "details": [
+            "车站售票机プラス10:20–11:05暂停，别在这26分钟里计划购买明天铁路票。",
+            "软包柜位不保证；若柜满，问旅游咨询处或酒店，不带大箱赶上山。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "katsuura",
+            "bus-nachi",
+            "luggage"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "先找上山乘车处，11:05从胜浦去大门坂。"
+        },
+        {
+          "id": "day-3-e06",
+          "timeLabel": "11:05",
+          "title": "31系統 → 大门坂",
+          "kind": "bus",
+          "placeIds": [
+            "katsuura",
+            "daimonzaka"
+          ],
+          "notes": "11:23到达，成人480日元；目标站是“大門坂”，不是“熊野古道”。",
+          "details": [
+            "省力方案可同车继续坐到那智山11:31，省大门坂石阶；仍有神社与瀑布台阶。",
+            "错过可看11:50→12:08、12:20→12:38等后班；按时间调整，不保证原方案全走完。"
+          ],
+          "ticketIds": [],
+          "departure": "2026-09-12T11:05:00+09:00",
+          "arrival": "2026-09-12T11:23:00+09:00",
+          "sourceRefs": [
+            "bus-nachi"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "31系統11:05发车，11:23到大門坂。"
+        },
+        {
+          "id": "day-3-e07",
+          "timeLabel": "11:35–12:15",
+          "title": "大门坂夫妇杉与古道石阶",
+          "kind": "walk",
+          "placeIds": [
+            "daimonzaka"
+          ],
+          "notes": "整理鞋带后再走；路短但石阶集中，湿滑时放慢。先把体力留给后面的神社与下坡。",
+          "details": [
+            "膝盖不适可返回大門坂站乘后续巴士，不能假定石阶上端能随意叫车。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "user-plan"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "大门坂石阶集中；湿滑时放慢，膝盖不适就折返。"
+        },
+        {
+          "id": "day-3-e08",
+          "timeLabel": "12:15–12:45",
+          "title": "那智山观光中心一带午餐",
+          "kind": "food",
+          "placeIds": [
+            "nachi-center"
+          ],
+          "notes": "抵达先问是否供餐。排队长就用自带食品，并选择允许进食的休息区。",
+          "details": [
+            "不赶旧包车版的桂城13:00/13:20午餐；本次下山约15点，衔接不成立。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "nachi-info"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "那智山观光中心用餐；无餐或排队长则吃自带食品。"
+        },
+        {
+          "id": "day-3-e09",
+          "timeLabel": "12:45–13:50",
+          "title": "那智大社 → 青岸渡寺本堂",
+          "kind": "shrine",
+          "placeIds": [
+            "nachi-shrine",
+            "seigantoji"
+          ],
+          "notes": "神社与寺院相邻。参拜后留时间休息；御朱印若排队较长，可略过。",
+          "details": [],
+          "ticketIds": [],
+          "sourceRefs": [
+            "seigantoji"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "那智大社与青岸渡寺相邻，保留休息时间。"
+        },
+        {
+          "id": "day-3-e10",
+          "timeLabel": "13:50前后",
+          "title": "三重塔与瀑布同框",
+          "kind": "temple",
+          "placeIds": [
+            "pagoda"
+          ],
+          "notes": "外部取景与入塔分开；入塔为可选成人500日元。时间和体力有余再进入，不挤占下山车时间。",
+          "details": [],
+          "ticketIds": [
+            "pagoda-entry"
+          ],
+          "sourceRefs": [
+            "seigantoji",
+            "pagoda-reopen"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "三重塔入内可选，成人500日元，勿占下山时间。"
+        },
+        {
+          "id": "day-3-e11",
+          "timeLabel": "14:05–14:45",
+          "title": "下行到那智瀑布・飞瀧神社",
+          "kind": "walk",
+          "placeIds": [
+            "waterfall"
+          ],
+          "notes": "普通区域参拜，近看可选付费的御滝拝所舞台。成人500日元，在社务所旁受付。",
+          "details": [
+            "上下仍有台阶；14:45左右开始回道路，给找下山站牌留时间。"
+          ],
+          "ticketIds": [
+            "waterfall-deck"
+          ],
+          "sourceRefs": [
+            "waterfall"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "到飞瀧神社；御滝拝所舞台可选，成人500日元。"
+        },
+        {
+          "id": "day-3-e12",
+          "timeLabel": "15:00前",
+          "title": "回到道路上的那智の滝前站",
+          "kind": "transfer",
+          "placeIds": [
+            "waterfall-stop"
+          ],
+          "notes": "不是在瀑布底部等车。认“紀伊勝浦駅”下山方向，提前候车。",
+          "details": [],
+          "ticketIds": [],
+          "sourceRefs": [
+            "bus-nachi"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "回那智の滝前站等往纪伊胜浦方向巴士。"
+        },
+        {
+          "id": "day-3-e13",
+          "timeLabel": "15:09",
+          "title": "32系統 → 纪伊胜浦站",
+          "kind": "bus",
+          "placeIds": [
+            "waterfall-stop",
+            "katsuura"
+          ],
+          "notes": "15:33抵达，成人630日元。备用15:44→16:08；若再晚，先联系酒店确认晚餐时间。",
+          "details": [],
+          "ticketIds": [],
+          "departure": "2026-09-12T15:09:00+09:00",
+          "arrival": "2026-09-12T15:33:00+09:00",
+          "sourceRefs": [
+            "bus-nachi"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "32系統15:09发车，15:33到纪伊胜浦。"
+        },
+        {
+          "id": "day-3-e14",
+          "timeLabel": "回站后",
+          "title": "取行李，可买次日铁路票",
+          "kind": "ticket",
+          "placeIds": [
+            "katsuura"
+          ],
+          "notes": "售票机プラス此时正常时段内，可处理9/13南纪＋新干线，仍属于现场购买。具体班次和座位当场确认。",
+          "details": [],
+          "ticketIds": [
+            "nanki"
+          ],
+          "sourceRefs": [
+            "katsuura",
+            "jr-buy"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "取行李；可现场购买次日南纪和新干线车票。"
+        },
+        {
+          "id": "day-3-e15",
+          "timeLabel": "傍晚",
+          "title": "自行前往 TAOYA 那智胜浦",
+          "kind": "hotel",
+          "placeIds": [
+            "taoya"
+          ],
+          "notes": "住宿已订；取回行李后按现场交通去酒店。没有固定接站时刻，晚餐时间到店确认。",
+          "details": [
+            "需要出租车时请车站/酒店协助，别带大箱沿公路赶路。",
+            "次日早班铁路，今晚确认退房和到站交通。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "taoya"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "自行前往TAOYA；到店确认晚餐和次日交通。"
+        }
+      ],
+      "chapterTheme": "forest",
+      "imageAsset": "assets/nachi-vertical.webp",
+      "displayTitle": "大门坂与那智"
+    },
+    {
+      "id": "day-4",
+      "date": "2026-09-13",
+      "title": "纪伊胜浦至东京",
+      "routeSummary": "纪伊胜浦 → 名古屋 → 东京",
+      "accommodationId": "imperial",
+      "subtitle": "南纪接新干线 · 现场确认车次与座位",
+      "status": "planned",
+      "privacy": "public",
+      "sourceRefs": [
+        "user-plan"
+      ],
+      "events": [
+        {
+          "id": "day-4-e01",
+          "timeLabel": "约08:00",
+          "title": "退房，前往纪伊胜浦站",
+          "kind": "taxi",
+          "placeIds": [
+            "taoya",
+            "katsuura"
+          ],
+          "notes": "按实际车票安排到站；尚未买票时须预留购票与排队。售票机プラス8:00才开始服务。",
+          "details": [
+            "建议9月12日回站后购票，确认次日班次和4人座位。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "katsuura"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "退房到纪伊胜浦站；未购票则预留排队时间。"
+        },
+        {
+          "id": "day-4-e02",
+          "timeLabel": "08:54",
+          "title": "南纪4号 → 名古屋",
+          "kind": "train",
+          "placeIds": [
+            "katsuura",
+            "nagoya"
+          ],
+          "notes": "纪伊胜浦08:54出发。原手册列12:41到名古屋，到时按最终票面复核；沿途不再加徒步。",
+          "details": [],
+          "ticketIds": [
+            "nanki"
+          ],
+          "departure": "2026-09-13T08:54:00+09:00",
+          "arrival": "2026-09-13T12:41:00+09:00",
+          "sourceRefs": [
+            "nanki"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "南纪4号08:54从纪伊胜浦出发，按票面到名古屋。"
+        },
+        {
+          "id": "day-4-e03",
+          "timeLabel": "到站后",
+          "title": "名古屋站内换新干线",
+          "kind": "transfer",
+          "placeIds": [
+            "nagoya"
+          ],
+          "notes": "沿“新幹線のりかえ”指示找换乘闸口，不先出站逛街。目标至少留20–30分钟，这是规划余量，不是保证接续。",
+          "details": [
+            "先看大屏确认东京方向、车次和月台，再对票面。",
+            "持多张纸票时按闸机/站员提示使用并取回仍需的票；不要把IC卡当所有票种的替代。",
+            "若南纪晚点、现场票班不匹配，先找售票处/站员调整新干线，再告知当晚酒店。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "nagoya",
+            "jr-buy"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "名古屋按新干线换乘指示走，预留20至30分钟。"
+        },
+        {
+          "id": "day-4-e04",
+          "timeLabel": "按所购班次",
+          "title": "东海道新干线 → 东京",
+          "kind": "train",
+          "placeIds": [
+            "nagoya",
+            "tokyo-station"
+          ],
+          "notes": "车次、座位和到达时间以实际购票结果为准。",
+          "details": [
+            "大件行李的尺寸和对应席位安排在购票时一并说明。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "user-plan"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "按实际购得班次乘东海道新干线去东京。"
+        },
+        {
+          "id": "day-4-e05",
+          "timeLabel": "下午或傍晚",
+          "title": "东京帝国饭店入住",
+          "kind": "hotel",
+          "placeIds": [
+            "tokyo-station",
+            "imperial"
+          ],
+          "notes": "酒店已订。根据到达时间和行李选择前往方式，晚间保留休息。",
+          "details": [],
+          "ticketIds": [],
+          "sourceRefs": [
+            "imperial"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "到东京帝国饭店入住，按抵达时间处理晚间安排。"
+        }
+      ],
+      "chapterTheme": "city",
+      "displayTitle": "纪伊胜浦至东京"
+    },
+    {
+      "id": "day-5",
+      "date": "2026-09-14",
+      "title": "东京自由活动",
+      "routeSummary": "帝国饭店 → 东京市内 → The Okura Tokyo",
+      "accommodationId": "okura",
+      "subtitle": "自由安排的一天，不虚构景点与预约",
+      "status": "planned",
+      "privacy": "public",
+      "sourceRefs": [
+        "user-plan"
+      ],
+      "events": [
+        {
+          "id": "day-5-e01",
+          "timeLabel": "上午",
+          "title": "退房与行李安排",
+          "kind": "hotel",
+          "placeIds": [
+            "imperial"
+          ],
+          "notes": "按实际订单退房，可向酒店确认短时寄存。没有固定职责分工，四人现场协商。",
+          "details": [],
+          "ticketIds": [],
+          "sourceRefs": [
+            "user-plan"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "退房后按实际订单确认短时行李寄存。"
+        },
+        {
+          "id": "day-5-e02",
+          "timeLabel": "白天",
+          "title": "东京市内自由安排",
+          "kind": "free",
+          "placeIds": [
+            "imperial",
+            "okura"
+          ],
+          "notes": "具体游览未定，确定后可记入清单。",
+          "details": [],
+          "ticketIds": [],
+          "sourceRefs": [
+            "user-plan"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "东京游览未定；临时决定可写入自定义清单。"
+        },
+        {
+          "id": "day-5-e03",
+          "timeLabel": "入住时",
+          "title": "The Okura Tokyo：认住宿入口",
+          "kind": "hotel",
+          "placeIds": [
+            "okura"
+          ],
+          "notes": "酒店官方说明：住宿走5层正面入口，宴会入口在1层。地铁出口步行路线到宴会入口的标注，不等于已经到住宿前台。",
+          "details": [
+            "虎ノ門ヒルズA2a出口至宴会入口约5分钟；有大行李时按实际情况选择出租车。",
+            "电话 +81-3-3582-0111。房型、早餐与退房以订单为准。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "okura"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "大仓住宿走5层正面入口，1层是宴会入口。"
+        },
+        {
+          "id": "day-5-e04",
+          "timeLabel": "晚上",
+          "title": "确认明日去成田的路线",
+          "kind": "prep",
+          "placeIds": [
+            "okura",
+            "nippori",
+            "nrt"
+          ],
+          "notes": "可比较酒店→日暮里→Skyliner→成田T1，或实际可用的其他交通。不要把酒店官方送机服务当成已经预订。",
+          "details": [
+            "如选择Skyliner，购买乘车券＋Skyliner券，确认到“成田空港”站。",
+            "预留酒店出发、换乘、取行李及国际出发手续时间。"
+          ],
+          "ticketIds": [],
+          "sourceRefs": [
+            "skyliner",
+            "narita"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "确认次日去成田路线；Skyliner到成田空港站。"
+        }
+      ],
+      "chapterTheme": "quiet",
+      "displayTitle": "东京自由活动"
+    },
+    {
+      "id": "day-6",
+      "date": "2026-09-15",
+      "title": "东京返深圳",
+      "routeSummary": "大仓 → 成田T1 → 深圳宝安T3",
+      "subtitle": "19:00日本时间起飞 · 23:05北京时间抵达",
+      "status": "planned",
+      "privacy": "public",
+      "sourceRefs": [
+        "user-plan"
+      ],
+      "events": [
+        {
+          "id": "day-6-e01",
+          "timeLabel": "出发前",
+          "title": "退房、取行李，前往成田",
+          "kind": "airport",
+          "placeIds": [
+            "okura",
+            "nippori",
+            "nrt"
+          ],
+          "notes": "按实际路线倒推出发时间。建议以约16:00到T1作为准备目标，具体手续以航空公司要求为准。",
+          "details": [
+            "如用日暮里Skyliner，按京成线换乘指示找售票处；T1在“成田空港”站，不要在空港第2ビル提前下车。",
+            "不锁定尚未购买的Skyliner班次；出发前看运营商当日时刻。"
+          ],
+          "ticketIds": [
+            "airport-rail"
+          ],
+          "sourceRefs": [
+            "skyliner-map",
+            "skyliner",
+            "narita"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "按实际路线倒推；建议约16:00到成田T1。"
+        },
+        {
+          "id": "day-6-e02",
+          "timeLabel": "机场内",
+          "title": "深圳航空：T1南翼4F",
+          "kind": "airport",
+          "placeIds": [
+            "nrt"
+          ],
+          "notes": "前往南翼4楼，按当天航班屏幕查柜台和登机口。",
+          "details": [],
+          "ticketIds": [],
+          "sourceRefs": [
+            "narita"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "深圳航空在成田T1南翼4F办理国际出发。"
+        },
+        {
+          "id": "day-6-e03",
+          "timeLabel": "19:00",
+          "title": "ZH652 成田 → 深圳",
+          "kind": "flight",
+          "placeIds": [
+            "nrt",
+            "szx"
+          ],
+          "notes": "日本时间19:00起飞，北京时间23:05抵达，直飞约5小时05分；机票已确认。",
+          "details": [],
+          "ticketIds": [],
+          "departure": "2026-09-15T19:00:00+09:00",
+          "arrival": "2026-09-15T23:05:00+08:00",
+          "sourceRefs": [
+            "user-confirmed"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "ZH652：19:00成田起飞，23:05抵深圳。"
+        },
+        {
+          "id": "day-6-e04",
+          "timeLabel": "抵达后",
+          "title": "取回行李，结束本次旅程",
+          "kind": "arrival",
+          "placeIds": [
+            "szx"
+          ],
+          "notes": "核对托运行李及个人物品；待报销、分账或退款事项可继续记录。",
+          "details": [],
+          "ticketIds": [],
+          "sourceRefs": [
+            "user-plan"
+          ],
+          "status": "planned",
+          "privacy": "public",
+          "shortSummary": "取回托运行李和个人物品。"
+        }
+      ],
+      "chapterTheme": "sky",
+      "displayTitle": "东京返深圳"
+    }
+  ],
+  "places": [
+    {
+      "id": "szx",
+      "name": "深圳宝安机场 T3",
+      "localName": "深圳宝安国际机场 T3航站楼",
+      "kind": "airport",
+      "address": "",
+      "note": "",
+      "sourceRefs": [],
+      "privacy": "public",
+      "mapQuery": "深圳宝安国际机场 T3航站楼 ",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E6%B7%B1%E5%9C%B3%E5%AE%9D%E5%AE%89%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA%20T3%E8%88%AA%E7%AB%99%E6%A5%BC%20",
+      "embedUrl": "https://www.google.com/maps?q=%E6%B7%B1%E5%9C%B3%E5%AE%9D%E5%AE%89%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA%20T3%E8%88%AA%E7%AB%99%E6%A5%BC%20&output=embed&hl=zh-CN",
+      "lat": 22.639,
+      "lon": 113.811
+    },
+    {
+      "id": "kix",
+      "name": "大阪关西机场 T1",
+      "localName": "関西国際空港 第1ターミナル",
+      "kind": "airport",
+      "address": "",
+      "note": "到达后按实际接机安排会合；不要把行程已订误当司机已联系。",
+      "sourceRefs": [],
+      "privacy": "public",
+      "mapQuery": "関西国際空港 第1ターミナル ",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E9%96%A2%E8%A5%BF%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%20%E7%AC%AC1%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%20",
+      "embedUrl": "https://www.google.com/maps?q=%E9%96%A2%E8%A5%BF%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%20%E7%AC%AC1%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%20&output=embed&hl=zh-CN",
+      "lat": 34.435,
+      "lon": 135.244
+    },
+    {
+      "id": "manpa",
+      "name": "MANPA RESORT",
+      "localName": "和歌浦温泉 萬波 MANPA RESORT",
+      "kind": "hotel",
+      "address": "和歌山県和歌山市新和歌浦2-10",
+      "note": "9/11早间去JR和歌山站另作安排。",
+      "sourceRefs": [
+        "manpa"
+      ],
+      "privacy": "public",
+      "mapQuery": "和歌浦温泉 萬波 MANPA RESORT 和歌山県和歌山市新和歌浦2-10",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%92%8C%E6%AD%8C%E6%B5%A6%E6%B8%A9%E6%B3%89%20%E8%90%AC%E6%B3%A2%20MANPA%20RESORT%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E5%92%8C%E6%AD%8C%E5%B1%B1%E5%B8%82%E6%96%B0%E5%92%8C%E6%AD%8C%E6%B5%A62-10",
+      "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3300.4893640327505!2d135.15435195112357!3d34.18497098047477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60074d67aaf4e71d%3A0x8ff1c703b598e00b!2z5ZKM5q2M44Gu5rWm5rip5rOJIOiQrOazog!5e0!3m2!1sja!2sjp!4v1614660886697!5m2!1sja!2sjp",
+      "lat": 34.185,
+      "lon": 135.154
+    },
+    {
+      "id": "wakayama",
+      "name": "JR 和歌山站",
+      "localName": "JR和歌山駅 中央口",
+      "kind": "station",
+      "address": "和歌山県和歌山市美園町5-61",
+      "note": "买黑潮票认中央口。不要去南海和歌山市站。",
+      "sourceRefs": [
+        "wakayama"
+      ],
+      "privacy": "public",
+      "mapQuery": "JR和歌山駅 中央口 和歌山県和歌山市美園町5-61",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=JR%E5%92%8C%E6%AD%8C%E5%B1%B1%E9%A7%85%20%E4%B8%AD%E5%A4%AE%E5%8F%A3%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E5%92%8C%E6%AD%8C%E5%B1%B1%E5%B8%82%E7%BE%8E%E5%9C%92%E7%94%BA5-61",
+      "embedUrl": "https://www.google.com/maps?q=JR%E5%92%8C%E6%AD%8C%E5%B1%B1%E9%A7%85%20%E4%B8%AD%E5%A4%AE%E5%8F%A3%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E5%92%8C%E6%AD%8C%E5%B1%B1%E5%B8%82%E7%BE%8E%E5%9C%92%E7%94%BA5-61&output=embed&hl=zh-CN",
+      "lat": 34.232,
+      "lon": 135.191
+    },
+    {
+      "id": "tanabe",
+      "name": "纪伊田边站",
+      "localName": "紀伊田辺駅",
+      "kind": "station",
+      "address": "和歌山県田辺市湊1番24号",
+      "note": "出站后找本宫方向2号巴士站。",
+      "sourceRefs": [
+        "tanabe",
+        "bus-tanabe"
+      ],
+      "privacy": "public",
+      "mapQuery": "紀伊田辺駅 和歌山県田辺市湊1番24号",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E7%B4%80%E4%BC%8A%E7%94%B0%E8%BE%BA%E9%A7%85%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E7%94%B0%E8%BE%BA%E5%B8%82%E6%B9%8A1%E7%95%AA24%E5%8F%B7",
+      "embedUrl": "https://www.google.com/maps?q=%E7%B4%80%E4%BC%8A%E7%94%B0%E8%BE%BA%E9%A7%85%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E7%94%B0%E8%BE%BA%E5%B8%82%E6%B9%8A1%E7%95%AA24%E5%8F%B7&output=embed&hl=zh-CN",
+      "lat": 33.733,
+      "lon": 135.383
+    },
+    {
+      "id": "tanabe-info",
+      "name": "田边市观光中心",
+      "localName": "田辺市観光センター",
+      "kind": "ticket",
+      "address": "和歌山県田辺市湊1-20",
+      "note": "可在中心内售票机买当日巴士票；购票后仍须提前排队，不保证座位。",
+      "sourceRefs": [
+        "bus-pay"
+      ],
+      "privacy": "public",
+      "mapQuery": "田辺市観光センター 和歌山県田辺市湊1-20",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E7%94%B0%E8%BE%BA%E5%B8%82%E8%A6%B3%E5%85%89%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E7%94%B0%E8%BE%BA%E5%B8%82%E6%B9%8A1-20",
+      "embedUrl": "https://www.google.com/maps?q=%E7%94%B0%E8%BE%BA%E5%B8%82%E8%A6%B3%E5%85%89%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E7%94%B0%E8%BE%BA%E5%B8%82%E6%B9%8A1-20&output=embed&hl=zh-CN",
+      "lat": 33.733,
+      "lon": 135.383
+    },
+    {
+      "id": "hongu-stop",
+      "name": "本宫大社前巴士站",
+      "localName": "本宮大社前 バス停",
+      "kind": "station",
+      "address": "",
+      "note": "上下行及发心门方向分开核对。10分钟换乘时先找车，不购物寄箱。",
+      "sourceRefs": [
+        "bus-tanabe"
+      ],
+      "privacy": "public",
+      "mapQuery": "本宮大社前 バス停 ",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E6%9C%AC%E5%AE%AE%E5%A4%A7%E7%A4%BE%E5%89%8D%20%E3%83%90%E3%82%B9%E5%81%9C%20",
+      "embedUrl": "https://www.google.com/maps?q=%E6%9C%AC%E5%AE%AE%E5%A4%A7%E7%A4%BE%E5%89%8D%20%E3%83%90%E3%82%B9%E5%81%9C%20&output=embed&hl=zh-CN",
+      "lat": 33.838,
+      "lon": 135.773
+    },
+    {
+      "id": "hosshin",
+      "name": "发心门王子",
+      "localName": "発心門王子",
+      "kind": "trail",
+      "address": "",
+      "note": "从起点沿水呑王子、本宫方向路标走。",
+      "sourceRefs": [
+        "hosshin"
+      ],
+      "privacy": "public",
+      "mapQuery": "発心門王子 ",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E7%99%BA%E5%BF%83%E9%96%80%E7%8E%8B%E5%AD%90%20",
+      "embedUrl": "https://www.google.com/maps?q=%E7%99%BA%E5%BF%83%E9%96%80%E7%8E%8B%E5%AD%90%20&output=embed&hl=zh-CN",
+      "lat": 33.871,
+      "lon": 135.73
+    },
+    {
+      "id": "mizunomi",
+      "name": "水呑王子",
+      "localName": "水呑王子",
+      "kind": "trail",
+      "address": "",
+      "note": "旧学校附近休息、如厕；不把未核验水源当饮用水。",
+      "sourceRefs": [
+        "hosshin"
+      ],
+      "privacy": "public",
+      "mapQuery": "水呑王子 ",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E6%B0%B4%E5%91%91%E7%8E%8B%E5%AD%90%20",
+      "embedUrl": "https://www.google.com/maps?q=%E6%B0%B4%E5%91%91%E7%8E%8B%E5%AD%90%20&output=embed&hl=zh-CN"
+    },
+    {
+      "id": "fushiogami",
+      "name": "伏拝王子",
+      "localName": "伏拝王子",
+      "kind": "trail",
+      "address": "",
+      "note": "午餐与休息节点；晚离开则取消额外展望台和大斋原。",
+      "sourceRefs": [
+        "hosshin"
+      ],
+      "privacy": "public",
+      "mapQuery": "伏拝王子 ",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E4%BC%8F%E6%8B%9D%E7%8E%8B%E5%AD%90%20",
+      "embedUrl": "https://www.google.com/maps?q=%E4%BC%8F%E6%8B%9D%E7%8E%8B%E5%AD%90%20&output=embed&hl=zh-CN"
+    },
+    {
+      "id": "sangen",
+      "name": "三轩茶屋跡",
+      "localName": "三軒茶屋跡 熊野古道",
+      "kind": "trail",
+      "address": "",
+      "note": "合流后继续本宫方向，不误入小边路。",
+      "sourceRefs": [
+        "hosshin"
+      ],
+      "privacy": "public",
+      "mapQuery": "三軒茶屋跡 熊野古道 ",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%89%E8%BB%92%E8%8C%B6%E5%B1%8B%E8%B7%A1%20%E7%86%8A%E9%87%8E%E5%8F%A4%E9%81%93%20",
+      "embedUrl": "https://www.google.com/maps?q=%E4%B8%89%E8%BB%92%E8%8C%B6%E5%B1%8B%E8%B7%A1%20%E7%86%8A%E9%87%8E%E5%8F%A4%E9%81%93%20&output=embed&hl=zh-CN"
+    },
+    {
+      "id": "hongu",
+      "name": "熊野本宫大社",
+      "localName": "熊野本宮大社",
+      "kind": "shrine",
+      "address": "和歌山県田辺市本宮町本宮1110",
+      "note": "普通参拜免费；祈祷、授与品等另计。",
+      "sourceRefs": [
+        "hongu"
+      ],
+      "privacy": "public",
+      "mapQuery": "熊野本宮大社 和歌山県田辺市本宮町本宮1110",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E7%86%8A%E9%87%8E%E6%9C%AC%E5%AE%AE%E5%A4%A7%E7%A4%BE%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E7%94%B0%E8%BE%BA%E5%B8%82%E6%9C%AC%E5%AE%AE%E7%94%BA%E6%9C%AC%E5%AE%AE1110",
+      "embedUrl": "https://www.google.com/maps?q=%E7%86%8A%E9%87%8E%E6%9C%AC%E5%AE%AE%E5%A4%A7%E7%A4%BE%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E7%94%B0%E8%BE%BA%E5%B8%82%E6%9C%AC%E5%AE%AE%E7%94%BA%E6%9C%AC%E5%AE%AE1110&output=embed&hl=zh-CN",
+      "lat": 33.841,
+      "lon": 135.774
+    },
+    {
+      "id": "oyunohara",
+      "name": "大斋原大鸟居",
+      "localName": "大斎原",
+      "kind": "shrine",
+      "address": "",
+      "note": "按体力和巴士时间选择；不因打卡错过安全转场。",
+      "sourceRefs": [
+        "hongu"
+      ],
+      "privacy": "public",
+      "mapQuery": "大斎原 ",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E6%96%8E%E5%8E%9F%20",
+      "embedUrl": "https://www.google.com/maps?q=%E5%A4%A7%E6%96%8E%E5%8E%9F%20&output=embed&hl=zh-CN",
+      "lat": 33.832,
+      "lon": 135.772
+    },
+    {
+      "id": "fujiya",
+      "name": "川汤温泉 冨士屋",
+      "localName": "川湯温泉 冨士屋",
+      "kind": "hotel",
+      "address": "和歌山県田辺市本宮町川湯1452",
+      "note": "电话 0735-42-0007；到店确认餐食与翌日站牌。",
+      "sourceRefs": [
+        "fujiya"
+      ],
+      "privacy": "public",
+      "mapQuery": "川湯温泉 冨士屋 和歌山県田辺市本宮町川湯1452",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%B7%9D%E6%B9%AF%E6%B8%A9%E6%B3%89%20%E5%86%A8%E5%A3%AB%E5%B1%8B%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E7%94%B0%E8%BE%BA%E5%B8%82%E6%9C%AC%E5%AE%AE%E7%94%BA%E5%B7%9D%E6%B9%AF1452",
+      "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6630.0037410647055!2d135.77392672620996!3d33.81226480747447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60065a5c69687ee5%3A0xa45aca473b7c578e!2z5bed5rmv5rip5rOJIOWGqOWjq-Wxiw!5e0!3m2!1sja!2sjp!4v1429498253503",
+      "lat": 33.812,
+      "lon": 135.774
+    },
+    {
+      "id": "fujiya-stop",
+      "name": "ふじや前巴士站",
+      "localName": "ふじや前 バス停",
+      "kind": "station",
+      "address": "川湯温泉",
+      "note": "同一温泉街有不同站，认新宫方向。",
+      "sourceRefs": [
+        "bus-operator"
+      ],
+      "privacy": "public",
+      "mapQuery": "ふじや前 バス停 川湯温泉",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E3%81%B5%E3%81%98%E3%82%84%E5%89%8D%20%E3%83%90%E3%82%B9%E5%81%9C%20%E5%B7%9D%E6%B9%AF%E6%B8%A9%E6%B3%89",
+      "embedUrl": "https://www.google.com/maps?q=%E3%81%B5%E3%81%98%E3%82%84%E5%89%8D%20%E3%83%90%E3%82%B9%E5%81%9C%20%E5%B7%9D%E6%B9%AF%E6%B8%A9%E6%B3%89&output=embed&hl=zh-CN",
+      "lat": 33.812,
+      "lon": 135.774
+    },
+    {
+      "id": "shingu",
+      "name": "新宫站",
+      "localName": "新宮駅",
+      "kind": "station",
+      "address": "和歌山県新宮市徐福2丁目1",
+      "note": "换乘胜浦方向巴士；以周末表与站牌为准。",
+      "sourceRefs": [
+        "bus-shingu"
+      ],
+      "privacy": "public",
+      "mapQuery": "新宮駅 和歌山県新宮市徐福2丁目1",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E5%AE%AE%E9%A7%85%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E6%96%B0%E5%AE%AE%E5%B8%82%E5%BE%90%E7%A6%8F2%E4%B8%81%E7%9B%AE1",
+      "embedUrl": "https://www.google.com/maps?q=%E6%96%B0%E5%AE%AE%E9%A7%85%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E6%96%B0%E5%AE%AE%E5%B8%82%E5%BE%90%E7%A6%8F2%E4%B8%81%E7%9B%AE1&output=embed&hl=zh-CN",
+      "lat": 33.725,
+      "lon": 135.994
+    },
+    {
+      "id": "katsuura",
+      "name": "纪伊胜浦站",
+      "localName": "紀伊勝浦駅",
+      "kind": "station",
+      "address": "和歌山県東牟婁郡那智勝浦町築地6丁目1番1号",
+      "note": "售票机プラス8:00–20:00；10:20–11:05关闭，无绿色售票窗口。",
+      "sourceRefs": [
+        "katsuura"
+      ],
+      "privacy": "public",
+      "mapQuery": "紀伊勝浦駅 和歌山県東牟婁郡那智勝浦町築地6丁目1番1号",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E7%B4%80%E4%BC%8A%E5%8B%9D%E6%B5%A6%E9%A7%85%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E6%9D%B1%E7%89%9F%E5%A9%81%E9%83%A1%E9%82%A3%E6%99%BA%E5%8B%9D%E6%B5%A6%E7%94%BA%E7%AF%89%E5%9C%B06%E4%B8%81%E7%9B%AE1%E7%95%AA1%E5%8F%B7",
+      "embedUrl": "https://www.google.com/maps?q=%E7%B4%80%E4%BC%8A%E5%8B%9D%E6%B5%A6%E9%A7%85%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E6%9D%B1%E7%89%9F%E5%A9%81%E9%83%A1%E9%82%A3%E6%99%BA%E5%8B%9D%E6%B5%A6%E7%94%BA%E7%AF%89%E5%9C%B06%E4%B8%81%E7%9B%AE1%E7%95%AA1%E5%8F%B7&output=embed&hl=zh-CN",
+      "lat": 33.628,
+      "lon": 135.941
+    },
+    {
+      "id": "daimonzaka",
+      "name": "大门坂巴士站与入口",
+      "localName": "大門坂 バス停",
+      "kind": "trail",
+      "address": "",
+      "note": "起点认“大門坂”，不是“熊野古道”站；先上厕所、整理装备。",
+      "sourceRefs": [
+        "bus-nachi"
+      ],
+      "privacy": "public",
+      "mapQuery": "大門坂 バス停 ",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%96%80%E5%9D%82%20%E3%83%90%E3%82%B9%E5%81%9C%20",
+      "embedUrl": "https://www.google.com/maps?q=%E5%A4%A7%E9%96%80%E5%9D%82%20%E3%83%90%E3%82%B9%E5%81%9C%20&output=embed&hl=zh-CN",
+      "lat": 33.668,
+      "lon": 135.891
+    },
+    {
+      "id": "nachi-center",
+      "name": "那智山观光中心",
+      "localName": "那智山観光センター",
+      "kind": "food",
+      "address": "和歌山県東牟婁郡那智勝浦町那智山442-2",
+      "note": "午餐候选；抵达先问是否供餐，排队长则用自带食品。",
+      "sourceRefs": [
+        "nachi-info"
+      ],
+      "privacy": "public",
+      "mapQuery": "那智山観光センター 和歌山県東牟婁郡那智勝浦町那智山442-2",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E9%82%A3%E6%99%BA%E5%B1%B1%E8%A6%B3%E5%85%89%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E6%9D%B1%E7%89%9F%E5%A9%81%E9%83%A1%E9%82%A3%E6%99%BA%E5%8B%9D%E6%B5%A6%E7%94%BA%E9%82%A3%E6%99%BA%E5%B1%B1442-2",
+      "embedUrl": "https://www.google.com/maps?q=%E9%82%A3%E6%99%BA%E5%B1%B1%E8%A6%B3%E5%85%89%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E6%9D%B1%E7%89%9F%E5%A9%81%E9%83%A1%E9%82%A3%E6%99%BA%E5%8B%9D%E6%B5%A6%E7%94%BA%E9%82%A3%E6%99%BA%E5%B1%B1442-2&output=embed&hl=zh-CN",
+      "lat": 33.671,
+      "lon": 135.89
+    },
+    {
+      "id": "nachi-shrine",
+      "name": "熊野那智大社",
+      "localName": "熊野那智大社",
+      "kind": "shrine",
+      "address": "和歌山県東牟婁郡那智勝浦町那智山1",
+      "note": "神社、寺院及瀑布之间仍有台阶。",
+      "sourceRefs": [
+        "waterfall"
+      ],
+      "privacy": "public",
+      "mapQuery": "熊野那智大社 和歌山県東牟婁郡那智勝浦町那智山1",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E7%86%8A%E9%87%8E%E9%82%A3%E6%99%BA%E5%A4%A7%E7%A4%BE%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E6%9D%B1%E7%89%9F%E5%A9%81%E9%83%A1%E9%82%A3%E6%99%BA%E5%8B%9D%E6%B5%A6%E7%94%BA%E9%82%A3%E6%99%BA%E5%B1%B11",
+      "embedUrl": "https://www.google.com/maps?q=%E7%86%8A%E9%87%8E%E9%82%A3%E6%99%BA%E5%A4%A7%E7%A4%BE%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E6%9D%B1%E7%89%9F%E5%A9%81%E9%83%A1%E9%82%A3%E6%99%BA%E5%8B%9D%E6%B5%A6%E7%94%BA%E9%82%A3%E6%99%BA%E5%B1%B11&output=embed&hl=zh-CN",
+      "lat": 33.668,
+      "lon": 135.89
+    },
+    {
+      "id": "seigantoji",
+      "name": "青岸渡寺本堂",
+      "localName": "那智山青岸渡寺",
+      "kind": "temple",
+      "address": "",
+      "note": "境内普通参拜免费，三重塔入内收费。",
+      "sourceRefs": [
+        "seigantoji"
+      ],
+      "privacy": "public",
+      "mapQuery": "那智山青岸渡寺 ",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E9%82%A3%E6%99%BA%E5%B1%B1%E9%9D%92%E5%B2%B8%E6%B8%A1%E5%AF%BA%20",
+      "embedUrl": "https://www.google.com/maps?q=%E9%82%A3%E6%99%BA%E5%B1%B1%E9%9D%92%E5%B2%B8%E6%B8%A1%E5%AF%BA%20&output=embed&hl=zh-CN",
+      "lat": 33.668,
+      "lon": 135.89
+    },
+    {
+      "id": "pagoda",
+      "name": "青岸渡寺三重塔",
+      "localName": "青岸渡寺 三重塔",
+      "kind": "ticket",
+      "address": "",
+      "note": "可选入塔：成人500日元，寺院官网已调整旧价。",
+      "sourceRefs": [
+        "seigantoji",
+        "pagoda-reopen"
+      ],
+      "privacy": "public",
+      "mapQuery": "青岸渡寺 三重塔 ",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E9%9D%92%E5%B2%B8%E6%B8%A1%E5%AF%BA%20%E4%B8%89%E9%87%8D%E5%A1%94%20",
+      "embedUrl": "https://www.google.com/maps?q=%E9%9D%92%E5%B2%B8%E6%B8%A1%E5%AF%BA%20%E4%B8%89%E9%87%8D%E5%A1%94%20&output=embed&hl=zh-CN",
+      "lat": 33.67,
+      "lon": 135.893
+    },
+    {
+      "id": "waterfall",
+      "name": "那智瀑布・飞瀧神社",
+      "localName": "那智の滝 飛瀧神社",
+      "kind": "shrine",
+      "address": "",
+      "note": "御滝拝所舞台为额外收费区域，现场受付。",
+      "sourceRefs": [
+        "waterfall"
+      ],
+      "privacy": "public",
+      "mapQuery": "那智の滝 飛瀧神社 ",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E9%82%A3%E6%99%BA%E3%81%AE%E6%BB%9D%20%E9%A3%9B%E7%80%A7%E7%A5%9E%E7%A4%BE%20",
+      "embedUrl": "https://www.google.com/maps?q=%E9%82%A3%E6%99%BA%E3%81%AE%E6%BB%9D%20%E9%A3%9B%E7%80%A7%E7%A5%9E%E7%A4%BE%20&output=embed&hl=zh-CN",
+      "lat": 33.674,
+      "lon": 135.887
+    },
+    {
+      "id": "waterfall-stop",
+      "name": "那智の滝前巴士站",
+      "localName": "那智の滝前 バス停",
+      "kind": "station",
+      "address": "",
+      "note": "从瀑布回到道路上的下山站牌，不能在瀑布下方等车。",
+      "sourceRefs": [
+        "bus-nachi"
+      ],
+      "privacy": "public",
+      "mapQuery": "那智の滝前 バス停 ",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E9%82%A3%E6%99%BA%E3%81%AE%E6%BB%9D%E5%89%8D%20%E3%83%90%E3%82%B9%E5%81%9C%20",
+      "embedUrl": "https://www.google.com/maps?q=%E9%82%A3%E6%99%BA%E3%81%AE%E6%BB%9D%E5%89%8D%20%E3%83%90%E3%82%B9%E5%81%9C%20&output=embed&hl=zh-CN",
+      "lat": 33.671,
+      "lon": 135.889
+    },
+    {
+      "id": "taoya",
+      "name": "TAOYA 那智胜浦",
+      "localName": "TAOYA那智勝浦",
+      "kind": "hotel",
+      "address": "和歌山県東牟婁郡那智勝浦町湯川1108",
+      "note": "电话 050-3615-3456；本次自行安排站到酒店交通。",
+      "sourceRefs": [
+        "taoya"
+      ],
+      "privacy": "public",
+      "mapQuery": "TAOYA那智勝浦 和歌山県東牟婁郡那智勝浦町湯川1108",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=TAOYA%E9%82%A3%E6%99%BA%E5%8B%9D%E6%B5%A6%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E6%9D%B1%E7%89%9F%E5%A9%81%E9%83%A1%E9%82%A3%E6%99%BA%E5%8B%9D%E6%B5%A6%E7%94%BA%E6%B9%AF%E5%B7%9D1108",
+      "embedUrl": "https://www.google.com/maps?q=TAOYA%E9%82%A3%E6%99%BA%E5%8B%9D%E6%B5%A6%20%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C%E6%9D%B1%E7%89%9F%E5%A9%81%E9%83%A1%E9%82%A3%E6%99%BA%E5%8B%9D%E6%B5%A6%E7%94%BA%E6%B9%AF%E5%B7%9D1108&output=embed&hl=zh-CN",
+      "lat": 33.615,
+      "lon": 135.941
+    },
+    {
+      "id": "nagoya",
+      "name": "JR 名古屋站",
+      "localName": "JR名古屋駅 新幹線乗換口",
+      "kind": "station",
+      "address": "愛知県名古屋市中村区名駅1丁目1-4",
+      "note": "沿新幹線のりかえ指示走；准备全部纸票，具体月台看当日屏幕。",
+      "sourceRefs": [
+        "nagoya"
+      ],
+      "privacy": "public",
+      "mapQuery": "JR名古屋駅 新幹線乗換口 愛知県名古屋市中村区名駅1丁目1-4",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=JR%E5%90%8D%E5%8F%A4%E5%B1%8B%E9%A7%85%20%E6%96%B0%E5%B9%B9%E7%B7%9A%E4%B9%97%E6%8F%9B%E5%8F%A3%20%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E6%9D%91%E5%8C%BA%E5%90%8D%E9%A7%851%E4%B8%81%E7%9B%AE1-4",
+      "embedUrl": "https://www.google.com/maps?q=JR%E5%90%8D%E5%8F%A4%E5%B1%8B%E9%A7%85%20%E6%96%B0%E5%B9%B9%E7%B7%9A%E4%B9%97%E6%8F%9B%E5%8F%A3%20%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E6%9D%91%E5%8C%BA%E5%90%8D%E9%A7%851%E4%B8%81%E7%9B%AE1-4&output=embed&hl=zh-CN",
+      "lat": 35.171,
+      "lon": 136.882
+    },
+    {
+      "id": "tokyo-station",
+      "name": "东京站",
+      "localName": "JR東京駅",
+      "kind": "station",
+      "address": "",
+      "note": "去帝国饭店可按行李与到达情况选择出租车或步行/地铁。",
+      "sourceRefs": [
+        "imperial"
+      ],
+      "privacy": "public",
+      "mapQuery": "JR東京駅 ",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=JR%E6%9D%B1%E4%BA%AC%E9%A7%85%20",
+      "embedUrl": "https://www.google.com/maps?q=JR%E6%9D%B1%E4%BA%AC%E9%A7%85%20&output=embed&hl=zh-CN",
+      "lat": 35.681,
+      "lon": 139.767
+    },
+    {
+      "id": "imperial",
+      "name": "东京帝国饭店",
+      "localName": "帝国ホテル 東京",
+      "kind": "hotel",
+      "address": "東京都千代田区内幸町1-1-1",
+      "note": "日比谷站A13出口步行约3分钟；电话 +81-3-3504-1111。",
+      "sourceRefs": [
+        "imperial"
+      ],
+      "privacy": "public",
+      "mapQuery": "帝国ホテル 東京 東京都千代田区内幸町1-1-1",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%B8%9D%E5%9B%BD%E3%83%9B%E3%83%86%E3%83%AB%20%E6%9D%B1%E4%BA%AC%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA%E5%86%85%E5%B9%B8%E7%94%BA1-1-1",
+      "embedUrl": "https://www.google.com/maps?q=%E5%B8%9D%E5%9B%BD%E3%83%9B%E3%83%86%E3%83%AB%20%E6%9D%B1%E4%BA%AC%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA%E5%86%85%E5%B9%B8%E7%94%BA1-1-1&output=embed&hl=zh-CN",
+      "lat": 35.672,
+      "lon": 139.758
+    },
+    {
+      "id": "okura",
+      "name": "东京大仓",
+      "localName": "The Okura Tokyo",
+      "kind": "hotel",
+      "address": "東京都港区虎ノ門2丁目10-4",
+      "note": "住宿使用5层正面入口；别把1层宴会入口当住宿入口。电话 +81-3-3582-0111。",
+      "sourceRefs": [
+        "okura"
+      ],
+      "privacy": "public",
+      "mapQuery": "The Okura Tokyo 東京都港区虎ノ門2丁目10-4",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=The%20Okura%20Tokyo%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%AF%E5%8C%BA%E8%99%8E%E3%83%8E%E9%96%802%E4%B8%81%E7%9B%AE10-4",
+      "embedUrl": "https://www.google.com/maps?q=The%20Okura%20Tokyo%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%AF%E5%8C%BA%E8%99%8E%E3%83%8E%E9%96%802%E4%B8%81%E7%9B%AE10-4&output=embed&hl=zh-CN",
+      "lat": 35.667,
+      "lon": 139.744
+    },
+    {
+      "id": "nippori",
+      "name": "日暮里站 Skyliner换乘",
+      "localName": "日暮里駅 京成 スカイライナー",
+      "kind": "station",
+      "address": "",
+      "note": "按京成线/Skyliner指示找换乘售票处；不要直接乘上不匹配的列车。",
+      "sourceRefs": [
+        "skyliner-map"
+      ],
+      "privacy": "public",
+      "mapQuery": "日暮里駅 京成 スカイライナー ",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E6%97%A5%E6%9A%AE%E9%87%8C%E9%A7%85%20%E4%BA%AC%E6%88%90%20%E3%82%B9%E3%82%AB%E3%82%A4%E3%83%A9%E3%82%A4%E3%83%8A%E3%83%BC%20",
+      "embedUrl": "https://www.google.com/maps?q=%E6%97%A5%E6%9A%AE%E9%87%8C%E9%A7%85%20%E4%BA%AC%E6%88%90%20%E3%82%B9%E3%82%AB%E3%82%A4%E3%83%A9%E3%82%A4%E3%83%8A%E3%83%BC%20&output=embed&hl=zh-CN",
+      "lat": 35.728,
+      "lon": 139.771
+    },
+    {
+      "id": "nrt",
+      "name": "成田机场 T1 南翼",
+      "localName": "成田空港 第1ターミナル 南ウイング 4階",
+      "kind": "airport",
+      "address": "",
+      "note": "深圳航空值机位于T1南翼4F。铁路下车站是“成田空港”，不是空港第2ビル。",
+      "sourceRefs": [
+        "narita"
+      ],
+      "privacy": "public",
+      "mapQuery": "成田空港 第1ターミナル 南ウイング 4階 ",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E6%88%90%E7%94%B0%E7%A9%BA%E6%B8%AF%20%E7%AC%AC1%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%20%E5%8D%97%E3%82%A6%E3%82%A4%E3%83%B3%E3%82%B0%204%E9%9A%8E%20",
+      "embedUrl": "https://www.google.com/maps?q=%E6%88%90%E7%94%B0%E7%A9%BA%E6%B8%AF%20%E7%AC%AC1%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%20%E5%8D%97%E3%82%A6%E3%82%A4%E3%83%B3%E3%82%B0%204%E9%9A%8E%20&output=embed&hl=zh-CN",
+      "lat": 35.764,
+      "lon": 140.386
+    }
+  ],
+  "restaurants": [
+    {
+      "id": "nachi-lunch",
+      "placeId": "nachi-center",
+      "status": "candidate",
+      "notes": "现场确认供餐；不默认预约"
+    }
+  ],
+  "bookingsAndTickets": [
+    {
+      "id": "kuroshio",
+      "date": "2026-09-11",
+      "title": "黑潮1号：乘车券＋指定席特急券",
+      "mode": "现场购票",
+      "where": "JR和歌山站中央口：绿色窗口／绿色售票机",
+      "guide": "窗口6:00–21:00；机器4:35–次日0:50。机器选「きっぷを買う」→「乗換案内から買う」→日期/区间/4人→「特急券＋乗車券」。选08:48至纪伊田边，确认座位与票面。",
+      "currency": "JPY",
+      "optional": false,
+      "status": "planned",
+      "privacy": "public",
+      "sourceRefs": [
+        "wakayama",
+        "jr-buy",
+        "kuroshio"
+      ],
+      "placeId": "wakayama",
+      "japanese": "9月11日の特急くろしお1号、和歌山8時48分発、紀伊田辺9時58分着の乗車券と指定席特急券を4名分お願いします。"
+    },
+    {
+      "id": "nanki",
+      "date": "2026-09-13",
+      "title": "南纪4号＋名古屋至东京新干线",
+      "mode": "现场购票",
+      "where": "纪伊胜浦站：みどりの券売機プラス",
+      "guide": "8:00–20:00，10:20–11:05暂停，无绿色窗口。9/12下山回站后可买9/13车票；现场确认南纪08:54、名古屋换乘及4人座位。不要把全席指定席的9/18–23规定套到9/13。",
+      "currency": "JPY",
+      "optional": false,
+      "status": "planned",
+      "privacy": "public",
+      "sourceRefs": [
+        "katsuura",
+        "jr-buy",
+        "nanki",
+        "nanki-seats"
+      ],
+      "placeId": "katsuura",
+      "japanese": "9月13日、紀伊勝浦8時54分発の南紀4号で名古屋へ行き、新幹線で東京まで行きたいです。4名分の乗車券と特急券、乗り継ぎと座席を確認してください。"
+    },
+    {
+      "id": "waterfall-deck",
+      "date": "2026-09-12",
+      "title": "那智瀑布 御滝拝所舞台",
+      "mode": "可选现场购票",
+      "where": "飞瀧神社社务所旁／授与所横的舞台入口",
+      "guide": "成人500日元；小中学生200日元，未就学儿童免费。普通区域看瀑布与进入付费舞台分开。想近看再到入口买，不需要把它当必须完成的预约。",
+      "price": 500,
+      "currency": "JPY",
+      "optional": true,
+      "status": "planned",
+      "privacy": "public",
+      "sourceRefs": [
+        "waterfall"
+      ],
+      "placeId": "waterfall",
+      "japanese": "御瀧拝所舞台に入りたいです。4名です。料金と入口を教えてください。"
+    },
+    {
+      "id": "pagoda-entry",
+      "date": "2026-09-12",
+      "title": "青岸渡寺 三重塔入内",
+      "mode": "可选现场购票",
+      "where": "三重塔入口受付",
+      "guide": "成人500日元、小中学生300日元。境内/本堂普通参拜免费，只有进塔另收费；采用寺院官网新价，不沿用旅游页300日元。时间足够再进，最晚受付按现场确认。",
+      "price": 500,
+      "currency": "JPY",
+      "optional": true,
+      "status": "planned",
+      "privacy": "public",
+      "sourceRefs": [
+        "seigantoji",
+        "pagoda-reopen"
+      ],
+      "placeId": "pagoda",
+      "japanese": "三重塔の拝観を希望します。4名です。料金と最終受付時刻を教えてください。"
+    },
+    {
+      "id": "airport-rail",
+      "date": "2026-09-15",
+      "title": "如选Skyliner：乘车券＋Skyliner券",
+      "mode": "选用后现场购票",
+      "where": "京成日暮里站换乘售票处／售票机",
+      "guide": "Skyliner为全席指定。若采用该路线，确认到成田空港站（T1），不是空港第2ビル；酒店到日暮里的交通另留时间。未选此方式时无需勾为已购。",
+      "currency": "JPY",
+      "optional": true,
+      "status": "planned",
+      "privacy": "public",
+      "sourceRefs": [
+        "skyliner",
+        "skyliner-map",
+        "narita"
+      ],
+      "placeId": "nippori",
+      "japanese": "成田空港第1ターミナルへ行きたいです。4名分の乗車券とスカイライナー券をお願いします。"
+    }
+  ],
+  "preTrip": [
+    {
+      "id": "luggage-plan",
+      "text": "确定大箱寄送／寄存方案",
+      "group": "todo",
+      "detail": "进入山路前落实；需确认收件酒店、承运人和到达日。",
+      "date": "2026-09-10",
+      "privacy": "public"
+    },
+    {
+      "id": "early-taxi",
+      "text": "确认9/11早间到和歌山站交通",
+      "group": "todo",
+      "detail": "约07:40出发为规划，4人及行李容量提前确认。",
+      "date": "2026-09-10",
+      "privacy": "public"
+    },
+    {
+      "id": "breakfast",
+      "text": "确认早饭和徒步午餐准备",
+      "group": "todo",
+      "detail": "早开餐不确定时准备可携带食物；餐食按保存条件携带。",
+      "privacy": "public"
+    },
+    {
+      "id": "rail-where",
+      "text": "记住两处铁路现场购票位置",
+      "group": "todo",
+      "detail": "和歌山中央口；纪伊胜浦售票机プラス，注意暂停时段。",
+      "privacy": "public"
+    },
+    {
+      "id": "stations",
+      "text": "保存日文站名与换乘信息",
+      "group": "todo",
+      "detail": "田边2号站、本宫发心门方向、ふじや前新宫方向、那智の滝前下山方向。",
+      "privacy": "public"
+    },
+    {
+      "id": "cash",
+      "text": "准备千元钞、硬币和备用现金",
+      "group": "todo",
+      "detail": "不同巴士的IC卡规则不同，现金为共同后备；四人合付先告知司机。",
+      "privacy": "public"
+    },
+    {
+      "id": "phone",
+      "text": "确认网络与可拨打电话的方式",
+      "group": "todo",
+      "detail": "纯流量eSIM不一定能打日本普通电话。",
+      "privacy": "public"
+    },
+    {
+      "id": "weather-check",
+      "text": "出发当天查看天气、步道和铁路运行",
+      "group": "todo",
+      "detail": "9/11–12每天重新确认，不把旧攻略当当天状态。",
+      "privacy": "public"
+    },
+    {
+      "id": "airport-route",
+      "text": "确定9/15去成田T1的交通",
+      "group": "todo",
+      "detail": "不增加尚未预订的酒店接送；根据实际班次倒推。",
+      "date": "2026-09-14",
+      "privacy": "public"
+    },
+    {
+      "id": "passport",
+      "text": "护照与入境所需资料",
+      "group": "packing",
+      "detail": "原件随身，不放寄送的大箱。",
+      "privacy": "public"
+    },
+    {
+      "id": "payment",
+      "text": "现金、银行卡与票据",
+      "group": "packing",
+      "detail": "不要仅依赖一种支付方式。",
+      "privacy": "public"
+    },
+    {
+      "id": "shoes",
+      "text": "防滑徒步鞋",
+      "group": "packing",
+      "detail": "石阶湿滑时尤其重要。",
+      "privacy": "public"
+    },
+    {
+      "id": "rain",
+      "text": "轻便雨衣与背包防雨",
+      "group": "packing",
+      "detail": "山路不只依赖折叠伞。",
+      "privacy": "public"
+    },
+    {
+      "id": "water",
+      "text": "饮水与适合自己的补给",
+      "group": "packing",
+      "detail": "按天气、行走时长和个人需要准备。",
+      "privacy": "public"
+    },
+    {
+      "id": "food",
+      "text": "午餐／备用食品与保冷用品",
+      "group": "packing",
+      "detail": "遵守食品标签保存要求。",
+      "privacy": "public"
+    },
+    {
+      "id": "phone-power",
+      "text": "手机、充电线与充电宝",
+      "group": "packing",
+      "detail": "充电宝按航空公司随身携带规定处理。",
+      "privacy": "public"
+    },
+    {
+      "id": "sun",
+      "text": "帽子、防晒与驱虫用品",
+      "group": "packing",
+      "detail": "按个人需要。",
+      "privacy": "public"
+    },
+    {
+      "id": "meds",
+      "text": "个人药品与防磨用品",
+      "group": "packing",
+      "detail": "原有处方药自行按医嘱携带。",
+      "privacy": "public"
+    },
+    {
+      "id": "layers",
+      "text": "薄外套、速干衣与换洗衣物",
+      "group": "packing",
+      "detail": "轻装覆盖寄送行李到达前的需要。",
+      "privacy": "public"
+    },
+    {
+      "id": "headlamp",
+      "text": "应急照明",
+      "group": "packing",
+      "detail": "用于应急，不代表安排夜走。",
+      "privacy": "public"
+    },
+    {
+      "id": "trash",
+      "text": "小毛巾与垃圾袋",
+      "group": "packing",
+      "detail": "保持路书与装备轻便。",
+      "privacy": "public"
+    }
+  ],
+  "groundTransport": {
+    "mode": "public_transport",
+    "tabs": [
+      {
+        "id": "train-buy",
+        "title": "铁路怎么买",
+        "items": [
+          {
+            "title": "和歌山：中央口购票",
+            "text": "绿色窗口6:00–21:00，绿色售票机4:35–次日0:50。买和歌山→纪伊田边的乘车券＋黑潮指定席特急券。",
+            "placeIds": [
+              "wakayama"
+            ],
+            "sourceRefs": [
+              "wakayama",
+              "jr-buy"
+            ]
+          },
+          {
+            "title": "纪伊胜浦：售票机プラス",
+            "text": "无绿色窗口；远程协助售票机8:00–20:00，10:20–11:05暂停。可9/12回站后买次日南纪与新干线。",
+            "placeIds": [
+              "katsuura"
+            ],
+            "sourceRefs": [
+              "katsuura"
+            ]
+          },
+          {
+            "title": "名古屋：先看票再过换乘口",
+            "text": "跟随新幹線のりかえ指示。买票时一并确认东京方向班次、换乘余量和大件行李需求。",
+            "placeIds": [
+              "nagoya"
+            ],
+            "sourceRefs": [
+              "nagoya"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "bus-pay",
+        "title": "巴士怎么坐",
+        "items": [
+          {
+            "title": "上车、下车与现金",
+            "text": "后门上车取整理券（单门车辆按司机指示），提前说目的地；下车前按铃，看券号对应金额，前门付款。四人合付先说人数，零钱和付款投入口不同。",
+            "sourceRefs": [
+              "bus-pay"
+            ]
+          },
+          {
+            "title": "不同公司，支付规则不同",
+            "text": "现金是共同后备。明光可用IC卡；龙神不接受交通IC卡；熊野御坊南海支持非接触信用卡但不接受交通IC卡；奈良交通可用交通IC卡。以车上标识及司机说明为准。",
+            "sourceRefs": [
+              "bus-pay"
+            ]
+          },
+          {
+            "title": "田边当日票在哪里",
+            "text": "田边观光中心内有当日巴士票售票机。买了票不等于预留座位，仍提前去2号站牌排队。",
+            "placeIds": [
+              "tanabe-info"
+            ],
+            "sourceRefs": [
+              "bus-pay",
+              "bus-tanabe"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "transfer",
+        "title": "关键换乘",
+        "items": [
+          {
+            "title": "9/11 本宫只有10分钟",
+            "text": "12:05到、12:15转发心门；先找正确方向，别购物寄箱。误车先询问出租车；无法及时出发就改本宫观光。",
+            "placeIds": [
+              "hongu-stop"
+            ],
+            "sourceRefs": [
+              "bus-tanabe"
+            ]
+          },
+          {
+            "title": "9/12 不在那智站赌2分钟",
+            "text": "先到胜浦站10:39，再11:05从始发站上山。可如厕补水，但不用这段时间买铁路票。",
+            "placeIds": [
+              "katsuura"
+            ],
+            "sourceRefs": [
+              "bus-shingu",
+              "bus-nachi",
+              "katsuura"
+            ]
+          },
+          {
+            "title": "9/13 名古屋换新干线",
+            "text": "规划留20–30分钟；若现场买票或南纪晚点，按实际票面选更稳妥的后续班次，不锁极限接续。",
+            "placeIds": [
+              "nagoya"
+            ],
+            "sourceRefs": [
+              "nagoya"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "routeMap": {
+    "asset": "assets/route-map.svg?v=20260908-r3",
+    "caption": "路线示意，导航请用地点地图。",
+    "sourceRefs": [
+      "natural-earth"
+    ],
+    "title": "熊野与东京",
+    "subtitle": "JAPAN · KII PENINSULA & TOKYO",
+    "overviewBounds": [
+      134.3,
+      32.7,
+      141.0,
+      36.3
+    ],
+    "insetBounds": [
+      135.05,
+      33.48,
+      136.18,
+      34.37
+    ],
+    "overviewIds": [
+      "kix",
+      "manpa",
+      "hongu",
+      "katsuura",
+      "nagoya",
+      "tokyo-station",
+      "nrt"
+    ],
+    "insetIds": [
+      "manpa",
+      "wakayama",
+      "tanabe",
+      "hosshin",
+      "hongu",
+      "fujiya",
+      "shingu",
+      "daimonzaka",
+      "katsuura",
+      "taoya"
+    ],
+    "overviewLabel": "跨城路线",
+    "insetLabel": "熊野段 · 放大查看",
+    "flightLabel": "深圳 ⇄ 日本 · 航班往返",
+    "legend": [
+      "铁路 / 公共交通",
+      "徒步路段",
+      "航线示意"
+    ],
+    "labelOverrides": {
+      "kix": "关西机场",
+      "manpa": "和歌浦",
+      "hongu": "熊野本宫",
+      "katsuura": "纪伊胜浦",
+      "tokyo-station": "东京",
+      "nrt": "成田机场",
+      "hosshin": "发心门",
+      "fujiya": "川汤",
+      "daimonzaka": "那智 / 大门坂",
+      "taoya": "TAOYA"
+    },
+    "width": 720,
+    "height": 1040,
+    "overviewRouteIds": [
+      "kix",
+      "manpa",
+      "hongu",
+      "katsuura",
+      "shingu",
+      "nagoya",
+      "tokyo-station",
+      "nrt"
+    ],
+    "insetRouteIds": [
+      "manpa",
+      "wakayama",
+      "tanabe",
+      "hongu",
+      "hosshin",
+      "hongu",
+      "fujiya",
+      "shingu",
+      "katsuura",
+      "daimonzaka",
+      "katsuura",
+      "taoya"
+    ],
+    "walkingSegments": [
+      [
+        "hosshin",
+        "hongu"
+      ]
+    ],
+    "overviewOffsets": {
+      "kix": [
+        -45,
+        -14
+      ],
+      "manpa": [
+        -58,
+        22
+      ],
+      "hongu": [
+        8,
+        21
+      ],
+      "katsuura": [
+        -48,
+        34
+      ],
+      "nagoya": [
+        14,
+        -14
+      ],
+      "tokyo-station": [
+        -42,
+        -18
+      ],
+      "nrt": [
+        13,
+        15
+      ]
+    },
+    "insetOffsets": {
+      "manpa": [
+        -63,
+        15
+      ],
+      "wakayama": [
+        14,
+        -9
+      ],
+      "tanabe": [
+        -105,
+        10
+      ],
+      "hosshin": [
+        -103,
+        -18
+      ],
+      "hongu": [
+        16,
+        -9
+      ],
+      "fujiya": [
+        -65,
+        14
+      ],
+      "shingu": [
+        19,
+        -10
+      ],
+      "daimonzaka": [
+        -100,
+        32
+      ],
+      "katsuura": [
+        19,
+        8
+      ],
+      "taoya": [
+        -105,
+        34
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "jr-buy",
+      "title": "JR西日本：车票购买操作",
+      "url": "https://www.jr-odekake.net/ticket/eki/operation/",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "wakayama",
+      "title": "JR和歌山站：售票与地址",
+      "url": "https://eki.jr-odekake.net/top?id=0622091",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "tanabe",
+      "title": "JR纪伊田边站",
+      "url": "https://eki.jr-odekake.net/top?id=0622067",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "katsuura",
+      "title": "JR纪伊胜浦站：售票机与营业时间",
+      "url": "https://eki.jr-odekake.net/top?id=0622045",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "kuroshio",
+      "title": "黑潮1号：9月11日时刻",
+      "url": "https://timetable.jr-odekake.net/train-timetable/38921?date=20260911",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "nanki",
+      "title": "南纪4号：9月13日计划时刻",
+      "url": "https://timetable.jr-odekake.net/train-timetable/28071?date=20260913",
+      "checkedAt": "2026-09-08",
+      "note": "纪伊胜浦08:54始发已回读；名古屋到时待最终票面复核"
+    },
+    {
+      "id": "nanki-seats",
+      "title": "JR东海：南纪全席指定席适用期间",
+      "url": "https://railway.jr-central.co.jp/zairai/",
+      "checkedAt": "2026-09-08",
+      "note": "2026年9月18日至23日为繁忙期措施；不套用于9月13日"
+    },
+    {
+      "id": "nagoya",
+      "title": "JR东海：名古屋站内图",
+      "url": "https://railway.jr-central.co.jp/station-guide/shinkansen/nagoya/map.html",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "bus-tanabe",
+      "title": "田边—本宫—发心门巴士表",
+      "url": "https://www2.tb-kumano.jp/en/transport/pdf/Tanabe-Shirahama-to-Hongu-bus.pdf",
+      "checkedAt": "2026-09-08",
+      "note": "2026-04-01版；核对了2号乘车点与10:30/12:05/12:15/12:30"
+    },
+    {
+      "id": "bus-kawayu",
+      "title": "本宫—川汤巴士表",
+      "url": "https://www2.tb-kumano.jp/en/transport/pdf/Hongu-Kawayu-Yunomine-bus.pdf",
+      "checkedAt": "2026-09-08",
+      "note": "周五与周末班次不同"
+    },
+    {
+      "id": "bus-shingu",
+      "title": "新宫—纪伊胜浦巴士表",
+      "url": "https://www2.tb-kumano.jp/en/transport/pdf/Shingu-Nachi-Katsuura-bus.pdf",
+      "checkedAt": "2026-09-08",
+      "note": "9/12采用周末表：10:00→10:39"
+    },
+    {
+      "id": "bus-nachi",
+      "title": "胜浦—那智山巴士表",
+      "url": "https://www2.tb-kumano.jp/en/transport/pdf/Nachi-Kii-Katsuura-bus.pdf",
+      "checkedAt": "2026-09-08",
+      "note": "2026-04-01版；11:05→11:23，15:09→15:33"
+    },
+    {
+      "id": "bus-pay",
+      "title": "田边观光局：巴士乘车与支付",
+      "url": "https://www.tb-kumano.jp/en/transport/bus/how-to-ride-a-local-bus/",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "bus-operator",
+      "title": "熊野御坊南海：运行信息",
+      "url": "https://kumanogobobus.nankai-nanki.jp/local/",
+      "checkedAt": "2026-09-08",
+      "note": "川汤至新宫的08:40→09:37来自用户提供的9/8指南，出发前再核运营商"
+    },
+    {
+      "id": "hongu",
+      "title": "熊野本宫大社与大斋原",
+      "url": "https://www.tb-kumano.jp/tw/kumano-kodo/world-heritage/kumano-hongu-taisha/",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "hosshin",
+      "title": "发心门王子至本宫路线",
+      "url": "https://www.hongu.jp/kumanokodo/walk/hosshin/",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "waterfall",
+      "title": "飞瀧神社：御滝拝所舞台收费",
+      "url": "https://kumanonachitaisha.or.jp/pavilion/waterfall/",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "seigantoji",
+      "title": "青岸渡寺：境内与三重塔",
+      "url": "https://seigantoji.or.jp/services/",
+      "checkedAt": "2026-09-08",
+      "note": "普通境内免费；登塔成人500日元"
+    },
+    {
+      "id": "pagoda-reopen",
+      "title": "三重塔重新开放与收费调整",
+      "url": "https://seigantoji.or.jp/2024/12/21/三重塔再開の御案内/",
+      "checkedAt": "2026-09-08",
+      "note": "与旅游介绍页300日元旧价冲突，采用寺院500日元；入馆最晚时间按现场"
+    },
+    {
+      "id": "nachi-info",
+      "title": "那智山观光中心",
+      "url": "https://kumanokanko.nankai-nanki.jp/nachisan/",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "manpa",
+      "title": "MANPA 官方交通",
+      "url": "https://www.manpa.co.jp/access/",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "fujiya",
+      "title": "冨士屋官方交通与地址",
+      "url": "https://www.fuziya.co.jp/access/",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "taoya",
+      "title": "TAOYA 那智胜浦：当地观光机构",
+      "url": "https://nachikan.jp/accommodation/2659/",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "imperial",
+      "title": "东京帝国饭店官方交通",
+      "url": "https://www.imperialhotel.co.jp/en/tokyo/access",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "okura",
+      "title": "The Okura Tokyo 官方交通",
+      "url": "https://theokuratokyo.jp/ja/hotel-location/",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "narita",
+      "title": "成田机场：深圳航空航站楼",
+      "url": "https://www.narita-airport.jp/zh-sc/flight/airline-search/csz/",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "skyliner",
+      "title": "京成：Skyliner购票",
+      "url": "https://www.keisei.co.jp/keisei/tetudou/skyliner/jp/skyliner/ticket.php",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "skyliner-map",
+      "title": "京成：日暮里站换乘图",
+      "url": "https://www.keisei.co.jp/keisei/tetudou/skyliner/jp/traffic/nippori.php",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "luggage",
+      "title": "田边观光局：行李寄送与寄存",
+      "url": "https://www.tb-kumano.jp/en/resources/luggage-shuttle-storage/",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "weather",
+      "title": "日本气象厅：中文预警入口",
+      "url": "https://www.data.jma.go.jp/multi/index.html?lang=cn_zs",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "jr-running",
+      "title": "JR西日本运行信息",
+      "url": "https://trafficinfo.westjr.co.jp/",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "jr-central-running",
+      "title": "JR东海在来线运行信息",
+      "url": "https://traininfo.jr-central.co.jp/zairaisen/index.html",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "trail-status",
+      "title": "熊野本宫观光协会：路线状态",
+      "url": "https://www.hongu.jp/en/2026/",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "help",
+      "title": "日本旅游局：游客热线",
+      "url": "https://www.japan.travel/en/plan/hotline/",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "autumn-bus",
+      "title": "2026秋季增发服务适用日期",
+      "url": "https://www.tb-kumano.jp/en/2026/07/24/17684/",
+      "checkedAt": "2026-09-08",
+      "note": "9/19才开始，不纳入本次9/11–12方案"
+    },
+    {
+      "id": "natural-earth",
+      "title": "Natural Earth 公有领域地图数据",
+      "url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "checkedAt": "2026-09-08",
+      "note": ""
+    },
+    {
+      "id": "user-plan",
+      "title": "用户提供的公共交通指引与行程主文件",
+      "kind": "provided",
+      "note": "来源为本项目原始资料；不随公开网页上传原件。"
+    },
+    {
+      "id": "user-confirmed",
+      "title": "用户明确确认",
+      "kind": "conversation",
+      "note": "机票已出票、酒店已订；公共交通为主、车票现场买、无固定分工。"
+    },
+    {
+      "id": "natural-earth-relief",
+      "title": "Natural Earth 地形晕渲底图",
+      "url": "https://www.naturalearthdata.com/downloads/50m-raster-data/50m-natural-earth-1/",
+      "checkedAt": "2026-09-08",
+      "note": "公有领域地图底图，仅作地理背景，路线不是精确导航轨迹。"
+    }
+  ],
+  "issuesAndUncertainties": [
+    {
+      "id": "luggage",
+      "label": "大箱处理方式待定",
+      "note": "不阻碍浏览路书，但徒步前应落实。"
+    },
+    {
+      "id": "rail-stock",
+      "label": "车票现场购买",
+      "note": "显示计划班次，不代表有座或已购。"
+    },
+    {
+      "id": "nanki-arrival",
+      "label": "南纪到达名古屋时间待票面复核",
+      "note": "08:54始发已回读，12:41仍按原手册计划。"
+    },
+    {
+      "id": "tokyo",
+      "label": "东京自由活动未细排",
+      "note": "保留自由安排，不虚构景点预约。"
+    }
+  ],
+  "ui": {
+    "sections": {
+      "flights": [
+        "",
+        "航班"
+      ],
+      "route": [
+        "",
+        "路线"
+      ],
+      "itinerary": [
+        "",
+        "每日行程"
+      ],
+      "transport": [
+        "",
+        "交通"
+      ],
+      "prep": [
+        "",
+        "行前清单"
+      ]
+    },
+    "footer": "熊野 · 东京",
+    "privacyNote": "勾选记录仅保存在当前浏览器。",
+    "mapNetworkNote": "地图需要能够访问 Google 的网络。若一直空白，可用下方链接在系统浏览器打开。",
+    "shareText": "熊野古道 · 2026",
+    "transportSummary": {
+      "title": "熊野段，公共交通为主",
+      "subtitle": "铁路 + 当地巴士 + 必要的短程出租车",
+      "dates": "9月11日—9月13日",
+      "payment": "铁路现场购票 · 现金作巴士后备"
+    }
+  },
+  "editorial": {
+    "brand": "旅行路书",
+    "coverTitle": [
+      "熊野古道",
+      "与东京"
+    ],
+    "coverEyebrow": "KUMANO KODO · A FIELD JOURNAL",
+    "coverLede": "",
+    "coverAction": "查看行程",
+    "arrivalNote": "9月10日抵达大阪关西 T1，再去和歌浦。",
+    "routeLede": "",
+    "routeNote": "",
+    "riverTitle": "川汤 · 大塔川",
+    "riverNote": "",
+    "hikingTitle": "每日行程",
+    "hikingNote": "",
+    "kitTitle": "行前清单",
+    "kitNote": "",
+    "returnTitle": "返回深圳",
+    "returnNote": "成田至深圳"
+  }
+}

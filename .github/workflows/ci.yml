@@ -32,3 +32,22 @@ jobs:
             node scripts/build.mjs --trip "$e" --out "$out" --manifest "$manifest"
             node scripts/check-release.mjs "$out" --manifest "$manifest"
           done
+
+  showcase:
+    name: Build the Kumano showcase (optional, heavier)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test and build
+        working-directory: showcase/kumano-kodo
+        run: |
+          python3 -m pip install -r requirements.txt
+          npm ci
+          npm test
+          npm run build:visuals

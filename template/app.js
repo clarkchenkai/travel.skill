@@ -1,3 +1,4 @@
+import {initMotion} from './motion.mjs';
 import {escapeHTML as E, safeURL, tripStage, countdown, durationMinutes, formatTime, formatDay, formatDate, arrivalDayOffset, nextFlightIndex, pendingTickets, formatMoney, mapLinks, initialState, normalizeState, visibleTasks, taskStats} from './core.mjs';
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -477,6 +478,7 @@ async function init() {
   initEvents();
   initParallax();
   route();
+  try { initMotion(); } catch (err) { console.warn('motion layer skipped', err); }
   clearInterval(clockTimer);
   clockTimer = setInterval(updateClocks, 1000);
 }

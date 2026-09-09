@@ -8,3 +8,8 @@ artifacts/
 __pycache__/
 # Your private trip materials never belong in git. Keep them here and only publish generated dist/.
 input/
+showcase/kumano-kodo/node_modules/
+showcase/kumano-kodo/dist/
+showcase/kumano-kodo/artifacts/
+showcase/kumano-kodo/assets/story.js
+showcase/kumano-kodo/assets/route-map.svg

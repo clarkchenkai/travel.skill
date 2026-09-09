@@ -16,7 +16,7 @@ const {errors} = validateTravelData(data);
 if (errors.length) { console.error(`Refusing to build: ${errors.length} validation error(s). Run npm run validate.`); process.exit(1); }
 if (path.resolve(manifestPath).startsWith(out + path.sep)) { console.error('The manifest must live outside the output directory.'); process.exit(1); }
 
-const TEMPLATE_FILES = ['index.html', 'styles.css', 'themes.css', 'app.js', 'core.mjs', 'i18n/en.json', 'i18n/zh-CN.json'];
+const TEMPLATE_FILES = ['index.html', 'styles.css', 'themes.css', 'app.js', 'core.mjs', 'motion.mjs', 'i18n/en.json', 'i18n/zh-CN.json'];
 fs.rmSync(out, {recursive: true, force: true});
 fs.mkdirSync(out, {recursive: true});
 const written = [];

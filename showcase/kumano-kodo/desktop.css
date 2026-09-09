@@ -1,0 +1,79 @@
+/* Desktop layouts reuse the same data, page selection and handwritten type. */
+@media (min-width:900px){
+ body{padding-bottom:110px;background:var(--paper)}
+ .shell{width:min(1180px,calc(100% - 80px))}
+ body.home-screen .shell{width:100%;max-width:none}
+ .section{padding:42px 40px 60px}
+ body[data-page]:not([data-page="top"]) main>.is-current-page{padding-top:46px;min-height:calc(100svh - 110px)}
+ .section-head{margin-bottom:30px}.section>.section-head h2{font-size:38px}
+ .bottom-nav{width:430px;bottom:20px;border:1px solid #ffffff70;border-radius:22px;padding:6px 16px;box-shadow:0 5px 28px #203b310d}
+ .bottom-nav a{min-height:58px}.bottom-nav .nav-object{width:32px;height:42px}
+ .bottom-nav a:hover .nav-object{transform:translateY(-3px);opacity:1}
+ .home-screen .cover{height:100svh}
+ .cover .home-art-title{--home-title-width:140px;left:12%;top:12svh}
+ .home-actor:not(.is-freefall){width:150px}
+ .home-actor.parachute-link-0{left:26%}.home-actor.parachute-link-1{left:47%}.home-actor.parachute-link-2{left:68%}
+ .home-actor.is-freefall{left:48%;width:185px}
+ .home-wind-leaf{width:180px;height:180px}
+ #route.is-current-page{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(260px,1fr);grid-template-areas:"heading heading" "art places";gap:0 54px;align-items:start}
+ #route>.section-head{grid-area:heading}
+ #route .route-artwork{grid-area:art;margin:0}
+ #route .route-places{grid-area:places;position:sticky;top:32px;padding-top:0;max-height:calc(100svh - 155px);overflow:auto;scrollbar-width:thin}
+ #route .route-places summary{margin:0 0 14px;padding-inline:0;justify-content:flex-start}
+ #route .route-places .place-chip{font-size:16px;min-height:48px}
+ #route .route-place-date{font-size:14px}
+ .itinerary-section .day-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
+ .itinerary-section .day{margin:0;min-width:0;align-self:start}
+ .itinerary-section .day[open]{grid-column:1/-1}
+ .itinerary-section .day>summary{min-height:300px}
+ .itinerary-section .day-image{height:300px}
+ .itinerary-section .day-summary-copy{padding:0 30px 26px}
+ .itinerary-section .day h3{font-size:29px}
+ .itinerary-section .day[open]>.day-content{padding:28px max(28px,calc((100% - 750px)/2)) 20px}
+ .itinerary-section .day-content .day-route-full{margin-bottom:25px}
+ .itinerary-section .event{padding-bottom:30px}
+ .itinerary-section .event h4{font-size:21px}
+ .itinerary-section .event-brief,.itinerary-section .event-detail>p,.itinerary-section .event-detail ul{font-size:17px!important;line-height:1.9}
+ .itinerary-section .day .day-stay{margin-inline:0}
+ #day-2 .day-river-art{height:330px;margin-inline:0}
+ #transport.is-current-page{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);grid-template-areas:"heading heading" "flights tabs" "flights panels" "flights links";grid-template-rows:auto auto auto 1fr;column-gap:54px;align-items:start}
+ #transport>.section-head{grid-area:heading}
+ #transport>#flights{grid-area:flights;margin:0;min-width:0}
+ #transport>.transport-tabs{grid-area:tabs;margin-top:18px}
+ #transport>#transport-panel{grid-area:panels;min-width:0}
+ #transport>.quick-source-bar{grid-area:links;margin-top:24px;align-self:start}
+ #transport .flight-document{padding:0}
+ #transport .flight-rail{margin:0;padding-inline:0;scroll-padding-inline:0;gap:20px}
+ #transport .flight-card{flex-basis:100%;min-width:0}
+ #transport .transport-ticket .transport-flight-endpoint h3{font-size:22px}
+ #transport .transport-ticket .transport-flight-endpoint h3 small{font-size:44px}
+ #transport .transport-ticket .transport-flight-endpoint time{font-size:36px}
+ #transport .transport-tab{padding-inline:10px;font-size:16px}
+ #transport .transport-flight-heading{min-height:64px}
+ #transport .transport-ticket-main{padding-left:13%;padding-right:7%}
+ #transport .transport-ticket-stub{padding-left:13%;padding-right:7%}
+ #prep #prep-count{font-size:18px}
+ #prep .prep-input,#prep .prep-form input,#prep .prep-form button{font-size:16px}
+ #prep .local-note{font-size:14px}
+ #prep .delete-task{font-size:12px}
+ #prep .prep-tabs{margin:0 0 18px}
+ #prep .prep-form{max-width:620px}
+ #prep .local-note{margin-bottom:28px}
+ #prep .prep-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 44px;align-items:start}
+ #prep .prep-item{min-width:0;padding-block:14px}
+ #prep .prep-text{font-size:17px;line-height:1.8}
+ #prep .prep-detail{font-size:15px}
+ #prep>#sources{max-width:850px;margin-top:36px}
+ .dialog{max-width:740px;width:calc(100vw - 100px);max-height:86svh;border-radius:12px}
+ #map-dialog .map-frame-wrap{height:350px}
+ #ticket-dialog .dialog-content{padding-bottom:20px}
+ .toast{bottom:105px;max-width:600px}
+}
+@media (min-width:1400px){
+ .shell{width:min(1280px,calc(100% - 140px))}
+ #route.is-current-page{grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);column-gap:80px}
+ .itinerary-section .day-list{gap:40px}
+ .itinerary-section .day>summary,.itinerary-section .day-image{min-height:330px;height:330px}
+ #transport.is-current-page{column-gap:80px}
+}
+@media (min-width:900px) and (prefers-reduced-motion:reduce){.bottom-nav a:hover .nav-object{transform:none}}
