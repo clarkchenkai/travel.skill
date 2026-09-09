@@ -31,6 +31,11 @@ Performed in the in-app Chromium at 375 × 812 (mobile) and the pane's desktop w
 | Checklist: add, duplicate rejected with toast, check updates progress, delete with undo, group filter, reload keeps 6 items with 1 done | scripted + reload | Pass |
 | Chinese input method composition guard on the checklist form | — | Not verified (needs a real IME) |
 | Rental block renders pick-up, return-by, deposit, coverage, fuel policy | runtime | Pass (family-island) |
+| Offline: built site served by `npm run preview`; headless Chrome registers `sw.js`, 20 entries precached, network set offline, reload renders title and 7 day cards (`npm run check:offline`) | interaction (scripted, headless) | Pass (family-island). Fails under Python's `http.server`, which is why `npm run preview` exists. The in-app Claude browser blocks service workers. |
+| Print: Chrome print-to-PDF of the built site expands all pages and days; page breaks per section | runtime (PDF inspected) | Pass; PDF is large (≈10 MB) because photos print at full resolution |
+| Share tags: `og:title/description/image`, twitter card injected at build; `og:image` absolute only when `trip.siteUrl` is set | structure | Pass |
+| Gallery (`npm run site`): four roadbooks (three examples + Kumano showcase) built into one folder with a chooser page | runtime (screenshot) | Pass |
+| Demo recording (`scripts/record-demo.mjs`): real headless walkthrough → `docs/demo/demo.gif` and `.mp4` | runtime | Recorded 87 frames on the family-island build |
 | Motion layer (`motion.mjs`): day fold animates then lands on the correct native `open` state; dialog entrance does not interfere with close; press feedback | scripted | Pass (japan-hiking, after porting from the Kumano site) |
 | Showcase `showcase/kumano-kodo`: `npm ci`, 8 core tests, `build:visuals`, `build.py --public-only --package` from its new location; 38 files, release audit passed | logic + structure | Pass |
 | Cold-load payload, japan-hiking, uncompressed | measured | Template files 83 KB (HTML 4.4, CSS 23.8, JS 38, i18n 3.2, data 14; ≈25 KB gzipped) plus the cover photo ≈95 KB before first paint; day thumbnails (15–60 KB each), route photo and paper tile load lazily. No web fonts, no third-party scripts. |

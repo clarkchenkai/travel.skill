@@ -245,6 +245,9 @@ img { max-width: 100%; display: block; }
   .cover.has-image .cover-media, .cover.has-image .cover-copy { grid-area: 1 / 1; }
   .cover.has-image .cover-media { aspect-ratio: auto; position: relative; }
   .cover.has-image .cover-copy { align-self: start; background: none; padding: 36px 44px; max-width: 560px; }
+  .cover.has-image .cover-copy > * { position: relative; }
+  .cover.has-image .cover-copy::before { content: ""; position: absolute; inset: 16px 0 16px 20px; border-radius: 18px; background: color-mix(in srgb, var(--bg) 62%, transparent); backdrop-filter: blur(14px) saturate(1.1); -webkit-backdrop-filter: blur(14px) saturate(1.1); }
+  .cover.has-image .cover-copy { position: relative; }
   .cover.has-image[data-copy="top-right"] .cover-copy { justify-self: end; }
   .cover.has-image[data-copy="bottom-left"] .cover-copy { align-self: end; }
   .cover.has-image .cover-copy h1, .cover.has-image .cover-copy p { text-shadow: 0 1px 0 color-mix(in srgb, var(--bg) 70%, transparent), 0 0 18px color-mix(in srgb, var(--bg) 90%, transparent); }
@@ -259,3 +262,27 @@ img { max-width: 100%; display: block; }
   .toast { bottom: 24px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+/* Print: one continuous document. */
+@media print {
+  :root { --nav-h: 0px; }
+  body { background: #fff; color: #000; font-size: 12px; }
+  .demo-notice, .topbar, .bottom-nav, .skip-link, .toast, .cover-action, .icon-button, .check-form, .task .delete, .flight-nav, .footer button, .pill, .tabs, dialog { display: none !important; }
+  .shell { max-width: none; padding: 0; }
+  .page { display: block !important; padding-top: 0; page-break-before: always; }
+  .page-home { page-break-before: auto; }
+  .cover { min-height: 0; box-shadow: none; display: block; }
+  .cover.has-image .cover-media { aspect-ratio: 21 / 9; }
+  .cover.has-image .cover-copy::before { display: none; }
+  .cover-copy { position: static; background: none; padding: 12px 0; color: #000; }
+  .day, .card, .flight-card, .task { break-inside: avoid; box-shadow: none; }
+  .day-body { columns: 1; }
+  .days-grid, .layout-2, .flight-rail { display: block; }
+  .flight-card { margin-bottom: 12px; }
+  .tab-panel .card { display: block; }
+  details > summary { list-style: none; }
+  .day-toggle { display: none; }
+  .chip { border: 1px solid #999; background: none; }
+  a { color: #000; text-decoration: none; }
+  .map-frame-wrap { display: none; }
+}

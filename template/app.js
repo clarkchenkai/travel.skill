@@ -481,6 +481,31 @@ async function init() {
   try { initMotion(); } catch (err) { console.warn('motion layer skipped', err); }
   clearInterval(clockTimer);
   clockTimer = setInterval(updateClocks, 1000);
+  initOffline();
+  initPrint();
+}
+// Offline: only on a built site (the build stamps this meta) and never on file:// or the dev server.
+function initOffline() {
+  const stamp = document.querySelector('meta[name="roadbook-build"]')?.content;
+  if (!stamp || !('serviceWorker' in navigator) || !/^https?:$/.test(location.protocol)) return;
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+// Print: show every page and open every day, then restore.
+function initPrint() {
+  let snapshot = null;
+  window.addEventListener('beforeprint', () => {
+    snapshot = {page: document.body.dataset.page, open: $$('details').map((d) => d.open)};
+    for (const id of PAGES) document.getElementById(id).hidden = false;
+    $$('details').forEach((d) => { d.open = true; });
+    document.body.dataset.page = 'print';
+  });
+  window.addEventListener('afterprint', () => {
+    if (!snapshot) return;
+    $$('details').forEach((d, i) => { d.open = snapshot.open[i]; });
+    document.body.dataset.page = snapshot.page;
+    route();
+    snapshot = null;
+  });
 }
 function deepMerge(base, extra) {
   const out = {...base};

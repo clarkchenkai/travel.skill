@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>travel.skill — roadbook examples</title>
+<meta name="description" content="Turn your travel materials into a personal, shareable travel website. Live examples built with travel.skill.">
+<meta property="og:title" content="travel.skill — roadbook examples">
+<meta property="og:description" content="Turn your travel materials into a personal, shareable travel website.">
+<style>
+:root { --bg:#f6f4ee; --ink:#22211d; --muted:#6b6a62; --line:#dcd8cc; --accent:#3f6b5a; }
+* { box-sizing:border-box } body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Noto Sans CJK SC",sans-serif }
+main { max-width:1120px; margin:0 auto; padding:48px 20px 64px }
+h1 { font-size:clamp(28px,5vw,40px); line-height:1.15; margin:0 0 8px; letter-spacing:-.01em }
+.lede { color:var(--muted); max-width:60ch; margin:0 0 28px; font-size:18px }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:18px }
+.card { display:block; text-decoration:none; color:inherit; background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; transition:transform .15s }
+.card:hover { transform:translateY(-2px) }
+.media { aspect-ratio:16/9; background:#e9e5da } .media img { width:100%; height:100%; object-fit:cover; display:block }
+.body { padding:14px 16px 16px } .body b { font-size:17px; display:block } .body p { margin:6px 0 8px; color:var(--muted); font-size:14px } .body small { color:var(--muted); font-size:12px; letter-spacing:.04em; text-transform:uppercase }
+.how { margin-top:40px; padding:22px; border:1px solid var(--line); border-radius:14px; background:#fff }
+.how h2 { margin:0 0 10px; font-size:20px } pre { background:#f1efe8; padding:12px 14px; border-radius:10px; overflow:auto; font-size:14px }
+a.btn { display:inline-block; margin-top:8px; padding:10px 16px; border-radius:999px; background:var(--accent); color:#fff; text-decoration:none; font-weight:600 }
+footer { margin-top:40px; color:var(--muted); font-size:13px }
+</style>
+</head>
+<body>
+<main>
+<h1>Turn your travel materials into a personal, shareable travel website.</h1>
+<p class="lede">These are live roadbooks built with <strong>travel.skill</strong>: three fictional trips made from the dependency-free template, and the real trip the project grew out of. Open one on your phone.</p>
+<div class="grid">
+<!--CARDS-->
+</div>
+<section class="how">
+<h2>Make yours</h2>
+<pre>git clone https://github.com/clarkchenkai/travel.skill && cd travel.skill
+npm run new -- europe-rail && npm run dev     # then edit trip/travel-data.json</pre>
+<p>Or open the repo in Claude Code / Codex, drop your bookings and notes into <code>input/</code>, and say: <em>"Build my travel roadbook with the travel skill."</em> Nothing to install beyond Node 20, no account, no database.</p>
+<a class="btn" href="https://github.com/clarkchenkai/travel.skill">Source on GitHub</a>
+</section>
+<footer>All example trips are fictional; nothing is booked. Photos are AI-generated. MIT.</footer>
+</main>
+</body>
+</html>

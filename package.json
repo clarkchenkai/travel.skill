@@ -1,11 +1,13 @@
 {
   "name": "travel.skill",
   "version": "0.1.0",
-  "description": "Turn your travel materials into a personal, shareable travel website — an agent skill plus a dependency-free static template.",
+  "description": "Turn your travel materials into a personal, shareable travel website \u2014 an agent skill plus a dependency-free static template.",
   "license": "MIT",
   "type": "module",
   "private": true,
-  "engines": {"node": ">=20"},
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "new": "node scripts/new-trip.mjs",
     "dev": "node scripts/serve.mjs",
@@ -13,7 +15,10 @@
     "gaps": "node scripts/gaps.mjs",
     "build": "node scripts/build.mjs",
     "check": "node scripts/check-release.mjs",
+    "preview": "node scripts/serve.mjs --dist dist",
+    "site": "node scripts/build-site.mjs",
     "shot": "node scripts/screenshot.mjs",
+    "check:offline": "node scripts/check-offline.mjs",
     "test": "node --test \"test/**/*.test.mjs\""
   }
 }

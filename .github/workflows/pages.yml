@@ -46,7 +46,9 @@ jobs:
           cache: ""
 
       - name: Build trip/
-        run: node scripts/build.mjs --trip trip --out dist --manifest artifacts/manifest.json
+        run: |
+          if [ ! -f trip/travel-data.json ]; then node scripts/new-trip.mjs europe-rail; fi
+          node scripts/build.mjs --trip trip --out dist --manifest artifacts/manifest.json
 
       - name: Release audit
         run: node scripts/check-release.mjs dist --manifest artifacts/manifest.json

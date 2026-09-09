@@ -16,6 +16,16 @@ Only `dist/` — the output of `node scripts/build.mjs`. It contains the templat
 
 `npm run check` is a static audit only. It does not verify the running site, images, fonts, or any particular network. See `skill/references/evaluation.md` section 7 for the difference between a structure check and production acceptance.
 
+## Route 0: "Use this template" on GitHub (zero install)
+
+1. On the repository page click **Use this template** → **Create a new repository**.
+2. In your new repository: **Settings → Pages → Source: GitHub Actions**.
+3. Open **Actions → Deploy to GitHub Pages → Run workflow** (or push any change under `trip/`).
+
+If `trip/travel-data.json` does not exist yet, the workflow starts from the `europe-rail` example so you get a working site immediately. Replace it with your own trip and push; each push redeploys. The site address is `https://<user>.github.io/<repo>/`.
+
+Verified: not yet.
+
 ## Route A: any static host
 
 Upload the contents of `dist/` to any static host: Netlify (drag-and-drop), Cloudflare Pages (direct upload), Vercel, an S3 bucket with static hosting, or a folder on your own server. The template itself needs no account — it's plain HTML/CSS/JS/JSON. The host you pick may require one.
@@ -35,7 +45,7 @@ Verified: not yet.
 
 ## Route C: zip and open locally
 
-Zip `dist/` and share it, or unzip it and open `index.html` through a local server (`npm run dev`, or `python3 -m http.server`, or any static file server) — not by double-clicking the file. The template uses ES module scripts and `fetch()` to load `travel-data.json`; both are blocked under the `file://` protocol by browsers, so double-clicking `index.html` will not work.
+Zip `dist/` and share it, or unzip it and open `index.html` through a local server (`npm run preview` serves `dist/`; any static server works, but Python's `http.server` will not register the offline service worker) — not by double-clicking the file. The template uses ES module scripts and `fetch()` to load `travel-data.json`; both are blocked under the `file://` protocol by browsers, so double-clicking `index.html` will not work.
 
 Verified: not yet.
 

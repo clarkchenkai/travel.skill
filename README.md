@@ -2,14 +2,39 @@
 
 **Turn your travel materials into a personal, shareable travel website.**
 
-You have a folder of booking emails, screenshots, notes and links. You want one page you can open on your phone during the trip and send to the people you travel with. `travel.skill` is two things that work together:
+<p align="center"><img src="docs/demo/demo.gif" width="300" alt="Walkthrough on a phone: home, daily plan, place map, flights, checklist"></p>
 
-- **A skill** for coding agents (Claude Code, Codex CLI, and any agent that reads `AGENTS.md`): the procedure for reading your materials, finding what is missing, filling one data file, previewing, and checking before you publish. It never invents facts.
-- **A template**: a dependency-free static site (plain HTML, CSS and JavaScript) with five pages — Home, Map, Days, Transport, Checklist — three visual themes, mobile and desktop layouts, and reader state (ticket checks, checklist) kept in the browser.
+Bookings, screenshots, notes, links → one page you open on your phone during the trip and send to the people you travel with. Live examples: **https://clarkchenkai.github.io/travel.skill/**
 
-No account, no database, no paid service, no build toolchain. Node.js 20+ is the only requirement, and the examples run without any AI at all.
+- **The template** is a dependency-free static site (plain HTML, CSS, JavaScript): Home, Map, Days, Transport, Checklist; three themes; mobile and desktop layouts; works offline once opened; prints as a paper roadbook; share cards for chat apps.
+- **The skill** is the procedure a coding agent (Claude Code, Codex CLI, anything that reads `AGENTS.md`) follows to read your materials, find what is missing, fill one data file, preview, and check before you publish. It never invents facts.
+
+No account, no database, no paid service. Node.js 20+ is the only requirement, and the examples run without any AI.
 
 [中文说明 →](README.zh-CN.md)
+
+## Three ways to start
+
+**1. Use this template on GitHub (nothing to install).** Click *Use this template* → create your repository → Settings → Pages → Source: *GitHub Actions*. The included workflow publishes a starter roadbook at `https://<you>.github.io/<repo>/` within a minute. Then edit `trip/travel-data.json` in the browser or locally; every push redeploys.
+
+**2. Run locally.**
+
+```bash
+git clone https://github.com/clarkchenkai/travel.skill && cd travel.skill
+npm run new -- europe-rail     # copy an example into trip/
+npm run dev                    # http://localhost:4173/
+```
+
+**3. With a coding agent.** Put your materials in `input/`, open the repo in Claude Code or Codex, and paste:
+
+```text
+Build my travel roadbook with the travel skill.
+Materials are in input/. Destination: <where>. Dates: <when>. Travelers: <who>.
+Read the materials, fill trip/travel-data.json, then run the gap report and ask me the open questions in one batch.
+Do not invent times, prices or booking status.
+```
+
+Answer the gap list, look at the preview, ask for changes. When you are ready: `npm run build && npm run check`, then publish `dist/` anywhere static ([docs/PUBLISHING.md](docs/PUBLISHING.md)).
 
 ## What it looks like
 
@@ -22,51 +47,16 @@ Three fictional examples ship with the repo. Nothing in them is booked; they exi
 
 Five-day valley walk; an eight-day rail loop that crosses the end of European summer time; a one-week family trip with a rental car. Different moods, same data shape. All photos are AI-generated for the fictional trips (GPT Image 2 via Lovart); see each example's `ASSETS.md` and [docs/VISUALS.md](docs/VISUALS.md).
 
-## Quick start (no AI needed)
-
-```bash
-git clone <this repo> travel.skill && cd travel.skill
-npm run new -- europe-rail     # copies an example into trip/
-npm run dev                    # http://localhost:4173/
-```
-
-Edit `trip/travel-data.json`, reload, repeat. When it is yours:
-
-```bash
-npm run validate   # structure, references, time zones, privacy markers
-npm run gaps       # what a reader would still need to ask
-npm run build      # dist/ + a hash manifest outside dist/
-npm run check      # static release audit of dist/
-```
-
-Upload `dist/` to any static host. See [docs/PUBLISHING.md](docs/PUBLISHING.md).
-
-## With a coding agent
-
-1. Put your materials in `input/` (git-ignored; never modified).
-2. Open the repo in your agent and paste:
-
-   ```text
-   Build my travel roadbook with the travel skill.
-   Materials are in input/. Destination: <where>. Dates: <when>. Travelers: <who>.
-   Read the materials, fill trip/travel-data.json, then run the gap report and ask me the open questions in one batch.
-   Do not invent times, prices or booking status.
-   ```
-
-3. Answer the gap list. The agent validates, starts the preview, and walks the pages.
-4. Say what you want changed. When you are ready: build, audit, publish — the agent shows you what will be public and waits for your go-ahead.
-
-The full procedure the agent follows is [skill/SKILL.md](skill/SKILL.md). More prompts: [skill/prompts/](skill/prompts/README.md). Client-by-client notes and what has actually been tested: [docs/AGENTS.md](docs/AGENTS.md).
-
 ## What is in the box
 
 ```
 skill/          the agent skill: SKILL.md, references/, prompts/, evals/
 template/       the site: index.html, styles.css, themes.css, app.js, core.mjs, i18n/
 examples/       three fictional trips
-scripts/        new · dev · validate · gaps · build · check (Node only, no deps)
+scripts/        new · dev · validate · gaps · build · check · preview · site · shot · check:offline (Node only, no deps)
 test/           node:test suites (npm test)
-docs/           data reference, quick start, publishing, verification, visuals, demo script
+docs/           data reference, quick start, publishing, verification, visuals, demo recording
+site/           the examples gallery page (built by npm run site, deployed by pages-demo.yml)
 showcase/       the complete real Kumano Kodō 2026 roadbook this project grew out of (React + Three.js, 21 MB)
 trip/           your trip (created by npm run new)
 input/          your raw materials (git-ignored)

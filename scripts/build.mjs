@@ -16,7 +16,8 @@ const {errors} = validateTravelData(data);
 if (errors.length) { console.error(`Refusing to build: ${errors.length} validation error(s). Run npm run validate.`); process.exit(1); }
 if (path.resolve(manifestPath).startsWith(out + path.sep)) { console.error('The manifest must live outside the output directory.'); process.exit(1); }
 
-const TEMPLATE_FILES = ['index.html', 'styles.css', 'themes.css', 'app.js', 'core.mjs', 'motion.mjs', 'i18n/en.json', 'i18n/zh-CN.json'];
+const buildStamp = crypto.createHash('sha256').update(JSON.stringify(data) + Date.now()).digest('hex').slice(0, 12);
+const TEMPLATE_FILES = ['index.html', 'styles.css', 'themes.css', 'app.js', 'core.mjs', 'motion.mjs', 'sw.js', 'i18n/en.json', 'i18n/zh-CN.json'];
 fs.rmSync(out, {recursive: true, force: true});
 fs.mkdirSync(out, {recursive: true});
 const written = [];
@@ -30,6 +31,19 @@ html = html.replace('<html lang="en">', `<html lang="${esc(data.trip.locale || '
   .replace('<title>Roadbook</title>', `<title>${esc(data.trip.title)}</title>`)
   .replace('content="A personal travel roadbook."', `content="${esc(data.trip.subtitle || data.trip.title)}"`);
 if (data.trip.cover?.image) html = html.replace('<link rel="stylesheet" href="styles.css">', `<link rel="preload" as="image" href="${esc(data.trip.cover.image)}" fetchpriority="high">\n<link rel="stylesheet" href="styles.css">`);
+// Share card. og:image must be absolute for most crawlers: set trip.siteUrl (e.g. "https://you.github.io/trip/").
+const site = data.trip.siteUrl ? String(data.trip.siteUrl).replace(/\/?$/, '/') : '';
+const ogImage = data.trip.cover?.image ? (site ? site + data.trip.cover.image : data.trip.cover.image) : '';
+const og = [
+  `<meta property="og:type" content="website">`,
+  `<meta property="og:title" content="${esc(data.trip.title)}">`,
+  `<meta property="og:description" content="${esc(data.trip.subtitle || data.trip.title)}">`,
+  ogImage ? `<meta property="og:image" content="${esc(ogImage)}">` : '',
+  site ? `<meta property="og:url" content="${esc(site)}">` : '',
+  `<meta name="twitter:card" content="${ogImage ? 'summary_large_image' : 'summary'}">`,
+  `<meta name="roadbook-build" content="${buildStamp}">`,
+].filter(Boolean).join('\n');
+html = html.replace('<link rel="stylesheet" href="styles.css">', og + '\n<link rel="stylesheet" href="styles.css">');
 fs.writeFileSync(path.join(out, 'index.html'), html);
 
 // Public data: strip private records and anything under privateData, then re-serialize.
@@ -48,6 +62,9 @@ for (const rel of [...referenced].sort()) {
 }
 for (const rel of ['LICENSE', 'ASSETS.md']) { const f = path.join(trip, rel); if (fs.existsSync(f)) copy(f, rel); }
 
+// Service worker precache: everything written so far except sw.js itself and the license docs.
+const precache = written.filter((rel) => !['sw.js', 'LICENSE', 'ASSETS.md'].includes(rel)).map((rel) => './' + rel);
+fs.writeFileSync(path.join(out, 'sw.js'), fs.readFileSync(path.join(TEMPLATE, 'sw.js'), 'utf8').replace('__VERSION__', buildStamp).replace('__PRECACHE__', JSON.stringify(precache.concat(['./']))));
 const manifest = {};
 for (const rel of written.sort()) manifest[rel] = crypto.createHash('sha256').update(fs.readFileSync(path.join(out, rel))).digest('hex');
 fs.mkdirSync(path.dirname(manifestPath), {recursive: true});

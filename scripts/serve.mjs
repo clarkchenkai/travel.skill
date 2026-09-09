@@ -3,7 +3,7 @@
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
-import {TEMPLATE, tripDir, arg} from './lib/paths.mjs';
+import {ROOT, TEMPLATE, tripDir, arg} from './lib/paths.mjs';
 
 const trip = tripDir();
 const port = Number(arg('--port') || process.env.PORT || 4173);
@@ -26,6 +26,19 @@ export function resolveFile(urlPath, {template = TEMPLATE, tripRoot = trip} = {}
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === new URL(import.meta.url).pathname) {
+  // --dist <dir>: serve a built directory as-is (for previewing dist/ with the service worker; python's http.server cannot).
+  const dist = arg('--dist');
+  if (dist) {
+    const root = path.resolve(ROOT, dist);
+    if (!fs.existsSync(path.join(root, 'index.html'))) { console.error(`No index.html in ${root}. Run npm run build first.`); process.exit(2); }
+    http.createServer((req, res) => {
+      let p = decodeURIComponent((req.url || '/').split('?')[0]); if (p.endsWith('/')) p += 'index.html';
+      const file = path.join(root, path.posix.normalize(p));
+      if (!file.startsWith(root) || !fs.existsSync(file) || !fs.statSync(file).isFile()) { res.writeHead(404, {'content-type': 'text/plain'}); res.end('Not found'); return; }
+      res.writeHead(200, {'content-type': TYPES[path.extname(file).toLowerCase()] || 'application/octet-stream', 'cache-control': 'no-store'});
+      fs.createReadStream(file).pipe(res);
+    }).listen(port, () => console.log(`Built site preview:  http://localhost:${port}/\nServing:             ${root}\nOffline cache (service worker) is active here; Ctrl+C to stop.`));
+  } else {
   if (!fs.existsSync(path.join(trip, 'travel-data.json'))) {
     console.error(`No travel-data.json in ${trip}\nStart from an example:  npm run new -- japan-hiking`);
     process.exit(2);
@@ -39,4 +52,5 @@ if (process.argv[1] && path.resolve(process.argv[1]) === new URL(import.meta.url
   server.listen(port, () => {
     console.log(`Roadbook preview:  http://localhost:${port}/\nTrip folder:       ${trip}\nEdit travel-data.json and reload. Ctrl+C to stop.`);
   });
+  }
 }

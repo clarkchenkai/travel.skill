@@ -2,14 +2,39 @@
 
 **把旅行资料，变成有个人风格、可以分享的旅行网站。**
 
-你手上有一堆订单邮件、截图、备忘和链接，想要一个旅途中在手机上就能打开、也能发给同行人的页面。`travel.skill` 由两部分组成：
+<p align="center"><img src="docs/demo/demo.gif" width="300" alt="手机上的操作演示：首页、日程、地点地图、航班、清单"></p>
 
-- **一个 Skill**，给 Coding Agent 用（Claude Code、Codex CLI，以及任何会读 `AGENTS.md` 的代理）：读资料、找缺口、填一份数据文件、预览、发布前检查的完整流程。不编造事实。
-- **一个模板**：无依赖的静态网站（纯 HTML、CSS、JavaScript），五个页面——首页、地图、日程、交通、清单；三套视觉方向；手机与桌面两种排布；票务勾选与清单状态保存在浏览器里。
+订单、截图、备忘、链接 → 一个旅途中在手机上打开、发给同行人的页面。在线示例：**https://clarkchenkai.github.io/travel.skill/**
 
-不需要账号、数据库、付费服务或构建工具链。唯一要求是 Node.js 20+，示例不用任何 AI 就能跑。
+- **模板**：无依赖静态网站（纯 HTML、CSS、JavaScript）：首页、地图、日程、交通、清单；三套视觉方向；手机与桌面排布；打开过一次即可离线；可打印成纸质路书；聊天应用里有分享卡片。
+- **Skill**：Coding Agent（Claude Code、Codex CLI，以及任何会读 `AGENTS.md` 的代理）遵循的流程：读资料、找缺口、填一份数据文件、预览、发布前检查。不编造事实。
+
+不需要账号、数据库、付费服务。唯一要求是 Node.js 20+，示例不用任何 AI 就能跑。
 
 [English →](README.md)
+
+## 三种开始方式
+
+**1. 在 GitHub 上用模板（什么都不用装）。** 点 *Use this template* → 建自己的仓库 → Settings → Pages → Source 选 *GitHub Actions*。自带的工作流一分钟内把一份起步路书发布到 `https://<你>.github.io/<仓库>/`。之后在网页里或本地改 `trip/travel-data.json`，每次推送自动重新部署。
+
+**2. 本地运行。**
+
+```bash
+git clone https://github.com/clarkchenkai/travel.skill && cd travel.skill
+npm run new -- japan-hiking    # 把示例复制到 trip/
+npm run dev                    # 打开 http://localhost:4173/
+```
+
+**3. 配合 Coding Agent。** 把资料放进 `input/`，在 Claude Code 或 Codex 里打开仓库，粘贴：
+
+```text
+用 travel skill 做我的旅行路书。
+资料在 input/。目的地：<哪里>。日期：<起止>。同行：<几人>。
+先读资料，填 trip/travel-data.json，然后跑缺口报告，把要问我的问题一次列出来。
+不要编造时间、价格和预订状态。
+```
+
+回答缺口清单，看预览，提修改。准备好后 `npm run build && npm run check`，把 `dist/` 放到任何静态托管（[docs/PUBLISHING.md](docs/PUBLISHING.md)）。
 
 ## 长什么样
 
@@ -22,51 +47,16 @@
 
 五天山谷徒步；八天跨四国的铁路环线（跨越欧洲夏令时结束）；一周带孩子的海岛自驾。气质不同，数据结构相同。所有照片均为为虚构行程生成的 AI 图像（GPT Image 2，经 Lovart），提示词与校验值见各示例的 `ASSETS.md` 和 [docs/VISUALS.md](docs/VISUALS.md)。
 
-## 快速开始（不需要 AI）
-
-```bash
-git clone <本仓库> travel.skill && cd travel.skill
-npm run new -- japan-hiking    # 把示例复制到 trip/
-npm run dev                    # 打开 http://localhost:4173/
-```
-
-改 `trip/travel-data.json`，刷新，反复。变成自己的旅行后：
-
-```bash
-npm run validate   # 结构、引用、时区、隐私标记
-npm run gaps       # 读者还会问什么
-npm run build      # 生成 dist/ 和 dist 之外的哈希清单
-npm run check      # 对 dist/ 做静态发布审计
-```
-
-把 `dist/` 上传到任何静态托管。见 [docs/PUBLISHING.md](docs/PUBLISHING.md)。
-
-## 配合 Coding Agent
-
-1. 把资料放进 `input/`（已加入 .gitignore，永远不会被修改）。
-2. 在代理里打开仓库，粘贴：
-
-   ```text
-   用 travel skill 做我的旅行路书。
-   资料在 input/。目的地：<哪里>。日期：<起止>。同行：<几人>。
-   先读资料，填 trip/travel-data.json，然后跑缺口报告，把要问我的问题一次列出来。
-   不要编造时间、价格和预订状态。
-   ```
-
-3. 回答缺口清单。代理校验数据、启动预览、逐页检查。
-4. 提出修改。准备好后：构建、审计、发布——代理会先展示哪些内容会公开，等你确认。
-
-代理遵循的完整流程见 [skill/SKILL.md](skill/SKILL.md)。更多提示词：[skill/prompts/](skill/prompts/README.md)。各客户端的说明与实际测试情况：[docs/AGENTS.md](docs/AGENTS.md)。
-
 ## 目录
 
 ```
 skill/          代理 Skill：SKILL.md、references/、prompts/、evals/
 template/       网站：index.html、styles.css、themes.css、app.js、core.mjs、i18n/
 examples/       三个虚构行程
-scripts/        new · dev · validate · gaps · build · check（只用 Node，无依赖）
+scripts/        new · dev · validate · gaps · build · check · preview · site · shot · check:offline（只用 Node，无依赖）
 test/           node:test 测试（npm test）
-docs/           数据字段、快速开始、发布、验证记录、视觉方法、演示脚本
+docs/           数据字段、快速开始、发布、验证记录、视觉方法、演示录像
+site/           示例画廊页（npm run site 构建，pages-demo.yml 部署）
 showcase/       熊野古道 2026 真实路书完整版（本项目的来源，React + Three.js，21 MB）
 trip/           你的旅行（npm run new 生成）
 input/          你的原始资料（不入 Git）
