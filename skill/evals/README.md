@@ -24,7 +24,7 @@ Score: <0/1/2> — <why>
 Skill change made: <none / link to commit>
 ~~~
 
-No rehearsal has been recorded for this repository yet. Do not cite scenario results that are not in this folder.
+Recorded on 2026-09-09: [A](2026-09-09-scenario-A.md), [C](2026-09-09-scenario-C.md), [D](2026-09-09-scenario-D.md), [E](2026-09-09-scenario-E.md), [J](2026-09-09-scenario-J.md), [K](2026-09-09-scenario-K.md). Three independent Codex sub-agents received input-only packets, with expected answers withheld; the parent task reviewed their written responses afterward. Each scored 2/2 under the stated rubric. These are **proposed-response rehearsals**, not executed scenario implementations or adoption evidence. The records include criteria, full responses, and original response hashes. B, F, G, H, I and L remain unrun.
 
 ## 3. First-roadbook reports (the one that matters)
 
