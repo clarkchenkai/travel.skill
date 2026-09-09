@@ -29,7 +29,7 @@ for (const name of examples) {
 const showcase = path.join(ROOT, 'showcase/kumano-kodo/dist');
 if (fs.existsSync(path.join(showcase, 'index.html'))) {
   fs.cpSync(showcase, path.join(out, 'kumano-kodo'), {recursive: true});
-  cards.push({name: 'kumano-kodo', title: '熊野古道 · 2026', subtitle: 'The real trip this project grew out of. React + Three.js, hand-written font, opening scene. 21 MB.', theme: 'showcase', locale: 'zh-CN', cover: 'kumano-kodo/assets/forest-cover.webp', days: 6});
+  cards.push({name: 'kumano-kodo', title: '熊野古道 · 2026', subtitle: 'The real trip this project grew out of. React + Three.js, hand-written font, opening scene. 35 MB.', theme: 'showcase', locale: 'zh-CN', cover: 'kumano-kodo/assets/forest-cover.webp', days: 6});
 }
 fs.rmSync(path.join(out, '.manifests'), {recursive: true, force: true});
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));

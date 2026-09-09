@@ -5,7 +5,7 @@ This folder is the complete production site of a real six-day trip (Shenzhen →
 It is included as a **finished reference**, not as a starting template:
 
 - The dependency-free template in `template/` is what `npm run new` copies. It has no React, no Three.js, no 8 MB font, and loads in one round trip.
-- This site uses React 19 + Three.js for the opening scene and living-landscape effects, a self-hosted LXGW WenKai font, 25 AI illustrations, and a Python build with Pillow. Total published size ≈ 21 MB.
+- This site uses React 19 + Three.js for the opening scene and living-landscape effects, a self-hosted LXGW WenKai font, 25 AI illustrations, and a Python build with Pillow. Total published size ≈ 35 MB.
 - Read it for the details that make a roadbook feel finished: the parachute opening and its skip guard, the layered forest parallax, the ticket-paper flight cards, the single glass bottom bar, the map dialog that closes in one tap, the day covers that differ per day. `DESIGN.md` records how each decision was reached and what was rejected; `TRIP.md` is the trip's fact sheet.
 
 Live site (as deployed by the author): https://kumano-roadbook.pages.dev

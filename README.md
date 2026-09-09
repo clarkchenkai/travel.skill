@@ -57,7 +57,7 @@ scripts/        new · dev · validate · gaps · build · check · preview · s
 test/           node:test suites (npm test)
 docs/           data reference, quick start, publishing, verification, visuals, demo recording
 site/           the examples gallery page (built by npm run site, deployed by pages-demo.yml)
-showcase/       the complete real Kumano Kodō 2026 roadbook this project grew out of (React + Three.js, 21 MB)
+showcase/       the complete real Kumano Kodō 2026 roadbook this project grew out of (React + Three.js, 35 MB)
 trip/           your trip (created by npm run new)
 input/          your raw materials (git-ignored)
 ```
