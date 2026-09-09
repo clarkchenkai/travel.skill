@@ -20,7 +20,7 @@ Conventions: dates are `YYYY-MM-DD`; instants are ISO 8601 **with offset** (`203
 | `cover` | no | `{ "image": "assets/cover.webp", "alt": "...", "position": "center 60%", "copy": "top-left" }`. Files live in `trip/assets/`. `position` is the CSS object-position for cropping; `copy` places the title on desktop (`top-left`, `top-right`, `bottom-left`). On phones the image sits above the text. |
 | `textures` | no | `{ "paper": "assets/paper.webp" }` — a tile blended behind day cards, flight cards and the ticket dialog. |
 | `demo`, `demoNotice` | no | `true` shows the "fictional example" banner. Set `false` for a real trip. |
-| `updatedAt` | no | Date string for your own tracking. |
+| `updatedAt` | no | Actual date the data was last edited, for your own tracking. Do not copy a future trip date here; omit it if unknown. |
 
 ## flightJourneys[]
 

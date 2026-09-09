@@ -6,7 +6,7 @@ Date of this record: 2026-09-09. Environment: macOS, Node 25.9, Chrome 152 (head
 
 ## Automated (logic)
 
-`npm test`: 43 tests, all passing (rerun 2026-09-09, Node 25.9.0).
+`npm test`: 52 tests, all passing (rerun 2026-09-09, Node 25.9.0).
 
 - Time zones: absolute-instant durations (SIN→NGO 6 h 20, VIE→JFK arriving at an earlier clock time = 8 h 35, Tokyo→Los Angeles 10 h), +1 day / same-day arrival markers, trip day counter in the trip's own zone, countdown never negative.
 - Data: required fields, unknown references, offset-less times rejected, backwards arrivals rejected, unknown IANA zones, dates outside the trip, closed status vocabulary, private records, credential-like keys, token markers, gap report contents.
@@ -32,7 +32,7 @@ Performed in the in-app Chromium at 375 × 812 (mobile) and the pane's desktop w
 | Chinese input method composition guard on the checklist form | — | Not verified (needs a real IME) |
 | Rental block renders pick-up, return-by, deposit, coverage, fuel policy | runtime | Pass (family-island) |
 | Offline: built site served by `npm run preview`; headless Chrome registers `sw.js`, 20 entries precached, network set offline, reload renders title and 7 day cards (`npm run check:offline`) | interaction (scripted, headless) | Pass (family-island). Fails under Python's `http.server`, which is why `npm run preview` exists. The in-app Claude browser blocks service workers. |
-| Print: Chrome print-to-PDF of the built site expands all pages and days; page breaks per section | runtime (PDF inspected) | Pass; PDF is large (≈10 MB) because photos print at full resolution |
+| Print: Chrome print-to-PDF of the built site expands all pages and days; page breaks per section | runtime (PDF inspected) | Initial result was ≈10 MB. Superseded by the step-6 local pass below: 1,930,216 bytes, with text and rendered-page checks. |
 | Share tags: `og:title/description/image`, twitter card injected at build; `og:image` absolute only when `trip.siteUrl` is set | structure | Pass |
 | Gallery (`npm run site`): four roadbooks (three examples + Kumano showcase) built into one folder with a chooser page | runtime (screenshot) | Pass |
 | Demo recording (`scripts/record-demo.mjs`): real headless walkthrough → `docs/demo/demo.gif` and `.mp4` | runtime | Recorded 87 frames on the family-island build |
@@ -41,7 +41,7 @@ Performed in the in-app Chromium at 375 × 812 (mobile) and the pane's desktop w
 | Motion layer (`motion.mjs`): day fold animates then lands on the correct native `open` state; dialog entrance does not interfere with close; press feedback | scripted | Pass (japan-hiking, after porting from the Kumano site) |
 | Showcase `showcase/kumano-kodo`: `npm ci`, 8 core tests, `build:visuals`, `build.py --public-only --package` from its new location; 38 files, release audit passed | logic + structure | Pass |
 | Cold-load payload, japan-hiking, uncompressed | measured | Template files 83 KB (HTML 4.4, CSS 23.8, JS 38, i18n 3.2, data 14; ≈25 KB gzipped) plus the cover photo ≈95 KB before first paint; day thumbnails (15–60 KB each), route photo and paper tile load lazily. No web fonts, no third-party scripts. |
-| Weak network / throttled load | — | Not measured. Payload is small enough that first paint should be one round trip after HTML; not proven. |
+| Weak network / throttled load | measured (local browser) | See step 5 and the final checkpoint below for explicit Slow 4G/3G settings and before/after FCP/LCP. No production-network performance claim. |
 | Reduced-motion preference | structure | CSS rule present; not observed. |
 
 ## Agent clients
@@ -66,9 +66,9 @@ Environment: macOS 26.6.2 (25G83), Node 25.9.0, npm 11.12.1; Xcode 27 beta 4 (27
 
 The pass stops here as requested when an ordered step cannot be completed. The remaining step-1 checks were not performed: all five navigation destinations by touch, checklist add/check/delete/undo and reload persistence, landscape rotation, largest accessibility text size, and Add to Home Screen/standalone launch. Steps 2–10 were not started; this is not evidence that Android or Windows is unavailable. Existing records above remain historical evidence, not results of this pass. Resume by establishing a working native edge-back gesture in simulator Safari and repeating it with the dialog open, then finish step 1 before advancing. No push, deployment or publication was performed.
 
-## Not done
+## Continued local optimization pass
 
-### Continuation of the local pass (2026-09-09)
+### Steps 1–4: devices and accessibility (2026-09-09)
 
 The user subsequently authorized continuing past environment blockers without repeated confirmation. All following checks used local previews with external page resources blocked. `npm test` still passes all 43 tests after the accessibility fixes.
 
@@ -120,10 +120,33 @@ The D scenario also prompted a **separate scripted browser regression** on an is
 
 Same iframe-navigation test after the final fix: one close released the dialog, removed the frame source, cleared the modal marker and restored focus to the place row. Native Safari's keyboard open/close path also restored the final place's focus. Two unit regressions exercise the production close functions for immediate release, repeat-close safety, iframe-history growth, and focus/scroll restoration. `npm test`: 47/47 passed. iOS edge-back gestures and cross-origin provider behavior remain unverified.
 
+### Step 8: first-roadbook run (2026-09-09)
+
+A native Codex sub-agent executed expanded P01 in a clean local clone of `8c416f9`, with two fictional input files, without human answers or external services. Validate, gaps, build and release audit completed. The parent reviewed the output, corrected a future `updatedAt` value through the agent, and independently checked source hashes and absence of the two private markers from trip/dist. Final output: 11 files / 99,865 bytes, 7 gaps and 9 recorded questions. See [AGENTS.md](AGENTS.md) for version, failures/recovery and final hashes. This is **structure + static audit and an agent-execution record**, not a new Codex CLI/model-service run or runtime website verification.
+
+### Step 9: i18n coverage (2026-09-09)
+
+**Logic:** new tests compare every nested English/Chinese leaf key and interpolation variable, check literal `t`/`plural` references and singular variants, and enumerate the dynamic page/status/checklist key families. New unclassified call syntax fails the scan instead of being silently ignored. Added the missing English single-day form and its Chinese counterpart. Navigation region labels, page labels and the skip link now follow the locale; built loading/no-JavaScript fallbacks are localized too. A Chinese-build regression verifies those prerendered strings. `npm test`: 51/51 passed. This is key/markup coverage, not a claim of complete linguistic review or Chinese screen-reader testing.
+
+### Step 10: Windows availability (2026-09-09)
+
+No local Windows execution environment was found: `prlctl`, `VBoxManage`, `vmrun`, `tart` and `qemu-system-aarch64` were absent from PATH; no Parallels, VMware, VirtualBox or UTM app was found in system/user Applications; the usual `~/Parallels` and `~/VirtualBox VMs` directories were absent. No Windows commands were run, and Windows compatibility remains unverified. No VM was installed or remote machine contacted.
+
+## Remaining evidence gaps
+
 - No deployment to a live host from this repository. `docs/PUBLISHING.md` routes are described, not walked.
 - No real traveler has built a roadbook with it yet. The stage-one goal (ten strangers) has zero data points.
 - No physical device yet. iOS Safari has runtime and partial simulator-touch evidence (see the dated pass above); the complete touch checklist is unfinished. Android Chrome has not been checked.
-- No screen-reader pass beyond `aria-label`/`aria-current` attributes being present.
+- No completed VoiceOver speech/navigation pass; native Safari keyboard traversal and accessibility-tree inspection are recorded separately.
+- Real CJK composition Enter behavior, iOS edge-back gesture, standalone launch and complete enlarged-text touch navigation remain unverified for the concrete tool/environment reasons above. No new service-backed Codex CLI run was made.
 - No test of a self-hosted font. Images are exercised by the three examples (cover, day thumbnails, route photo, paper tile); each example builds under 1.5 MB and the audit passes.
 
 Update this file when a row changes level. Do not summarise it into a badge.
+
+## Final local checkpoint — 2026-09-09
+
+Runtime source at `3de8903`: 52/52 tests passed; the final family-island build contains 39 files / 902,772 bytes and passes the release audit. A shared-image regression first failed when a day thumbnail replaced the cover's candidate list; the fix retains both size families and keeps tiny thumbnails out of cover selection.
+
+Headless Chrome runtime checks on the final built site passed all five destinations at 390 and 1280 px: one active page, matching navigation state, seven day cards, no document-width overflow and no loading error. The selected cover was 900 px on the narrow viewport and 1800 px on the wide viewport (DPR 2). A final fresh 3G run with the same 400 ms / 400 kbit/s settings and service-worker bypass measured FCP **2.616 s**, LCP **2.716 s**, with the subtitle painting before the cover. This is a single local lab run, not a population statistic.
+
+The simulator text size was read back as its original `large`; no VoiceOver process remained. No push or deployment was performed. Source changes and evidence records were committed locally; generated screenshots, PDFs, raw measurements and the fictional first-roadbook clone remain local-only.
