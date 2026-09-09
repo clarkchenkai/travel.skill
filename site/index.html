@@ -21,6 +21,7 @@ h1 { font-size:clamp(28px,5vw,40px); line-height:1.15; margin:0 0 8px; letter-sp
 .how { margin-top:40px; padding:22px; border:1px solid var(--line); border-radius:14px; background:#fff }
 .how h2 { margin:0 0 10px; font-size:20px } pre { background:#f1efe8; padding:12px 14px; border-radius:10px; overflow:auto; font-size:14px }
 a.btn { display:inline-block; margin-top:8px; padding:10px 16px; border-radius:999px; background:var(--accent); color:#fff; text-decoration:none; font-weight:600 }
+.walkthrough { margin:36px 0; } .walkthrough h2 { margin:0 0 8px; font-size:24px; } .walkthrough p { color:var(--muted); margin:8px 0 16px; } .walkthrough video { display:block; width:100%; height:auto; aspect-ratio:1920/1074; background:#172c25; } .walkthrough a { color:var(--accent); }
 footer { margin-top:40px; color:var(--muted); font-size:13px }
 </style>
 </head>
@@ -28,6 +29,15 @@ footer { margin-top:40px; color:var(--muted); font-size:13px }
 <main>
 <h1>Turn your travel materials into a personal, shareable travel website.</h1>
 <p class="lede">These are live roadbooks built with <strong>travel.skill</strong>: three fictional trips made from the dependency-free template, and the real trip the project grew out of. Open one on your phone.</p>
+<section class="walkthrough" aria-labelledby="walkthrough-title">
+<h2 id="walkthrough-title">熊野古道 · 从出发到沿途</h2>
+<p>45 秒真实操作：开场、路线地图、每日行程与交通换乘。</p>
+<video controls playsinline preload="none" poster="assets/kumano-walkthrough-poster.jpg" width="1920" height="1074" aria-label="熊野古道网站真实操作演示，无声视频">
+<source src="assets/kumano-walkthrough.mp4" type="video/mp4">
+<a href="assets/kumano-walkthrough.mp4">下载演示视频</a>
+</video>
+<p><a href="https://kumano-roadbook.pages.dev/?v=hd35">打开完整路书 ↗</a></p>
+</section>
 <div class="grid">
 <!--CARDS-->
 </div>

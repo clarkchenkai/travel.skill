@@ -36,6 +36,7 @@ const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({'&': '&amp;', '<'
 let html = fs.readFileSync(path.join(ROOT, 'site/index.html'), 'utf8');
 html = html.replace('<!--CARDS-->', cards.map((c) => `<a class="card" href="${esc(c.name)}/"><div class="media">${c.cover ? `<img src="${esc(c.cover)}" alt="" loading="lazy">` : ''}</div><div class="body"><b>${esc(c.title)}</b><p>${esc(c.subtitle)}</p><small>${esc(c.theme)} · ${esc(c.locale)} · ${c.days} days</small></div></a>`).join('\n'));
 html = html.replace(/__BASE__/g, base);
+fs.cpSync(path.join(ROOT, 'site/assets'), path.join(out, 'assets'), {recursive: true});
 fs.writeFileSync(path.join(out, 'index.html'), html);
 fs.writeFileSync(path.join(out, '.nojekyll'), '');
 console.log(`Demo site: ${cards.length} roadbooks → ${path.relative(ROOT, out)}/`);
