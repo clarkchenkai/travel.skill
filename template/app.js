@@ -7,7 +7,8 @@ const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const PAGES = ['home', 'map', 'days', 'transport', 'checklist'];
 
 let data, strings, locale, state, storageKey, places = {}, tickets = {}, sources = {}, accommodations = {};
-let activeDialog = null, dialogOpener = null, savedScroll = 0, mapSequence = 0, mapTimer = 0;
+let activeDialog = null, dialogOpener = null, savedScroll = 0, mapSequence = 0, mapTimer = 0, pendingDialogRestore = null;
+let modalHistoryLength = 0, modalPreviousState = null;
 let flightIndex = 0, clockTimer = 0, toastTimer = 0, checkGroup = 'all', transportTab = '';
 
 // ---------- i18n ----------
@@ -70,16 +71,26 @@ function firstVisitDate(placeId) {
 
 // ---------- dialogs ----------
 function openDialog(el) {
+  pendingDialogRestore = null;
   if (activeDialog) { activeDialog.close(); }
   else {
     savedScroll = window.scrollY;
     dialogOpener = document.activeElement;
+    modalPreviousState = history.state?.roadbookModal ? null : history.state;
     if (!history.state?.roadbookModal) history.pushState({roadbookModal: true}, '', location.href);
+    modalHistoryLength = history.length;
     document.body.classList.add('dialog-open');
   }
   activeDialog = el;
   el.showModal();
   $('.dialog-content', el).scrollTop = 0;
+}
+function restoreDialogPosition({opener, scroll}) {
+  requestAnimationFrame(() => {
+    if (activeDialog || !opener?.isConnected || opener.closest('[hidden]')) return;
+    window.scrollTo({top: scroll, behavior: 'instant'});
+    opener.focus({preventScroll: true});
+  });
 }
 function releaseDialog() {
   if (!activeDialog) return;
@@ -92,19 +103,24 @@ function releaseDialog() {
   blank.removeAttribute('src');
   frame.replaceWith(blank);
   document.body.classList.remove('dialog-open');
-  const opener = dialogOpener, scroll = savedScroll;
+  const restore = {opener: dialogOpener, scroll: savedScroll};
   dialogOpener = null;
   // Safari restores history focus/scroll after popstate. Restore our opener after that work.
-  requestAnimationFrame(() => {
-    if (activeDialog) return;
-    window.scrollTo({top: scroll, behavior: 'instant'});
-    if (opener?.isConnected) opener.focus({preventScroll: true});
-  });
+  restoreDialogPosition(restore);
+  return restore;
 }
 function closeDialog() {
   if (!activeDialog) return;
-  if (history.state?.roadbookModal) history.back();
-  else releaseDialog();
+  const pushed = Boolean(history.state?.roadbookModal);
+  const restore = releaseDialog(); // Never wait for an iframe's session-history traversal to close the UI.
+  if (pushed && history.length === modalHistoryLength) {
+    pendingDialogRestore = restore;
+    history.back();
+  } else if (pushed) {
+    // An iframe added joint-history entries. Clear our marker without traversing that history.
+    // The History API cannot safely remove an unknown number of those entries.
+    history.replaceState(modalPreviousState, '', location.href);
+  }
 }
 
 function openMap(id) {
@@ -392,6 +408,7 @@ function currentPage() {
   return page ? {page, target} : {page: 'home', target: null};
 }
 function route() {
+  pendingDialogRestore = null;
   const {page, target} = currentPage();
   document.body.dataset.page = page;
   for (const id of PAGES) document.getElementById(id).hidden = id !== page;
@@ -440,7 +457,13 @@ function initEvents() {
     dialog.addEventListener('cancel', (e) => { e.preventDefault(); closeDialog(); });
     dialog.addEventListener('click', (e) => { if (e.target === dialog) closeDialog(); });
   }
-  window.addEventListener('popstate', () => { if (activeDialog && !history.state?.roadbookModal) releaseDialog(); });
+  window.addEventListener('popstate', () => {
+    if (activeDialog && !history.state?.roadbookModal) releaseDialog();
+    if (pendingDialogRestore) {
+      restoreDialogPosition(pendingDialogRestore);
+      pendingDialogRestore = null;
+    }
+  });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && activeDialog) { e.preventDefault(); closeDialog(); } });
   window.addEventListener('hashchange', route);
   $('#share-button').addEventListener('click', async () => {

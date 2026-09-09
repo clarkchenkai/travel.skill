@@ -112,6 +112,14 @@ The build selects existing small cover/day variants in print CSS and a locally r
 
 Network boundary: page resources were restricted to localhost. An initial Chrome CLI startup emitted background-service error messages, so that run does not certify absence of browser-background traffic. Subsequent CLI runs also used `--no-proxy-server` and hostname rules blocking all non-local names; test browser processes were stopped afterward.
 
+### Step 7: blind skill rehearsals and iframe regression (2026-09-09)
+
+Recorded A, C, D, E, J and K with three independent native Codex sub-agents; expected answers were withheld until their response files existed. All six received 2/2 against the scenario rubric. See [skill/evals](../skill/evals/README.md) for criterion scores and complete responses. This proves bounded proposed responses to those inputs, not that an agent implemented or deployed a site. No SKILL.md change was warranted by a below-2 result.
+
+The D scenario also prompted a **separate scripted browser regression** on an isolated local build with a same-origin iframe navigating from `frame-one.html` to `frame-two.html`. It exposed a regression in this pass's initial focus fix: the close button waited for history traversal and left the dialog open while the iframe went back to frame one. Fixed again: UI release is immediate; ordinary app history is reconciled separately. If iframe history grew, the app clears its own marker without guessing how many iframe entries to traverse. The History API cannot safely purge those unknown entries; no such purge is claimed.
+
+Same iframe-navigation test after the final fix: one close released the dialog, removed the frame source, cleared the modal marker and restored focus to the place row. Native Safari's keyboard open/close path also restored the final place's focus. Two unit regressions exercise the production close functions for immediate release, repeat-close safety, iframe-history growth, and focus/scroll restoration. `npm test`: 47/47 passed. iOS edge-back gestures and cross-origin provider behavior remain unverified.
+
 - No deployment to a live host from this repository. `docs/PUBLISHING.md` routes are described, not walked.
 - No real traveler has built a roadbook with it yet. The stage-one goal (ten strangers) has zero data points.
 - No physical device yet. iOS Safari has runtime and partial simulator-touch evidence (see the dated pass above); the complete touch checklist is unfinished. Android Chrome has not been checked.
