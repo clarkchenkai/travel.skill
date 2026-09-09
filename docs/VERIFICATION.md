@@ -6,7 +6,7 @@ Date of this record: 2026-09-09. Environment: macOS, Node 25.9, Chrome 152 (head
 
 ## Automated (logic)
 
-`npm test`: 39 tests, all passing.
+`npm test`: 43 tests, all passing (rerun 2026-09-09, Node 25.9.0).
 
 - Time zones: absolute-instant durations (SIN→NGO 6 h 20, VIE→JFK arriving at an earlier clock time = 8 h 35, Tokyo→Los Angeles 10 h), +1 day / same-day arrival markers, trip day counter in the trip's own zone, countdown never negative.
 - Data: required fields, unknown references, offset-less times rejected, backwards arrivals rejected, unknown IANA zones, dates outside the trip, closed status vocabulary, private records, credential-like keys, token markers, gap report contents.
@@ -48,11 +48,29 @@ Performed in the in-app Chromium at 375 × 812 (mobile) and the pane's desktop w
 
 See [AGENTS.md](AGENTS.md) for the recorded runs (Claude Code passed; Codex CLI: passed).
 
+## Ordered local optimization pass — 2026-09-09 (stopped at step 1)
+
+Environment: macOS 26.6.2 (25G83), Node 25.9.0, npm 11.12.1; Xcode 27 beta 4 (27A5228h), selected per command with `DEVELOPER_DIR=/Applications/Xcode-27.0-Beta-4.app/Contents/Developer`. Device Hub (`com.apple.dt.Devices`) displayed an iPhone 17 Pro simulator running iOS 27.0 (24A5390f). Native coordinate taps and drags were injected into that simulator; this is interaction evidence on an emulated device, not physical-device testing or DOM-dispatched events.
+
+`npm run build --trip examples/family-island` failed because npm did not forward the flag. `npm run build -- --trip examples/family-island` succeeded (22 files, 711,344 bytes), and `npm run check` passed. The build was served at `http://localhost:4195/` with `npm run preview -- --port 4195`. A temporary HTTP-header shim outside the repository blocked external frames and other external page resources with Content Security Policy, to honor the local-only requirement. The built files were unchanged. Consequently this run does not verify a working Google map embed; its blank state was expected.
+
+| Check actually performed | Level | Result |
+| --- | --- | --- |
+| Home cover and family-island title render in Safari | runtime | Pass |
+| Tap Days and Transport in the bottom navigation | interaction (simulator touch) | Pass for these two destinations only |
+| Collapse and reopen day 1 by tapping its summary | interaction (simulator touch) | Pass |
+| Tap the Palma de Mallorca Airport place chip | interaction (simulator touch) | Dialog opens with title, local name, address and controls; external map blocked as described above |
+| Close the place dialog with one tap, then reopen it | interaction (simulator touch) | Pass; day content restored |
+| Drag the flight rail horizontally | interaction (simulator touch) | Pass; outbound LHR→PMI changes to return PMI→LHR, with the active indicator changing |
+| Swipe right from the left screen edge without Escape | interaction (attempted, unresolved) | Three attempts: two with the place dialog open and one on Transport. No return navigation or dialog dismissal was observed. A subsequent native Safari Back-button tap returned from Transport to Days, but that does not verify the gesture. Cause not isolated between input delivery, simulator Safari behavior and the page. No template defect established or fix applied. |
+
+The pass stops here as requested when an ordered step cannot be completed. The remaining step-1 checks were not performed: all five navigation destinations by touch, checklist add/check/delete/undo and reload persistence, landscape rotation, largest accessibility text size, and Add to Home Screen/standalone launch. Steps 2–10 were not started; this is not evidence that Android or Windows is unavailable. Existing records above remain historical evidence, not results of this pass. Resume by establishing a working native edge-back gesture in simulator Safari and repeating it with the dialog open, then finish step 1 before advancing. No push, deployment or publication was performed.
+
 ## Not done
 
 - No deployment to a live host from this repository. `docs/PUBLISHING.md` routes are described, not walked.
 - No real traveler has built a roadbook with it yet. The stage-one goal (ten strangers) has zero data points.
-- No physical device yet. iOS Safari was checked in the simulator (real WebKit, no touch); Android Chrome not at all.
+- No physical device yet. iOS Safari has runtime and partial simulator-touch evidence (see the dated pass above); the complete touch checklist is unfinished. Android Chrome has not been checked.
 - No screen-reader pass beyond `aria-label`/`aria-current` attributes being present.
 - No test of a self-hosted font. Images are exercised by the three examples (cover, day thumbnails, route photo, paper tile); each example builds under 1.5 MB and the audit passes.
 
