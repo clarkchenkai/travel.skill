@@ -1,0 +1,17 @@
+{
+  "files": [
+    "index.html",
+    "styles.css",
+    "themes.css",
+    "app.js",
+    "core.mjs",
+    "rental.mjs",
+    "motion.mjs",
+    "icons.mjs",
+    "sw.js",
+    "i18n/en.json",
+    "i18n/zh-CN.json",
+    "modules/business.mjs"
+  ],
+  "validation": "validate.mjs"
+}

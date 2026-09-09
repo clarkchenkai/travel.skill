@@ -1,3 +1,4 @@
+import {resolveRentalDays,endpointCalendar,endpointInstant} from './rental.mjs';
 import {initMotion} from './motion.mjs';
 import {ICONS} from './icons.mjs';
 import {escapeHTML as E, safeURL, tripStage, countdown, durationMinutes, formatTime, formatDay, formatDate, arrivalDayOffset, nextFlightIndex, pendingTickets, formatMoney, mapLinks, initialState, normalizeState, visibleTasks, taskStats} from './core.mjs';
@@ -5,6 +6,7 @@ import {escapeHTML as E, safeURL, tripStage, countdown, durationMinutes, formatT
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const PAGES = ['home', 'map', 'days', 'transport', 'checklist'];
+const moduleTitles={};
 
 let data, strings, locale, state, storageKey, places = {}, tickets = {}, sources = {}, accommodations = {};
 let activeDialog = null, dialogOpener = null, savedScroll = 0, mapSequence = 0, mapTimer = 0, pendingDialogRestore = null;
@@ -301,14 +303,14 @@ function flightHTML(j, i) {
 }
 function rentalHTML(r) {
   if (!r) return '';
-  const row = (label, value) => value ? `<dt>${E(label)}</dt><dd>${E(value)}</dd>` : '';
-  return `<div class="card rental" style="margin-top:16px"><h3>${E(t('transport.rental'))} · ${E(r.vendor || '')} ${statusLabel(r)}</h3><p class="muted small">${E(r.vehicle || '')}</p><dl>
-    ${row(t('transport.pickUp'), r.pickUp ? `${formatDate(r.pickUp.date, locale)} ${r.pickUp.time || ''} · ${places[r.pickUp.placeId]?.name || r.pickUp.place || ''}` : '')}
-    ${row(t('transport.returnBy'), r.dropOff ? `${formatDate(r.dropOff.date, locale)} ${r.dropOff.time || ''} · ${places[r.dropOff.placeId]?.name || r.dropOff.place || ''}` : '')}
-    ${row(t('transport.deposit'), formatMoney(r.deposit, locale))}
-    ${row(t('transport.coverage'), r.coverage)}
-    ${row(t('transport.fuel'), r.fuelPolicy)}
-  </dl>${(r.notes || []).map((n) => `<p class="muted small" style="margin-top:8px">${E(n)}</p>`).join('')}${r.dropOff?.placeId && places[r.dropOff.placeId] ? `<div class="button-row"><button type="button" class="pill pill-small" data-map="${E(r.dropOff.placeId)}" aria-label="${E(t('days.map'))}: ${E(places[r.dropOff.placeId].name)}">${E(t('days.map'))}</button></div>` : ''}${sourceLinks(r.sourceRefs)}</div>`;
+  const R=strings.rental, row=(label,value)=>value?`<dt>${E(label)}</dt><dd>${E(value)}</dd>`:'';
+  const endpoint=(key,label)=>{
+    const e=r[key]||{},cal=endpointCalendar(e),place=places[e.placeId];
+    return `<section class="rental-endpoint"><h4>${E(label)}</h4><p>${E(cal.date?formatDate(cal.date,locale):R.unknown)} ${E(cal.time)} <small>${E(cal.timeZone)}</small></p><p>${E(e.branchName||place?.name||R.unknown)}</p>${place?chip(place.name,`data-map="${E(place.id)}"`,ICONS.pin):''}<dl>${row(R.hours,e.openingHours)}${row(R.afterHours,e.afterHours)}</dl>${sourceLinks(e.sourceRefs||[])}</section>`;
+  };
+  const deadline=endpointInstant(r.dropOff);
+  const docs=(r.eligibility?.documents||[]).map(doc=>`<details class="rental-document"><summary>${E(doc.title)} <span class="status-label" data-status="${E(doc.status||'unknown')}">${E(R.documentStatus?.[doc.status||'unknown']||R.unknown)}</span></summary><dl>${row(R.issuer,doc.issuer)}${row(R.materials,Array.isArray(doc.materials)?doc.materials.join(' · '):doc.materials)}${row(R.processing,doc.processingTime)}${row(R.validity,[doc.validity,doc.expiresOn].filter(Boolean).join(' · '))}${row(R.fee,typeof doc.fee==='object'?formatMoney(doc.fee,locale):doc.fee)}</dl>${safeURL(doc.applicationUrl)?`<a href="${E(safeURL(doc.applicationUrl))}" target="_blank" rel="noopener noreferrer">${E(R.apply)} ↗</a>`:''}${sourceLinks(doc.sourceRefs||[])}</details>`).join('');
+  return `<div class="card rental" style="margin-top:16px"><h3>${E(t('transport.rental'))} · ${E(r.vendor||R.unknown)} ${statusLabel(r)}</h3><p class="muted small">${E(r.vehicle||'')}</p><div class="rental-endpoints">${endpoint('pickUp',t('transport.pickUp'))}${endpoint('dropOff',t('transport.returnBy'))}</div>${deadline?`<p class="rental-return-clock">${E(R.remaining)} <span data-countdown="${E(deadline)}" data-countdown-kind="rental"></span></p>`:''}<dl>${row(t('transport.deposit'),formatMoney(r.deposit,locale))}${row(t('transport.coverage'),r.coverage)}${row(t('transport.fuel'),r.fuelPolicy)}</dl><details><summary>${E(R.eligibility)}</summary><p>${E(r.eligibility?.licenceCountry||R.unknown)}</p><p>${E(r.eligibility?.supplierAcceptance||R.verify)}</p>${docs||`<p>${E(R.verify)}</p>`}</details>${(r.conditions||[]).map(c=>`<details><summary>${E(c.title)} ${statusLabel(c)}</summary><p>${E(c.text||R.unknown)}</p>${sourceLinks(c.sourceRefs||[])}</details>`).join('')}${(r.notes||[]).map(n=>`<p class="muted small">${E(n)}</p>`).join('')}${sourceLinks(r.sourceRefs||[])}</div>`;
 }
 function renderTransport() {
   const journeys = data.flightJourneys;
@@ -350,7 +352,7 @@ function updateClocks() {
   for (const el of $$('[data-countdown]')) {
     const c = countdown(el.dataset.countdown, now);
     if (!c) { el.textContent = ''; continue; }
-    el.textContent = c.ended ? t('transport.departed') : (c.days ? `${c.days}d ` : '') + `${String(c.hours).padStart(2, '0')}:${String(c.minutes).padStart(2, '0')}:${String(c.seconds).padStart(2, '0')}`;
+    el.textContent = c.ended ? (el.dataset.countdownKind==='rental'?strings.rental.past:t('transport.departed')) : (c.days ? `${c.days}d ` : '') + `${String(c.hours).padStart(2, '0')}:${String(c.minutes).padStart(2, '0')}:${String(c.seconds).padStart(2, '0')}`;
   }
 }
 
@@ -413,14 +415,35 @@ function route() {
   document.body.dataset.page = page;
   for (const id of PAGES) document.getElementById(id).hidden = id !== page;
   $$('.bottom-nav a').forEach((a) => { if (a.hash === '#' + page) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+  const nav=$('#bottom-nav'),active=$('a[aria-current]',nav);
+  if(active&&nav.scrollWidth>nav.clientWidth&&(active.offsetLeft<nav.scrollLeft||active.offsetLeft+active.offsetWidth>nav.scrollLeft+nav.clientWidth))nav.scrollLeft=Math.max(0,active.offsetLeft-(nav.clientWidth-active.offsetWidth)/2);
   if (target) { const day = target.closest('details'); if (day) day.open = true; }
   requestAnimationFrame(() => { if (target) target.scrollIntoView({block: 'start'}); else window.scrollTo({top: 0, behavior: 'instant'}); });
   if (page === 'transport') requestAnimationFrame(() => scrollToFlight(false));
 }
+function pageLabel(id) { return moduleTitles[id] || t('nav.' + id); }
+async function initModules() {
+  for(const spec of data.ui?.modules||[]) {
+    if(!spec||!/^[a-z][a-z0-9-]*$/.test(spec.id)||PAGES.includes(spec.id)||!/^modules\/[a-zA-Z0-9_/-]+\.mjs$/.test(spec.source)||spec.source.includes('..'))continue;
+    const host=document.createElement('section');host.className='page';host.id=spec.id;host.hidden=true;
+    document.querySelector('#main > .footer').before(host);PAGES.push(spec.id);
+    moduleTitles[spec.id]=spec.title||spec.id;
+    try {
+      const module=await import('./'+spec.source);
+      moduleTitles[spec.id]=module.title?.[locale]||module.title?.en||moduleTitles[spec.id];
+      if(typeof module.render!=='function')throw new Error('Module must export render(context)');
+      await module.render({element:host,data,locale,escapeHTML:E,formatMoney,sourceLinks,openMap,storageKey:`${storageKey}:module:${spec.id}`});
+    } catch(error) {
+      host.textContent=strings.moduleUnavailable;host.setAttribute('role','alert');
+      console.warn(`Module ${spec.id} unavailable`,error);
+    }
+  }
+  document.querySelector('#bottom-nav').style.setProperty('--page-count',PAGES.length);
+}
 function renderNav() {
-  $('#bottom-nav').innerHTML = PAGES.map((id) => `<a href="#${id}">${ICONS[id]}<span>${E(t('nav.' + id))}</span></a>`).join('');
+  $('#bottom-nav').innerHTML = PAGES.map((id) => `<a href="#${id}">${ICONS[id]||ICONS.ticket}<span>${E(pageLabel(id))}</span></a>`).join('');
   $('#bottom-nav').setAttribute('aria-label', t('nav.sections'));
-  for (const id of PAGES) document.getElementById(id).setAttribute('aria-label', t('nav.' + id));
+  for (const id of PAGES) document.getElementById(id).setAttribute('aria-label', pageLabel(id));
   $('.skip-link').textContent = t('skipToDays');
   $('#footer-top').textContent = t('footer.top');
 }
@@ -484,7 +507,7 @@ async function init() {
   try {
     data = await loadJSON('travel-data.json');
     locale = data.trip.locale || 'en';
-    const packName = ['zh-CN', 'en'].includes(locale) ? locale : locale.startsWith('zh') ? 'zh-CN' : 'en';
+    const packName = data.ui?.localePack || (['zh-CN', 'en'].includes(locale) ? locale : locale.startsWith('zh') ? 'zh-CN' : 'en');
     strings = await loadJSON(`i18n/${packName}.json`);
     if (data.ui?.strings) strings = deepMerge(strings, data.ui.strings);
   } catch (err) {
@@ -493,8 +516,10 @@ async function init() {
     return;
   }
   document.documentElement.lang = locale;
+  document.documentElement.dir = data.trip.dir || 'ltr';
   document.documentElement.dataset.theme = data.trip.theme || 'field-notes';
   data.flightJourneys ||= []; data.places ||= []; data.days ||= []; data.tickets ||= []; data.checklist ||= []; data.sources ||= []; data.accommodations ||= [];
+  data.days=resolveRentalDays(data,{pickUp:strings.transport.pickUp,dropOff:strings.transport.returnBy});
   places = Object.fromEntries(data.places.map((p) => [p.id, p]));
   tickets = Object.fromEntries(data.tickets.map((x) => [x.id, x]));
   sources = Object.fromEntries(data.sources.map((s) => [s.id, s]));
@@ -502,6 +527,7 @@ async function init() {
   storageKey = `roadbook:${data.trip.id}`;
   state = getState();
   status.hidden = true;
+  await initModules();
   renderNav(); renderHome(); renderMap(); renderDays(); renderTransport(); renderChecklist();
   $('#sources').innerHTML = `<b>${E(t('sources.title'))}</b> ` + data.sources.map((s) => s.url ? `<a href="${E(safeURL(s.url))}" target="_blank" rel="noopener noreferrer">${E(s.title)}</a>` : E(s.title)).join(' · ');
   initEvents();

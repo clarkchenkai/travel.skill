@@ -36,9 +36,9 @@ for (const name of examples) {
   });
 }
 
-test('the three examples use three different themes and at least two locales', () => {
+test('the examples use at least three different themes and at least two locales', () => {
   const trips = examples.map((n) => JSON.parse(fs.readFileSync(path.join(ROOT, 'examples', n, 'travel-data.json'), 'utf8')).trip);
-  assert.equal(new Set(trips.map((t) => t.theme)).size, 3);
+  assert.ok(new Set(trips.map((t) => t.theme)).size >= 3);
   assert.ok(new Set(trips.map((t) => t.locale)).size >= 2);
 });
 

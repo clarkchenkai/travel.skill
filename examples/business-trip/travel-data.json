@@ -1,0 +1,224 @@
+{
+  "trip": {
+    "id": "demo-business-london",
+    "title": "London Business Notes",
+    "subtitle": "A fictional solo business trip with a little personal time.",
+    "startDate": "2031-11-03",
+    "endDate": "2031-11-07",
+    "timeZone": "Europe/London",
+    "locale": "en",
+    "theme": "business-light",
+    "people": 1,
+    "countries": [
+      "GB"
+    ],
+    "demo": true,
+    "demoNotice": "Fictional business example. No meetings, stays or payments are booked."
+  },
+  "ui": {
+    "modules": [
+      {
+        "id": "business",
+        "source": "modules/business.mjs"
+      }
+    ]
+  },
+  "places": [],
+  "flightJourneys": [],
+  "accommodations": [],
+  "days": [
+    {
+      "id": "day-1",
+      "date": "2031-11-03",
+      "title": "London · Day 1",
+      "events": [
+        {
+          "id": "meeting-1",
+          "title": "Conference programme",
+          "kind": "meeting",
+          "timeLabel": "09:00–17:30 · Europe/London",
+          "notes": "Fictional agenda. Confirm the real venue and arrival buffer before travel.",
+          "placeIds": [],
+          "ticketIds": [],
+          "sourceRefs": [
+            "demo"
+          ],
+          "status": "demo"
+        },
+        {
+          "id": "free-0",
+          "title": "Personal time, if travel connections allow",
+          "kind": "free",
+          "timeLabel": "Flexible",
+          "notes": "Illustrative personal extension; actual flights and accommodation are not selected.",
+          "placeIds": [],
+          "ticketIds": [],
+          "sourceRefs": [
+            "demo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day-2",
+      "date": "2031-11-04",
+      "title": "London · Day 2",
+      "events": [
+        {
+          "id": "meeting-2",
+          "title": "Conference programme",
+          "kind": "meeting",
+          "timeLabel": "09:00–17:30 · Europe/London",
+          "notes": "Fictional agenda. Confirm the real venue and arrival buffer before travel.",
+          "placeIds": [],
+          "ticketIds": [],
+          "sourceRefs": [
+            "demo"
+          ],
+          "status": "demo"
+        }
+      ]
+    },
+    {
+      "id": "day-3",
+      "date": "2031-11-05",
+      "title": "London · Day 3",
+      "events": [
+        {
+          "id": "meeting-3",
+          "title": "Client meeting — fixed priority",
+          "kind": "meeting",
+          "timeLabel": "14:00 · Europe/London",
+          "notes": "Fictional agenda. Confirm the real venue and arrival buffer before travel.",
+          "placeIds": [],
+          "ticketIds": [],
+          "sourceRefs": [
+            "demo"
+          ],
+          "status": "demo"
+        }
+      ]
+    },
+    {
+      "id": "day-4",
+      "date": "2031-11-06",
+      "title": "London · Day 4",
+      "events": [
+        {
+          "id": "meeting-4",
+          "title": "Conference programme",
+          "kind": "meeting",
+          "timeLabel": "09:00–17:30 · Europe/London",
+          "notes": "Fictional agenda. Confirm the real venue and arrival buffer before travel.",
+          "placeIds": [],
+          "ticketIds": [],
+          "sourceRefs": [
+            "demo"
+          ],
+          "status": "demo"
+        }
+      ]
+    },
+    {
+      "id": "day-5",
+      "date": "2031-11-07",
+      "title": "London · Day 5",
+      "events": [
+        {
+          "id": "meeting-5",
+          "title": "Conference programme",
+          "kind": "meeting",
+          "timeLabel": "09:00–17:30 · Europe/London",
+          "notes": "Fictional agenda. Confirm the real venue and arrival buffer before travel.",
+          "placeIds": [],
+          "ticketIds": [],
+          "sourceRefs": [
+            "demo"
+          ],
+          "status": "demo"
+        },
+        {
+          "id": "free-4",
+          "title": "Personal time, if travel connections allow",
+          "kind": "free",
+          "timeLabel": "Flexible",
+          "notes": "Illustrative personal extension; actual flights and accommodation are not selected.",
+          "placeIds": [],
+          "ticketIds": [],
+          "sourceRefs": [
+            "demo"
+          ]
+        }
+      ]
+    }
+  ],
+  "tickets": [],
+  "groundTransport": {
+    "tabs": [
+      {
+        "id": "local",
+        "title": "Getting there",
+        "items": [
+          {
+            "title": "Venue transfer",
+            "text": "Choose the real venue and hotel before calculating arrival buffers.",
+            "placeIds": [],
+            "sourceRefs": [
+              "demo"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "checklist": [
+    {
+      "id": "policy",
+      "text": "Confirm company policy and personal-extension allocation",
+      "group": "todo"
+    },
+    {
+      "id": "documents",
+      "text": "Check applicable entry and travel documents with current official sources",
+      "group": "todo"
+    }
+  ],
+  "business": {
+    "policy": "Fictional demonstration: company policy has not been supplied. Keep personal extension costs separate.",
+    "expenses": [
+      {
+        "id": "rail",
+        "title": "Illustrative local rail fare",
+        "amount": {
+          "amount": 24.5,
+          "currency": "GBP"
+        },
+        "allocation": "company"
+      },
+      {
+        "id": "dinner",
+        "title": "Illustrative personal dinner",
+        "amount": {
+          "amount": 32,
+          "currency": "GBP"
+        },
+        "allocation": "personal"
+      },
+      {
+        "id": "hotel",
+        "title": "Hotel — not selected",
+        "amount": null,
+        "allocation": "unknown"
+      }
+    ],
+    "budget": null,
+    "policyStatus": "unknown"
+  },
+  "sources": [
+    {
+      "id": "demo",
+      "title": "Fictional demonstration",
+      "note": "Dates, meetings and sample amounts are invented solely to demonstrate the template. No real booking or company policy."
+    }
+  ]
+}

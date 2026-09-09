@@ -1,0 +1,75 @@
+/* Three visual directions. Each theme only sets tokens and a few surface treatments.
+   None of them is "the" default look: pick one in trip.theme, or add your own block. */
+
+/* field-notes: warm paper, serif display, contour-line texture. Used by the hiking example. */
+[data-theme="field-notes"] {
+  --bg: #f4efe4;
+  --surface: #fbf8f1;
+  --surface-2: #e9e2d2;
+  --ink: #2a2620;
+  --muted: #64604f;
+  --line: #d6cdb9;
+  --accent: #4f6b4a;
+  --accent-ink: #f8f5ec;
+  --accent-soft: #dfe6d6;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", serif;
+  --radius: 6px;
+  --cover-bg: #dcd5c2 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'%3E%3Cg fill='none' stroke='%23b9ae95' stroke-width='1' opacity='.7'%3E%3Cpath d='M-20 80c60-40 120 20 180-10s100-50 180-20'/%3E%3Cpath d='M-20 120c60-40 120 20 180-10s100-50 180-20'/%3E%3Cpath d='M-20 160c60-40 120 20 180-10s100-50 180-20'/%3E%3Cpath d='M-20 200c60-40 120 20 180-10s100-50 180-20'/%3E%3Cpath d='M-20 240c60-40 120 20 180-10s100-50 180-20'/%3E%3Cpath d='M-20 280c60-40 120 20 180-10s100-50 180-20'/%3E%3Cpath d='M-20 40c60-40 120 20 180-10s100-50 180-20'/%3E%3C/g%3E%3C/svg%3E");
+}
+[data-theme="field-notes"] .cover h1 { font-weight: 500; }
+[data-theme="field-notes"] .day-date b, [data-theme="field-notes"] .iata { font-weight: 500; }
+[data-theme="field-notes"] .card, [data-theme="field-notes"] .day, [data-theme="field-notes"] .task { box-shadow: none; }
+
+/* timetable: cool white, tight grid, signal red, tabular numbers. Used by the rail example. */
+[data-theme="timetable"] {
+  --bg: #f6f7f8;
+  --surface: #ffffff;
+  --surface-2: #e9ecef;
+  --ink: #111417;
+  --muted: #5d6670;
+  --line: #d3d8de;
+  --accent: #d5232a;
+  --accent-ink: #ffffff;
+  --accent-soft: #fbe3e4;
+  --font-display: "Helvetica Neue", Helvetica, Inter, Arial, system-ui, "PingFang SC", "Noto Sans CJK SC", sans-serif;
+  --font-mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  --radius: 4px;
+  --cover-bg: #e9ecef repeating-linear-gradient(90deg, transparent 0 79px, rgba(17,20,23,.07) 79px 80px), repeating-linear-gradient(0deg, transparent 0 79px, rgba(17,20,23,.07) 79px 80px);
+}
+[data-theme="timetable"] .cover-copy { background: linear-gradient(180deg, transparent, rgba(246,247,248,.9) 35%, #f6f7f8); }
+[data-theme="timetable"] .cover-eyebrow::before { content: ""; display: block; width: 56px; border-top: 3px solid var(--accent); margin-bottom: 14px; pointer-events: none; }
+[data-theme="timetable"] .cover h1 { text-transform: uppercase; letter-spacing: .02em; font-weight: 700; }
+[data-theme="timetable"] .airport .time, [data-theme="timetable"] .day-date { font-family: var(--font-mono); }
+[data-theme="timetable"] .iata { font-family: var(--font-mono); font-weight: 700; }
+[data-theme="timetable"] .flight-card { border-top: 3px solid var(--accent); }
+[data-theme="timetable"] .day-summary { border-left: 3px solid var(--accent); }
+[data-theme="timetable"] .tab[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* tide: sand and sea, rounded, larger touch targets. Used by the family island example. */
+[data-theme="tide"] {
+  --bg: #fbf6ee;
+  --surface: #ffffff;
+  --surface-2: #f1e8da;
+  --ink: #16414f;
+  --muted: #4f6b76;
+  --line: #e2d8c8;
+  --accent: #c94a33;
+  --accent-ink: #ffffff;
+  --accent-soft: #fbe1da;
+  --font-display: "Avenir Next Rounded", "Nunito", "Varela Round", "Hiragino Maru Gothic ProN", "Yuanti SC", system-ui, sans-serif;
+  --radius: 18px;
+  --shadow: 0 2px 6px rgba(22, 65, 79, .06), 0 10px 30px rgba(22, 65, 79, .08);
+  --cover-bg: linear-gradient(180deg, #a9dcd9 0%, #78c6c0 55%, #f3e6cf 55.5%, #f7eedf 100%);
+}
+[data-theme="tide"] .cover-copy { background: linear-gradient(180deg, transparent, rgba(251,246,238,.9) 45%, var(--bg)); }
+[data-theme="tide"] .cover h1 { font-weight: 700; }
+[data-theme="tide"] .pill, [data-theme="tide"] .tab, [data-theme="tide"] .cover-action { min-height: 48px; }
+[data-theme="tide"] .day-toggle { background: var(--accent-soft); color: var(--accent); }
+[data-theme="tide"] .bottom-nav a[aria-current] { color: color-mix(in srgb, var(--accent) 72%, black); }
+[data-theme="tide"] .task input { width: 26px; height: 26px; }
+[data-theme="tide"] .card, [data-theme="tide"] .day { box-shadow: var(--shadow); border-color: transparent; }
+
+[data-theme="business-light"]{--bg:#f3f5f8;--surface:#fff;--ink:#172f4a;--accent:#294f77;--accent-soft:#e1e9f2;--accent-ink:#fff;--surface-2:#e9edf3;--muted:#657286;--line:#d3dbe4}
+.business-agenda{padding-left:20px}.business-agenda li{padding:16px 0;border-bottom:1px solid var(--line)}.business-agenda time{font-size:12px;color:var(--muted)}.business-expenses{margin:20px 0}.business-expense{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--line)}.business-expense input{margin-right:8px}@media(max-width:600px){.business-expense{display:block}.business-expense label{display:block;padding:10px 0}}
+.business-expense > div { min-width:0; overflow-wrap:anywhere; }
+.business-expense > label { flex:0 1 180px; max-width:100%; overflow-wrap:anywhere; }

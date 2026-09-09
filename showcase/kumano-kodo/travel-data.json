@@ -1099,10 +1099,10 @@
     {
       "id": "day-5",
       "date": "2026-09-14",
-      "title": "东京自由活动",
-      "routeSummary": "帝国饭店 → 东京市内 → The Okura Tokyo",
+      "title": "东京",
+      "routeSummary": "帝国饭店 → 涩谷 TOWER RECORDS → The Okura Tokyo",
       "accommodationId": "okura",
-      "subtitle": "自由安排的一天，不虚构景点与预约",
+      "subtitle": "午饭后去涩谷逛唱片，具体出发时间随当天安排",
       "status": "planned",
       "privacy": "public",
       "sourceRefs": [
@@ -1129,22 +1129,26 @@
         },
         {
           "id": "day-5-e02",
-          "timeLabel": "白天",
-          "title": "东京市内自由安排",
-          "kind": "free",
+          "timeLabel": "下午 · 午饭后",
+          "title": "涩谷 TOWER RECORDS 逛唱片",
+          "kind": "shopping",
           "placeIds": [
-            "imperial",
-            "okura"
+            "tower-shibuya"
           ],
-          "notes": "具体游览未定，确定后可记入清单。",
-          "details": [],
+          "notes": "用户确认安排在9月14日午饭后，具体出发时间和逛店时长当天灵活决定。",
+          "details": [
+            "店铺通常11:00–22:00营业；营业时间及临时休业以店铺当日公告为准。",
+            "地址：東京都渋谷区神南1-22-14。官网说明从涩谷站八公口步行约3分钟。",
+            "先处理好退房与行李，再轻装逛店；逛完按当天安排前往大仓酒店。"
+          ],
           "ticketIds": [],
           "sourceRefs": [
-            "user-plan"
+            "user-plan",
+            "tower-shibuya-official"
           ],
           "status": "planned",
           "privacy": "public",
-          "shortSummary": "东京游览未定；临时决定可写入自定义清单。"
+          "shortSummary": "午饭后前往涩谷逛唱片；黑胶重点看6楼 TOWER VINYL。"
         },
         {
           "id": "day-5-e03",
@@ -1193,7 +1197,7 @@
         }
       ],
       "chapterTheme": "quiet",
-      "displayTitle": "东京自由活动"
+      "displayTitle": "东京"
     },
     {
       "id": "day-6",
@@ -1815,6 +1819,21 @@
       "embedUrl": "https://www.google.com/maps?q=%E6%88%90%E7%94%B0%E7%A9%BA%E6%B8%AF%20%E7%AC%AC1%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%20%E5%8D%97%E3%82%A6%E3%82%A4%E3%83%B3%E3%82%B0%204%E9%9A%8E%20&output=embed&hl=zh-CN",
       "lat": 35.764,
       "lon": 140.386
+    },
+    {
+      "id": "tower-shibuya",
+      "name": "TOWER RECORDS 涩谷店",
+      "localName": "タワーレコード渋谷店",
+      "kind": "shop",
+      "address": "東京都渋谷区神南1-22-14",
+      "note": "通常11:00–22:00；6楼TOWER VINYL为黑胶唱片楼层。临时调整以店铺公告为准。",
+      "sourceRefs": [
+        "tower-shibuya-official"
+      ],
+      "privacy": "public",
+      "mapQuery": "タワーレコード渋谷店 東京都渋谷区神南1-22-14",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%BF%E3%83%AF%E3%83%BC%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E6%B8%8B%E8%B0%B7%E5%BA%97%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%8B%E8%B0%B7%E5%8C%BA%E7%A5%9E%E5%8D%971-22-14",
+      "embedUrl": "https://www.google.com/maps?q=%E3%82%BF%E3%83%AF%E3%83%BC%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E6%B8%8B%E8%B0%B7%E5%BA%97%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%8B%E8%B0%B7%E5%8C%BA%E7%A5%9E%E5%8D%971-22-14&output=embed&hl=zh-CN"
     }
   ],
   "restaurants": [
@@ -2622,6 +2641,13 @@
       "url": "https://www.naturalearthdata.com/downloads/50m-raster-data/50m-natural-earth-1/",
       "checkedAt": "2026-09-08",
       "note": "公有领域地图底图，仅作地理背景，路线不是精确导航轨迹。"
+    },
+    {
+      "id": "tower-shibuya-official",
+      "title": "TOWER RECORDS 涩谷店：交通与营业信息",
+      "url": "https://towershibuya.jp/access",
+      "checkedAt": "2026-09-09",
+      "note": "店铺官方地址、通常营业时间、八公口步行及楼层说明。"
     }
   ],
   "issuesAndUncertainties": [

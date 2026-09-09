@@ -19,23 +19,44 @@ for (const name of examples) {
   // Inject siteUrl for absolute og:image without touching the example source.
   const patched = {...data, trip: {...data.trip, ...(siteUrl ? {siteUrl} : {})}};
   fs.writeFileSync(path.join(tmp, 'travel-data.json'), JSON.stringify(patched));
+  if (fs.existsSync(path.join(dir,'template'))) fs.cpSync(path.join(dir,'template'),path.join(tmp,'template'),{recursive:true});
   if (fs.existsSync(path.join(dir, 'assets'))) fs.cpSync(path.join(dir, 'assets'), path.join(tmp, 'assets'), {recursive: true});
   for (const f of ['ASSETS.md']) if (fs.existsSync(path.join(dir, f))) fs.copyFileSync(path.join(dir, f), path.join(tmp, f));
   execFileSync(process.execPath, [path.join(ROOT, 'scripts/build.mjs'), '--trip', tmp, '--out', path.join(out, name), '--manifest', path.join(out, '.manifests', name + '.json')], {stdio: 'inherit'});
   fs.rmSync(tmp, {recursive: true, force: true});
   cards.push({name, title: data.trip.title, subtitle: data.trip.subtitle || '', theme: data.trip.theme, locale: data.trip.locale, cover: data.trip.cover?.image ? `${name}/${data.trip.cover.image}` : '', days: data.days.length});
 }
-// Showcase: if it has been built (showcase/kumano-kodo/dist), include it as-is.
+// Keep the real work intact; the hosted gallery requires its build to succeed.
 const showcase = path.join(ROOT, 'showcase/kumano-kodo/dist');
-if (fs.existsSync(path.join(showcase, 'index.html'))) {
+const hasShowcase = fs.existsSync(path.join(showcase, 'index.html'));
+if (!hasShowcase && process.argv.includes('--require-showcase')) throw new Error('Build showcase/kumano-kodo before publishing the gallery.');
+if (hasShowcase) {
   fs.cpSync(showcase, path.join(out, 'kumano-kodo'), {recursive: true});
-  cards.push({name: 'kumano-kodo', title: '熊野古道 · 2026', subtitle: 'The real trip this project grew out of. React + Three.js, hand-written font, opening scene. 21 MB.', theme: 'showcase', locale: 'zh-CN', cover: 'kumano-kodo/assets/forest-cover.webp', days: 6});
+  cards.push({name: 'kumano-kodo', title: '熊野古道 · 2026', subtitle: 'The real trip this project grew out of. React + Three.js, hand-written font, opening scene. 35 MB.', theme: 'showcase', locale: 'zh-CN', cover: 'kumano-kodo/assets/forest-cover.webp', days: 6});
 }
 fs.rmSync(path.join(out, '.manifests'), {recursive: true, force: true});
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
 let html = fs.readFileSync(path.join(ROOT, 'site/index.html'), 'utf8');
-html = html.replace('<!--CARDS-->', cards.map((c) => `<a class="card" href="${esc(c.name)}/"><div class="media">${c.cover ? `<img src="${esc(c.cover)}" alt="" loading="lazy">` : ''}</div><div class="body"><b>${esc(c.title)}</b><p>${esc(c.subtitle)}</p><small>${esc(c.theme)} · ${esc(c.locale)} · ${c.days} days</small></div></a>`).join('\n'));
+const copy = {
+  'business-trip': {title:'商务差旅 · 五日',description:'固定议程、费用与凭证追踪，给个人延住留出边界。',label:'BUSINESS / 05 DAYS'},
+  'europe-rail': {title:'欧洲铁路 · 八日', description:'从阿姆斯特丹到维也纳，沿铁路穿过四座城市。', label:'RAIL / 08 DAYS'},
+  'family-island': {title:'海岛慢游 · 七日', description:'两个大人、两个孩子，在马略卡留一点慢下来的时间。', label:'ISLAND / 07 DAYS'},
+  'japan-hiking': {title:'木曾谷山径 · 五日', description:'沿中山道旧宿场走两天，再去松本看城。', label:'TRAIL / 05 DAYS'},
+};
+html = html.replace('<!--CARDS-->', cards.filter(c=>c.name!=='kumano-kodo').map(c=>{
+  const text=copy[c.name]||{title:c.title,description:c.subtitle,label:`${c.days} DAYS`};
+  const english={ 'business-trip':['Business Notes · Five Days','A fixed agenda, expenses and receipts, with personal time kept separate.'], 'europe-rail':['Europe by Rail · Eight Days','Four cities, from Amsterdam to Vienna, connected by rail.'], 'family-island':['Island Days · One Week','Two adults, two children, and a little time to slow down in Mallorca.'], 'japan-hiking':['Kiso Valley · Five Days','Two days on the old Nakasendo trail, then on to Matsumoto.'] }[c.name] || [c.title,c.subtitle];
+  return `<a class="example" href="${esc(c.name)}/"><div class="media">${c.cover ? `<img src="${esc(c.cover)}" alt="" loading="lazy" width="480" height="600">` : '<span class="example-type">BUSINESS<br>NOTES</span>'}</div><div class="body"><b data-cn-text="${esc(text.title)}">${esc(english[0])}</b><p data-cn-text="${esc(text.description)}">${esc(english[1])}</p><small data-cn-text="${esc(text.label)} / 虚构示例 ↗">${esc(text.label)} / FICTIONAL ↗</small></div></a>`;
+}).join('\n'));
+html = html.replaceAll('__SHOWCASE__',hasShowcase?'kumano-kodo/':'https://kumano-roadbook.pages.dev/?v=hd35');
+html = html.replace('__OG_IMAGE__',esc(arg('--site') ? new URL('assets/zine-trail-cover.webp',arg('--site').replace(/\/?$/, '/')).href : 'assets/zine-trail-cover.webp'));
 html = html.replace(/__BASE__/g, base);
+fs.mkdirSync(path.join(out,'assets'),{recursive:true});
+for (const file of ['zine-trail-cover.webp','zine-paper-fine.webp','kumano-walkthrough.mp4','kumano-walkthrough-poster.jpg']) {
+  fs.copyFileSync(path.join(ROOT,'site/assets',file),path.join(out,'assets',file));
+}
+for(const file of ['style.css','language.js']) fs.copyFileSync(path.join(ROOT,'site',file),path.join(out,file));
 fs.writeFileSync(path.join(out, 'index.html'), html);
+execFileSync(process.execPath,[path.join(ROOT,'scripts/package-agents.mjs'),'--out',path.join(out,'downloads')],{stdio:'pipe'});
 fs.writeFileSync(path.join(out, '.nojekyll'), '');
 console.log(`Demo site: ${cards.length} roadbooks → ${path.relative(ROOT, out)}/`);

@@ -1,19 +1,152 @@
 {
-  "nav": {"home": "Home", "map": "Map", "days": "Days", "transport": "Transport", "checklist": "Checklist", "sections": "Sections"},
-  "cover": {"open": "Open the roadbook", "people": "{n} travelers", "people_one": "1 traveler", "days": "{n} days", "days_one": "1 day"},
-  "stage": {"before": "{n} days to go", "before_one": "1 day to go", "during": "Day {n} of {total}", "after": "Trip dates have ended"},
+  "nav": {
+    "home": "Home",
+    "map": "Map",
+    "days": "Days",
+    "transport": "Transport",
+    "checklist": "Checklist",
+    "sections": "Sections"
+  },
+  "cover": {
+    "open": "Open the roadbook",
+    "people": "{n} travelers",
+    "people_one": "1 traveler",
+    "days": "{n} days",
+    "days_one": "1 day"
+  },
+  "stage": {
+    "before": "{n} days to go",
+    "before_one": "1 day to go",
+    "during": "Day {n} of {total}",
+    "after": "Trip dates have ended"
+  },
   "skipToDays": "Skip to daily plan",
   "noScript": "This roadbook needs JavaScript to render its data.",
   "loading": "Loading the roadbook…",
   "loadError": "Could not load travel-data.json. Open this page through a local server (npm run dev), not by double-clicking the file.",
-  "map": {"title": "Map", "directory": "Places", "open": "Open map", "copy": "Copy address", "copied": "Copied", "copyFailed": "Copy failed — select the text above", "openExternal": "Open in map app ↗", "loading": "Loading map…", "slow": "The map is slow. Use the link below to open it in your map app.", "loaded": "If the map stays blank, use the link below.", "failed": "The map did not load. The address and link still work.", "noEmbed": "No embedded map for this place. Use the link below.", "networkNote": "The embedded map needs access to the map provider. Without it, copy the address or open the link.", "close": "Close", "firstVisit": "First visit"},
-  "days": {"title": "Daily plan", "expand": "Details", "collapse": "Collapse", "stay": "Stay", "tickets": "Tickets", "pending": "{n} to buy", "pending_one": "1 to buy", "allBought": "Tickets marked", "map": "Map", "noEvents": "No activities listed yet."},
-  "transport": {"title": "Transport", "flights": "Flights", "flight": "Flight", "departs": "Departs", "arrives": "Arrives", "duration": "{h}h {m}m", "countdown": "Departs in", "departed": "Departed", "notes": "Notes", "prev": "Previous flight", "next": "Next flight", "nextDay": "+{n} day", "prevDay": "−{n} day", "localTime": "local time", "status": {"unknown": "Status unknown", "needs-confirmation": "Needs confirmation", "booked": "Booked", "demo": "Example · not booked"}, "rental": "Rental", "pickUp": "Pick up", "dropOff": "Drop off", "returnBy": "Return by", "deposit": "Deposit", "coverage": "Coverage", "fuel": "Fuel / charge policy", "noFlights": "No flights in this trip."},
-  "tickets": {"title": "Ticket", "where": "Where to buy", "price": "Reference price", "bought": "I have this", "notBought": "Mark as bought", "copyLocal": "Copy local text", "disclaimer": "Guidance only. Marking a ticket here does not mean it was purchased or validated by the operator.", "optional": "Optional", "map": "Map"},
-  "checklist": {"title": "Checklist", "all": "All", "todo": "To do", "packing": "Packing", "add": "Add", "placeholder": "Add an item…", "empty": "Nothing here yet.", "duplicate": "That item already exists.", "delete": "Delete", "undo": "Undo", "deleted": "Item deleted", "progress": "{done}/{total} done", "storageWarning": "This browser could not save your checklist. Changes will be lost on refresh.", "privacy": "Checks are saved only in this browser and are not shared with other travelers."},
-  "sources": {"title": "Sources", "demo": "Example data"},
-  "share": {"button": "Share", "copied": "Link copied"},
-  "footer": {"top": "Back to top"},
+  "map": {
+    "title": "Map",
+    "directory": "Places",
+    "open": "Open map",
+    "copy": "Copy address",
+    "copied": "Copied",
+    "copyFailed": "Copy failed — select the text above",
+    "openExternal": "Open in map app ↗",
+    "loading": "Loading map…",
+    "slow": "The map is slow. Use the link below to open it in your map app.",
+    "loaded": "If the map stays blank, use the link below.",
+    "failed": "The map did not load. The address and link still work.",
+    "noEmbed": "No embedded map for this place. Use the link below.",
+    "networkNote": "The embedded map needs access to the map provider. Without it, copy the address or open the link.",
+    "close": "Close",
+    "firstVisit": "First visit"
+  },
+  "days": {
+    "title": "Daily plan",
+    "expand": "Details",
+    "collapse": "Collapse",
+    "stay": "Stay",
+    "tickets": "Tickets",
+    "pending": "{n} to buy",
+    "pending_one": "1 to buy",
+    "allBought": "Tickets marked",
+    "map": "Map",
+    "noEvents": "No activities listed yet."
+  },
+  "transport": {
+    "title": "Transport",
+    "flights": "Flights",
+    "flight": "Flight",
+    "departs": "Departs",
+    "arrives": "Arrives",
+    "duration": "{h}h {m}m",
+    "countdown": "Departs in",
+    "departed": "Departed",
+    "notes": "Notes",
+    "prev": "Previous flight",
+    "next": "Next flight",
+    "nextDay": "+{n} day",
+    "prevDay": "−{n} day",
+    "localTime": "local time",
+    "status": {
+      "unknown": "Status unknown",
+      "needs-confirmation": "Needs confirmation",
+      "booked": "Booked",
+      "demo": "Example · not booked"
+    },
+    "rental": "Rental",
+    "pickUp": "Pick up",
+    "dropOff": "Drop off",
+    "returnBy": "Return by",
+    "deposit": "Deposit",
+    "coverage": "Coverage",
+    "fuel": "Fuel / charge policy",
+    "noFlights": "No flights in this trip."
+  },
+  "tickets": {
+    "title": "Ticket",
+    "where": "Where to buy",
+    "price": "Reference price",
+    "bought": "I have this",
+    "notBought": "Mark as bought",
+    "copyLocal": "Copy local text",
+    "disclaimer": "Guidance only. Marking a ticket here does not mean it was purchased or validated by the operator.",
+    "optional": "Optional",
+    "map": "Map"
+  },
+  "checklist": {
+    "title": "Checklist",
+    "all": "All",
+    "todo": "To do",
+    "packing": "Packing",
+    "add": "Add",
+    "placeholder": "Add an item…",
+    "empty": "Nothing here yet.",
+    "duplicate": "That item already exists.",
+    "delete": "Delete",
+    "undo": "Undo",
+    "deleted": "Item deleted",
+    "progress": "{done}/{total} done",
+    "storageWarning": "This browser could not save your checklist. Changes will be lost on refresh.",
+    "privacy": "Checks are saved only in this browser and are not shared with other travelers."
+  },
+  "sources": {
+    "title": "Sources",
+    "demo": "Example data"
+  },
+  "share": {
+    "button": "Share",
+    "copied": "Link copied"
+  },
+  "footer": {
+    "top": "Back to top"
+  },
   "demoNotice": "Example roadbook · fictional trip, nothing is booked",
-  "back": "Back"
+  "back": "Back",
+  "rental": {
+    "unknown": "Not yet confirmed",
+    "hours": "Branch hours",
+    "afterHours": "After-hours / handover",
+    "issuer": "Official issuer",
+    "materials": "Application materials",
+    "processing": "Processing time",
+    "validity": "Validity / coverage",
+    "fee": "Application fee",
+    "apply": "Official application information",
+    "remaining": "Return deadline in",
+    "past": "Return deadline passed",
+    "eligibility": "Driving documents and eligibility",
+    "verify": "Verify local rules, the issuing authority and acceptance by the actual rental supplier before booking.",
+    "documentStatus": {
+      "unknown": "Not confirmed",
+      "needs-confirmation": "Needs confirmation",
+      "required": "Required",
+      "not-required": "Not required",
+      "applied": "Applied",
+      "issued": "Issued",
+      "expired": "Expired",
+      "demo": "Fictional example"
+    }
+  },
+  "moduleUnavailable": "This module could not load. Other roadbook pages remain available."
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+import {renderPixelRatio} from './render-quality.mjs';
 
 const reducedMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true;
 const clamp = value => Math.min(1, Math.max(0, value));
@@ -38,7 +39,6 @@ export default function FlightCollage({
     let active = true; let visible = false; let pausedAt = 0; let startAt = 0; let complete = false; let assetsReady = false; let firstFrameDrawn=false;
     const staticMotion = reducedMotion();
     try { renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' }); } catch { setFallback(true);const timer=setTimeout(()=>callbackRef.current?.({leg,fallback:true}),1400);return()=>clearTimeout(timer); }
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
     renderer.setClearColor(0x000000, 0); renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.sortObjects = true;
     renderer.domElement.className = 'flight-collage__canvas';
     renderer.domElement.style.opacity='0';
@@ -62,6 +62,7 @@ export default function FlightCollage({
     const material = (texture, opacity = 1) => new THREE.SpriteMaterial({ map: texture, transparent: true, opacity, depthWrite: false, depthTest: true });
     const resize = () => {
       const width = Math.max(host.clientWidth, 1); const height = Math.max(280, host.clientHeight || width * .85);
+      renderer.setPixelRatio(renderPixelRatio(width, height, window.devicePixelRatio, window.innerWidth));
       renderer.setSize(width, height, false);
       const unit = height / width * 3.2; camera.left = -3.2; camera.right = 3.2; camera.top = unit; camera.bottom = -unit; camera.updateProjectionMatrix();
       host.style.minHeight = `${height}px`;

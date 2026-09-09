@@ -37,7 +37,7 @@
   --cover-bg: #e9ecef repeating-linear-gradient(90deg, transparent 0 79px, rgba(17,20,23,.07) 79px 80px), repeating-linear-gradient(0deg, transparent 0 79px, rgba(17,20,23,.07) 79px 80px);
 }
 [data-theme="timetable"] .cover-copy { background: linear-gradient(180deg, transparent, rgba(246,247,248,.9) 35%, #f6f7f8); }
-[data-theme="timetable"] .cover-copy::before { content: ""; display: block; width: 56px; border-top: 4px solid var(--accent); margin-bottom: 14px; }
+[data-theme="timetable"] .cover-eyebrow::before { content: ""; display: block; width: 56px; border-top: 3px solid var(--accent); margin-bottom: 14px; pointer-events: none; }
 [data-theme="timetable"] .cover h1 { text-transform: uppercase; letter-spacing: .02em; font-weight: 700; }
 [data-theme="timetable"] .airport .time, [data-theme="timetable"] .day-date { font-family: var(--font-mono); }
 [data-theme="timetable"] .iata { font-family: var(--font-mono); font-weight: 700; }

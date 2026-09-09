@@ -261,7 +261,7 @@ img { max-width: 100%; display: block; }
   .cover.has-image .cover-media { aspect-ratio: auto; position: relative; }
   .cover.has-image .cover-copy { align-self: start; background: none; padding: 36px 44px; max-width: 560px; }
   .cover.has-image .cover-copy > * { position: relative; }
-  .cover.has-image .cover-copy::before { content: ""; position: absolute; inset: 16px 0 16px 20px; border-radius: 18px; background: color-mix(in srgb, var(--bg) 62%, transparent); backdrop-filter: blur(14px) saturate(1.1); -webkit-backdrop-filter: blur(14px) saturate(1.1); }
+  .cover.has-image .cover-copy::before { content: ""; position: absolute; inset: 16px 0 16px 20px; width: auto; height: auto; margin: 0; border: 0; pointer-events: none; border-radius: 18px; background: color-mix(in srgb, var(--bg) 62%, transparent); backdrop-filter: blur(14px) saturate(1.1); -webkit-backdrop-filter: blur(14px) saturate(1.1); }
   .cover.has-image .cover-copy { position: relative; }
   .cover.has-image[data-copy="top-right"] .cover-copy { justify-self: end; }
   .cover.has-image[data-copy="bottom-left"] .cover-copy { align-self: end; }
@@ -306,3 +306,33 @@ img { max-width: 100%; display: block; }
   a { color: #000; text-decoration: none; }
   .map-frame-wrap { display: none; }
 }
+
+.rental-endpoints { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:20px 0; }
+.rental-endpoint h4 { margin:0 0 10px; }.rental-endpoint p { margin:8px 0; }
+.rental dl { display:grid; grid-template-columns:minmax(100px,1fr) 2fr; gap:8px 16px; margin:16px 0; }
+.rental dd { margin:0; overflow-wrap:anywhere; }.rental dt { color:var(--muted); }
+.rental details { margin-top:16px; }.rental summary { cursor:pointer; padding:10px 0; }
+.rental-return-clock { border-top:1px solid var(--line); padding-top:16px; }
+@media(max-width:600px) { .rental-endpoints { grid-template-columns:1fr; } }
+
+/* Content bounds belong to the component, not to a decorative pseudo-element. */
+.cover-copy,.cover-copy > *,.layout-2 > *,.home-grid > *,.flight-head > *,.event > *,.task > * { min-width:0; }
+h1,h2,h3,h4,.identity b,.airport .city,.place-row b,.event-title { overflow-wrap:anywhere; }
+.pill,.chip,.tab,.cover-action,.trip-stage,.status-label { max-width:100%; white-space:normal; overflow-wrap:anywhere; }
+.pill,.chip,.cover-action { text-align:center; }
+.pill .icon,.chip .icon,.icon-button .icon { flex-shrink:0; }
+.flight-head,.flight-foot { flex-wrap:wrap; gap:8px 14px; }
+.card,.dialog-body,.dialog-header,.tab-panel { min-width:0; }
+.dialog-header h2 { min-width:0; overflow-wrap:anywhere; }
+.close-dialog { flex-shrink:0; }
+.source-links { overflow-wrap:anywhere; }
+input,textarea,select { max-width:100%; }
+.stay > div { min-width:0; }
+.stay b,.stay small { overflow-wrap:anywhere; }
+.stay > .pill { flex-shrink:0; }
+@media(max-width:899px) { .bottom-nav a { flex-basis:calc(100% / var(--page-count,5)); } }
+@media(max-width:700px) {
+  .pill-small,.chip,.tab,.text-button,.event details > summary,.flight-notes > summary { min-height:44px; }
+}
+body { overflow-wrap:anywhere; }
+.place-row > span,.rental-endpoints > * { min-width:0; }

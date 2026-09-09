@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+import {photoSrcset, scenePhotoSource} from '../image-quality.mjs';
+import {renderPixelRatio} from './render-quality.mjs';
 
 const isReducedMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true;
 const validKind = kind => (kind === 'river' || kind === 'forest' || kind === 'waterfall' ? kind : 'forest');
@@ -131,10 +133,20 @@ export default function LivingLandscape({ kind = 'forest', src, alt, className =
   const hostRef = useRef(null);
   const [webglReady, setWebglReady] = useState(false);
   const landscapeKind = validKind(kind);
+  const [desktop, setDesktop] = useState(() => window.matchMedia('(min-width:900px)').matches);
+  const renderSource = scenePhotoSource(src, desktop);
+  useEffect(() => {
+    const media = window.matchMedia('(min-width:900px)');
+    const update = () => setDesktop(media.matches);
+    update();
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
 
   useEffect(() => {
+    setWebglReady(false);
     const host = hostRef.current;
-    if (!host || !src || isReducedMotion()) return undefined;
+    if (!host || !renderSource || isReducedMotion()) return undefined;
     let renderer;
     let scene;
     let camera;
@@ -167,8 +179,7 @@ export default function LivingLandscape({ kind = 'forest', src, alt, className =
 
     try {
       renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false, powerPreference: 'low-power' });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
-      renderer.setClearAlpha(0);
+        renderer.setClearAlpha(0);
       renderer.outputColorSpace = THREE.SRGBColorSpace;
       renderer.domElement.className = 'living-landscape__canvas';
       renderer.domElement.setAttribute('aria-hidden', 'true');
@@ -177,7 +188,7 @@ export default function LivingLandscape({ kind = 'forest', src, alt, className =
       camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
       geometry = new THREE.PlaneGeometry(2, 2);
       const loader = new THREE.TextureLoader();
-      loader.load(src, loadedTexture => {
+      loader.load(renderSource, loadedTexture => {
         if (disposed) { loadedTexture.dispose(); return; }
         texture = loadedTexture;
         texture.colorSpace = THREE.SRGBColorSpace;
@@ -187,6 +198,7 @@ export default function LivingLandscape({ kind = 'forest', src, alt, className =
         const resize = () => {
           const rect = host.getBoundingClientRect();
           if (!rect.width || !rect.height) return;
+          renderer.setPixelRatio(renderPixelRatio(rect.width, rect.height, window.devicePixelRatio, window.innerWidth));
           renderer.setSize(rect.width, rect.height, false);
           material.uniforms.uViewRatio.value = rect.width / rect.height;
         };
@@ -223,10 +235,13 @@ export default function LivingLandscape({ kind = 'forest', src, alt, className =
       frame = requestAnimationFrame(render);
     };
     return dispose;
-  }, [landscapeKind, src]);
+  }, [landscapeKind, renderSource]);
 
   return <figure ref={hostRef} className={`living-landscape living-landscape--${landscapeKind} ${webglReady ? 'is-live' : ''} ${className}`.trim()}>
     <style>{styles}</style>
-    <img className="living-landscape__image" src={src} alt={alt} decoding="async" />
+    <picture>
+      {photoSrcset(src) && <source media="(min-width:900px)" srcSet={photoSrcset(src)} sizes="(min-width:1400px) 1200px, calc(100vw - 80px)" />}
+      <img className="living-landscape__image" src={src} alt={alt} decoding="async" />
+    </picture>
   </figure>;
 }

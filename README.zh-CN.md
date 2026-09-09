@@ -6,16 +6,23 @@
 
 订单、截图、备忘、链接 → 一个旅途中在手机上打开、发给同行人的页面。在线示例：**https://clarkchenkai.github.io/travel.skill/**
 
-- **模板**：无依赖静态网站（纯 HTML、CSS、JavaScript）：首页、地图、日程、交通、清单；三套视觉方向；手机与桌面排布；打开过一次即可离线；可打印成纸质路书；聊天应用里有分享卡片。
-- **Skill**：Coding Agent（Claude Code、Codex CLI，以及任何会读 `AGENTS.md` 的代理）遵循的流程：读资料、找缺口、填一份数据文件、预览、发布前检查。不编造事实。
+- **模板**：无依赖静态网站（纯 HTML、CSS、JavaScript）：首页、地图、日程、交通、清单；三套视觉方向；手机与桌面排布；首次成功缓存后可离线阅读已缓存内容（在线地图仍需网络）；可打印成纸质路书；聊天应用里有分享卡片。
+- **五项协作技能（Skills）**：覆盖旅行管理、产品制作、AI 设计、模板扩展与交付验证，供 Claude Code、Codex CLI 等编程代理（Coding Agent）使用：读资料、找缺口、填一份数据文件、预览、发布前检查。不编造事实。
 
 不需要账号、数据库、付费服务。唯一要求是 Node.js 20+，示例不用任何 AI 就能跑。
 
 [English →](README.md)
 
+## 熊野古道 · 真实作品
+
+[观看 45 秒真实操作短片](https://clarkchenkai.github.io/travel.skill/#work) · [打开完整路书](https://kumano-roadbook.pages.dev/?v=hd35)
+
+纸面展示页采用细字、细线、苔绿色油墨与大面积留白；短片来自作者实际操作，展示开场、地图、日程与交通。熊野为定制作品，下方四个虚构示例展示轻量模板。
+
+
 ## 三种开始方式
 
-**1. 在 GitHub 上用模板（什么都不用装）。** 点 *Use this template* → 建自己的仓库 → Settings → Pages → Source 选 *GitHub Actions*。自带的工作流一分钟内把一份起步路书发布到 `https://<你>.github.io/<仓库>/`。之后在网页里或本地改 `trip/travel-data.json`，每次推送自动重新部署。
+**1. 在 GitHub 上用模板（什么都不用装）。** 点 *Use this template* → 建自己的仓库 → Settings → Pages → Source 选 *GitHub Actions*。启用 Pages 并成功运行自带工作流后，一份起步路书发布到 `https://<你>.github.io/<仓库>/`。之后在网页里或本地改 `trip/travel-data.json`，每次推送自动重新部署。
 
 **2. 本地运行。**
 
@@ -36,35 +43,46 @@ npm run dev                    # 打开 http://localhost:4173/
 
 回答缺口清单，看预览，提修改。准备好后 `npm run build && npm run check`，把 `dist/` 放到任何静态托管（[docs/PUBLISHING.md](docs/PUBLISHING.md)）。
 
+可直接下载[完整仓库、Codex、Claude Code 或通用代理工作区](https://clarkchenkai.github.io/travel.skill/#downloads)。解压后从根目录打开，使用说明见 [AGENT-PACKS.md](docs/AGENT-PACKS.md)。
+
 ## 长什么样
 
-仓库自带三个虚构示例，没有任何真实预订，只用来展示范围。
+仓库自带四个虚构示例，没有任何真实预订，只用来展示范围。
 
 | `japan-hiking` · 主题 `field-notes` · 中文 | `europe-rail` · 主题 `timetable` · 英文 | `family-island` · 主题 `tide` · 英文 |
 | --- | --- | --- |
 | ![木曾谷示例，桌面首页](docs/screenshots/japan-hiking-desktop.png) | ![欧洲铁路示例，桌面首页](docs/screenshots/europe-rail-desktop.png) | ![马略卡亲子示例，桌面首页](docs/screenshots/family-island-desktop.png) |
 | ![手机日程页](docs/screenshots/japan-hiking-mobile-days.png) | ![手机交通页](docs/screenshots/europe-rail-mobile-transport.png) | ![手机日程页](docs/screenshots/family-island-mobile-days.png) |
 
+另有 [business-trip](examples/business-trip/README.md)：五天伦敦商务差旅，含议程、按币种汇总的费用与凭证标记。这是独立页面模块，也示范如何生成新功能。
+
 五天山谷徒步；八天跨四国的铁路环线（跨越欧洲夏令时结束）；一周带孩子的海岛自驾。气质不同，数据结构相同。所有照片均为为虚构行程生成的 AI 图像（GPT Image 2，经 Lovart），提示词与校验值见各示例的 `ASSETS.md` 和 [docs/VISUALS.md](docs/VISUALS.md)。
+
+## 按旅行生成模板和功能
+
+`npm run new -- --blank` 从空白事实开始；`npm run new -- --from <现有旅行>` 复用行程；`npm run template -- --trip trip` 生成可编辑模板。代理可以增加页面、功能模块和语言包，随后执行构建与浏览器验证。详见 [EXTENDING.md](docs/EXTENDING.md)。
 
 ## 目录
 
 ```
-skill/          代理 Skill：SKILL.md、references/、prompts/、evals/
+skills/         五项技能的唯一正文来源
+.agents/skills/ Codex 发现入口；.claude/skills/ 为 Claude Code 入口
+skill/          兼容入口与历史参考
+evals/          行为场景、审阅方法与实际验证记录
 template/       网站：index.html、styles.css、themes.css、app.js、core.mjs、i18n/
-examples/       三个虚构行程
-scripts/        new · dev · validate · gaps · build · check · preview · site · shot · check:offline（只用 Node，无依赖）
+examples/       四个虚构行程
+scripts/        new · dev · validate · gaps · build · check · preview · template · bundle · site · shot · check:offline（只用 Node，无依赖）
 test/           node:test 测试（npm test）
 docs/           数据字段、快速开始、发布、验证记录、视觉方法、演示录像
 site/           示例画廊页（npm run site 构建，pages-demo.yml 部署）
-showcase/       熊野古道 2026 真实路书完整版（本项目的来源，React + Three.js，21 MB）
+showcase/       熊野古道 2026 真实路书完整版（本项目的来源，React + Three.js）
 trip/           你的旅行（npm run new 生成）
 input/          你的原始资料（不入 Git）
 ```
 
 ## 测了什么，测到哪一层
 
-`npm test` 覆盖时区计算、数据校验、发布审计，以及每个示例能校验、能构建、体积够小。维护者也在浏览器里逐个打开了示例，在手机与桌面尺寸下操作了地图弹层、票务标记、清单持久化和页面路由。**没做的**：从本仓库真正发布到线上托管；陌生用户完成第一份路书。[docs/VERIFICATION.md](docs/VERIFICATION.md) 按证据等级维护这份清单。
+`npm test` 覆盖时区、租车取还联动、数据与隐私校验、动态模板、模块、下载包及离线缓存隔离。四个示例已做手机、平板、桌面宽度的浏览器检查；展示站已有实际部署记录。新增页面与新语言还通过独立代理生成和浏览器操作验证。物理手机完整触摸验收及陌生用户采用仍未完成。详见 [VERIFICATION.md](docs/VERIFICATION.md)。
 
 这个项目第一阶段的目标只有一句：**10 个陌生人不找作者指导，也能完成自己的第一份路书。** 你试过之后，请用「first roadbook」Issue 模板告诉我们过程，尤其是卡在哪里。
 

@@ -3,42 +3,77 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>travel.skill — roadbook examples</title>
-<meta name="description" content="Turn your travel materials into a personal, shareable travel website. Live examples built with travel.skill.">
-<meta property="og:title" content="travel.skill — roadbook examples">
-<meta property="og:description" content="Turn your travel materials into a personal, shareable travel website.">
-<style>
-:root { --bg:#f6f4ee; --ink:#22211d; --muted:#6b6a62; --line:#dcd8cc; --accent:#3f6b5a; }
-* { box-sizing:border-box } body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Noto Sans CJK SC",sans-serif }
-main { max-width:1120px; margin:0 auto; padding:48px 20px 64px }
-h1 { font-size:clamp(28px,5vw,40px); line-height:1.15; margin:0 0 8px; letter-spacing:-.01em }
-.lede { color:var(--muted); max-width:60ch; margin:0 0 28px; font-size:18px }
-.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:18px }
-.card { display:block; text-decoration:none; color:inherit; background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; transition:transform .15s }
-.card:hover { transform:translateY(-2px) }
-.media { aspect-ratio:16/9; background:#e9e5da } .media img { width:100%; height:100%; object-fit:cover; display:block }
-.body { padding:14px 16px 16px } .body b { font-size:17px; display:block } .body p { margin:6px 0 8px; color:var(--muted); font-size:14px } .body small { color:var(--muted); font-size:12px; letter-spacing:.04em; text-transform:uppercase }
-.how { margin-top:40px; padding:22px; border:1px solid var(--line); border-radius:14px; background:#fff }
-.how h2 { margin:0 0 10px; font-size:20px } pre { background:#f1efe8; padding:12px 14px; border-radius:10px; overflow:auto; font-size:14px }
-a.btn { display:inline-block; margin-top:8px; padding:10px 16px; border-radius:999px; background:var(--accent); color:#fff; text-decoration:none; font-weight:600 }
-footer { margin-top:40px; color:var(--muted); font-size:13px }
-</style>
+<title data-cn="travel.skill — 把旅程做成随身路书">travel.skill — A roadbook for your journey</title>
+<meta name="description" content="Turn bookings and travel notes into a shareable roadbook. Explore the real Kumano trip or start with four fictional examples." data-cn-content="把机票、住宿与旅行笔记，做成一个可分享的旅行网站。翻开熊野古道真实作品，或从四个虚构示例开始。">
+<meta property="og:title" content="travel.skill — A roadbook for your journey" data-cn-content="travel.skill — 把旅程做成随身路书">
+<meta property="og:description" content="Scattered plans. A roadbook for the way." data-cn-content="行前的零散资料，沿途的一份路书。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="__OG_IMAGE__">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip" href="#work" data-cn="跳到作品与功能">Skip to the work</a>
+<header class="masthead">
+<a class="wordmark" href="#top" aria-label="travel.skill home" data-cn-aria-label="travel.skill 首页">travel.skill</a>
+<nav aria-label="Main navigation" data-cn-aria-label="主要导航"><a href="#work" data-cn="作品">Work</a><a href="#examples" data-cn="示例">Examples</a><a href="#start" data-cn="开始制作">Start</a><a href="https://github.com/clarkchenkai/travel.skill">GitHub ↗</a></nav><div class="language-switch" role="group" aria-label="Language / 语言"><button type="button" data-language="en" lang="en" aria-label="Switch to English" aria-pressed="true">EN</button><span aria-hidden="true">/</span><button type="button" data-language="cn" lang="zh-CN" aria-label="切换为中文" aria-pressed="false">CN</button></div>
+</header>
 <main>
-<h1>Turn your travel materials into a personal, shareable travel website.</h1>
-<p class="lede">These are live roadbooks built with <strong>travel.skill</strong>: three fictional trips made from the dependency-free template, and the real trip the project grew out of. Open one on your phone.</p>
-<div class="grid">
-<!--CARDS-->
+<section class="cover" id="top" aria-label="Roadbook cover" data-cn-aria-label="旅行路书封面">
+<div class="cover-sheet">
+<img class="cover-art" src="assets/zine-trail-cover.webp" alt="A winding ivory trail printed in a small moss-green ink square on paper" data-cn-alt="纸面上的一小块苔绿油墨，中间是一条蜿蜒的小路" width="971" height="1620" fetchpriority="high">
+<span aria-hidden="true" class="annotation notes">notes</span><span aria-hidden="true" class="annotation roadbook">roadbook</span><span aria-hidden="true" class="annotation journey">journey</span>
+<h1 data-cn="把旅程，做成随身路书。">A journey, made into a roadbook.</h1>
+<p class="cover-note" data-cn="行前的零散资料 / 沿途的一份路书">Scattered plans / a roadbook for the way</p>
+<a class="cover-open" href="__SHOWCASE__" data-cn="翻开熊野古道 ↗">Open the Kumano roadbook ↗</a>
+<a class="cover-more" href="#work" data-cn="或，先看一段真实旅程 ↓">Or, see it in use ↓</a>
 </div>
-<section class="how">
-<h2>Make yours</h2>
-<pre>git clone https://github.com/clarkchenkai/travel.skill && cd travel.skill
-npm run new -- europe-rail && npm run dev     # then edit trip/travel-data.json</pre>
-<p>Or open the repo in Claude Code / Codex, drop your bookings and notes into <code>input/</code>, and say: <em>"Build my travel roadbook with the travel skill."</em> Nothing to install beyond Node 20, no account, no database.</p>
-<a class="btn" href="https://github.com/clarkchenkai/travel.skill">Source on GitHub</a>
+<p class="margin-note" aria-hidden="true">a place for your plans<br>a little room to wander</p>
+<span class="issue" aria-hidden="true">TRAVEL NOTES / 001</span>
 </section>
-<footer>All example trips are fictional; nothing is booked. Photos are AI-generated. MIT.</footer>
+<section class="work section" id="work" aria-labelledby="work-title">
+<div class="section-label"><span data-cn="01 / 一份真实作品">01 / A REAL JOURNEY</span><span>KUMANO · TOKYO</span></div>
+<div class="section-heading"><h2 id="work-title" data-cn="熊野古道，&lt;br&gt;和沿途的每一件小事。">Kumano Kodo,<br>and the little things along the way.</h2><p data-cn="四个人，六天。&lt;br&gt;从杉林、石阶走向东京；&lt;br&gt;也把航班、换乘和每天的安排放在手边。">Four people. Six days.<br>From cedar forests and stone steps to Tokyo,<br>with flights, transfers and daily plans close at hand.</p></div>
+<figure class="film">
+<video controls playsinline preload="none" poster="assets/kumano-walkthrough-poster.jpg" width="1920" height="1074" aria-label="A silent screen recording of the Kumano roadbook" data-cn-aria-label="熊野古道网站真实操作演示，无声视频">
+<source src="assets/kumano-walkthrough.mp4" type="video/mp4">
+<a href="assets/kumano-walkthrough.mp4" data-cn="下载真实操作视频">Download the walkthrough</a>
+</video>
+<figcaption><span data-cn="45 秒 / 真实页面录制 / 无声">45 SECONDS / SCREEN RECORDING / SILENT</span><a href="__SHOWCASE__" data-cn="进入完整路书 ↗">Explore the full roadbook ↗</a></figcaption>
+</figure>
+<div class="features"><p data-cn="&lt;b&gt;路线&lt;/b&gt;从全程总览，找到具体地点。"><b>Route</b>From the whole journey to a particular place.</p><p data-cn="&lt;b&gt;日程&lt;/b&gt;按天展开，查看安排与住宿。"><b>Days</b>Open each day for plans and places to stay.</p><p data-cn="&lt;b&gt;交通&lt;/b&gt;航班、时区与沿途换乘。"><b>Transport</b>Flights, time zones and connections along the way.</p><p data-cn="&lt;b&gt;清单&lt;/b&gt;逐项勾选，记录留在当前浏览器。"><b>Checklist</b>Tick things off. Progress stays in this browser.</p></div>
+<p class="footnote" data-cn="短片展示开场、路线、日程与交通；清单可在完整路书中使用。">The film shows the opening, route, daily plans and transport. Try the checklist in the full roadbook.</p>
+</section>
+<section class="process section" id="process" aria-labelledby="process-title">
+<div class="section-label"><span data-cn="02 / 从你的资料开始">02 / START WITH YOUR MATERIALS</span><span>MATERIALS → ROADBOOK</span></div>
+<h2 id="process-title" data-cn="不必先整理得井井有条。">It does not have to be tidy yet.</h2>
+<div class="steps"><article><span>i.</span><h3 data-cn="带来资料">Bring your materials</h3><p data-cn="订单、链接、零散笔记，&lt;br&gt;还有已经决定的事。">Bookings, links, scattered notes,<br>and the things you have already decided.</p></article><article><span>ii.</span><h3 data-cn="补齐关键缺口">Find the missing pieces</h3><p data-cn="日期、地点、换乘与待办，&lt;br&gt;不确定的地方先标清。">Dates, places, connections and tasks.<br>Make the unknowns visible.</p></article><article><span>iii.</span><h3 data-cn="生成自己的路书">Make it your roadbook</h3><p data-cn="在手机上查看与修改，&lt;br&gt;确认公开内容后再分享。">Preview it on your phone and refine it.<br>Check what is public before sharing.</p></article></div>
+<p class="footnote" data-cn="通过仓库里的 Agent Skill 与本地命令完成；此页不接收订单或私人资料。">Use the Agent Skill and local commands in the repository. This page does not collect bookings or private materials.</p>
+</section>
+<section class="examples section" id="examples" aria-labelledby="examples-title">
+<div class="section-label"><span data-cn="03 / 另外四种出发方式">03 / FOUR OTHER WAYS TO BEGIN</span><span>FICTIONAL ITINERARIES</span></div>
+<h2 id="examples-title" data-cn="从一个接近你的旅程开始。">Start somewhere close to your journey.</h2>
+<p class="intro" data-cn="以下均为虚构示例，展示轻量模板的不同起点；熊野古道是单独定制的作品。">These fictional trips are starting points for the lightweight template. The Kumano roadbook is a separate, custom-built work.</p>
+<div class="examples-grid"><!--CARDS--></div>
+</section>
+<section class="start section" id="start" aria-labelledby="start-title">
+<div class="section-label"><span data-cn="04 / 轮到你的旅程">04 / YOUR TURN</span><span>YOUR NEXT JOURNEY</span></div>
+<h2 id="start-title" data-cn="把下一站，交给一张空白页。">A blank page for your next stop.</h2>
+<p data-cn="用 Claude Code 或 Codex 打开仓库，把资料放进 &lt;code&gt;input/&lt;/code&gt;，然后说：">Open the repository in Claude Code or Codex, put your materials in <code>input/</code>, and say:</p>
+<blockquote data-cn="用 travel skill，把这些资料做成我的旅行路书。&lt;br&gt;先标出缺失信息，再生成可以预览的网站。">Use the travel skill to turn these materials into my roadbook.<br>Identify the missing information, then build a website I can preview.</blockquote>
+<details><summary data-cn="本地启动命令">Run it locally</summary><pre><code>git clone https://github.com/clarkchenkai/travel.skill
+cd travel.skill
+npm run new -- europe-rail
+npm run dev</code></pre><p class="footnote" data-cn="轻量模板需要 Node.js 20+。公开发布前检查内容与访问范围。">The lightweight template needs Node.js 20+. Review the content and audience before publishing.</p></details>
+<div id="downloads" class="downloads" role="group" aria-label="Download an agent workspace" data-cn-aria-label="下载 Agent 工作空间">
+<p data-cn="下载完整工作空间，解压后在对应 Agent 中打开。五个 Skill、模板、示例和测试一并提供。">Download a complete workspace and open it in your agent. Five skills, templates, examples and tests are included.</p>
+<div class="download-links"><a href="downloads/travel-codex.zip" download>Codex ↓</a><a href="downloads/travel-claude.zip" download>Claude Code ↓</a><a href="downloads/travel-generic.zip" download data-cn="通用 Agent ↓">Other agents ↓</a><a href="downloads/travel-repository.zip" download data-cn="完整仓库 ↓">Full repository ↓</a></div>
+<p class="footnote" data-cn="AGENTS.md / CLAUDE.md 均指向同一套核心规则；无需复制本机路径或提供密钥。">AGENTS.md and CLAUDE.md point to the same core rules. No machine-specific paths or credentials are needed.</p>
+</div>
+<div class="start-links"><a href="https://github.com/clarkchenkai/travel.skill" data-cn="打开仓库 ↗">Open the repository ↗</a><a href="https://github.com/clarkchenkai/travel.skill/blob/main/docs/QUICKSTART.md" data-cn="阅读开始指南 ↗">Read the quick start ↗</a></div>
+</section>
 </main>
+<footer class="colophon"><span data-cn="travel.skill&lt;br&gt;给计划一个位置，给旅程一点留白。">travel.skill<br>A place for your plans. A little room to wander.</span><span><span data-cn="熊野古道为真实作品；其余行程为虚构示例。&lt;br&gt;插画与纸面视觉含 AI 生成素材。&lt;br&gt;Code · MIT / ">Kumano is a real trip; the other itineraries are fictional.<br>Illustrations and paper visuals include AI-generated assets.<br>Code · MIT / </span><a href="https://github.com/LiamGvchi/gc-minimal-zine-poster" data-cn="视觉参考：GC Minimal Zine Poster ↗">Visual reference: GC Minimal Zine Poster ↗</a></span></footer>
+<script>document.addEventListener('visibilitychange',()=>{if(document.hidden)document.querySelectorAll('video').forEach(v=>v.pause());});</script>
+<script src="language.js"></script>
 </body>
 </html>

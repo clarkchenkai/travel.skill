@@ -34,7 +34,7 @@ jobs:
           done
 
   showcase:
-    name: Build the Kumano showcase (optional, heavier)
+    name: Build showcase and gallery
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -51,3 +51,6 @@ jobs:
           npm ci
           npm test
           npm run build:visuals
+          python3 build.py --public-only --package
+      - name: Build the gallery with its real showcase
+        run: node scripts/build-site.mjs --require-showcase --out site-dist

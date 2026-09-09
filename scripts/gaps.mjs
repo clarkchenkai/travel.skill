@@ -3,14 +3,16 @@
 // Agents run this after importing materials and confirm the answers with the traveler.
 import path from 'node:path';
 import fs from 'node:fs';
-import {tripDir, readJSON, flag} from './lib/paths.mjs';
-import {gapReport, validateTravelData} from './lib/validate.mjs';
+import {tripDir, readJSON, flag, arg} from './lib/paths.mjs';
+import {projectValidation,projectGaps} from './lib/project-validation.mjs';
+import {selectTemplate} from './lib/templates.mjs';
 
 const file = path.join(tripDir(), 'travel-data.json');
 if (!fs.existsSync(file)) { console.error(`No travel-data.json in ${tripDir()}`); process.exit(2); }
 const data = readJSON(file);
-const {errors} = validateTravelData(data);
-const gaps = gapReport(data);
+const selected=selectTemplate(tripDir(),arg('--template'));
+const {errors} = await projectValidation(data,selected);
+const gaps = await projectGaps(data,selected);
 if (flag('--json')) { console.log(JSON.stringify({file, structuralErrors: errors, gaps}, null, 2)); process.exit(0); }
 if (errors.length) console.log(`Note: ${errors.length} structural error(s) — run npm run validate first.\n`);
 if (!gaps.length) { console.log('No gaps found. That means the fields are filled, not that the facts are right.'); process.exit(0); }

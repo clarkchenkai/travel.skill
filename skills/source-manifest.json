@@ -1,0 +1,97 @@
+[
+  {
+    "skill": "travel-management",
+    "file": "SKILL.md",
+    "source_sha256": "b4c8da75618ee4be74855849b4cdf1dbf32bd0f9ed99d950a77fe625657b46f1"
+  },
+  {
+    "skill": "travel-product-studio",
+    "file": "SKILL.md",
+    "source_sha256": "cc7890158c76c4a4750877225e040d38f30858b71049a2451f914b920284edf1"
+  },
+  {
+    "skill": "travel-product-studio",
+    "file": "evals/scenarios.md",
+    "source_sha256": "8bb7c23e6294250d33ae270e4d7a733f2a5686fb9fa1b8c9b64dcf0f46c977d9"
+  },
+  {
+    "skill": "travel-product-studio",
+    "file": "evals/test_audit_release.py",
+    "source_sha256": "39ab806e81e5fb769196fb1249b6365c05f169cab121286781de02fefc05c258"
+  },
+  {
+    "skill": "travel-product-studio",
+    "file": "references/orchestration.md",
+    "source_sha256": "48b3ab4dcdee6ed01513f2abe9e7ff339e18475af5bd17a7be8d4e06409ddfcf"
+  },
+  {
+    "skill": "travel-product-studio",
+    "file": "references/release-and-access.md",
+    "source_sha256": "d4bab1ed105543ccd2e9dde8afe10944df4eee44295b5dbcf3e355dc25827d15"
+  },
+  {
+    "skill": "travel-product-studio",
+    "file": "references/data-and-countries.md",
+    "source_sha256": "eae68dc09077b1e1e3dc99ddb8d89b9d8705ea0d506e6d1fcff15a8fd6ff2bc6"
+  },
+  {
+    "skill": "travel-product-studio",
+    "file": "references/sop-and-prompts.md",
+    "source_sha256": "2eae68fbed9e4634f27c028f5e06f5e4991b23bf09f61acb001570cd271f18ad"
+  },
+  {
+    "skill": "travel-product-studio",
+    "file": "references/kumano-case.md",
+    "source_sha256": "85e5f7a439c9ae7ca6583cc7f9ee46ecc39242e33f98e0b87cd51d359b351672"
+  },
+  {
+    "skill": "travel-product-studio",
+    "file": "references/visual-and-motion.md",
+    "source_sha256": "99f3d994f425b51bb96cdfdaf1cbb21bfd7a04aa9d02269f044d6cae3df0e411"
+  },
+  {
+    "skill": "travel-product-studio",
+    "file": "references/module-features.md",
+    "source_sha256": "deef09ea717dd8ea8307e60faab6bf36616547a3bb6424bfffbb826ba8c5de2b"
+  },
+  {
+    "skill": "travel-product-studio",
+    "file": "references/coverage-and-rental.md",
+    "source_sha256": "6a7996f2afc48b124a918d21b223be55821996287f9ff9ee012672b1813a70bf"
+  },
+  {
+    "skill": "travel-product-studio",
+    "file": "references/evaluation.md",
+    "source_sha256": "8ab259c93e7cf6ae7a8031a304dd95bb6b965031cad1654c48a938c748ed898c"
+  },
+  {
+    "skill": "travel-product-studio",
+    "file": "agents/openai.yaml",
+    "source_sha256": "9473f6a597f3e22dc57c4774a08510486a38ed576c0bbc8a9169b28dc4c408e4"
+  },
+  {
+    "skill": "travel-product-studio",
+    "file": "scripts/audit_release.py",
+    "source_sha256": "c1483f36e67f2ad9afa2cca6490fbcacdb894fe8704bb0110ea529fa573d2c13"
+  },
+  {
+    "skill": "design-with-ai",
+    "file": "SKILL.md",
+    "source_sha256": "1ec865a0a6dcca7944eb1b68e764793f39e1297e4918806c244ff76aacb33f9d"
+  },
+  {
+    "skill": "design-with-ai",
+    "file": "references/ai-collaboration-prompts.md",
+    "source_sha256": "0505a5484901ca9e9de0bf90d2797c5adfd0fc3b3356c1f0827f31b4c4f40a28"
+  },
+  {
+    "skill": "design-with-ai",
+    "file": "references/scenarios.md",
+    "source_sha256": "a947e2acb6e6ca356313fad7c5045ee7a013c92643fe27a757a899e07b097705"
+  },
+  {
+    "skill": "design-with-ai",
+    "file": "references/source-and-coverage.md",
+    "source_sha256": "6489e53a51cc46d9c5f3638fbe85cde0fc688cea2481e3e86cb5806bc61c94d2"
+  }
+]
