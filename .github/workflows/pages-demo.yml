@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["examples/**", "template/**", "site/**", "scripts/**", "showcase/**", ".github/workflows/pages-demo.yml"]
+    # Downloads contain skills, docs and agent entrypoints too: every source update rebuilds them.
 
 permissions:
   contents: read
