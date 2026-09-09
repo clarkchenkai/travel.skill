@@ -9,11 +9,11 @@ The template ships with no images. Each example adds a small set, all AI-generat
 
 ## The two grammars
 
-**Cover — one scene.** A wide (21:9) illustration in a style that matches the theme: ink-and-wash for `field-notes`, mid-century rail poster for `timetable`, loose watercolor for `tide`. Leave open sky where the title will sit; on phones the title moves below the image, so the crop only has to work as a 4:3 window (`trip.cover.position`).
+**Cover — one scene.** A wide (21:9) realistic photograph of the trip's defining landscape. Leave open sky where the title will sit (`trip.cover.copy` picks the corner on desktop); on phones the title moves below the image, so the crop only has to work as a 4:3 window (`trip.cover.position`).
 
-**Everything else — one paper poster.** Day thumbnails, the route sketch and the paper tile follow the "minimal zine" grammar: full-frame scanned paper, 70–85% empty, one small visual event (a photo fragment, a silhouette, a torn shape, a line), one saturated accent hue that matches the theme accent, print defects (risograph grain, misregistration), and **no text at all**. Thumbnails are generated square with the event centred so a 64 px crop still reads.
+**Everything else — one photograph, one subject.** Day thumbnails are square photographs of a single object or moment from that day (a plane window, a bus-stop pole, a mossy step, two tickets on a counter). The route image is a photo of a paper map on a table with its text out of focus. The paper tile is a flat scan of plain paper, shown at 16% opacity behind cards. All are generated at 2K with GPT Image 2 (low tier) through Lovart, then resized to WebP.
 
-Per-example accents: moss green `#4f6b4a`, signal red `#d5232a`, coral `#f2745f`. Paper tones: warm ivory, cool grey-white, pale sand.
+Shared constraints in every prompt: realistic photograph, natural light, 35 mm, no HDR, no illustration; no recognizable faces, no readable text, no signs, no logos.
 
 ## Brief template (fill seven lines before generating)
 

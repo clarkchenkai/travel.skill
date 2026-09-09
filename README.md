@@ -20,7 +20,7 @@ Three fictional examples ship with the repo. Nothing in them is booked; they exi
 | ![Kiso Valley example, desktop home](docs/screenshots/japan-hiking-desktop.png) | ![Four cities by rail, desktop home](docs/screenshots/europe-rail-desktop.png) | ![Mallorca family example, desktop home](docs/screenshots/family-island-desktop.png) |
 | ![mobile days page](docs/screenshots/japan-hiking-mobile-days.png) | ![mobile transport page](docs/screenshots/europe-rail-mobile-transport.png) | ![mobile days page](docs/screenshots/family-island-mobile-days.png) |
 
-Five-day valley walk with a ferry-free rail return; an eight-day rail loop that crosses the end of European summer time; a one-week family trip with a rental car. Different moods, same data shape.
+Five-day valley walk; an eight-day rail loop that crosses the end of European summer time; a one-week family trip with a rental car. Different moods, same data shape. All photos are AI-generated for the fictional trips (GPT Image 2 via Lovart); see each example's `ASSETS.md` and [docs/VISUALS.md](docs/VISUALS.md).
 
 ## Quick start (no AI needed)
 

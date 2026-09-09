@@ -20,7 +20,7 @@
 | ![木曾谷示例，桌面首页](docs/screenshots/japan-hiking-desktop.png) | ![欧洲铁路示例，桌面首页](docs/screenshots/europe-rail-desktop.png) | ![马略卡亲子示例，桌面首页](docs/screenshots/family-island-desktop.png) |
 | ![手机日程页](docs/screenshots/japan-hiking-mobile-days.png) | ![手机交通页](docs/screenshots/europe-rail-mobile-transport.png) | ![手机日程页](docs/screenshots/family-island-mobile-days.png) |
 
-五天山谷徒步；八天跨四国的铁路环线（跨越欧洲夏令时结束）；一周带孩子的海岛自驾。气质不同，数据结构相同。
+五天山谷徒步；八天跨四国的铁路环线（跨越欧洲夏令时结束）；一周带孩子的海岛自驾。气质不同，数据结构相同。所有照片均为为虚构行程生成的 AI 图像（GPT Image 2，经 Lovart），提示词与校验值见各示例的 `ASSETS.md` 和 [docs/VISUALS.md](docs/VISUALS.md)。
 
 ## 快速开始（不需要 AI）
 

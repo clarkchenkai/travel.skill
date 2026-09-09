@@ -33,7 +33,7 @@ Performed in the in-app Chromium at 375 × 812 (mobile) and the pane's desktop w
 | Rental block renders pick-up, return-by, deposit, coverage, fuel policy | runtime | Pass (family-island) |
 | Motion layer (`motion.mjs`): day fold animates then lands on the correct native `open` state; dialog entrance does not interfere with close; press feedback | scripted | Pass (japan-hiking, after porting from the Kumano site) |
 | Showcase `showcase/kumano-kodo`: `npm ci`, 8 core tests, `build:visuals`, `build.py --public-only --package` from its new location; 38 files, release audit passed | logic + structure | Pass |
-| Cold-load payload, japan-hiking, uncompressed | measured | 83 KB total (HTML 4.4, CSS 23.8, JS 38, i18n 3.2, data 14); ≈25 KB gzipped. No images, no web fonts, no third-party scripts. |
+| Cold-load payload, japan-hiking, uncompressed | measured | Template files 83 KB (HTML 4.4, CSS 23.8, JS 38, i18n 3.2, data 14; ≈25 KB gzipped) plus the cover photo ≈95 KB before first paint; day thumbnails (15–60 KB each), route photo and paper tile load lazily. No web fonts, no third-party scripts. |
 | Weak network / throttled load | — | Not measured. Payload is small enough that first paint should be one round trip after HTML; not proven. |
 | Reduced-motion preference | structure | CSS rule present; not observed. |
 
@@ -47,6 +47,6 @@ See [AGENTS.md](AGENTS.md) for the recorded runs (Claude Code passed; Codex CLI:
 - No real traveler has built a roadbook with it yet. The stage-one goal (ten strangers) has zero data points.
 - No real-device test on iOS Safari or Android Chrome; the mobile checks above are emulated viewports.
 - No screen-reader pass beyond `aria-label`/`aria-current` attributes being present.
-- No test of a trip with images or a self-hosted font; the code paths exist (`trip.cover.image`, `publishAssets`) and are covered only by the build test copying referenced assets.
+- No test of a self-hosted font. Images are exercised by the three examples (cover, day thumbnails, route photo, paper tile); each example builds under 1.5 MB and the audit passes.
 
 Update this file when a row changes level. Do not summarise it into a badge.
