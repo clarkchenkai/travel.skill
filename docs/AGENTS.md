@@ -17,6 +17,7 @@ Each row is a real, unattended run from a clean copy of this repo with two ficti
 | Client | Version | Date | Result | Notes |
 | --- | --- | --- | --- | --- |
 | Claude Code (`claude -p`) | 2.1.263, default model | 2026-09-09 | Pass | Flights `booked` (confirmation in materials), hotel `needs-confirmation` (email mentioned but not present), blog price left `null`, passport and PNR absent. Asked 9 questions in one batch. Did not start a server or build, as instructed. |
+| Claude Code (`claude -p`), second run after the image/offline/print work | 2.1.263 | 2026-09-09 | Pass | Same materials plus `npm run build` and `npm run check`: 0 validation errors, 11 files built, audit passed, no booking reference or passport number in `trip/` or `dist/`. Started from the europe-rail example and deleted its copied photos rather than shipping them under a wrong trip; looked up coordinates from a public geocoder and recorded the source and date. |
 | Codex CLI (`codex exec --sandbox workspace-write`) | 0.153.4 | 2026-09-09 | Pass | Needed `--skip-git-repo-check` because the test copy was not a git repo (a normal clone does not). Started from `npm run new -- europe-rail`, rewrote the data: flights `booked`, hotel `needs-confirmation`, three activities `unknown`, all four ticket prices `null`, passport and PNR absent. 19 gaps, 7 batched questions. Did not start a server or build. Reported in Chinese because the machine's global agent instructions ask for it. |
 
 ## Not verified

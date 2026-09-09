@@ -65,6 +65,6 @@
 [data-theme="tide"] .cover h1 { font-weight: 700; }
 [data-theme="tide"] .pill, [data-theme="tide"] .tab, [data-theme="tide"] .cover-action { min-height: 48px; }
 [data-theme="tide"] .day-toggle { background: var(--accent-soft); color: var(--accent); }
-[data-theme="tide"] .bottom-nav a[aria-current] { color: var(--accent); }
+[data-theme="tide"] .bottom-nav a[aria-current] { color: color-mix(in srgb, var(--accent) 72%, black); }
 [data-theme="tide"] .task input { width: 26px; height: 26px; }
 [data-theme="tide"] .card, [data-theme="tide"] .day { box-shadow: var(--shadow); border-color: transparent; }
