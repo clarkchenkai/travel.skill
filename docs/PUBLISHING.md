@@ -24,7 +24,7 @@ Only `dist/` — the output of `node scripts/build.mjs`. It contains the templat
 
 If `trip/travel-data.json` does not exist yet, the workflow starts from the `europe-rail` example so you get a working site immediately. Replace it with your own trip and push; each push redeploys. The site address is `https://<user>.github.io/<repo>/`.
 
-Verified: not yet.
+Verified 2026-09-09: a repository was created from the template with `gh repo create --template`, Pages set to GitHub Actions through the API, the workflow run manually; it completed in 40 s and the site served the starter roadbook (`<title>Four Cities by Rail</title>`). The test repository was deleted afterwards.
 
 ## Route A: any static host
 
@@ -41,7 +41,7 @@ Use the optional workflow at `.github/workflows/pages.yml`. It does nothing unti
 
 Once enabled, `dist/` is public at your repo's Pages URL on every matching push. See the comment block at the top of that workflow file before turning it on.
 
-Verified: not yet.
+Verified 2026-09-09 as part of the Route 0 run above (same workflow). The upstream repository's own Pages site is published by `pages-demo.yml` (the examples gallery) at https://clarkchenkai.github.io/travel.skill/ ; the offline check (`npm run check:offline`) passed against that live URL with 38 precached entries.
 
 ## Route C: zip and open locally
 
@@ -51,4 +51,4 @@ Verified: not yet.
 
 ---
 
-None of the three routes above have been verified end-to-end by the maintainers as of this writing. This section will be updated with real results (what was tested, on what device/network, what worked) once someone runs one. Until then, treat "the build passes locally" and "readers can actually open the published site" as two separate claims.
+Routes 0 and B were verified on 2026-09-09 as described above. Routes A and C have not been walked by the maintainers. Treat "the build passes locally" and "readers can actually open the published site" as two separate claims until you have checked the live URL yourself.

@@ -132,6 +132,17 @@ A native Codex sub-agent executed expanded P01 in a clean local clone of `8c416f
 
 No local Windows execution environment was found: `prlctl`, `VBoxManage`, `vmrun`, `tart` and `qemu-system-aarch64` were absent from PATH; no Parallels, VMware, VirtualBox or UTM app was found in system/user Applications; the usual `~/Parallels` and `~/VirtualBox VMs` directories were absent. No Windows commands were run, and Windows compatibility remains unverified. No VM was installed or remote machine contacted.
 
+## Production (2026-09-09)
+
+| Check | Level | Result |
+| --- | --- | --- |
+| Repository public at https://github.com/clarkchenkai/travel.skill ; CI workflow green on push (`npm test` + build/audit of every example) | production | Pass (16 s) |
+| Examples gallery deployed by `pages-demo.yml` to https://clarkchenkai.github.io/travel.skill/ ; `/`, the three examples and `kumano-kodo/` (including the 8 MB font and `story.js`) return 200 | production | Pass; Kumano showcase built on the runner with Pillow |
+| `og:image` on the live site is absolute (`--site` passed by the workflow) | production | Pass |
+| Offline check against the live family-island URL: service worker active, 38 entries precached, offline reload renders | production (headless Chrome) | Pass |
+| "Use this template" → Pages (Actions) → `pages.yml`: starter roadbook served at the copy's Pages URL within a minute | production | Pass; test repository deleted afterwards |
+| Real readers on real devices/networks | adoption | None yet |
+
 ## Remaining evidence gaps
 
 - No deployment to a live host from this repository. `docs/PUBLISHING.md` routes are described, not walked.
