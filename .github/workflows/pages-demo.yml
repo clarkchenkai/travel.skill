@@ -19,6 +19,8 @@ concurrency:
 
 jobs:
   build:
+    # Upstream only: copies made from the template publish trip/ with pages.yml instead.
+    if: github.repository == 'clarkchenkai/travel.skill'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
