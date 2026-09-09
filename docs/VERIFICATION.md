@@ -100,6 +100,18 @@ In both before/after runs, the subtitle painted before the cover became the LCP 
 
 Validation: 45/45 `npm test` tests passed, including preload/render agreement, variant audit/cache inclusion, source-data preservation and no-variant fallback. `npm run check` passed for the 38-file family-island build (872,170 bytes). Raw measurements remain in ignored local `artifacts/local-pass-2026-09-09/network-before.json` and `network-after.json`.
 
+### Step 6: print (2026-09-09)
+
+**Runtime / measured:** Chrome 152 `--headless=new --no-pdf-header-footer --virtual-time-budget=8000 --print-to-pdf=… http://localhost:4195/` produced a 14-page, tagged Letter PDF of **1,930,216 bytes**, below 3 MB. The immediate baseline after responsive-image work was 4,803,425 bytes / 13 pages; the older ≈10 MB record above was not reproduced as the baseline of this pass.
+
+The build selects existing small cover/day variants in print CSS and a locally resized 700 × 525 route photo. Print CSS disables shadows, filters, textures and animation transforms. Visual inspection found clipped place labels from the day-opening animation; disabling print transforms fixed them. Printing now includes every ground-transport category and every non-deleted checklist item, regardless of the current filter. Category headings stay with the next card.
+
+`pdftotext` comparison of the initial image-only print optimization preserved the baseline text apart from live countdown digits. On the final PDF, all 68 checked day/event titles and notes, ground-category/item titles and text, and checklist texts/details were present. Rendered all 14 pages with `pdftoppm`; inspected the layout, then re-rendered and rechecked the affected pages after fixing animation clipping and heading pagination. This is text extraction plus visual runtime evidence, not just a successful export.
+
+**Scripted browser interaction:** with Beaches and Packing selected and a partially selected input draft, dispatched beforeprint twice and afterprint. During print, all five pages, all eight tasks and all ground categories were present. After print, the category content, filtered list, progress, current page, input draft, selection range and input focus were restored. `npm test` remains 45/45; the 39-file built site passed `npm run check` (901,178 bytes). Local PDF, extracted text, rendered pages and state checks are in ignored `artifacts/local-pass-2026-09-09/`.
+
+Network boundary: page resources were restricted to localhost. An initial Chrome CLI startup emitted background-service error messages, so that run does not certify absence of browser-background traffic. Subsequent CLI runs also used `--no-proxy-server` and hostname rules blocking all non-local names; test browser processes were stopped afterward.
+
 - No deployment to a live host from this repository. `docs/PUBLISHING.md` routes are described, not walked.
 - No real traveler has built a roadbook with it yet. The stage-one goal (ten strangers) has zero data points.
 - No physical device yet. iOS Safari has runtime and partial simulator-touch evidence (see the dated pass above); the complete touch checklist is unfinished. Android Chrome has not been checked.

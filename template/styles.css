@@ -281,17 +281,22 @@ img { max-width: 100%; display: block; }
 /* Print: one continuous document. */
 @media print {
   :root { --nav-h: 0px; }
+  *, *::before, *::after { box-shadow: none !important; filter: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; text-shadow: none !important; transform: none !important; opacity: 1 !important; animation: none !important; transition: none !important; }
+  .flight-card::before, .day::before, .dialog-content::before { display: none; }
   body { background: #fff; color: #000; font-size: 0.705882rem; }
-  .demo-notice, .topbar, .bottom-nav, .skip-link, .toast, .cover-action, .icon-button, .check-form, .task .delete, .flight-nav, .footer button, .pill, .tabs, dialog { display: none !important; }
+  .demo-notice, .topbar, .bottom-nav, .skip-link, .toast, .cover-action, .icon-button, .check-form, .check-groups, .task .delete, .flight-nav, .footer button, .pill, .tabs, dialog { display: none !important; }
   .shell { max-width: none; padding: 0; }
   .page { display: block !important; padding-top: 0; page-break-before: always; }
   .page-home { page-break-before: auto; }
   .cover { min-height: 0; box-shadow: none; display: block; }
   .cover.has-image .cover-media { aspect-ratio: 21 / 9; }
+  .cover-media img { transform: none; will-change: auto; }
   .cover.has-image .cover-copy::before { display: none; }
   .cover-copy { position: static; background: none; padding: 12px 0; color: #000; }
   .day, .card, .flight-card, .task { break-inside: avoid; box-shadow: none; }
-  .day-body { columns: 1; }
+  .day { container-type: normal; overflow: visible; }
+  .day-body { columns: 1; height: auto !important; overflow: visible !important; }
+  h2, h3 { break-after: avoid; }
   .days-grid, .layout-2, .flight-rail { display: block; }
   .flight-card { margin-bottom: 12px; }
   .tab-panel .card { display: block; }

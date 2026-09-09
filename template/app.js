@@ -313,11 +313,12 @@ function renderTransport() {
   }
   updateClocks();
 }
+function groundItemHTML(item) { return `<div class="card"><h3>${E(item.title)}</h3><p>${E(item.text || '')}</p>${(item.placeIds || []).length ? `<div class="chips">${item.placeIds.map((id) => places[id] ? chip(places[id].name, `data-map="${E(id)}"`, ICONS.pin) : '').join('')}</div>` : ''}${sourceLinks(item.sourceRefs)}</div>`; }
 function renderTab() {
   const tab = (data.groundTransport?.tabs || []).find((x) => x.id === transportTab);
   const panel = $('#tab-panel');
   if (!tab || !panel) return;
-  panel.innerHTML = tab.items.map((item) => `<div class="card"><h3>${E(item.title)}</h3><p>${E(item.text || '')}</p>${(item.placeIds || []).length ? `<div class="chips">${item.placeIds.map((id) => places[id] ? chip(places[id].name, `data-map="${E(id)}"`, ICONS.pin) : '').join('')}</div>` : ''}${sourceLinks(item.sourceRefs)}</div>`).join('');
+  panel.innerHTML = tab.items.map(groundItemHTML).join('');
   $$('.tab').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === transportTab)));
 }
 function syncDots() { $$('[data-dot]').forEach((d) => { if (Number(d.dataset.dot) === flightIndex) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); }); }
@@ -337,6 +338,7 @@ function updateClocks() {
   }
 }
 
+function taskHTML(task) { return `<div class="task ${state.tasks[task.id] ? 'done' : ''}" data-task="${E(task.id)}"><input type="checkbox" id="task-${E(task.id)}" ${state.tasks[task.id] ? 'checked' : ''}><label for="task-${E(task.id)}">${E(task.text)}${task.detail ? `<small>${E(task.detail)}</small>` : ''}</label><button type="button" class="delete" data-delete="${E(task.id)}" aria-label="${E(t('checklist.delete'))}: ${E(task.text)}">${ICONS.x}</button></div>`; }
 function renderChecklist() {
   const stats = taskStats(data.checklist, state, checkGroup);
   const tasks = visibleTasks(data.checklist, state, checkGroup);
@@ -345,7 +347,7 @@ function renderChecklist() {
     <div class="check-groups" role="tablist">${['all', 'todo', 'packing'].map((g) => `<button type="button" class="tab" role="tab" data-group="${g}" aria-selected="${g === checkGroup}">${E(t('checklist.' + g))}</button>`).join('')}</div>
     <form class="check-form" id="check-form"><input id="check-input" type="text" maxlength="140" placeholder="${E(t('checklist.placeholder'))}" autocomplete="off" aria-label="${E(t('checklist.placeholder'))}"><button type="submit" class="pill pill-solid">${E(t('checklist.add'))}</button></form>
     <p class="storage-warning" id="storage-warning" hidden>${E(t('checklist.storageWarning'))}</p>
-    <div class="check-list">${tasks.length ? tasks.map((task) => `<div class="task ${state.tasks[task.id] ? 'done' : ''}" data-task="${E(task.id)}"><input type="checkbox" id="task-${E(task.id)}" ${state.tasks[task.id] ? 'checked' : ''}><label for="task-${E(task.id)}">${E(task.text)}${task.detail ? `<small>${E(task.detail)}</small>` : ''}</label><button type="button" class="delete" data-delete="${E(task.id)}" aria-label="${E(t('checklist.delete'))}: ${E(task.text)}">${ICONS.x}</button></div>`).join('') : `<p class="muted small">${E(t('checklist.empty'))}</p>`}</div>
+    <div class="check-list">${tasks.length ? tasks.map(taskHTML).join('') : `<p class="muted small">${E(t('checklist.empty'))}</p>`}</div>
     <p class="muted small" style="margin-top:14px">${E(t('checklist.privacy'))}</p>`;
   const form = $('#check-form'), input = $('#check-input');
   let composing = false;
@@ -495,17 +497,36 @@ function initOffline() {
 function initPrint() {
   let snapshot = null;
   window.addEventListener('beforeprint', () => {
-    snapshot = {page: document.body.dataset.page, open: $$('details').map((d) => d.open)};
+    if (snapshot) return;
+    const panel = $('#tab-panel'), list = $('.check-list'), progress = $('.check-progress');
+    snapshot = {page: document.body.dataset.page, open: $$('details').map((d) => d.open),
+      panel: panel?.innerHTML, list: list?.innerHTML, progress: progress?.textContent,
+      scroll: window.scrollY, focus: document.activeElement};
+    if (panel) panel.innerHTML = (data.groundTransport?.tabs || []).map((tab) =>
+      `<h3 style="margin:16px 0 8px">${E(tab.title)}</h3>${tab.items.map(groundItemHTML).join('')}`).join('');
+    if (list) list.innerHTML = visibleTasks(data.checklist, state).map(taskHTML).join('');
+    if (progress) {
+      const stats = taskStats(data.checklist, state);
+      progress.textContent = t('checklist.progress', {done: stats.completed, total: stats.total});
+    }
     for (const id of PAGES) document.getElementById(id).hidden = false;
     $$('details').forEach((d) => { d.open = true; });
     document.body.dataset.page = 'print';
   });
   window.addEventListener('afterprint', () => {
     if (!snapshot) return;
+    const saved = snapshot;
+    if ($('#tab-panel')) $('#tab-panel').innerHTML = saved.panel;
+    if ($('.check-list')) $('.check-list').innerHTML = saved.list;
+    if ($('.check-progress')) $('.check-progress').textContent = saved.progress;
     $$('details').forEach((d, i) => { d.open = snapshot.open[i]; });
     document.body.dataset.page = snapshot.page;
     route();
     snapshot = null;
+    requestAnimationFrame(() => {
+      window.scrollTo({top: saved.scroll, behavior: 'instant'});
+      if (saved.focus?.isConnected) saved.focus.focus({preventScroll: true});
+    });
   });
 }
 function deepMerge(base, extra) {

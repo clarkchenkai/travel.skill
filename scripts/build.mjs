@@ -32,6 +32,12 @@ delete publicData.imageVariants;
 if (Object.keys(imageVariants).length) publicData.imageVariants = imageVariants;
 const coverSizes = '(min-width: 900px) 1088px, (min-width: 720px) 688px, calc(100vw - 32px)';
 const coverSet = (imageVariants[data.trip.cover?.image] || []).map(({src, width}) => `${src} ${width}w`).join(', ');
+const printImages = Object.fromEntries(Object.entries(imageVariants).map(([image, variants]) => [image, variants[0].src]));
+if (data.routeOverview?.image?.startsWith('assets/')) {
+  const parsed = path.posix.parse(data.routeOverview.image);
+  const printImage = `${parsed.dir}/${parsed.name}-print.webp`;
+  if (fs.existsSync(path.join(trip, printImage))) printImages[data.routeOverview.image] = printImage;
+}
 
 const buildStamp = crypto.createHash('sha256').update(JSON.stringify(data) + Date.now()).digest('hex').slice(0, 12);
 const TEMPLATE_FILES = ['index.html', 'styles.css', 'themes.css', 'app.js', 'core.mjs', 'motion.mjs', 'icons.mjs', 'sw.js', 'i18n/en.json', 'i18n/zh-CN.json'];
@@ -40,6 +46,10 @@ fs.mkdirSync(out, {recursive: true});
 const written = [];
 const copy = (src, rel) => { const dest = path.join(out, rel); fs.mkdirSync(path.dirname(dest), {recursive: true}); fs.copyFileSync(src, dest); written.push(rel); };
 for (const rel of TEMPLATE_FILES) copy(path.join(TEMPLATE, rel), rel);
+// CSS image replacement is print-only; screen selection and source photographs stay unchanged.
+const cssString = (value) => '"' + String(value).replace(/["\\\n\r\f]/g, (c) => '\\' + c.codePointAt(0).toString(16) + ' ') + '"';
+const printRules = Object.entries(printImages).map(([image, src]) => `img[src=${cssString(image)}] { content: url(${cssString(src)}); }`).join('\n');
+if (printRules) fs.appendFileSync(path.join(out, 'styles.css'), `\n@media print {\n${printRules}\n}\n`);
 
 // Inject title/lang/description and the theme so the first paint has no flash and crawlers see a title.
 let html = fs.readFileSync(path.join(out, 'index.html'), 'utf8');
@@ -84,6 +94,7 @@ written.push('travel-data.json');
 // Assets: only files the data references, plus files listed in trip.publishAssets.
 const referenced = new Set();
 walk(publicData, (v) => { if (typeof v === 'string' && v.startsWith('assets/')) referenced.add(v); });
+Object.values(printImages).forEach((src) => referenced.add(src));
 for (const extra of data.publishAssets || []) referenced.add(extra);
 for (const rel of [...referenced].sort()) {
   const src = path.join(trip, rel);

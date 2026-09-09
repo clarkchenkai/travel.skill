@@ -40,3 +40,5 @@ Generated from the existing WebP files above with `scripts/optimize-images.py --
 | `assets/day-7-176w.webp` | `assets/day-7.webp` | 176 × 176 | 4,834 | `5e7c166c7eb3e58c9abf30c24baa7fe6956c58f04dbbaa28decb1d4da13ead72` |
 | `assets/day-8-88w.webp` | `assets/day-8.webp` | 88 × 88 | 1,122 | `7c5fc67686cf91def99e1bf7e8094a2e43b3d40c97c9dc4385c4b665ae22dd11` |
 | `assets/day-8-176w.webp` | `assets/day-8.webp` | 176 × 176 | 2,432 | `1a83a1b7b91182c17d556e09d634bd67ec3f81983236d9ab21df698face8b25d` |
+
+Print-only derivative: `assets/route-print.webp`, from `assets/route.webp`, 700 × 525 px, 18,994 bytes, SHA-256 `3c7e2ca513754cd53deb307d8a45ba101c4a76bb72a50b2f46e6a2c4a5325499`. Generated locally with `--max 700 --quality 72`; the build selects it only in print CSS. Cover and day print images reuse the smallest responsive derivatives above.
