@@ -7,7 +7,7 @@ Two kinds of checks, and they prove different things.
 - `test/core.test.mjs` — time zones, countdowns, ticket sharing, state normalization, escaping.
 - `test/validate.test.mjs` — data structure, references, status vocabulary, privacy markers, gap report.
 - `test/release.test.mjs` — static release audit (hashes, boundary, secrets, local paths).
-- `test/examples.test.mjs` — every shipped example validates, builds from clean, passes the audit, is marked fictional, stays under 400 KB.
+- `test/examples.test.mjs` — every shipped example validates, builds from clean, passes the audit, is marked fictional, stays under 1.5 MB with photos.
 
 These are structure and logic checks. They do not prove the site looks right or that a traveler could finish.
 

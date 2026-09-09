@@ -30,6 +30,9 @@
       "position": "center 70%",
       "alt": "水彩风格的山谷宿场小路（AI 插画，示意）",
       "copy": "top-right"
+    },
+    "textures": {
+      "paper": "assets/paper.webp"
     }
   },
   "flightJourneys": [
@@ -370,7 +373,8 @@
             "demo"
           ]
         }
-      ]
+      ],
+      "cover": "assets/day-1.webp"
     },
     {
       "id": "day-2",
@@ -427,7 +431,8 @@
             "demo"
           ]
         }
-      ]
+      ],
+      "cover": "assets/day-2.webp"
     },
     {
       "id": "day-3",
@@ -547,7 +552,8 @@
             "demo"
           ]
         }
-      ]
+      ],
+      "cover": "assets/day-4.webp"
     },
     {
       "id": "day-5",
@@ -599,7 +605,8 @@
             "demo"
           ]
         }
-      ]
+      ],
+      "cover": "assets/day-5.webp"
     }
   ],
   "tickets": [
@@ -765,5 +772,10 @@
       "url": "https://jr-central.co.jp/",
       "note": "公开链接；班次与票价请自行核对。"
     }
-  ]
+  ],
+  "routeOverview": {
+    "image": "assets/route.webp",
+    "alt": "Hand-drawn route sketch (decorative, not for navigation)",
+    "caption": ""
+  }
 }

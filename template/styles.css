@@ -119,7 +119,9 @@ img { max-width: 100%; display: block; }
 .day-summary { display: grid; grid-template-columns: auto 1fr auto; gap: 4px 14px; align-items: center; padding: 14px 16px; width: 100%; text-align: left; min-height: 64px; }
 .day.has-cover .day-summary { grid-template-columns: auto auto 1fr auto; }
 .day-thumb { width: 64px; height: 64px; border-radius: calc(var(--radius) * .7); object-fit: cover; background: var(--surface-2); }
-.flight-card, .ticket-dialog-body, .day { background-image: var(--paper-texture, none); background-size: 480px; background-blend-mode: multiply; }
+.flight-card, .day, .dialog-content { position: relative; }
+.flight-card::before, .day::before, .dialog-content::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: var(--paper-texture, none) center / 520px; opacity: .16; mix-blend-mode: multiply; z-index: 0; }
+.flight-card > *, .day > *, .dialog-content > * { position: relative; z-index: 1; }
 .day-date { font: 600 13px/1.3 var(--font-mono); color: var(--muted); }
 .day-date b { display: block; font-size: 22px; color: var(--ink); font-family: var(--font-display); }
 .day-title { font: 600 17px/1.3 var(--font-display); }

@@ -66,7 +66,8 @@ template/       the site: index.html, styles.css, themes.css, app.js, core.mjs, 
 examples/       three fictional trips
 scripts/        new · dev · validate · gaps · build · check (Node only, no deps)
 test/           node:test suites (npm test)
-docs/           data reference, quick start, publishing, verification, demo script
+docs/           data reference, quick start, publishing, verification, visuals, demo script
+showcase/       the complete real Kumano Kodō 2026 roadbook this project grew out of (React + Three.js, 21 MB)
 trip/           your trip (created by npm run new)
 input/          your raw materials (git-ignored)
 ```
@@ -87,6 +88,6 @@ Themes, country/region adaptations, modules and test cases are the four contribu
 
 ## Origins and license
 
-The template descends from a self-hosted roadbook built for one real trip and later published with fictional data as [kumano-roadbook-template](https://github.com/clarkchenkai/kumano-roadbook-template); this repository rewrites it as a dependency-free, theme-neutral template and adds the agent skill. The skill condenses the working notes from that build.
+The template descends from a self-hosted roadbook built for one real trip: the complete site, data and design notes are in [showcase/kumano-kodo](showcase/kumano-kodo/README.md), and a fictional-data cut of it was published earlier as [kumano-roadbook-template](https://github.com/clarkchenkai/kumano-roadbook-template). This repository rewrites it as a dependency-free, theme-neutral template, ports its motion layer, and adds the agent skill condensed from the working notes of that build.
 
 MIT. See [LICENSE](LICENSE). Example data is fictional; place names are public landmarks used only to show the map feature.

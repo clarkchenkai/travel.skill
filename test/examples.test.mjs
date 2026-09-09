@@ -32,7 +32,7 @@ for (const name of examples) {
     const html = fs.readFileSync(path.join(out, 'index.html'), 'utf8');
     assert.ok(html.includes(`<title>${data.trip.title}</title>`));
     assert.ok(html.includes(`data-theme="${data.trip.theme}"`));
-    assert.ok(r.total_bytes < 400 * 1024, `example build should stay small; got ${r.total_bytes} bytes`);
+    assert.ok(r.total_bytes < 1500 * 1024, `example build should stay under 1.5 MB including photos; got ${r.total_bytes} bytes`);
   });
 }
 

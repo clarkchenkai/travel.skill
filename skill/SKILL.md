@@ -60,7 +60,7 @@ Next: <one concrete action for the user>
 - `days[]` — one entry per calendar day of the trip, `events[]` in order, `timeLabel` free text (`"09:00"` or `"Morning"`).
 - `tickets[]`, `groundTransport.tabs[]`, `rental` (only when there is one), `checklist[]`, `sources[]`.
 
-Optional images: put files under `trip/assets/` and reference them as `assets/...` (`trip.cover.image`, `routeOverview.image`). Only referenced files are published. Keep them small; the template ships no images by default so a cold load is under 200 KB.
+Optional images: put files under `trip/assets/` and reference them as `assets/...` (`trip.cover.image`, `routeOverview.image`). Only referenced files are published. Keep them small: the template itself is under 100 KB, a cover photo adds about 100 KB, day thumbnails 15–60 KB each; the shipped examples stay under 1.5 MB in total and only the cover loads before first paint.
 
 ## When to read the references
 

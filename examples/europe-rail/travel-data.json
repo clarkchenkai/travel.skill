@@ -31,6 +31,9 @@
       "image": "assets/cover.webp",
       "position": "center 60%",
       "alt": "Poster-style illustration of a train on a viaduct (AI illustration, decorative)"
+    },
+    "textures": {
+      "paper": "assets/paper.webp"
     }
   },
   "flightJourneys": [
@@ -347,7 +350,8 @@
             "demo"
           ]
         }
-      ]
+      ],
+      "cover": "assets/day-1.webp"
     },
     {
       "id": "day-2",
@@ -395,7 +399,8 @@
             "demo"
           ]
         }
-      ]
+      ],
+      "cover": "assets/day-2.webp"
     },
     {
       "id": "day-3",
@@ -431,7 +436,8 @@
             "demo"
           ]
         }
-      ]
+      ],
+      "cover": "assets/day-3.webp"
     },
     {
       "id": "day-4",
@@ -475,7 +481,8 @@
             "demo"
           ]
         }
-      ]
+      ],
+      "cover": "assets/day-4.webp"
     },
     {
       "id": "day-5",
@@ -510,7 +517,8 @@
             "demo"
           ]
         }
-      ]
+      ],
+      "cover": "assets/day-5.webp"
     },
     {
       "id": "day-6",
@@ -566,7 +574,8 @@
             "demo"
           ]
         }
-      ]
+      ],
+      "cover": "assets/day-6.webp"
     },
     {
       "id": "day-7",
@@ -621,7 +630,8 @@
             "demo"
           ]
         }
-      ]
+      ],
+      "cover": "assets/day-7.webp"
     },
     {
       "id": "day-8",
@@ -656,7 +666,8 @@
             "demo"
           ]
         }
-      ]
+      ],
+      "cover": "assets/day-8.webp"
     }
   ],
   "tickets": [
@@ -920,5 +931,10 @@
       "url": "https://www.bahn.com/",
       "note": "Public link; check current timetables and fares yourself."
     }
-  ]
+  ],
+  "routeOverview": {
+    "image": "assets/route.webp",
+    "alt": "Hand-drawn route sketch (decorative, not for navigation)",
+    "caption": ""
+  }
 }

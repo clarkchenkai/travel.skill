@@ -11,7 +11,7 @@ Date of this record: 2026-09-09. Environment: macOS, Node 25.9, Chrome 152 (head
 - Time zones: absolute-instant durations (SIN→NGO 6 h 20, VIE→JFK arriving at an earlier clock time = 8 h 35, Tokyo→Los Angeles 10 h), +1 day / same-day arrival markers, trip day counter in the trip's own zone, countdown never negative.
 - Data: required fields, unknown references, offset-less times rejected, backwards arrivals rejected, unknown IANA zones, dates outside the trip, closed status vocabulary, private records, credential-like keys, token markers, gap report contents.
 - Release audit: hash mismatch, undeclared and missing files, path traversal, symlink escape, `.env` and key files, nested private fields, secrets not echoed, local machine paths, invalid JSON, manifest inside the public dir.
-- Examples: all three validate, build from a clean directory, pass the audit, are marked fictional (`demo` status, `DEMO` flight numbers), and each build is under 400 KB.
+- Examples: all three validate, build from a clean directory, pass the audit, are marked fictional (`demo` status, `DEMO` flight numbers), and each build stays under 1.5 MB with its photos.
 
 ## Runtime and scripted interaction (browser, three examples)
 
@@ -31,6 +31,8 @@ Performed in the in-app Chromium at 375 × 812 (mobile) and the pane's desktop w
 | Checklist: add, duplicate rejected with toast, check updates progress, delete with undo, group filter, reload keeps 6 items with 1 done | scripted + reload | Pass |
 | Chinese input method composition guard on the checklist form | — | Not verified (needs a real IME) |
 | Rental block renders pick-up, return-by, deposit, coverage, fuel policy | runtime | Pass (family-island) |
+| Motion layer (`motion.mjs`): day fold animates then lands on the correct native `open` state; dialog entrance does not interfere with close; press feedback | scripted | Pass (japan-hiking, after porting from the Kumano site) |
+| Showcase `showcase/kumano-kodo`: `npm ci`, 8 core tests, `build:visuals`, `build.py --public-only --package` from its new location; 38 files, release audit passed | logic + structure | Pass |
 | Cold-load payload, japan-hiking, uncompressed | measured | 83 KB total (HTML 4.4, CSS 23.8, JS 38, i18n 3.2, data 14); ≈25 KB gzipped. No images, no web fonts, no third-party scripts. |
 | Weak network / throttled load | — | Not measured. Payload is small enough that first paint should be one round trip after HTML; not proven. |
 | Reduced-motion preference | structure | CSS rule present; not observed. |

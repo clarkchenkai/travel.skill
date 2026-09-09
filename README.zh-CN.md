@@ -66,7 +66,8 @@ template/       网站：index.html、styles.css、themes.css、app.js、core.mj
 examples/       三个虚构行程
 scripts/        new · dev · validate · gaps · build · check（只用 Node，无依赖）
 test/           node:test 测试（npm test）
-docs/           数据字段、快速开始、发布、验证记录、演示脚本
+docs/           数据字段、快速开始、发布、验证记录、视觉方法、演示脚本
+showcase/       熊野古道 2026 真实路书完整版（本项目的来源，React + Three.js，21 MB）
 trip/           你的旅行（npm run new 生成）
 input/          你的原始资料（不入 Git）
 ```
@@ -87,6 +88,6 @@ input/          你的原始资料（不入 Git）
 
 ## 来源与许可
 
-模板脱胎于一次真实旅行的自托管路书，后来以虚构数据发布为 [kumano-roadbook-template](https://github.com/clarkchenkai/kumano-roadbook-template)；本仓库将它重写为无依赖、不绑定国别视觉的模板，并补上代理 Skill。Skill 来自那次开发的工作笔记的精简。
+模板脱胎于一次真实旅行的自托管路书：完整网站、数据与设计记录在 [showcase/kumano-kodo](showcase/kumano-kodo/README.md)，其虚构数据版本此前发布为 [kumano-roadbook-template](https://github.com/clarkchenkai/kumano-roadbook-template)。本仓库将它重写为无依赖、不绑定国别视觉的模板，移植了它的动效层，并补上由那次开发笔记精简而成的代理 Skill。
 
 MIT，见 [LICENSE](LICENSE)。示例数据为虚构；地名为公开地标，只用于展示地图功能。
