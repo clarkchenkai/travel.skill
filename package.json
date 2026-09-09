@@ -1,6 +1,6 @@
 {
   "name": "travel.skill",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Turn your travel materials into a personal, shareable travel website \u2014 an agent skill plus a dependency-free static template.",
   "license": "MIT",
   "type": "module",
@@ -19,6 +19,9 @@
     "site": "node scripts/build-site.mjs",
     "shot": "node scripts/screenshot.mjs",
     "check:offline": "node scripts/check-offline.mjs",
-    "test": "node --test \"test/**/*.test.mjs\""
+    "test": "node --test \"test/**/*.test.mjs\"",
+    "template": "node scripts/fork-template.mjs",
+    "bundle": "node scripts/package-agents.mjs",
+    "bundle:check": "node scripts/check-bundle.mjs"
   }
 }

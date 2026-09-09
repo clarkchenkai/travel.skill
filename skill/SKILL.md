@@ -3,7 +3,11 @@ name: travel
 description: Turn a traveler's raw materials (bookings, notes, screenshots, links, chat messages) into a personal, shareable travel website ("roadbook") using the dependency-free template in this repo. Use when asked to build, import, update, check, or publish a trip roadbook / travel site / itinerary page from travel materials.
 ---
 
-# travel.skill — from materials to a roadbook
+# travel.skill — compatibility entry
+
+This command-oriented entry remains supported. The complete five-skill system is routed by [AGENTS.md](../AGENTS.md): planning, product development, design, template/module extension and travel verification. For new templates or features use [travel-template-studio](../skills/travel-template-studio/SKILL.md); for complex travel use [travel-verification](../skills/travel-verification/SKILL.md).
+
+## From materials to a roadbook
 
 **Promise:** the traveler drops their materials in, and leaves with a site they can open on their phone and share. You do the reading, structuring, gap-finding, previewing and release checks. You never invent facts.
 

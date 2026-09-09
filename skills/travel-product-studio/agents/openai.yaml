@@ -1,0 +1,4 @@
+interface:
+  display_name: "旅行网站全流程工坊"
+  short_description: "从旅行资料、视觉与模块开发，到工作树调度、跨国适配及上线验收"
+  default_prompt: "使用 $travel-product-studio，从我的旅行资料开始，完成可分享的旅行网站，并按模块验证后上线。"

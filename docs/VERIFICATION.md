@@ -4,6 +4,15 @@ What has actually been checked, at which evidence level, on which date. Levels, 
 
 Date of this record: 2026-09-09. Environment: macOS, Node 25.9, Chrome 152 (headless and the Claude Code in-app browser).
 
+## Suite and UI release candidate — 2026-09-10
+
+- **Logic:** 82/82 tests pass. Four examples validate/build/audit; four ZIP variants pass extraction/CRC/content checks, and an extracted generic workspace builds independently. Five canonical skill files pass the official skill validator; canonical and discovery-wrapper Markdown links resolve.
+- **Runtime:** final headless Chromium sweep: 84 page/width combinations (21 pages across four examples × 320/375/768/1280 px). All widths read back correctly; one matching active page; no document overflow or clipped pills, badges and cover text. Earlier in-app checks covered 63 layouts and a separate 15-layout long-content stress fixture.
+- **Interaction:** actual in-app clicks open/close ticket and map dialogs; business receipt checkbox survives reload and is restored afterward. At 375 px the ticket dialog measures 375 px with no horizontal overflow. A generated French equipment module also preserves its returned state after reload; see [the independent scenario record](../evals/2026-09-10-suite.md).
+- **Offline:** headless Chrome loads the built business example, activates its service worker with 13 cached entries, disables networking, then reloads successfully (5 day cards, loading state hidden). Unit tests separately cover scope isolation, stale-code refresh, unsuccessful responses and range requests. This does not make online maps or videos available offline.
+- **Fixes:** the rail theme's red divider no longer collides with the wide cover backdrop; long names wrap within cards and controls; mobile controls have a 44 px minimum height; multi-page navigation can scroll; caches are isolated per roadbook path. Localized templates now select their declared pack automatically.
+- **Evidence limits:** no new physical-phone touch, VoiceOver speech, WeChat or real traveler adoption claim. Current release production status is established separately by its merge/deployment checks.
+
 ## Automated (logic)
 
 `npm test`: 52 tests, all passing (rerun 2026-09-09, Node 25.9.0).
@@ -145,7 +154,7 @@ No local Windows execution environment was found: `prlctl`, `VBoxManage`, `vmrun
 
 ## Remaining evidence gaps
 
-- No deployment to a live host from this repository. `docs/PUBLISHING.md` routes are described, not walked.
+- Other hosting routes in `docs/PUBLISHING.md` remain unverified; the GitHub Pages deployment is recorded above.
 - No real traveler has built a roadbook with it yet. The stage-one goal (ten strangers) has zero data points.
 - No physical device yet. iOS Safari has runtime and partial simulator-touch evidence (see the dated pass above); the complete touch checklist is unfinished. Android Chrome has not been checked.
 - No completed VoiceOver speech/navigation pass; native Safari keyboard traversal and accessibility-tree inspection are recorded separately.

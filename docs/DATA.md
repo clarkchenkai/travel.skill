@@ -12,7 +12,7 @@ Conventions: dates are `YYYY-MM-DD`; instants are ISO 8601 **with offset** (`203
 | `title`, `shortTitle`, `eyebrow`, `subtitle` | title | Cover and header text. |
 | `startDate`, `endDate` | yes | Inclusive. Every day in between should have a `days[]` entry (warning otherwise). |
 | `timeZone` | yes | The trip's "home" zone for the day counter. Flights use their own endpoint zones. |
-| `locale` | no | `en` (default) or `zh-CN`. Add a pack in `template/i18n/` for others. |
+| `locale` | no | `en` (default), `zh-CN`, or a declared trip-local language pack; see EXTENDING.md. |
 | `theme` | no | `field-notes` (default), `timetable`, `tide`, or your own block in `themes.css`. |
 | `people` | no | Number of travelers. |
 | `countries` | no | ISO 3166 codes, shown in the header if no `eyebrow`. |
@@ -69,7 +69,7 @@ Event: `id`, `title` required; `timeLabel` (free text: `"09:00"`, `"Morning"`, `
 
 ## rental (optional)
 
-Only when the trip has one. `vendor`, `vehicle` (keep "or similar" wording), `status`, `pickUp` / `dropOff` as `{ "date", "time", "placeId" }`, `deposit` as a price object, `coverage` (the vendor's own wording), `fuelPolicy`, `notes[]`, `sourceRefs[]`. The rental checklist in `skill/references/coverage-and-rental.md` lists what else to confirm.
+Only when the trip has one. `vendor`, `vehicle` (keep "or similar" wording), `status`, `pickUp` / `dropOff` endpoints (see the lifecycle section below), `deposit` as a price object, `coverage` (the vendor's own wording), `fuelPolicy`, `notes[]`, `sourceRefs[]`. The rental checklist in `skill/references/coverage-and-rental.md` lists what else to confirm.
 
 ## checklist[]
 
@@ -86,3 +86,17 @@ Deep-merged over the locale pack: `{"nav": {"days": "Itinerary"}}`.
 ## publishAssets[] (optional)
 
 Extra files under `trip/assets/` to publish even if the data does not reference them.
+
+## Rental lifecycle and conditions
+
+Endpoints accept `at` (ISO instant with offset) + `timeZone`, OR `date` + `time` + `timeZone`. Do not store both time forms. `branchName`, `placeId`, `openingHours`, `afterHours` and `sourceRefs` describe actual handover. Local DST ambiguity requires an explicit instant. Daily rental events use `rentalRef: "pickUp" | "dropOff"`; build/runtime move and populate them from the endpoint. Free-text notes still need review after a change.
+
+`rental.conditions[]`: `{id,title,text,status,sourceRefs}`. Applicable IDs include payment, inspection, assistance, cross-border, child-seat and charging. Use `countries`, `energy: "electric"` and `childSeatRequired` to surface relevant missing-rule questions.
+
+`rental.eligibility`: `{licenceCountry,supplierAcceptance,documents:[{title,status,issuer,applicationUrl,materials,processingTime,validity,fee,sourceRefs}]}`. These record sourced requirements and application routes, not a universal licence entitlement. Unknown values stay unknown.
+
+## Trip-local templates and modules
+
+See [EXTENDING.md](EXTENDING.md). `ui.modules[]` declares an actual local code module, and `trip.locale` automatically selects a declared language pack; `ui.localePack` can explicitly override it. `trip.dir` is ltr or rtl. Validation does not generate missing code.
+
+Rental document `status` uses unknown / needs-confirmation / required / not-required / applied / issued / expired / demo, not a booking status. Optional `expiresOn` is checked against the end of driving. Application URLs must be absolute; already-issued or not-required documents do not require a new application workflow.

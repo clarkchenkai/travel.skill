@@ -4,21 +4,27 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {ROOT, TEMPLATE, tripDir, readJSON, arg} from './lib/paths.mjs';
-import {validateTravelData} from './lib/validate.mjs';
+import {projectValidation} from './lib/project-validation.mjs';
+import {selectTemplate,localFile,templateFile,localePack} from './lib/templates.mjs';
+import {resolveRentalDays} from '../template/rental.mjs';
 import {ICONS} from '../template/icons.mjs';
 
 const trip = tripDir();
+let selectedTemplate;try{selectedTemplate=selectTemplate(trip,arg('--template'));}catch(error){console.error(`Invalid template: ${error.message}`);process.exit(1);}
 const out = path.resolve(ROOT, arg('--out') || 'dist');
 const manifestPath = path.resolve(ROOT, arg('--manifest') || path.join('artifacts', 'manifest.json'));
 const dataFile = path.join(trip, 'travel-data.json');
 if (!fs.existsSync(dataFile)) { console.error(`No travel-data.json in ${trip}`); process.exit(2); }
 const data = readJSON(dataFile);
-const {errors} = validateTravelData(data);
+const {errors} = await projectValidation(data,selectedTemplate);
 if (errors.length) { console.error(`Refusing to build: ${errors.length} validation error(s). Run npm run validate.`); process.exit(1); }
 if (path.resolve(manifestPath).startsWith(out + path.sep)) { console.error('The manifest must live outside the output directory.'); process.exit(1); }
 
+if ([ROOT,trip,selectedTemplate.root].some(source=>path.resolve(source)===out || path.resolve(source).startsWith(out+path.sep))) throw new Error('Output must not replace a source directory.');
+
 // Optional width-suffixed files produced by optimize-images.py. No Python is needed to build.
 const publicData = stripPrivate(data);
+publicData.days=resolveRentalDays(publicData, (data.trip.locale||'en').startsWith('zh')?{pickUp:'取车',dropOff:'还车'}:undefined);
 const imageVariants = {};
 for (const [image, widths] of [[data.trip.cover?.image, [900, 1800]], ...(data.days || []).map((day) => [day.cover, [88, 176]])]) {
   if (!image?.startsWith('assets/')) continue;
@@ -45,12 +51,12 @@ if (data.routeOverview?.image?.startsWith('assets/')) {
 }
 
 const buildStamp = crypto.createHash('sha256').update(JSON.stringify(data) + Date.now()).digest('hex').slice(0, 12);
-const TEMPLATE_FILES = ['index.html', 'styles.css', 'themes.css', 'app.js', 'core.mjs', 'motion.mjs', 'icons.mjs', 'sw.js', 'i18n/en.json', 'i18n/zh-CN.json'];
+const TEMPLATE_FILES = selectedTemplate.files;
 fs.rmSync(out, {recursive: true, force: true});
 fs.mkdirSync(out, {recursive: true});
 const written = [];
 const copy = (src, rel) => { const dest = path.join(out, rel); fs.mkdirSync(path.dirname(dest), {recursive: true}); fs.copyFileSync(src, dest); written.push(rel); };
-for (const rel of TEMPLATE_FILES) copy(path.join(TEMPLATE, rel), rel);
+for (const rel of TEMPLATE_FILES) copy(templateFile(selectedTemplate, rel), rel);
 // CSS image replacement is print-only; screen selection and source photographs stay unchanged.
 const cssString = (value) => '"' + String(value).replace(/["\\\n\r\f]/g, (c) => '\\' + c.codePointAt(0).toString(16) + ' ') + '"';
 const printRules = Object.entries(printImages).map(([image, src]) => `img[src=${cssString(image)}] { content: url(${cssString(src)}); }`).join('\n');
@@ -59,7 +65,7 @@ if (printRules) fs.appendFileSync(path.join(out, 'styles.css'), `\n@media print 
 // Inject title/lang/description and the theme so the first paint has no flash and crawlers see a title.
 let html = fs.readFileSync(path.join(out, 'index.html'), 'utf8');
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
-html = html.replace('<html lang="en">', `<html lang="${esc(data.trip.locale || 'en')}" data-theme="${esc(data.trip.theme || 'field-notes')}">`)
+html = html.replace('<html lang="en">', `<html lang="${esc(data.trip.locale || 'en')}" data-theme="${esc(data.trip.theme || 'field-notes')}" dir="${esc(data.trip.dir||'ltr')}">`)
   .replace('<title>Roadbook</title>', `<title>${esc(data.trip.title)}</title>`)
   .replace('content="A personal travel roadbook."', `content="${esc(data.trip.subtitle || data.trip.title)}"`);
 if (data.trip.cover?.image) html = html.replace('<link rel="stylesheet" href="styles.css">', `<link rel="preload" as="image" href="${esc(data.trip.cover.image)}"${coverSet ? ` imagesrcset="${esc(coverSet)}" imagesizes="${coverSizes}"` : ''} fetchpriority="high">\n<link rel="stylesheet" href="styles.css">`);
@@ -77,7 +83,9 @@ const og = [
 ].filter(Boolean).join('\n');
 html = html.replace('<link rel="stylesheet" href="styles.css">', og + '\n<link rel="stylesheet" href="styles.css">');
 // Pre-render text that app.js will render identically, so the first paint has the final layout (no shift).
-const pack = JSON.parse(fs.readFileSync(path.join(TEMPLATE, 'i18n', (data.trip.locale || 'en').startsWith('zh') ? 'zh-CN.json' : 'en.json'), 'utf8'));
+const packName=localePack(data,selectedTemplate);
+const pack = JSON.parse(fs.readFileSync(templateFile(selectedTemplate,`i18n/${packName}.json`),'utf8'));
+publicData.ui={...publicData.ui,localePack:packName};
 html = html.replace('>Skip to daily plan</a>', `>${esc(pack.skipToDays)}</a>`)
   .replace('role="status">Loading…</p>', `role="status">${esc(pack.loading)}</p>`)
   .replace('This roadbook needs JavaScript to render its data.', esc(pack.noScript));
@@ -108,15 +116,15 @@ walk(publicData, (v) => { if (typeof v === 'string' && v.startsWith('assets/')) 
 Object.values(printImages).forEach((src) => referenced.add(src));
 for (const extra of data.publishAssets || []) referenced.add(extra);
 for (const rel of [...referenced].sort()) {
-  const src = path.join(trip, rel);
-  if (!fs.existsSync(src)) { console.error(`Referenced asset missing: ${rel}`); process.exit(1); }
+  let src;
+  try { src = localFile(trip, rel); } catch { console.error(`Referenced asset missing or outside trip: ${rel}`); process.exit(1); }
   copy(src, rel);
 }
 for (const rel of ['LICENSE', 'ASSETS.md']) { const f = path.join(trip, rel); if (fs.existsSync(f)) copy(f, rel); }
 
 // Service worker precache: everything written so far except sw.js itself and the license docs.
 const precache = written.filter((rel) => !['sw.js', 'LICENSE', 'ASSETS.md'].includes(rel)).map((rel) => './' + rel);
-fs.writeFileSync(path.join(out, 'sw.js'), fs.readFileSync(path.join(TEMPLATE, 'sw.js'), 'utf8').replace('__VERSION__', buildStamp).replace('__PRECACHE__', JSON.stringify(precache.concat(['./']))));
+fs.writeFileSync(path.join(out, 'sw.js'), fs.readFileSync(templateFile(selectedTemplate, 'sw.js'), 'utf8').replace('__VERSION__', buildStamp).replace('__PRECACHE__', JSON.stringify(precache.concat(['./']))));
 const manifest = {};
 for (const rel of written.sort()) manifest[rel] = crypto.createHash('sha256').update(fs.readFileSync(path.join(out, rel))).digest('hex');
 fs.mkdirSync(path.dirname(manifestPath), {recursive: true});

@@ -109,12 +109,22 @@
     "pickUp": {
       "date": "2031-07-05",
       "time": "11:30",
-      "placeId": "pmi"
+      "placeId": "pmi",
+      "timeZone": "Europe/Madrid",
+      "branchName": "Example Rentals airport branch (fictional)",
+      "sourceRefs": [
+        "demo"
+      ]
     },
     "dropOff": {
       "date": "2031-07-11",
       "time": "15:30",
-      "placeId": "pmi"
+      "placeId": "pmi",
+      "timeZone": "Europe/Madrid",
+      "branchName": "Example Rentals airport branch (fictional)",
+      "sourceRefs": [
+        "demo"
+      ]
     },
     "deposit": {
       "amount": 600,
@@ -128,7 +138,11 @@
     ],
     "sourceRefs": [
       "demo"
-    ]
+    ],
+    "countries": [
+      "ES"
+    ],
+    "childSeatRequired": true
   },
   "places": [
     {
@@ -318,7 +332,8 @@
           "notes": "See Rental under Transport.",
           "sourceRefs": [
             "demo"
-          ]
+          ],
+          "rentalRef": "pickUp"
         },
         {
           "id": "d1-drive",
@@ -606,7 +621,8 @@
           "notes": "Photos of every panel and the fuel gauge.",
           "sourceRefs": [
             "demo"
-          ]
+          ],
+          "rentalRef": "dropOff"
         },
         {
           "id": "d7-fly",
