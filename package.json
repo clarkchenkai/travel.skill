@@ -13,6 +13,7 @@
     "gaps": "node scripts/gaps.mjs",
     "build": "node scripts/build.mjs",
     "check": "node scripts/check-release.mjs",
+    "shot": "node scripts/screenshot.mjs",
     "test": "node --test \"test/**/*.test.mjs\""
   }
 }

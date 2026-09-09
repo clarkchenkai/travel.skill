@@ -138,7 +138,7 @@ img { max-width: 100%; display: block; }
 .flight-rail::-webkit-scrollbar { display: none; }
 .flight-card { flex: 0 0 calc(100% - 24px); scroll-snap-align: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
 .flight-head { display: flex; justify-content: space-between; gap: 8px; align-items: center; font-size: 13px; color: var(--muted); }
-.flight-head b { color: var(--ink); font-family: var(--font-display); font-size: 16px; }
+.flight-head b { color: var(--ink); font-family: var(--font-display); font-size: 15px; line-height: 1.3; }
 .segment { margin-top: 14px; }
 .segment + .segment { border-top: 1px dashed var(--line); padding-top: 12px; }
 .segment-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; }
@@ -148,6 +148,7 @@ img { max-width: 100%; display: block; }
 .airport .city { font-size: 14px; }
 .airport .meta { font-size: 12px; color: var(--muted); }
 .airport .time { font: 600 22px/1.3 var(--font-mono); font-variant-numeric: tabular-nums; margin-top: 8px; }
+.airport .time sup { white-space: nowrap; font-size: 11px; font-family: var(--font-body); }
 .airport .date { font-size: 12px; color: var(--muted); }
 .segment-mid { text-align: center; color: var(--muted); font-size: 12px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
 .segment-mid .line { width: 48px; border-top: 1px dashed var(--line); }
