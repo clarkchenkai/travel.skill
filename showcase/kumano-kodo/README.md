@@ -1,6 +1,6 @@
 # 熊野古道 · 2026 — the real roadbook this project grew out of
 
-This folder is the complete production site of a real six-day trip (Shenzhen → Osaka → Kumano Kodō → Tokyo → Shenzhen, 10–15 September 2026, four travelers), kept exactly as it was built and published: data, dates, bookings as confirmed by the travelers, illustrations, hand-written font, opening animation, and the deployment notes. The skill in `skill/` is a condensation of how this site was made.
+This folder is the complete production site of a real six-day trip (Shenzhen → Osaka → Kumano Kodō → Tokyo → Shenzhen, 10–15 September 2026, four travelers), kept as a fixed public snapshot: data, dates, bookings as confirmed by the travelers, illustrations, hand-written font, opening animation, and the deployment notes. The skill in `skill/` is a condensation of how this site was made.
 
 It is included as a **finished reference**, not as a starting template:
 
@@ -9,6 +9,8 @@ It is included as a **finished reference**, not as a starting template:
 - Read it for the details that make a roadbook feel finished: the parachute opening and its skip guard, the layered forest parallax, the ticket-paper flight cards, the single glass bottom bar, the map dialog that closes in one tap, the day covers that differ per day. `DESIGN.md` records how each decision was reached and what was rejected; `TRIP.md` is the trip's fact sheet.
 
 Live site (as deployed by the author): https://kumano-roadbook.pages.dev
+
+Snapshot updated on 2026-09-09 to the verified `tokyo34` public version. See [SOURCE.md](SOURCE.md) for exact file hashes, the author-source comparison and update boundaries.
 
 ## Run it
 
