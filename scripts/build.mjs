@@ -17,6 +17,22 @@ const {errors} = validateTravelData(data);
 if (errors.length) { console.error(`Refusing to build: ${errors.length} validation error(s). Run npm run validate.`); process.exit(1); }
 if (path.resolve(manifestPath).startsWith(out + path.sep)) { console.error('The manifest must live outside the output directory.'); process.exit(1); }
 
+// Optional width-suffixed files produced by optimize-images.py. No Python is needed to build.
+const publicData = stripPrivate(data);
+const imageVariants = {};
+for (const [image, widths] of [[data.trip.cover?.image, [900, 1800]], ...(data.days || []).map((day) => [day.cover, [88, 176]])]) {
+  if (!image?.startsWith('assets/')) continue;
+  const parsed = path.posix.parse(image);
+  const variants = widths.map((width) => ({src: `${parsed.dir}/${parsed.name}-${width}w.webp`, width}))
+    .filter(({src}) => fs.existsSync(path.join(trip, src)));
+  if (variants.length) imageVariants[image] = variants;
+}
+// Derived build metadata, not another traveler-maintained data source.
+delete publicData.imageVariants;
+if (Object.keys(imageVariants).length) publicData.imageVariants = imageVariants;
+const coverSizes = '(min-width: 900px) 1088px, (min-width: 720px) 688px, calc(100vw - 32px)';
+const coverSet = (imageVariants[data.trip.cover?.image] || []).map(({src, width}) => `${src} ${width}w`).join(', ');
+
 const buildStamp = crypto.createHash('sha256').update(JSON.stringify(data) + Date.now()).digest('hex').slice(0, 12);
 const TEMPLATE_FILES = ['index.html', 'styles.css', 'themes.css', 'app.js', 'core.mjs', 'motion.mjs', 'icons.mjs', 'sw.js', 'i18n/en.json', 'i18n/zh-CN.json'];
 fs.rmSync(out, {recursive: true, force: true});
@@ -31,7 +47,7 @@ const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({'&': '&amp;', '<'
 html = html.replace('<html lang="en">', `<html lang="${esc(data.trip.locale || 'en')}" data-theme="${esc(data.trip.theme || 'field-notes')}">`)
   .replace('<title>Roadbook</title>', `<title>${esc(data.trip.title)}</title>`)
   .replace('content="A personal travel roadbook."', `content="${esc(data.trip.subtitle || data.trip.title)}"`);
-if (data.trip.cover?.image) html = html.replace('<link rel="stylesheet" href="styles.css">', `<link rel="preload" as="image" href="${esc(data.trip.cover.image)}" fetchpriority="high">\n<link rel="stylesheet" href="styles.css">`);
+if (data.trip.cover?.image) html = html.replace('<link rel="stylesheet" href="styles.css">', `<link rel="preload" as="image" href="${esc(data.trip.cover.image)}"${coverSet ? ` imagesrcset="${esc(coverSet)}" imagesizes="${coverSizes}"` : ''} fetchpriority="high">\n<link rel="stylesheet" href="styles.css">`);
 // Share card. og:image must be absolute for most crawlers: set trip.siteUrl (e.g. "https://you.github.io/trip/").
 const site = data.trip.siteUrl ? String(data.trip.siteUrl).replace(/\/?$/, '/') : '';
 const ogImage = data.trip.cover?.image ? (site ? site + data.trip.cover.image : data.trip.cover.image) : '';
@@ -57,12 +73,11 @@ html = html.replace('<nav class="bottom-nav" aria-label="Sections" id="bottom-na
 // Pre-render the cover shell so the first paint already reserves the image box (avoids layout shift).
 if (data.trip.cover?.image) {
   html = html.replace('<div class="cover" id="cover">', `<div class="cover has-image" id="cover" data-copy="${esc(data.trip.cover.copy || 'top-left')}">`)
-    .replace('<div class="cover-media" id="cover-media" aria-hidden="true"></div>', `<div class="cover-media" id="cover-media" aria-hidden="true"><img src="${esc(data.trip.cover.image)}" alt="" fetchpriority="high" style="object-position:${esc(data.trip.cover.position || 'center')}"></div>`);
+    .replace('<div class="cover-media" id="cover-media" aria-hidden="true"></div>', `<div class="cover-media" id="cover-media" aria-hidden="true"><img src="${esc(data.trip.cover.image)}"${coverSet ? ` srcset="${esc(coverSet)}" sizes="${coverSizes}"` : ''} alt="" fetchpriority="high" style="object-position:${esc(data.trip.cover.position || 'center')}"></div>`);
 }
 fs.writeFileSync(path.join(out, 'index.html'), html);
 
 // Public data: strip private records and anything under privateData, then re-serialize.
-const publicData = stripPrivate(data);
 fs.writeFileSync(path.join(out, 'travel-data.json'), JSON.stringify(publicData, null, 2) + '\n');
 written.push('travel-data.json');
 

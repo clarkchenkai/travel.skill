@@ -87,6 +87,19 @@ The user subsequently authorized continuing past environment blockers without re
 | Contextual map button labels | runtime (Safari accessibility tree) | Stay buttons previously announced only “Map”. Added the stay name to their accessible labels; read back “Map: Example family apartment (Port de Sóller)” and “Map: Example beach hotel (Playa de Muro)” while traversing Days. The rental map button now also includes the place name; its new label has not yet been read back in Safari. |
 | VoiceOver | attempted, unresolved | Started VoiceOver and its first-use tutorial; the VoiceOver process ran. The available app-targeted keyboard commands did not yield observable VoiceOver navigation or speech output. Safari's accessibility tree is recorded above, but this is **not** a completed screen-reader pass. Stopped the VoiceOver processes started for this check. |
 
+### Step 5: local throttled measurements (2026-09-09)
+
+Measured the built family-island site in fresh headless Chrome sessions through the Chrome DevTools Protocol, 390 × 844, DPR 2. HTTP cache disabled; service worker bypassed; no CPU throttle. Slow 4G here means 150 ms latency / 1,600 kbit/s download and upload; 3G means 400 ms / 400 kbit/s. These are explicit lab settings, not a carrier or production measurement. Each cell is one cold run, observed for 25 seconds with Paint Timing and Largest Contentful Paint observers.
+
+| Profile | Before FCP / LCP | After FCP / LCP | Evidence level |
+| --- | --- | --- | --- |
+| Slow 4G | 1.092 s / 1.352 s | 0.776 s / 0.796 s | measured (local browser runtime) |
+| 3G | 2.496 s / 5.140 s | 2.496 s / 2.668 s | measured (local browser runtime) |
+
+In both before/after runs, the subtitle painted before the cover became the LCP element: the image did not block text first paint. The selected cover changed from `assets/cover.webp` (109,426 transferred bytes, including headers) to `assets/cover-900w.webp` (28,498 transferred bytes). The build now discovers the optimizer's 900/1800 px cover and 88/176 px thumbnail siblings, includes only discovered variants, and emits matching cover preload and image `srcset`/`sizes`. Derived `imageVariants` metadata is written only to built public data; source travel data is not changed. Existing trips without derivatives retain their original image fallback. All three examples have locally derived variants with full source/size/hash tables in their ASSETS.md files; no new image generation was used.
+
+Validation: 45/45 `npm test` tests passed, including preload/render agreement, variant audit/cache inclusion, source-data preservation and no-variant fallback. `npm run check` passed for the 38-file family-island build (872,170 bytes). Raw measurements remain in ignored local `artifacts/local-pass-2026-09-09/network-before.json` and `network-after.json`.
+
 - No deployment to a live host from this repository. `docs/PUBLISHING.md` routes are described, not walked.
 - No real traveler has built a roadbook with it yet. The stage-one goal (ten strangers) has zero data points.
 - No physical device yet. iOS Safari has runtime and partial simulator-touch evidence (see the dated pass above); the complete touch checklist is unfinished. Android Chrome has not been checked.

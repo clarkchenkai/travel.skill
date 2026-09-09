@@ -30,6 +30,13 @@ async function loadJSON(url) {
 
 // ---------- helpers ----------
 function chip(label, attrs = '', icon = '') { return `<button type="button" class="chip" ${attrs}>${icon}${E(label)}</button>`; }
+function responsiveImage(image, sizes) {
+  const variants = data.imageVariants?.[image];
+  if (!Array.isArray(variants) || !variants.length) return '';
+  const set = variants.filter((v) => safeURL(v.src) && Number.isFinite(v.width) && v.width > 0)
+    .map((v) => `${v.src} ${v.width}w`).join(', ');
+  return set ? ` srcset="${E(set)}" sizes="${E(sizes)}"` : '';
+}
 function sourceLinks(refs = []) {
   const items = refs.map((id) => sources[id]).filter(Boolean).map((s) => s.url ? `<a href="${E(safeURL(s.url))}" target="_blank" rel="noopener noreferrer">${E(s.title)}</a>` : `<span>${E(s.title)}</span>`);
   return items.length ? `<div class="source-links">${items.join('')}</div>` : '';
@@ -202,7 +209,7 @@ function renderHome() {
   $('#cover-action').textContent = t('cover.open');
   const media = $('#cover-media');
   if (trip.cover?.image) {
-    media.innerHTML = `<img src="${E(trip.cover.image)}" alt="${E(trip.cover.alt || '')}" fetchpriority="high" style="object-position:${E(trip.cover.position || 'center')}">`;
+    media.innerHTML = `<img src="${E(trip.cover.image)}"${responsiveImage(trip.cover.image, '(min-width: 900px) 1088px, (min-width: 720px) 688px, calc(100vw - 32px)')} alt="${E(trip.cover.alt || '')}" fetchpriority="high" style="object-position:${E(trip.cover.position || 'center')}">`;
     $('#cover').classList.add('has-image');
     $('#cover').dataset.copy = trip.cover.copy || 'top-left';
   } else { media.innerHTML = ''; $('#cover').classList.remove('has-image'); }
@@ -252,7 +259,7 @@ function renderDays() {
     const monthWeek = new Intl.DateTimeFormat(locale, {timeZone: 'UTC', month: 'short', weekday: 'short'}).format(d);
     const events = day.events.length ? day.events.map(eventHTML).join('') : `<p class="muted small" style="padding:12px 0">${E(t('days.noEvents'))}</p>`;
     const stayHTML = stay ? `<div class="stay"><div><small>${E(t('days.stay'))}</small><b>${E(stay.name)}</b>${stay.localName && stay.localName !== stay.name ? `<small>${E(stay.localName)}</small>` : ''} ${statusLabel(stay)}</div>${stay.placeId && places[stay.placeId] ? `<button type="button" class="pill pill-small" data-map="${E(stay.placeId)}" aria-label="${E(t('days.map'))}: ${E(stay.name)}">${E(t('days.map'))}</button>` : ''}</div>` : '';
-    const thumb = day.cover ? `<img class="day-thumb" src="${E(day.cover)}" alt="${E(day.coverAlt || '')}" loading="lazy" decoding="async">` : '';
+    const thumb = day.cover ? `<img class="day-thumb" src="${E(day.cover)}"${responsiveImage(day.cover, '(min-width: 900px) 88px, 64px')} alt="${E(day.coverAlt || '')}" loading="lazy" decoding="async">` : '';
     return `<details class="day ${day.cover ? 'has-cover' : ''}" id="${E(day.id)}" ${i === 0 ? 'open' : ''}><summary class="day-summary">${thumb}<span class="day-date">${E(monthWeek)}<b>${E(dayNum)}</b></span><span><span class="day-title">${E(day.title)}</span>${day.subtitle ? `<div class="day-sub">${E(day.subtitle)}</div>` : ''}<div class="day-sub" data-day-tickets="${E(day.id)}" ${day.events.some((e) => e.ticketIds?.length) ? '' : 'hidden'}></div></span><span class="day-toggle" aria-hidden="true">${ICONS.chevron}</span></summary><div class="day-body">${events}${stayHTML}</div></details>`;
   }).join('');
   $('#days').innerHTML = `<div class="section-head"><h2>${E(t('days.title'))}</h2><small>${data.days.length}</small></div><div class="days-grid">${html}</div>`;

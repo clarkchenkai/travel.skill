@@ -66,3 +66,35 @@ test('private records and privateData never reach the public data file', () => {
   const pub = fs.readFileSync(path.join(b.out, 'travel-data.json'), 'utf8');
   assert.ok(!pub.includes('ABC123') && !pub.includes('"secret"'));
 });
+
+test('responsive cover preload and rendered image agree; generated variants are audited and cached', () => {
+  const dir = tripFrom('family-island', (d) => d);
+  const input = fs.readFileSync(path.join(dir, 'travel-data.json'), 'utf8');
+  const b = build(dir);
+  const preload = b.html.match(/<link rel="preload" as="image"[^>]+>/)[0];
+  const image = b.html.match(/<img src="assets\/cover.webp"[^>]+>/)[0];
+  assert.equal(preload.match(/imagesrcset="([^"]+)"/)[1], image.match(/ srcset="([^"]+)"/)[1]);
+  assert.equal(preload.match(/imagesizes="([^"]+)"/)[1], image.match(/ sizes="([^"]+)"/)[1]);
+  const pub = JSON.parse(fs.readFileSync(path.join(b.out, 'travel-data.json'), 'utf8'));
+  assert.deepEqual(pub.imageVariants['assets/cover.webp'].map((v) => v.width), [900, 1800]);
+  assert.deepEqual(pub.imageVariants['assets/day-1.webp'].map((v) => v.width), [88, 176]);
+  const manifest = JSON.parse(fs.readFileSync(b.manifest, 'utf8'));
+  for (const {src} of Object.values(pub.imageVariants).flat()) {
+    assert.ok(fs.existsSync(path.join(b.out, src)), src);
+    assert.ok(manifest[src], `${src} audited`);
+    assert.ok(b.sw.includes('./' + src), `${src} cached`);
+  }
+  assert.equal(fs.readFileSync(path.join(dir, 'travel-data.json'), 'utf8'), input, 'traveler data is unchanged');
+});
+
+test('trips without width-suffixed images retain the original image fallback', () => {
+  const dir = tripFrom('family-island', (d) => d);
+  for (const name of fs.readdirSync(path.join(dir, 'assets'))) {
+    if (/-\d+w\.webp$/.test(name)) fs.unlinkSync(path.join(dir, 'assets', name));
+  }
+  const b = build(dir);
+  assert.doesNotMatch(b.html, /imagesrcset=| srcset=/);
+  assert.match(b.html, /<img src="assets\/cover.webp"/);
+  const pub = JSON.parse(fs.readFileSync(path.join(b.out, 'travel-data.json'), 'utf8'));
+  assert.equal(pub.imageVariants, undefined);
+});
