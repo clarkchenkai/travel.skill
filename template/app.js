@@ -419,6 +419,9 @@ function route() {
 }
 function renderNav() {
   $('#bottom-nav').innerHTML = PAGES.map((id) => `<a href="#${id}">${ICONS[id]}<span>${E(t('nav.' + id))}</span></a>`).join('');
+  $('#bottom-nav').setAttribute('aria-label', t('nav.sections'));
+  for (const id of PAGES) document.getElementById(id).setAttribute('aria-label', t('nav.' + id));
+  $('.skip-link').textContent = t('skipToDays');
   $('#footer-top').textContent = t('footer.top');
 }
 

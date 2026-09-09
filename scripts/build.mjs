@@ -73,13 +73,19 @@ const og = [
 html = html.replace('<link rel="stylesheet" href="styles.css">', og + '\n<link rel="stylesheet" href="styles.css">');
 // Pre-render text that app.js will render identically, so the first paint has the final layout (no shift).
 const pack = JSON.parse(fs.readFileSync(path.join(TEMPLATE, 'i18n', (data.trip.locale || 'en').startsWith('zh') ? 'zh-CN.json' : 'en.json'), 'utf8'));
+html = html.replace('>Skip to daily plan</a>', `>${esc(pack.skipToDays)}</a>`)
+  .replace('role="status">Loading…</p>', `role="status">${esc(pack.loading)}</p>`)
+  .replace('This roadbook needs JavaScript to render its data.', esc(pack.noScript));
+for (const id of ['home', 'map', 'days', 'transport', 'checklist']) {
+  html = html.replace(new RegExp(`(id="${id}" aria-label=")[^"]*(")`), (_, before, after) => before + esc(pack.nav[id]) + after);
+}
 if (data.trip.demo) html = html.replace('<aside class="demo-notice" id="demo-notice" hidden></aside>', `<aside class="demo-notice" id="demo-notice">${esc(data.trip.demoNotice || pack.demoNotice)}</aside>`);
 html = html.replace('<b id="identity-title">Roadbook</b><small id="identity-meta"></small>', `<b id="identity-title">${esc(data.trip.shortTitle || data.trip.title)}</b><small id="identity-meta">${esc(data.trip.eyebrow || (data.trip.countries || []).join(' · '))}</small>`)
   .replace('<p class="cover-eyebrow" id="cover-eyebrow"></p>', `<p class="cover-eyebrow" id="cover-eyebrow">${esc(data.trip.eyebrow || '')}</p>`)
   .replace('<h1 id="cover-title"></h1>', `<h1 id="cover-title">${esc(data.trip.title)}</h1>`)
   .replace('<p class="cover-subtitle" id="cover-subtitle"></p>', `<p class="cover-subtitle" id="cover-subtitle">${esc(data.trip.subtitle || '')}</p>`)
   .replace('<a class="cover-action" id="cover-action" href="#days"></a>', `<a class="cover-action" id="cover-action" href="#days">${esc(pack.cover.open)}</a>`);
-html = html.replace('<nav class="bottom-nav" aria-label="Sections" id="bottom-nav"></nav>', `<nav class="bottom-nav" aria-label="Sections" id="bottom-nav">${['home', 'map', 'days', 'transport', 'checklist'].map((id) => `<a href="#${id}"${id === 'home' ? ' aria-current="page"' : ''}>${ICONS[id]}<span>${esc(pack.nav[id])}</span></a>`).join('')}</nav>`);
+html = html.replace('<nav class="bottom-nav" aria-label="Sections" id="bottom-nav"></nav>', `<nav class="bottom-nav" aria-label="${esc(pack.nav.sections)}" id="bottom-nav">${['home', 'map', 'days', 'transport', 'checklist'].map((id) => `<a href="#${id}"${id === 'home' ? ' aria-current="page"' : ''}>${ICONS[id]}<span>${esc(pack.nav[id])}</span></a>`).join('')}</nav>`);
 // Pre-render the cover shell so the first paint already reserves the image box (avoids layout shift).
 if (data.trip.cover?.image) {
   html = html.replace('<div class="cover" id="cover">', `<div class="cover has-image" id="cover" data-copy="${esc(data.trip.cover.copy || 'top-left')}">`)

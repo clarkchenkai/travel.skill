@@ -98,3 +98,13 @@ test('trips without width-suffixed images retain the original image fallback', (
   const pub = JSON.parse(fs.readFileSync(path.join(b.out, 'travel-data.json'), 'utf8'));
   assert.equal(pub.imageVariants, undefined);
 });
+
+test('Chinese builds localize prerendered navigation, skip link and loading fallbacks', () => {
+  const b = build(tripFrom('family-island', (d) => ({...d, trip: {...d.trip, locale: 'zh-CN'}})));
+  assert.match(b.html, /id="home" aria-label="首页"/);
+  assert.match(b.html, /id="days" aria-label="日程"/);
+  assert.match(b.html, /aria-label="页面导航" id="bottom-nav"/);
+  assert.match(b.html, />跳至每日行程<\/a>/);
+  assert.match(b.html, /role="status">正在打开路书…<\/p>/);
+  assert.match(b.html, /此路书需要启用 JavaScript 才能显示行程数据。/);
+});
