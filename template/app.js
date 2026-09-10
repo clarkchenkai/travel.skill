@@ -526,13 +526,13 @@ async function init() {
   accommodations = Object.fromEntries(data.accommodations.map((a) => [a.id, a]));
   storageKey = `roadbook:${data.trip.id}`;
   state = getState();
-  status.hidden = true;
   await initModules();
   renderNav(); renderHome(); renderMap(); renderDays(); renderTransport(); renderChecklist();
   $('#sources').innerHTML = `<b>${E(t('sources.title'))}</b> ` + data.sources.map((s) => s.url ? `<a href="${E(safeURL(s.url))}" target="_blank" rel="noopener noreferrer">${E(s.title)}</a>` : E(s.title)).join(' · ');
   initEvents();
   initParallax();
   route();
+  status.hidden = true;
   try { initMotion(); } catch (err) { console.warn('motion layer skipped', err); }
   clearInterval(clockTimer);
   clockTimer = setInterval(updateClocks, 1000);

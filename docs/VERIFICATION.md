@@ -170,3 +170,11 @@ Runtime source at `3de8903`: 52/52 tests passed; the final family-island build c
 Headless Chrome runtime checks on the final built site passed all five destinations at 390 and 1280 px: one active page, matching navigation state, seven day cards, no document-width overflow and no loading error. The selected cover was 900 px on the narrow viewport and 1800 px on the wide viewport (DPR 2). A final fresh 3G run with the same 400 ms / 400 kbit/s settings and service-worker bypass measured FCP **2.616 s**, LCP **2.716 s**, with the subtitle painting before the cover. This is a single local lab run, not a population statistic.
 
 The simulator text size was read back as its original `large`; no VoiceOver process remained. No push or deployment was performed. Source changes and evidence records were committed locally; generated screenshots, PDFs, raw measurements and the fictional first-roadbook clone remain local-only.
+
+## Production browser follow-up — 2026-09-10
+
+Live source `c0f9974`: headless Chromium checked 21 example pages at a verified 375 px viewport. No horizontal overflow or clipped cover/control text occurred; the rail ticket dialog measured 375 px and was visually inspected after its animation. One early business-page route check ran before the dynamic module finished loading. Inspection confirmed the loading message was hidden before module loading and event binding completed.
+
+The follow-up keeps loading visible until modules, core renderers, event bindings and the initial route are ready. A delayed-module regression failed against the old initializer and passes with the change; 83/83 tests and the business build/release audit pass. This is a loading-state correction, not a claim that arbitrary module code cannot stall.
+
+Device enumeration found the physical iPhone unavailable and an iPhone simulator connected. Physical touch and mobile WeChat remain unverified; simulated device results must stay separate. The local proxy/network configuration was not changed.
